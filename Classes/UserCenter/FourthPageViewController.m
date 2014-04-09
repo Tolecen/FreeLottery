@@ -15,6 +15,7 @@
 #import "QueryUserBalanceViewController.h"
 #import "QueryGiftViewController.h"
 #import "QueryAccountDetailViewController.h"
+#import "QueryCaidouBalanceViewController.h"
 #import "GetCashViewController.h"
 #import "NSLog.h"
 #import "UINavigationBarCustomBg.h"
@@ -55,6 +56,7 @@
 @synthesize m_nickName;
 @synthesize m_bPhone;
 @synthesize m_balanceLabel;
+@synthesize m_moneyLabel;
 @synthesize m_integralLabel;
 @synthesize m_isBindCertid;
 @synthesize m_isBindPhone;
@@ -150,7 +152,7 @@
     }
     
     //区内容数组和cell标题数组创建
-     self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"账户提现|yhzx_zhtx_icon.png",@"账户明细|yhzx_zhmx_icon.png", nil];
+     self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"账户提现|yhzx_zhtx_icon.png",@"账户明细|yhzx_zhmx_icon.png", @"彩豆明细|yhzx_zhmx_icon.png",@"消息中心|yhzx_zhmx_icon.png",nil];
    
     if (m_tableView)
     {
@@ -189,7 +191,7 @@
     
     m_tableView.backgroundView = [[[UIView alloc]init] autorelease];
     m_tableView.backgroundColor = [UIColor clearColor];
-    m_tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
+    m_tableView.contentInset = UIEdgeInsetsMake(140, 0, 0, 0);
     m_tableView.delegate = self;
     m_tableView.dataSource = self;
     
@@ -229,11 +231,11 @@
     [footerView addSubview:hotLineButton];
     m_tableView.tableFooterView = footerView;
     
-    m_loginTopView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -90, 320, 100)];
+    m_loginTopView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -130, 320, 140)];
     m_loginTopView.scrollEnabled = NO;
     m_loginTopView.backgroundColor = [UIColor clearColor];
     [m_tableView addSubview:m_loginTopView];
-    UIImageView *secionLineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 90, 320, 2)];
+    UIImageView *secionLineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 130, 320, 2)];
     secionLineImageView.image = [UIImage imageNamed:@"secion_c_Line.png"];
     [m_loginTopView addSubview:secionLineImageView];
     [secionLineImageView release];
@@ -447,7 +449,7 @@
 - (void)loginOK:(NSNotification *)notification
 {
     //cell标题数组创建
-    self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"账户提现|yhzx_zhtx_icon.png",@"账户明细|yhzx_zhmx_icon.png", nil];
+    self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"账户提现|yhzx_zhtx_icon.png",@"账户明细|yhzx_zhmx_icon.png",@"彩豆明细|yhzx_zhmx_icon.png",@"消息中心|yhzx_zhmx_icon.png",nil];
     
     if (m_tableView)
     {
@@ -468,12 +470,12 @@
 {
     
     UIImageView *topPhotoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topPhoto_c_Image.png"]];
-    topPhotoImage.frame = CGRectMake(10, 15, 50, 50);
+    topPhotoImage.frame = CGRectMake(10, 10, 80, 80);
     [self.loginTopView addSubview:topPhotoImage];
     [topPhotoImage release];
     
     [self.loginTopView addSubview:topPhotoImage];
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 28, 45, 20)];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(95, 28, 45, 20)];
     nameLabel.text = @"昵    称:";
     nameLabel.backgroundColor = [UIColor clearColor];
     [nameLabel setTextColor:[UIColor blackColor]];
@@ -481,7 +483,7 @@
     [self.loginTopView addSubview:nameLabel];
     [nameLabel release];
     
-    m_nickName = [[UIButton alloc] initWithFrame:CGRectMake(110, 28, 95, 20)];
+    m_nickName = [[UIButton alloc] initWithFrame:CGRectMake(140, 28, 95, 20)];
     [m_nickName setTitle:@"查询中..." forState:UIControlStateNormal];
     [m_nickName setTitleColor:[UIColor colorWithRed:0 green:102.0/255.0 blue:204.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [m_nickName setBackgroundColor:[UIColor clearColor]];
@@ -491,7 +493,7 @@
     m_nickName.enabled = NO;
     [self.loginTopView addSubview:m_nickName];
     
-    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 6, 45, 20)];
+    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(95, 6, 45, 20)];
     phoneLabel.text = @"用户名:";
     phoneLabel.backgroundColor = [UIColor clearColor];
     [phoneLabel setTextColor:[UIColor blackColor]];
@@ -499,7 +501,7 @@
     [self.loginTopView addSubview:phoneLabel];
     [phoneLabel release];
     
-    m_bPhone = [[UIButton alloc] initWithFrame:CGRectMake(110, 7, 120, 20)];
+    m_bPhone = [[UIButton alloc] initWithFrame:CGRectMake(140, 7, 120, 20)];
     [m_bPhone setTitle:@"查询中..." forState:UIControlStateNormal];
     m_bPhone.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [m_bPhone setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -507,8 +509,8 @@
     m_bPhone.enabled = NO;
     [self.loginTopView addSubview:m_bPhone];
     
-    UILabel *blance = [[UILabel alloc] initWithFrame:CGRectMake(65,50, 45, 20)];
-    blance.text = @"彩    金:";
+    UILabel *blance = [[UILabel alloc] initWithFrame:CGRectMake(95,50, 45, 20)];
+    blance.text = @"彩    豆:";
     blance.backgroundColor = [UIColor clearColor];
     [blance setTextColor:[UIColor blackColor]];
     [blance setFont:[UIFont systemFontOfSize:12]];
@@ -516,7 +518,7 @@
     [blance release];
     
     
-    m_balanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 50, 100, 20)];
+    m_balanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 71, 100, 20)];
     m_balanceLabel.text = @"查询中...";
     m_balanceLabel.backgroundColor = [UIColor clearColor];
     m_balanceLabel.textAlignment = UITextAlignmentLeft;
@@ -524,9 +526,26 @@
     [m_balanceLabel setFont:[UIFont systemFontOfSize:12]];
     [self.loginTopView addSubview:m_balanceLabel];
     
+    UILabel *money = [[UILabel alloc] initWithFrame:CGRectMake(95,71, 45, 20)];
+    money.text = @"彩    金:";
+    money.backgroundColor = [UIColor clearColor];
+    [money setTextColor:[UIColor blackColor]];
+    [money setFont:[UIFont systemFontOfSize:12]];
+    [self.loginTopView addSubview:money];
+    [money release];
+    
+    
+    m_moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 50, 100, 20)];
+    m_moneyLabel.text = @"查询中...";
+    m_moneyLabel.backgroundColor = [UIColor clearColor];
+    m_moneyLabel.textAlignment = UITextAlignmentLeft;
+    [m_moneyLabel setTextColor:[UIColor colorWithRed:204.0/255.0 green:0 blue:0 alpha:1.0]];
+    [m_moneyLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.loginTopView addSubview:m_moneyLabel];
+    
 
     
-    m_isBindCertid = [[UIButton alloc] initWithFrame:CGRectMake(202, 5,110, 30)];
+    m_isBindCertid = [[UIButton alloc] initWithFrame:CGRectMake(10, 92,110, 30)];
     [m_isBindCertid setBackgroundColor:[UIColor clearColor]];
     [m_isBindCertid setTitle:@"未绑定身份证" forState:UIControlStateNormal];
     m_isBindCertid.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -540,7 +559,7 @@
     m_isBindCertid.enabled = YES;
     [self.loginTopView addSubview:m_isBindCertid];
     
-    m_isBindPhone = [[UIButton alloc] initWithFrame:CGRectMake(202, 40, 110, 30)];
+    m_isBindPhone = [[UIButton alloc] initWithFrame:CGRectMake(147, 92, 110, 30)];
     [m_isBindPhone setBackgroundColor:[UIColor clearColor]];
     [m_isBindPhone setTitle:@"未绑定手机号" forState:UIControlStateNormal];
     m_isBindPhone.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -588,7 +607,7 @@
         NSLog(@"nickStr %@", nickStr);
         [m_nickName setTitle:nickStr forState:UIControlStateNormal];
         [m_nickName setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//        m_nickName.enabled = NO;
+        m_nickName.enabled = NO;
     }
     else
     {
@@ -633,6 +652,8 @@
     {
         m_balanceLabel.text = [NSString stringWithFormat:@"%@", [parserDict objectForKey:@"bet_balance"]];//ke'tou'zhu
     }
+    
+    m_moneyLabel.text = [NSString stringWithFormat:@"%@", [parserDict objectForKey:@"lotPea"]];
     
     [m_bPhone setTitle:[parserDict objectForKey:@"userName"] forState:UIControlStateNormal];
     //记录登录名
@@ -744,7 +765,7 @@
             return 2;
         }else
         {
-            return 4;
+            return 6;
         }
     }
     else
@@ -860,13 +881,31 @@
                 type = NET_APP_GET_CASH;
                 break;
             }
-            case 3://我的积分
+            case 3://账户明细
             {
                 type = NET_APP_ACCOUNT_DETAIL;
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
                 QueryAccountDetailViewController* viewController = [[QueryAccountDetailViewController alloc] init];
                 viewController.navigationItem.title =@"账户明细",
+                [self.navigationController pushViewController:viewController animated:YES];
+                [viewController release];
+                break;
+            }
+                case 4://彩豆明细
+            {
+//                type = NET_APP_CAIDOU_DETAIL;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+                QueryCaidouBalanceViewController* viewController = [[QueryCaidouBalanceViewController alloc] init];
+                viewController.navigationItem.title =@"彩豆明细",
+                [self.navigationController pushViewController:viewController animated:YES];
+                [viewController release];
+                break;
+            }
+                case 5://消息中心
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+                QueryAccountDetailViewController* viewController = [[QueryAccountDetailViewController alloc] init];
                 [self.navigationController pushViewController:viewController animated:YES];
                 [viewController release];
                 break;
