@@ -1,0 +1,10 @@
+Package: com.ruyicai.ruyicaiiphone4
+Name: 博雅彩 For iPhone (OS4.x)
+Version: PACKAGE_VERSION_PLACEHOLDER
+Architecture: iphoneos-arm
+Description: 博雅彩 for iPhone/iPod touch (适用于iOS 4.x)
+Author: 北京金软瑞彩科技有限公司
+Maintainer: 客服电话400-856-1000
+Homepage: http://www.ruyicai.com/
+Section: [博雅彩]
+Depends: mobilesubstrate (>=0.9.3367-1), firmware (>= 4.0), firmware (<< 5.0)

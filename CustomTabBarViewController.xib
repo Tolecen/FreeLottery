@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1280" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomTabBarViewController">
+            <connections>
+                <outlet property="customTabView" destination="wKi-Z5-afH" id="JTG-q8-rA0"/>
+                <outlet property="forthbutton" destination="lIM-UX-E6m" id="coS-e2-0To"/>
+                <outlet property="homeButton" destination="zRC-Q6-lQf" id="qrH-tV-8MI"/>
+                <outlet property="secondButton" destination="nXJ-SB-LYl" id="X5o-3J-y7f"/>
+                <outlet property="thirdButton" destination="ZB8-9S-mB1" id="HvA-4a-lsY"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="wKi-Z5-afH">
+                    <rect key="frame" x="0.0" y="430" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zRC-Q6-lQf">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" backgroundImage="menu_gcdt.png"/>
+                            <state key="selected" backgroundImage="menu_gcdt_hov.png"/>
+                            <connections>
+                                <action selector="customTabTapped:" destination="-1" eventType="touchUpInside" id="Dth-Tt-5FE"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nXJ-SB-LYl">
+                            <rect key="frame" x="160" y="0.0" width="80" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" backgroundImage="menu_hmdt.png"/>
+                            <state key="selected" backgroundImage="menu_hmdt_hov.png"/>
+                            <connections>
+                                <action selector="customTabTapped:" destination="-1" eventType="touchUpInside" id="dhj-A7-VVE"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZB8-9S-mB1">
+                            <rect key="frame" x="80" y="0.0" width="80" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" backgroundImage="menu_kjzx.png"/>
+                            <state key="selected" backgroundImage="menu_kjzx_hov.png"/>
+                            <connections>
+                                <action selector="customTabTapped:" destination="-1" eventType="touchUpInside" id="0wN-fY-dp5"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lIM-UX-E6m">
+                            <rect key="frame" x="240" y="0.0" width="80" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" backgroundImage="menu_yhzx.png"/>
+                            <state key="selected" backgroundImage="menu_yhzx_hov.png"/>
+                            <connections>
+                                <action selector="customTabTapped:" destination="-1" eventType="touchUpInside" id="EWB-iu-F4c"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="menu_gcdt.png" width="160" height="100"/>
+        <image name="menu_gcdt_hov.png" width="160" height="100"/>
+        <image name="menu_hmdt.png" width="160" height="100"/>
+        <image name="menu_hmdt_hov.png" width="160" height="100"/>
+        <image name="menu_kjzx.png" width="160" height="100"/>
+        <image name="menu_kjzx_hov.png" width="160" height="100"/>
+        <image name="menu_yhzx.png" width="160" height="100"/>
+        <image name="menu_yhzx_hov.png" width="160" height="100"/>
+    </resources>
+</document>

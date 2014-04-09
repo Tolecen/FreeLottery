@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>469E0CB3-837B-4847-B460-F40635F0C44E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Boyacai</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>91DD3946-5E78-4A53-8515-680621B1C6E3</key>
+		<string>ssh://github.com/Tolecen/FreeLottery.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Boyacai.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>91DD3946-5E78-4A53-8515-680621B1C6E3</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/Tolecen/FreeLottery.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>91DD3946-5E78-4A53-8515-680621B1C6E3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>91DD3946-5E78-4A53-8515-680621B1C6E3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Boyacai_iphone_quanmin</string>
+		</dict>
+	</array>
+</dict>
+</plist>
