@@ -74,6 +74,7 @@ typedef enum
     NET_APP_QUERY_TRACK,     //追号查询
     NET_APP_QUERY_GIFT,      //赠送查询
     NET_APP_ACCOUNT_DETAIL,  //账户明细
+    NET_APP_CAIDOU_DETAIL,   //彩豆明细
     NET_APP_GET_CASH,        //账户提现
     NET_APP_TOP_UP_MONEY,    //充值中心
     NET_APP_QUERY_DNA,       //银行卡电话充值

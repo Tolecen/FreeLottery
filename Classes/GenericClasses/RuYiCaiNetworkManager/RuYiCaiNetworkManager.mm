@@ -2666,6 +2666,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         case ASINetworkRequestTypeCQ115:
 			[self highFrequencyComplete:resText notifacationType:@"updateCQ115Information"];
             break;
+        case ASINetworkRequestTypeCaidouDetail:
+            [self queryCaodouDetailComplete:resText];
+            break;
 		default:
 			break;
 	}

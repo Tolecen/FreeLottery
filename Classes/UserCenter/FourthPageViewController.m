@@ -894,7 +894,7 @@
             }
                 case 4://彩豆明细
             {
-//                type = NET_APP_CAIDOU_DETAIL;
+                type = NET_APP_CAIDOU_DETAIL;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
                 QueryCaidouBalanceViewController* viewController = [[QueryCaidouBalanceViewController alloc] init];
                 viewController.navigationItem.title =@"彩豆明细",
