@@ -195,7 +195,9 @@ typedef enum _ASINetworkReqestType
     ASINetworkRequestTypeZC,
     ASINetworkRequestTypeRecentlyEvent,
     ASINetworkRequestTypeJZRecentlyEvent,
-    ASINetworkRequestTypeBDRecentlyEvent
+    ASINetworkRequestTypeBDRecentlyEvent,
+    
+    ASINetworkRequestTypeCaidouDetail
     
 } ASINetworkReqestType;
 

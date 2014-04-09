@@ -86,6 +86,9 @@
         case NET_APP_BIND_CERTID:
             [self bindCertid];
             break;
+        case NET_APP_CAIDOU_DETAIL:
+            [self queryCaidouDetailOfPage:0 requestType:@"detail"];
+            break;
         default:
             break;
     }
@@ -497,7 +500,54 @@
 	[request startAsynchronous];
     [self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
 }
-
+- (void)queryCaidouDetailOfPage:(NSUInteger)pageIndex requestType:(NSString*)type
+{
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+	request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"lotPea" forKey:@"command"];
+    [mDict setObject:type forKey:@"requestType"];
+    [mDict setObject:self.userno forKey:@"userno"];
+    [mDict setObject:[NSString stringWithFormat:@"%d", pageIndex] forKey:@"pageindex"];
+    [mDict setObject:@"10" forKey:@"maxresult"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+	NSLog(@"账户查询%@",cookieStr);
+	
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeCaidouDetail];
+	[request setDelegate:self];
+	[request startAsynchronous];
+    [self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
+}
+- (void)queryCaodouDetailComplete:(NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    NSString* message = [parserDict objectForKey:@"message"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCaodouDetailOK" object:nil];
+    }
+    else
+    {
+        [self showMessage:message withTitle:@"账户查询" buttonTitle:@"确定"];
+    }
+}
 - (void)queryRecordCash:(NSString*)pageIndex maxResult:(NSString*)maxResult
 {
     NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
