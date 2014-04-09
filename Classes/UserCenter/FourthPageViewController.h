@@ -22,6 +22,7 @@
     //UILabel            *lineLabel2;
     UILabel            *lineLabel;
     UILabel            *m_balanceLabel;
+    UILabel            *m_moneyLabel;
     UILabel            *m_integralLabel;
     UIButton           *m_isBindCertid;
     UIButton           *m_isBindPhone;
@@ -50,6 +51,7 @@
 @property (nonatomic, retain)UIButton           *m_nickName;
 @property (nonatomic, retain)UIButton           *m_bPhone;
 @property (nonatomic, retain)UILabel            *m_balanceLabel;
+@property (nonatomic, retain)UILabel            *m_moneyLabel;
 @property (nonatomic, retain)UILabel            *m_integralLabel;
 @property (nonatomic, retain)UIButton           *m_isBindCertid;
 @property (nonatomic, retain)UIButton           *m_isBindPhone;

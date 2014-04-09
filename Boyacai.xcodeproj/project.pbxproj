@@ -1078,10 +1078,6 @@
 		658E169116ACF33900C196E3 /* ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 658E169016ACF33900C196E3 /* ColorUtils.m */; };
 		658FB5C916F9695F002DF80E /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658FB5C716F9695F002DF80E /* RankingViewController.m */; };
 		658FB5CA16F9695F002DF80E /* RankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658FB5C816F9695F002DF80E /* RankingViewController.xib */; };
-		658FB5D716F96983002DF80E /* RespForWeChatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 658FB5CE16F96983002DF80E /* RespForWeChatViewController.mm */; };
-		658FB5D816F96983002DF80E /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658FB5D016F96983002DF80E /* TextViewController.m */; };
-		658FB5D916F96983002DF80E /* WeiXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658FB5D216F96983002DF80E /* WeiXinViewController.m */; };
-		658FB5DA16F96983002DF80E /* WeiXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658FB5D316F96983002DF80E /* WeiXinViewController.xib */; };
 		658FD503171BAE43007B167F /* ShareRightBarButtonItemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 658FD502171BAE43007B167F /* ShareRightBarButtonItemUtils.m */; };
 		6590603D17A0B93E00360956 /* BJDC_instantScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6590603C17A0B93E00360956 /* BJDC_instantScoreViewController.m */; };
 		6590604017A0C91D00360956 /* PayTypeOrderCommander.m in Sources */ = {isa = PBXBuildFile; fileRef = 6590603F17A0C91D00360956 /* PayTypeOrderCommander.m */; };
@@ -1136,6 +1132,17 @@
 		6FF96FB2163E714E0031F2A1 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FAC163E714E0031F2A1 /* SinaWeiboAuthorizeView.m */; };
 		6FF96FB3163E714E0031F2A1 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FAF163E714E0031F2A1 /* SinaWeiboRequest.m */; };
 		6FF96FB7163E715D0031F2A1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FB6163E715D0031F2A1 /* JSONKit.m */; };
+		72BC605B18F53DD60002B217 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC605A18F53DD60002B217 /* immobSDK.framework */; };
+		72BC606418F53E390002B217 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72BC606218F53E390002B217 /* DomobOfferWallBundle.bundle */; };
+		72BC606518F53E390002B217 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC606318F53E390002B217 /* libDomobOfferWallSDK.a */; };
+		72BC606918F53E780002B217 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC606718F53E780002B217 /* libMobClickLibrary.a */; };
+		72BC607518F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC606B18F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a */; };
+		72BC607618F53EAE0002B217 /* RespForWeChatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 72BC606D18F53EAE0002B217 /* RespForWeChatViewController.mm */; };
+		72BC607718F53EAE0002B217 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BC606F18F53EAE0002B217 /* TextViewController.m */; };
+		72BC607818F53EAE0002B217 /* WeiXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BC607118F53EAE0002B217 /* WeiXinViewController.m */; };
+		72BC607918F53EAE0002B217 /* WeiXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BC607218F53EAE0002B217 /* WeiXinViewController.xib */; };
+		72BC607B18F53F2D0002B217 /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC607A18F53F2D0002B217 /* libYouMi.a */; };
+		72BC607E18F5402B0002B217 /* QueryCaidouBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */; };
 		9703653218D6A93700060FB1 /* tishitext.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9703653118D6A93700060FB1 /* tishitext.txt */; };
 		9704B23C18DAA16300588D91 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9704B23B18DAA16300588D91 /* iAd.framework */; };
 		9704B23F18DACC4E00588D91 /* deletenewop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704B23E18DACC4E00588D91 /* deletenewop.png */; };
@@ -1160,9 +1167,6 @@
 		97775E3018C9C47E00F0BEBD /* ADIntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97775E2F18C9C47E00F0BEBD /* ADIntroduceViewController.m */; };
 		97775E3318C9C5EE00F0BEBD /* detailIntroduce.txt in Resources */ = {isa = PBXBuildFile; fileRef = 97775E3218C9C5EE00F0BEBD /* detailIntroduce.txt */; };
 		97775E3E18C9D16200F0BEBD /* whatthat2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97775E3D18C9D16200F0BEBD /* whatthat2.png */; };
-		977A71E218C03029007DE71B /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A71E118C03029007DE71B /* libMobClickLibrary.a */; };
-		977A71E418C03063007DE71B /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A71E318C03063007DE71B /* libWeChatSDK_armv7_armv7s.a */; };
-		977A71E818C03104007DE71B /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A71E718C03104007DE71B /* immobSDK.framework */; };
 		977A71EA18C0314C007DE71B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A71E918C0314C007DE71B /* CoreLocation.framework */; };
 		977A71EC18C0315B007DE71B /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A71EB18C0315B007DE71B /* EventKit.framework */; };
 		977A71EE18C0318A007DE71B /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A71ED18C0318A007DE71B /* EventKitUI.framework */; };
@@ -1171,7 +1175,6 @@
 		977A71F418C031C5007DE71B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A71F318C031C5007DE71B /* StoreKit.framework */; };
 		977A71F718C0326C007DE71B /* ExchangeLotteryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 977A71F618C0326C007DE71B /* ExchangeLotteryViewController.m */; };
 		977A71FA18C03D95007DE71B /* ADWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 977A71F918C03D95007DE71B /* ADWallViewController.m */; };
-		977A720618C055E6007DE71B /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A720518C055E6007DE71B /* libYouMi.a */; };
 		977A725C18C06AF6007DE71B /* dianru_blue_all_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 977A720A18C06AF6007DE71B /* dianru_blue_all_cell.png */; };
 		977A725D18C06AF6007DE71B /* dianru_blue_dianru_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 977A720B18C06AF6007DE71B /* dianru_blue_dianru_bottom.png */; };
 		977A725E18C06AF6007DE71B /* dianru_blue_dianru_download.png in Resources */ = {isa = PBXBuildFile; fileRef = 977A720C18C06AF6007DE71B /* dianru_blue_dianru_download.png */; };
@@ -1261,8 +1264,6 @@
 		977A72C918C06EB2007DE71B /* Escore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A72C818C06EB2007DE71B /* Escore.framework */; };
 		977A72CB18C06F18007DE71B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A72CA18C06F18007DE71B /* ImageIO.framework */; };
 		977A72CD18C06F48007DE71B /* Escore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 977A72CC18C06F48007DE71B /* Escore.bundle */; };
-		977A72D618C075DA007DE71B /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 977A72D418C075DA007DE71B /* DomobOfferWallBundle.bundle */; };
-		977A72D718C075DA007DE71B /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A72D518C075DA007DE71B /* libDomobOfferWallSDK.a */; };
 		977A72D918C0760C007DE71B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A72D818C0760C007DE71B /* CoreMedia.framework */; };
 		97CA532E18D18A72006B3460 /* FirstPageTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA532D18D18A72006B3460 /* FirstPageTopCell.m */; };
 		97ED512E18E12AFC002648B9 /* first-btnnormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED512C18E12AFC002648B9 /* first-btnnormal.png */; };
@@ -2742,15 +2743,6 @@
 		658FB5C616F9695F002DF80E /* RankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingViewController.h; sourceTree = "<group>"; };
 		658FB5C716F9695F002DF80E /* RankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingViewController.m; sourceTree = "<group>"; };
 		658FB5C816F9695F002DF80E /* RankingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingViewController.xib; sourceTree = "<group>"; };
-		658FB5CD16F96983002DF80E /* RespForWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespForWeChatViewController.h; sourceTree = "<group>"; };
-		658FB5CE16F96983002DF80E /* RespForWeChatViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RespForWeChatViewController.mm; sourceTree = "<group>"; };
-		658FB5CF16F96983002DF80E /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
-		658FB5D016F96983002DF80E /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
-		658FB5D116F96983002DF80E /* WeiXinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiXinViewController.h; sourceTree = "<group>"; };
-		658FB5D216F96983002DF80E /* WeiXinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiXinViewController.m; sourceTree = "<group>"; };
-		658FB5D316F96983002DF80E /* WeiXinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiXinViewController.xib; sourceTree = "<group>"; };
-		658FB5D416F96983002DF80E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		658FB5D516F96983002DF80E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		658FD501171BAE43007B167F /* ShareRightBarButtonItemUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareRightBarButtonItemUtils.h; sourceTree = "<group>"; };
 		658FD502171BAE43007B167F /* ShareRightBarButtonItemUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareRightBarButtonItemUtils.m; sourceTree = "<group>"; };
 		6590603B17A0B93E00360956 /* BJDC_instantScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BJDC_instantScoreViewController.h; sourceTree = "<group>"; };
@@ -2793,7 +2785,6 @@
 		65A2897D1724D91E00D2EBCE /* TitleViewButtonItemUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleViewButtonItemUtils.m; sourceTree = "<group>"; };
 		65A289831725080E00D2EBCE /* CollectionMenuViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionMenuViewUtil.h; sourceTree = "<group>"; };
 		65A289841725080E00D2EBCE /* CollectionMenuViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionMenuViewUtil.m; sourceTree = "<group>"; };
-		65A2898F17254ECF00D2EBCE /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		65AD4DBB1796738B00D0977D /* LotteryOrderAndShowCommander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotteryOrderAndShowCommander.h; sourceTree = "<group>"; };
 		65AD4DBC1796738B00D0977D /* LotteryOrderAndShowCommander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LotteryOrderAndShowCommander.m; sourceTree = "<group>"; };
 		65C42B031755E56500B04BA5 /* NMKS_PickNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMKS_PickNumberViewController.h; sourceTree = "<group>"; };
@@ -2861,6 +2852,28 @@
 		6FF96FAF163E714E0031F2A1 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		6FF96FB5163E715D0031F2A1 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		6FF96FB6163E715D0031F2A1 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		72BC605A18F53DD60002B217 /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
+		72BC605D18F53E390002B217 /* DMOfferWallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferWallManager.h; sourceTree = "<group>"; };
+		72BC605E18F53E390002B217 /* DMOfferWallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferWallManagerDelegate.h; sourceTree = "<group>"; };
+		72BC605F18F53E390002B217 /* DMOfferWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferWallViewController.h; sourceTree = "<group>"; };
+		72BC606018F53E390002B217 /* DMVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVideoViewController.h; sourceTree = "<group>"; };
+		72BC606218F53E390002B217 /* DomobOfferWallBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DomobOfferWallBundle.bundle; sourceTree = "<group>"; };
+		72BC606318F53E390002B217 /* libDomobOfferWallSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDomobOfferWallSDK.a; sourceTree = "<group>"; };
+		72BC606718F53E780002B217 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		72BC606818F53E780002B217 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		72BC606B18F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
+		72BC606C18F53EAE0002B217 /* RespForWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespForWeChatViewController.h; sourceTree = "<group>"; };
+		72BC606D18F53EAE0002B217 /* RespForWeChatViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RespForWeChatViewController.mm; sourceTree = "<group>"; };
+		72BC606E18F53EAE0002B217 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		72BC606F18F53EAE0002B217 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		72BC607018F53EAE0002B217 /* WeiXinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiXinViewController.h; sourceTree = "<group>"; };
+		72BC607118F53EAE0002B217 /* WeiXinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiXinViewController.m; sourceTree = "<group>"; };
+		72BC607218F53EAE0002B217 /* WeiXinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiXinViewController.xib; sourceTree = "<group>"; };
+		72BC607318F53EAE0002B217 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		72BC607418F53EAE0002B217 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		72BC607A18F53F2D0002B217 /* libYouMi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYouMi.a; sourceTree = "<group>"; };
+		72BC607C18F5402B0002B217 /* QueryCaidouBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryCaidouBalanceViewController.h; sourceTree = "<group>"; };
+		72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryCaidouBalanceViewController.m; sourceTree = "<group>"; };
 		9703653118D6A93700060FB1 /* tishitext.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tishitext.txt; sourceTree = "<group>"; };
 		9704B23B18DAA16300588D91 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		9704B23E18DACC4E00588D91 /* deletenewop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletenewop.png; sourceTree = "<group>"; };
@@ -2901,9 +2914,6 @@
 		97775E2F18C9C47E00F0BEBD /* ADIntroduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADIntroduceViewController.m; sourceTree = "<group>"; };
 		97775E3218C9C5EE00F0BEBD /* detailIntroduce.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = detailIntroduce.txt; sourceTree = "<group>"; };
 		97775E3D18C9D16200F0BEBD /* whatthat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whatthat2.png; sourceTree = "<group>"; };
-		977A71E118C03029007DE71B /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		977A71E318C03063007DE71B /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
-		977A71E718C03104007DE71B /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
 		977A71E918C0314C007DE71B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		977A71EB18C0315B007DE71B /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		977A71ED18C0318A007DE71B /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
@@ -2923,7 +2933,6 @@
 		977A720218C055E0007DE71B /* YouMiWallAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiWallAppModel.h; sourceTree = "<group>"; };
 		977A720318C055E0007DE71B /* YouMiWallSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiWallSpot.h; sourceTree = "<group>"; };
 		977A720418C055E0007DE71B /* YouMiWallSpotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiWallSpotView.h; sourceTree = "<group>"; };
-		977A720518C055E6007DE71B /* libYouMi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYouMi.a; sourceTree = "<group>"; };
 		977A720A18C06AF6007DE71B /* dianru_blue_all_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dianru_blue_all_cell.png; sourceTree = "<group>"; };
 		977A720B18C06AF6007DE71B /* dianru_blue_dianru_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dianru_blue_dianru_bottom.png; sourceTree = "<group>"; };
 		977A720C18C06AF6007DE71B /* dianru_blue_dianru_download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dianru_blue_dianru_download.png; sourceTree = "<group>"; };
@@ -3025,12 +3034,6 @@
 		977A72C818C06EB2007DE71B /* Escore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Escore.framework; sourceTree = "<group>"; };
 		977A72CA18C06F18007DE71B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		977A72CC18C06F48007DE71B /* Escore.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Escore.bundle; sourceTree = "<group>"; };
-		977A72CF18C075DA007DE71B /* DMOfferWallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferWallManager.h; sourceTree = "<group>"; };
-		977A72D018C075DA007DE71B /* DMOfferWallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferWallManagerDelegate.h; sourceTree = "<group>"; };
-		977A72D118C075DA007DE71B /* DMOfferWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferWallViewController.h; sourceTree = "<group>"; };
-		977A72D218C075DA007DE71B /* DMVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVideoViewController.h; sourceTree = "<group>"; };
-		977A72D418C075DA007DE71B /* DomobOfferWallBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DomobOfferWallBundle.bundle; sourceTree = "<group>"; };
-		977A72D518C075DA007DE71B /* libDomobOfferWallSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDomobOfferWallSDK.a; sourceTree = "<group>"; };
 		977A72D818C0760C007DE71B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		97CA532C18D18A72006B3460 /* FirstPageTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageTopCell.h; sourceTree = "<group>"; };
 		97CA532D18D18A72006B3460 /* FirstPageTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageTopCell.m; sourceTree = "<group>"; };
@@ -3481,10 +3484,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9704B23C18DAA16300588D91 /* iAd.framework in Frameworks */,
+				72BC607518F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 				651FFD40175737CD002CA9B0 /* Security.framework in Frameworks */,
 				28A65EF61805B4E900DDA635 /* AdSupport.framework in Frameworks */,
 				C5F3838413E5B4EC00F2971A /* SystemConfiguration.framework in Frameworks */,
 				D577D02C14920CA300A4426E /* MessageUI.framework in Frameworks */,
+				72BC606518F53E390002B217 /* libDomobOfferWallSDK.a in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				D5F0BE5A14A31E0C0070B79B /* QuartzCore.framework in Frameworks */,
 				D5DBCD101592C3E600213B4B /* AVFoundation.framework in Frameworks */,
@@ -3493,32 +3498,30 @@
 				977A72CB18C06F18007DE71B /* ImageIO.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2825F2C017F71F5C00AE612E /* libsqlite3.dylib in Frameworks */,
-				977A72D718C075DA007DE71B /* libDomobOfferWallSDK.a in Frameworks */,
 				D5100D8A157C57BC0092BDDA /* libz.1.2.5.dylib in Frameworks */,
+				72BC605B18F53DD60002B217 /* immobSDK.framework in Frameworks */,
 				977A71F418C031C5007DE71B /* StoreKit.framework in Frameworks */,
 				289D6224174E169A00FBB45A /* MobileCoreServices.framework in Frameworks */,
 				977A71F218C0319F007DE71B /* MediaPlayer.framework in Frameworks */,
-				977A720618C055E6007DE71B /* libYouMi.a in Frameworks */,
 				977A71F018C03192007DE71B /* MapKit.framework in Frameworks */,
+				72BC606918F53E780002B217 /* libMobClickLibrary.a in Frameworks */,
 				977A71EE18C0318A007DE71B /* EventKitUI.framework in Frameworks */,
 				977A71EC18C0315B007DE71B /* EventKit.framework in Frameworks */,
 				2825F2C217F71F8D00AE612E /* CoreTelephony.framework in Frameworks */,
 				977A71EA18C0314C007DE71B /* CoreLocation.framework in Frameworks */,
 				C5F3830513E5B02700F2971A /* CFNetwork.framework in Frameworks */,
+				72BC607B18F53F2D0002B217 /* libYouMi.a in Frameworks */,
 				D52F32F0153D2B070057651F /* AudioToolbox.framework in Frameworks */,
 				2825F2C617F71FD000AE612E /* libz.dylib in Frameworks */,
 				2825F2CB17F721AB00AE612E /* TencentOpenAPI.framework in Frameworks */,
 				2825F2C417F71FAB00AE612E /* libstdc++.dylib in Frameworks */,
 				28ABC795173CFCCE00C6D109 /* libiconv.2.dylib in Frameworks */,
 				D551BB3E1616D98F0033EACC /* libxml2.2.dylib in Frameworks */,
-				977A71E418C03063007DE71B /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
-				977A71E218C03029007DE71B /* libMobClickLibrary.a in Frameworks */,
 				D5DD0054148F03C400BD32A3 /* AddressBook.framework in Frameworks */,
 				977A72C918C06EB2007DE71B /* Escore.framework in Frameworks */,
 				977A72A818C06AF6007DE71B /* libDianRuAdWall.a in Frameworks */,
 				973E5EA618D7E2BE00935BFE /* MiidiAdLib.a in Frameworks */,
 				D5DD0056148F03C400BD32A3 /* AddressBookUI.framework in Frameworks */,
-				977A71E818C03104007DE71B /* immobSDK.framework in Frameworks */,
 				6590BDE81758445D0025E5AD /* libcrypto.a in Frameworks */,
 				6590BDE91758445D0025E5AD /* libssl.a in Frameworks */,
 			);
@@ -5302,23 +5305,6 @@
 			path = paihang;
 			sourceTree = "<group>";
 		};
-		658FB5CB16F96983002DF80E /* WeiXin */ = {
-			isa = PBXGroup;
-			children = (
-				977A71E318C03063007DE71B /* libWeChatSDK_armv7_armv7s.a */,
-				658FB5CD16F96983002DF80E /* RespForWeChatViewController.h */,
-				658FB5CE16F96983002DF80E /* RespForWeChatViewController.mm */,
-				658FB5CF16F96983002DF80E /* TextViewController.h */,
-				658FB5D016F96983002DF80E /* TextViewController.m */,
-				658FB5D116F96983002DF80E /* WeiXinViewController.h */,
-				658FB5D216F96983002DF80E /* WeiXinViewController.m */,
-				658FB5D316F96983002DF80E /* WeiXinViewController.xib */,
-				658FB5D416F96983002DF80E /* WXApi.h */,
-				658FB5D516F96983002DF80E /* WXApiObject.h */,
-			);
-			path = WeiXin;
-			sourceTree = "<group>";
-		};
 		6596AADC171D218400A37548 /* AOImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -5372,15 +5358,6 @@
 				659C779A175D92790046D0FA /* UmpayCreditCardVC.m */,
 			);
 			path = UmpayCredit;
-			sourceTree = "<group>";
-		};
-		65A2898D17254ECF00D2EBCE /* UMENGPlug */ = {
-			isa = PBXGroup;
-			children = (
-				977A71E118C03029007DE71B /* libMobClickLibrary.a */,
-				65A2898F17254ECF00D2EBCE /* MobClick.h */,
-			);
-			path = UMENGPlug;
 			sourceTree = "<group>";
 		};
 		65AD4DBA1796735300D0977D /* OrderCommander */ = {
@@ -5542,6 +5519,53 @@
 			path = JSONKit;
 			sourceTree = "<group>";
 		};
+		72BC605C18F53E390002B217 /* DMOfferWallSDK */ = {
+			isa = PBXGroup;
+			children = (
+				72BC605D18F53E390002B217 /* DMOfferWallManager.h */,
+				72BC605E18F53E390002B217 /* DMOfferWallManagerDelegate.h */,
+				72BC605F18F53E390002B217 /* DMOfferWallViewController.h */,
+				72BC606018F53E390002B217 /* DMVideoViewController.h */,
+				72BC606118F53E390002B217 /* DomobOfferWallBundle */,
+				72BC606318F53E390002B217 /* libDomobOfferWallSDK.a */,
+			);
+			path = DMOfferWallSDK;
+			sourceTree = "<group>";
+		};
+		72BC606118F53E390002B217 /* DomobOfferWallBundle */ = {
+			isa = PBXGroup;
+			children = (
+				72BC606218F53E390002B217 /* DomobOfferWallBundle.bundle */,
+			);
+			path = DomobOfferWallBundle;
+			sourceTree = "<group>";
+		};
+		72BC606618F53E780002B217 /* UMENGPlug */ = {
+			isa = PBXGroup;
+			children = (
+				72BC606718F53E780002B217 /* libMobClickLibrary.a */,
+				72BC606818F53E780002B217 /* MobClick.h */,
+			);
+			path = UMENGPlug;
+			sourceTree = "<group>";
+		};
+		72BC606A18F53EAE0002B217 /* WeiXin */ = {
+			isa = PBXGroup;
+			children = (
+				72BC606B18F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a */,
+				72BC606C18F53EAE0002B217 /* RespForWeChatViewController.h */,
+				72BC606D18F53EAE0002B217 /* RespForWeChatViewController.mm */,
+				72BC606E18F53EAE0002B217 /* TextViewController.h */,
+				72BC606F18F53EAE0002B217 /* TextViewController.m */,
+				72BC607018F53EAE0002B217 /* WeiXinViewController.h */,
+				72BC607118F53EAE0002B217 /* WeiXinViewController.m */,
+				72BC607218F53EAE0002B217 /* WeiXinViewController.xib */,
+				72BC607318F53EAE0002B217 /* WXApi.h */,
+				72BC607418F53EAE0002B217 /* WXApiObject.h */,
+			);
+			path = WeiXin;
+			sourceTree = "<group>";
+		};
 		973E5E9918D7E27700935BFE /* MidiAdWall */ = {
 			isa = PBXGroup;
 			children = (
@@ -5564,8 +5588,8 @@
 		977A71E518C030C1007DE71B /* AdWAll */ = {
 			isa = PBXGroup;
 			children = (
+				72BC605C18F53E390002B217 /* DMOfferWallSDK */,
 				973E5E9918D7E27700935BFE /* MidiAdWall */,
-				977A72CE18C075DA007DE71B /* DMOfferWallSDK */,
 				977A72C718C06E71007DE71B /* YiJiFen */,
 				977A720718C06AD6007DE71B /* DianRu */,
 				977A71FB18C055C6007DE71B /* YouMi */,
@@ -5577,7 +5601,7 @@
 		977A71E618C030E7007DE71B /* LiMei */ = {
 			isa = PBXGroup;
 			children = (
-				977A71E718C03104007DE71B /* immobSDK.framework */,
+				72BC605A18F53DD60002B217 /* immobSDK.framework */,
 			);
 			name = LiMei;
 			sourceTree = "<group>";
@@ -5585,7 +5609,7 @@
 		977A71FB18C055C6007DE71B /* YouMi */ = {
 			isa = PBXGroup;
 			children = (
-				977A720518C055E6007DE71B /* libYouMi.a */,
+				72BC607A18F53F2D0002B217 /* libYouMi.a */,
 				977A71FC18C055E0007DE71B /* YouMiConfig.h */,
 				977A71FD18C055E0007DE71B /* YouMiDelegateProtocol.h */,
 				977A71FE18C055E0007DE71B /* YouMiPointsManager.h */,
@@ -5769,27 +5793,6 @@
 			name = YiJiFen;
 			sourceTree = "<group>";
 		};
-		977A72CE18C075DA007DE71B /* DMOfferWallSDK */ = {
-			isa = PBXGroup;
-			children = (
-				977A72CF18C075DA007DE71B /* DMOfferWallManager.h */,
-				977A72D018C075DA007DE71B /* DMOfferWallManagerDelegate.h */,
-				977A72D118C075DA007DE71B /* DMOfferWallViewController.h */,
-				977A72D218C075DA007DE71B /* DMVideoViewController.h */,
-				977A72D318C075DA007DE71B /* DomobOfferWallBundle */,
-				977A72D518C075DA007DE71B /* libDomobOfferWallSDK.a */,
-			);
-			path = DMOfferWallSDK;
-			sourceTree = "<group>";
-		};
-		977A72D318C075DA007DE71B /* DomobOfferWallBundle */ = {
-			isa = PBXGroup;
-			children = (
-				977A72D418C075DA007DE71B /* DomobOfferWallBundle.bundle */,
-			);
-			path = DomobOfferWallBundle;
-			sourceTree = "<group>";
-		};
 		97ED512B18E12AD6002648B9 /* newUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -5813,8 +5816,8 @@
 		9EB0DC8F13EE7E9500AA6A2B /* GenericClasses */ = {
 			isa = PBXGroup;
 			children = (
+				72BC606618F53E780002B217 /* UMENGPlug */,
 				65AD4DBA1796735300D0977D /* OrderCommander */,
-				65A2898D17254ECF00D2EBCE /* UMENGPlug */,
 				D5E54E1715AE5B79003B2924 /* AboutBet */,
 				D5E54E0D15AE5AD7003B2924 /* AboutLogin */,
 				D51D4FC915AC298D00082BD0 /* ShouYiLvView */,
@@ -5902,6 +5905,8 @@
 				9EFAC7931427B4A900F322D3 /* QueryUserBalanceViewController.m */,
 				9E9D67FE1429007F00540D29 /* QueryAccountDetailViewController.h */,
 				9E9D67FF1429007F00540D29 /* QueryAccountDetailViewController.m */,
+				72BC607C18F5402B0002B217 /* QueryCaidouBalanceViewController.h */,
+				72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */,
 				9E9D6801142901C100540D29 /* AccountDetailView.h */,
 				9E9D6802142901C100540D29 /* AccountDetailView.m */,
 			);
@@ -6814,7 +6819,7 @@
 		D5E9ADFE15A4117300089211 /* ShareFunction */ = {
 			isa = PBXGroup;
 			children = (
-				658FB5CB16F96983002DF80E /* WeiXin */,
+				72BC606A18F53EAE0002B217 /* WeiXin */,
 				D5E9AE1E15A419CA00089211 /* ShareViewController.h */,
 				D5E9AE1F15A419CB00089211 /* ShareViewController.m */,
 				D5E0D36C15A527B50071129C /* TengXun */,
@@ -7275,6 +7280,7 @@
 				522497FE18320393005F7577 /* jcinstantscore_dianqiu.png in Resources */,
 				5224992018320393005F7577 /* back_click.png in Resources */,
 				5224984D18320393005F7577 /* zc_yapan_click.png in Resources */,
+				72BC607918F53EAE0002B217 /* WeiXinViewController.xib in Resources */,
 				5224987A18320393005F7577 /* sxb_c_11.png in Resources */,
 				5224974D18320393005F7577 /* gp_hemai_c_btn.png in Resources */,
 				522496F518320393005F7577 /* Item_3bt_button_normal_image.png in Resources */,
@@ -7283,7 +7289,6 @@
 				D58A9DD014A827D90026D90E /* QXC_PickNumberViewController.xib in Resources */,
 				977A727818C06AF6007DE71B /* dianru_titlebg.jpg in Resources */,
 				524623DB18878BB4003CDA0D /* thenew2.png in Resources */,
-				977A72D618C075DA007DE71B /* DomobOfferWallBundle.bundle in Resources */,
 				5224967E18320393005F7577 /* customize_click.png in Resources */,
 				5224996418320393005F7577 /* select_select.png in Resources */,
 				5224990618320393005F7577 /* yhzx_wbdsfz_icon.png in Resources */,
@@ -7328,6 +7333,7 @@
 				5224990218320393005F7577 /* yhzx_mmxg_icon.png in Resources */,
 				5224977618320393005F7577 /* nmks_sth_segment_ highlighted.png in Resources */,
 				977A729018C06AF6007DE71B /* dianru_orange_right_view.png in Resources */,
+				72BC606418F53E390002B217 /* DomobOfferWallBundle.bundle in Resources */,
 				5224991C18320393005F7577 /* zhmx_tx_normal.png in Resources */,
 				5224985618320393005F7577 /* cz_xy_nomal.png in Resources */,
 				522496DB18320393005F7577 /* jczq_jsbf_qb_normal.png in Resources */,
@@ -7917,7 +7923,6 @@
 				973A8C3C18CDC27F00E8D36F /* commonQuestion.txt in Resources */,
 				977A727A18C06AF6007DE71B /* dianru_yuanjiao_horizontal.png in Resources */,
 				977A729218C06AF6007DE71B /* dianru_purple_dianru_bottom.png in Resources */,
-				658FB5DA16F96983002DF80E /* WeiXinViewController.xib in Resources */,
 				5224967C18320393005F7577 /* crown.png in Resources */,
 				522497A918320393005F7577 /* ssc_5x_hov_btn.png in Resources */,
 				5224986318320393005F7577 /* sxa2.png in Resources */,
@@ -8156,6 +8161,7 @@
 				D501D70115AD7FEC005733FB /* FC3D_PickNumberViewController.m in Sources */,
 				52F096401885069C008E90B0 /* ExchangeLotteryWithIntegrationViewController.m in Sources */,
 				D501D70215AD7FEC005733FB /* SSQ_PickNumberViewController.m in Sources */,
+				72BC607718F53EAE0002B217 /* TextViewController.m in Sources */,
 				D501D70715AD805A005733FB /* QLC_PickNumberViewController.m in Sources */,
 				D501D70815AD805A005733FB /* SSC_PickNumberViewController.m in Sources */,
 				D501D71915AD8116005733FB /* PLS_PickNumberViewController.m in Sources */,
@@ -8224,6 +8230,7 @@
 				D5E1712815F9868E0003AD65 /* CaipiaoInformationViewController.m in Sources */,
 				D5E1712915F9868E0003AD65 /* NewsViewController.m in Sources */,
 				D5E1712F15F9875F0003AD65 /* DaiLiChargeViewController.m in Sources */,
+				72BC607818F53EAE0002B217 /* WeiXinViewController.m in Sources */,
 				D5E1714115F9DC090003AD65 /* DLT_PickNumberViewController.m in Sources */,
 				D5EF38D515FDBC7B00569C6D /* LoadView.m in Sources */,
 				D5E96505160039BB0025F05B /* KLSF_PickNumberViewController.m in Sources */,
@@ -8275,10 +8282,8 @@
 				28A1D174182263C7006BBF11 /* JZNoteNumEditCell.m in Sources */,
 				658FB5C916F9695F002DF80E /* RankingViewController.m in Sources */,
 				28A1D15118226071006BBF11 /* HXBX_KSBet_ViewController.m in Sources */,
-				658FB5D716F96983002DF80E /* RespForWeChatViewController.mm in Sources */,
-				658FB5D816F96983002DF80E /* TextViewController.m in Sources */,
 				28A1D170182263C7006BBF11 /* JZ_NoteNumEditeViewController.m in Sources */,
-				658FB5D916F96983002DF80E /* WeiXinViewController.m in Sources */,
+				72BC607E18F5402B0002B217 /* QueryCaidouBalanceViewController.m in Sources */,
 				977A72C018C06D35007DE71B /* _SDWebImageDownloader.m in Sources */,
 				6597E7D316FAF427007B0ACE /* LotteryTypeEditorViewController.m in Sources */,
 				6559F0731710FF040056F6FE /* NSString+Additions.m in Sources */,
@@ -8318,6 +8323,7 @@
 				28A5445C1741332A007CE553 /* UserInformationAlertView.m in Sources */,
 				28708AB41742532A009AC9C6 /* NSString+MD5Addition.m in Sources */,
 				28708AB51742532A009AC9C6 /* UIDevice+IdentifierAddition.m in Sources */,
+				72BC607618F53EAE0002B217 /* RespForWeChatViewController.mm in Sources */,
 				28708ABC1742534C009AC9C6 /* RankingMainViewController.m in Sources */,
 				28708ABD1742534C009AC9C6 /* RankingOnceViewController.m in Sources */,
 				9745AF8D18CEAEF700510E8F /* DiskViewController.m in Sources */,
@@ -8434,6 +8440,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					/Projects/Boyacai_iphone_quanmin/Classes,
+					/Users/wangxr/Desktop/FreeLottery/Classes,
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -8451,6 +8458,10 @@
 					/Projects/Boyacai_iphone_quanmin/Classes/FifthPage/ShareFunction/WeiXin,
 					/Projects/Boyacai_iphone_quanmin/Classes,
 					/Projects/Boyacai_iphone_quanmin/Classes/DMOfferWallSDK,
+					/Users/wangxr/Desktop/FreeLottery/Classes/DMOfferWallSDK,
+					/Users/wangxr/Desktop/FreeLottery/Classes/GenericClasses/UMENGPlug,
+					/Users/wangxr/Desktop/FreeLottery/Classes/FifthPage/ShareFunction/WeiXin,
+					/Users/wangxr/Desktop/FreeLottery/Classes,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
@@ -8472,6 +8483,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					/Projects/Boyacai_iphone_quanmin/Classes,
+					/Users/wangxr/Desktop/FreeLottery/Classes,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Boyacai_Prefix.pch;
@@ -8486,6 +8498,10 @@
 					/Projects/Boyacai_iphone_quanmin/Classes/FifthPage/ShareFunction/WeiXin,
 					/Projects/Boyacai_iphone_quanmin/Classes,
 					/Projects/Boyacai_iphone_quanmin/Classes/DMOfferWallSDK,
+					/Users/wangxr/Desktop/FreeLottery/Classes/DMOfferWallSDK,
+					/Users/wangxr/Desktop/FreeLottery/Classes/GenericClasses/UMENGPlug,
+					/Users/wangxr/Desktop/FreeLottery/Classes/FifthPage/ShareFunction/WeiXin,
+					/Users/wangxr/Desktop/FreeLottery/Classes,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
@@ -8526,6 +8542,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					/Projects/Boyacai_iphone_quanmin/Classes,
+					/Users/wangxr/Desktop/FreeLottery/Classes,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Boyacai_Prefix.pch;
@@ -8541,6 +8558,10 @@
 					/Projects/Boyacai_iphone_quanmin/Classes/FifthPage/ShareFunction/WeiXin,
 					/Projects/Boyacai_iphone_quanmin/Classes,
 					/Projects/Boyacai_iphone_quanmin/Classes/DMOfferWallSDK,
+					/Users/wangxr/Desktop/FreeLottery/Classes/DMOfferWallSDK,
+					/Users/wangxr/Desktop/FreeLottery/Classes/GenericClasses/UMENGPlug,
+					/Users/wangxr/Desktop/FreeLottery/Classes/FifthPage/ShareFunction/WeiXin,
+					/Users/wangxr/Desktop/FreeLottery/Classes,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
