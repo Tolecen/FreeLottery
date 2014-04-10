@@ -527,7 +527,7 @@
     [self.loginTopView addSubview:m_balanceLabel];
     
     UILabel *money = [[UILabel alloc] initWithFrame:CGRectMake(95,71, 45, 20)];
-    money.text = @"彩    金:";
+    money.text = @"奖    金:";
     money.backgroundColor = [UIColor clearColor];
     [money setTextColor:[UIColor blackColor]];
     [money setFont:[UIFont systemFontOfSize:12]];

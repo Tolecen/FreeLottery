@@ -3906,7 +3906,27 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateLottery" object:nil];
 }
-
+- (void)queryCaodouDetailComplete:(NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    NSString* message = [parserDict objectForKey:@"message"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCaodouDetailOK" object:nil userInfo:parserDict];
+    }
+    else
+    {
+        [self showMessage:message withTitle:@"账户查询" buttonTitle:@"确定"];
+    }
+}
 #pragma mark Login Operation
 
 - (void)setupLoginAlertView
