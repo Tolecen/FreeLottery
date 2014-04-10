@@ -57,7 +57,7 @@
     [m_loginPhonenumTextField release];
     [m_loginPswTextField release];
     [useClearPws release];
-    [m_rememberMyLoginStatusPswButton release];
+//    [m_rememberMyLoginStatusPswButton release];
     [_userId release];
     [m_loginView release];
     [m_registerView release];
@@ -130,7 +130,9 @@
     isRemberMyLoginStatus = m_delegate.autoRememberMystatus;
     [self setMainView];
 }
-
+//-(void)viewDidAppear:(BOOL)animated
+//{
+//    }
 - (void)setMainView
 {
 //    isRemberMyLoginStatus = YES;
@@ -207,10 +209,13 @@
     m_loginPswTextField.secureTextEntry = YES;
     [m_loginView addSubview:m_loginPswTextField];
     
-    m_rememberMyLoginStatusPswButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 260, 23, 23)];
+//    m_rememberMyLoginStatusPswButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 260, 23, 23)];
     
-    [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
-    [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
+    m_rememberMyLoginStatusPswButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [m_rememberMyLoginStatusPswButton setFrame:CGRectMake(40, 260, 23, 23)];
+    
+//    [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
+//    [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
     [m_rememberMyLoginStatusPswButton addTarget:self action:@selector(rememberPasswordClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:m_rememberMyLoginStatusPswButton];
     
@@ -235,16 +240,16 @@
     [_loginButton addTarget:self action: @selector(loginOutsideButtonClick:) forControlEvents:UIControlEventTouchDragOutside];
     [self.view addSubview:_loginButton];
     
-    if (isRemberMyLoginStatus)
-    {
-        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
-        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
-    }
-    else
-    {
-        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
-        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
-    }
+//    if (isRemberMyLoginStatus)
+//    {
+//        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateNormal];
+////        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
+//    }
+//    else
+//    {
+//        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
+////        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
+//    }
     
     //注册找回密码
     m_registerView = [[UIView alloc] initWithFrame:CGRectMake(20,300, 280, 100)];
@@ -305,6 +310,7 @@
     [serviceButton addTarget:self action:@selector(serviceBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:serviceButton];
     
+    [self setM_rememberBtn];
     //合作登录布局
 //    [self setCooperationLogin];
     
@@ -453,14 +459,14 @@
     if (NO == isRemberMyLoginStatus)
     {
         [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
-        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
+//        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
     }
     else
     {
         //        [MobClick event:@"loginPage_remeberLogin"];
         
         [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateNormal];
-        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateHighlighted];
+//        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateHighlighted];
     }
     
 }
@@ -540,6 +546,7 @@
     self.loginPhonenumTextField.text = [RuYiCaiNetworkManager sharedManager].phonenum;
     self.loginPswTextField.text = @"";
     //self.loginPswTextField.text = [RuYiCaiNetworkManager sharedManager].password;
+//    [self setM_rememberBtn];
     
     if (animationType) {
         [UIView beginAnimations:@"movement" context:nil];
@@ -559,9 +566,27 @@
         self.view.center = center;
         
     }
+
 	
 }
+-(void)setM_rememberBtn
+{
+    isRemberMyLoginStatus = YES;
+    m_delegate.loginView.isRemberMyLoginStatus = isRemberMyLoginStatus;
+    if (NO == isRemberMyLoginStatus)
+    {
+        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
+        //        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
+    }
+    else
+    {
+        //        [MobClick event:@"loginPage_remeberLogin"];
+        
+        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateNormal];
+        //        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateHighlighted];
+    }
 
+}
 - (void)dismissModalView:(UIView *)subView
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SinaBecomeActive" object:nil];
