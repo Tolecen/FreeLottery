@@ -35,6 +35,7 @@
 #import "ColorUtils.h"
 #import "TopUserCell.h"
 #import "AdaptationUtils.h"
+#import "ExchangeCaidouViewController.h"
 
 
 #define ViewTag  (30)
@@ -346,7 +347,14 @@
         }
     }
 }
-
+- (void)exchangeCaidou
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+    ExchangeCaidouViewController* viewController = [[ExchangeCaidouViewController alloc] init];
+    viewController.navigationItem.title =@"兑换彩豆",
+    [self.navigationController pushViewController:viewController animated:YES];
+    [viewController release];
+}
 -(void)goLogOut:(NSNotification *)notification
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
@@ -571,6 +579,14 @@
     
     m_isBindPhone.enabled = YES;
     [self.loginTopView addSubview:m_isBindPhone];
+    
+    UIButton * caidouB = [UIButton buttonWithType:UIButtonTypeCustom];
+    caidouB.frame = CGRectMake(230,71, 60, 20);
+    [caidouB setTitle:@"兑换彩豆" forState:UIControlStateNormal];
+    [caidouB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    caidouB.titleLabel.font = [UIFont systemFontOfSize:12];
+    [caidouB addTarget:self action:@selector(exchangeCaidou) forControlEvents:UIControlEventTouchUpInside];
+    [self.loginTopView addSubview:caidouB];
 }
 
 - (void)getUserCenterInfoOK:(NSNotification *)notification

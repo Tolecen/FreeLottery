@@ -1132,6 +1132,7 @@
 		6FF96FB2163E714E0031F2A1 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FAC163E714E0031F2A1 /* SinaWeiboAuthorizeView.m */; };
 		6FF96FB3163E714E0031F2A1 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FAF163E714E0031F2A1 /* SinaWeiboRequest.m */; };
 		6FF96FB7163E715D0031F2A1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FB6163E715D0031F2A1 /* JSONKit.m */; };
+		72A2335618F69C3600155684 /* ExchangeCaidouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */; };
 		72BC605B18F53DD60002B217 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC605A18F53DD60002B217 /* immobSDK.framework */; };
 		72BC606418F53E390002B217 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72BC606218F53E390002B217 /* DomobOfferWallBundle.bundle */; };
 		72BC606518F53E390002B217 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC606318F53E390002B217 /* libDomobOfferWallSDK.a */; };
@@ -2852,6 +2853,8 @@
 		6FF96FAF163E714E0031F2A1 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		6FF96FB5163E715D0031F2A1 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		6FF96FB6163E715D0031F2A1 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		72A2335418F69C3600155684 /* ExchangeCaidouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeCaidouViewController.h; sourceTree = "<group>"; };
+		72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeCaidouViewController.m; sourceTree = "<group>"; };
 		72BC605A18F53DD60002B217 /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
 		72BC605D18F53E390002B217 /* DMOfferWallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferWallManager.h; sourceTree = "<group>"; };
 		72BC605E18F53E390002B217 /* DMOfferWallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferWallManagerDelegate.h; sourceTree = "<group>"; };
@@ -5907,6 +5910,8 @@
 				9E9D67FF1429007F00540D29 /* QueryAccountDetailViewController.m */,
 				72BC607C18F5402B0002B217 /* QueryCaidouBalanceViewController.h */,
 				72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */,
+				72A2335418F69C3600155684 /* ExchangeCaidouViewController.h */,
+				72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */,
 				9E9D6801142901C100540D29 /* AccountDetailView.h */,
 				9E9D6802142901C100540D29 /* AccountDetailView.m */,
 			);
@@ -8072,6 +8077,7 @@
 				9EE395BA1424FB3C00CDE6FA /* WinNoView.m in Sources */,
 				9EE39611142504FA00CDE6FA /* LotteryAwardInfoViewController.m in Sources */,
 				9EE3967814250BE300CDE6FA /* LotteryAwardInfoTableViewCell.m in Sources */,
+				72A2335618F69C3600155684 /* ExchangeCaidouViewController.m in Sources */,
 				9EE39800142522B900CDE6FA /* QueryLotWinViewController.m in Sources */,
 				9EFAC7771427B3B100F322D3 /* UserLotWinDetailView.m in Sources */,
 				9EFAC7941427B4A900F322D3 /* QueryUserBalanceViewController.m in Sources */,
