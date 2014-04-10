@@ -15,10 +15,12 @@
 @interface QueryCaidouBalanceViewController ()<UITableViewDataSource,CustomSegmentedControlDelegate>
 {
     int curPageIndex;
+    int totalPageCount;
 }
 @property (nonatomic,retain)UITableView*tableV;
 @property (nonatomic,retain)UILabel * pageIndexLabel;
 @property (nonatomic,retain)NSArray * dataArray;
+@property (nonatomic,retain)NSString * repustStr;
 @end
 
 @implementation QueryCaidouBalanceViewController
@@ -26,6 +28,9 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryCaodouDetailOK" object:nil];
     [_tableV release];
+    [_pageIndexLabel release];
+    [_dataArray release];
+    
     [super dealloc];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +39,7 @@
     if (self) {
         // Custom initialization
         curPageIndex = 0;
+        self.repustStr = @"detail";
     }
     return self;
 }
@@ -113,11 +119,15 @@
 }
 - (void)pageUpClick:(id)sender
 {
-    
+    if (--curPageIndex<0) {
+        return;
+    }
 }
 - (void)pageDownClick:(id)sender
 {
-    
+    if (++curPageIndex+1>totalPageCount) {
+        return;
+    }
 }
 - (void)customSegmentedControl:(CustomSegmentedControl *)customSegmentedControl didSelectItemAtIndex:(NSUInteger)index
 {
@@ -126,6 +136,8 @@
 - (void)queryCaodouDetailOK:(NSNotification *)notification
 {
     self.dataArray = (NSArray*)notification.userInfo[@"result"];
+    totalPageCount = [notification.userInfo[@"totalPage"] intValue];
+    _pageIndexLabel.text = [NSString stringWithFormat:@"第%d页 共%d页",curPageIndex+1,totalPageCount];
     [_tableV reloadData];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
