@@ -3941,9 +3941,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     
     if(!m_delegate.autoRememberMystatus)
     {
-        [m_delegate.loginView.rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
-        [m_delegate.loginView.rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
-        m_delegate.loginView.isRemberMyLoginStatus = NO;
+//        [m_delegate.loginView.rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
+//        [m_delegate.loginView.rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
+//        m_delegate.loginView.isRemberMyLoginStatus = NO;
     }
     
     //    if (m_loginAutoRememberPsw)
@@ -3969,9 +3969,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     
     if(!m_delegate.autoRememberMystatus)
     {
-        [m_delegate.loginView.rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
-        [m_delegate.loginView.rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
-        m_delegate.loginView.isRemberMyLoginStatus = NO;
+//        [m_delegate.loginView.rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateNormal];
+//        [m_delegate.loginView.rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
+//        m_delegate.loginView.isRemberMyLoginStatus = NO;
     }
     
     //    if (m_loginAutoRememberPsw)
