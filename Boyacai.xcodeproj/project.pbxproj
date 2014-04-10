@@ -1156,6 +1156,8 @@
 		9745AF8A18CEAED500510E8F /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 9745AF8918CEAED500510E8F /* start.png */; };
 		9745AF8D18CEAEF700510E8F /* DiskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9745AF8C18CEAEF700510E8F /* DiskViewController.m */; };
 		9769B30B18C424E900ED773F /* delenew.png in Resources */ = {isa = PBXBuildFile; fileRef = 9769B30A18C424E900ED773F /* delenew.png */; };
+		976A53E718F6844B003AC2DE /* heart-null.png in Resources */ = {isa = PBXBuildFile; fileRef = 976A53E518F6844B003AC2DE /* heart-null.png */; };
+		976A53E818F6844B003AC2DE /* heart-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 976A53E618F6844B003AC2DE /* heart-full.png */; };
 		976D33DD18C87876004E6E82 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 976D33D718C87876004E6E82 /* 1.png */; };
 		976D33DE18C87876004E6E82 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 976D33D818C87876004E6E82 /* 2.png */; };
 		976D33DF18C87876004E6E82 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 976D33D918C87876004E6E82 /* 3.png */; };
@@ -2903,6 +2905,8 @@
 		9745AF8B18CEAEF700510E8F /* DiskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskViewController.h; sourceTree = "<group>"; };
 		9745AF8C18CEAEF700510E8F /* DiskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskViewController.m; sourceTree = "<group>"; };
 		9769B30A18C424E900ED773F /* delenew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delenew.png; sourceTree = "<group>"; };
+		976A53E518F6844B003AC2DE /* heart-null.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-null.png"; sourceTree = "<group>"; };
+		976A53E618F6844B003AC2DE /* heart-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-full.png"; sourceTree = "<group>"; };
 		976D33D718C87876004E6E82 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		976D33D818C87876004E6E82 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		976D33D918C87876004E6E82 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -5799,6 +5803,8 @@
 		97ED512B18E12AD6002648B9 /* newUI */ = {
 			isa = PBXGroup;
 			children = (
+				976A53E518F6844B003AC2DE /* heart-null.png */,
+				976A53E618F6844B003AC2DE /* heart-full.png */,
 				97ED512C18E12AFC002648B9 /* first-btnnormal.png */,
 				97ED512D18E12AFC002648B9 /* first-btnhilighted.png */,
 			);
@@ -6988,6 +6994,7 @@
 				5224993818320393005F7577 /* delete.png in Resources */,
 				977A72A418C06AF6007DE71B /* dianru_red_left_cell.png in Resources */,
 				522497FB18320393005F7577 /* jcinstantscore_cellbackimage.png in Resources */,
+				976A53E718F6844B003AC2DE /* heart-null.png in Resources */,
 				5224988D18320393005F7577 /* xza12.png in Resources */,
 				5224965218320393005F7577 /* jifen_btna1.png in Resources */,
 				5224994218320393005F7577 /* mode_bg.png in Resources */,
@@ -7013,6 +7020,7 @@
 				5224978418320393005F7577 /* random_text_button_click.png in Resources */,
 				5224984018320393005F7577 /* tzy_wfjs_icon.png in Resources */,
 				C5F3816213E5A82A00F2971A /* AlipayPaymentViewController.xib in Resources */,
+				976A53E818F6844B003AC2DE /* heart-full.png in Resources */,
 				5224987418320393005F7577 /* sxa_c_7.png in Resources */,
 				C5F3816B13E5A82A00F2971A /* PhoneCardPaymentViewController.xib in Resources */,
 				5224997B18320393005F7577 /* menu_list_button_highlight.png in Resources */,
