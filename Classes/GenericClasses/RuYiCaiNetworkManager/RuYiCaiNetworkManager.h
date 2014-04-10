@@ -575,6 +575,7 @@ typedef enum
 - (void)cancelTrack:(NSString*)tsubscribeNo;
 - (void)queryGiftOfPage:(NSUInteger)pageIndex hasGift:(BOOL)isGift;
 - (void)queryAccountDetailOfPage:(NSUInteger)pageIndex transactionType:(NSUInteger)type;
+- (void)queryCaidouDetailOfPage:(NSUInteger)pageIndex requestType:(NSString*)type;
 - (void)queryUserBalance;
 
 - (void)getZQRecentlyEvent:(NSString*)numId;

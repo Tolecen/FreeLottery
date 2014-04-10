@@ -12,6 +12,7 @@
 #import "CustomSegmentedControl.h"
 #import "RYCImageNamed.h"
 #import <QuartzCore/QuartzCore.h>
+#import "RuYiCaiNetworkManager.h"
 @interface QueryCaidouBalanceViewController ()<UITableViewDataSource,CustomSegmentedControlDelegate>
 {
     int curPageIndex;
@@ -91,7 +92,7 @@
     [rightButton addTarget:self action: @selector(pageDownClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rightButton];
     
-    _pageIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, [UIScreen mainScreen].bounds.size.height - 103, 160, 30)];
+    self.pageIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, [UIScreen mainScreen].bounds.size.height - 103, 160, 30)];
     _pageIndexLabel.text = @"第0页 共0页";
     _pageIndexLabel.textAlignment = UITextAlignmentCenter;
     _pageIndexLabel.backgroundColor = [UIColor clearColor];
@@ -102,6 +103,7 @@
     self.tableV = [[UITableView alloc]initWithFrame:CGRectMake(5, 35, 310, [UIScreen mainScreen].bounds.size.height - 150)];
     _tableV.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _tableV.layer.borderWidth = 1;
+    _tableV.hidden = YES;
     [self.view addSubview:_tableV];
     _tableV.dataSource = self;
     [_tableV release];
@@ -119,18 +121,37 @@
 }
 - (void)pageUpClick:(id)sender
 {
-    if (--curPageIndex<0) {
+    if (curPageIndex<=0) {
         return;
     }
+    curPageIndex--;
+    [[RuYiCaiNetworkManager sharedManager] queryCaidouDetailOfPage:curPageIndex requestType:_repustStr];
 }
 - (void)pageDownClick:(id)sender
 {
-    if (++curPageIndex+1>totalPageCount) {
+    if (curPageIndex+1>=totalPageCount) {
         return;
     }
+    curPageIndex++;
+    [[RuYiCaiNetworkManager sharedManager] queryCaidouDetailOfPage:curPageIndex requestType:_repustStr];
 }
 - (void)customSegmentedControl:(CustomSegmentedControl *)customSegmentedControl didSelectItemAtIndex:(NSUInteger)index
 {
+    curPageIndex = 0;
+    switch (index) {
+        case 0:
+            self.repustStr = @"detail";
+            break;
+        case 1:
+            self.repustStr = @"detail";
+            break;
+        case 2:
+            self.repustStr = @"detail";
+            break;
+        default:
+            break;
+    }
+    [[RuYiCaiNetworkManager sharedManager] queryCaidouDetailOfPage:curPageIndex requestType:_repustStr];
     
 }
 - (void)queryCaodouDetailOK:(NSNotification *)notification
@@ -138,6 +159,7 @@
     self.dataArray = (NSArray*)notification.userInfo[@"result"];
     totalPageCount = [notification.userInfo[@"totalPage"] intValue];
     _pageIndexLabel.text = [NSString stringWithFormat:@"第%d页 共%d页",curPageIndex+1,totalPageCount];
+    _tableV.hidden = NO;
     [_tableV reloadData];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -148,9 +170,10 @@
 {
     static NSString *cellIdentifier = @"cellIdentifiertypetwo";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (nil == cell)
+    if (nil == cell){
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-    
+    }
+    cell.textLabel.text =((NSDictionary*)_dataArray[indexPath.row])[@"lotPea"];
     return cell;
 }
 @end
