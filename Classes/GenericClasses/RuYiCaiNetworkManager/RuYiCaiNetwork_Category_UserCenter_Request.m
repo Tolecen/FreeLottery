@@ -528,26 +528,6 @@
 	[request startAsynchronous];
     [self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
 }
-- (void)queryCaodouDetailComplete:(NSString*)resText
-{
-    NSTrace();
-    m_netAppType = NET_APP_BASE;
-    SBJsonParser *jsonParser = [SBJsonParser new];
-    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
-    NSString* errorCode = [parserDict objectForKey:@"error_code"];
-    NSString* message = [parserDict objectForKey:@"message"];
-    [jsonParser release];
-    
-    if ([errorCode isEqualToString:@"0000"])
-    {
-        self.responseText = resText;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCaodouDetailOK" object:nil];
-    }
-    else
-    {
-        [self showMessage:message withTitle:@"账户查询" buttonTitle:@"确定"];
-    }
-}
 - (void)queryRecordCash:(NSString*)pageIndex maxResult:(NSString*)maxResult
 {
     NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];

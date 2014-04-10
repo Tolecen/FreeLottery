@@ -11,17 +11,29 @@
 #import "AdaptationUtils.h"
 #import "CustomSegmentedControl.h"
 #import "RYCImageNamed.h"
-@interface QueryCaidouBalanceViewController ()<CustomSegmentedControlDelegate>
-
+#import <QuartzCore/QuartzCore.h>
+@interface QueryCaidouBalanceViewController ()<UITableViewDataSource,CustomSegmentedControlDelegate>
+{
+    int curPageIndex;
+}
+@property (nonatomic,retain)UITableView*tableV;
+@property (nonatomic,retain)UILabel * pageIndexLabel;
+@property (nonatomic,retain)NSArray * dataArray;
 @end
 
 @implementation QueryCaidouBalanceViewController
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryCaodouDetailOK" object:nil];
+    [_tableV release];
+    [super dealloc];
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        curPageIndex = 0;
     }
     return self;
 }
@@ -73,13 +85,20 @@
     [rightButton addTarget:self action: @selector(pageDownClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rightButton];
     
-    UILabel*pageIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, [UIScreen mainScreen].bounds.size.height - 103, 160, 30)];
-    pageIndexLabel.text = @"第0页 共0页";
-    pageIndexLabel.textAlignment = UITextAlignmentCenter;
-    pageIndexLabel.backgroundColor = [UIColor clearColor];
-    pageIndexLabel.font = [UIFont systemFontOfSize:15];
-    [self.view addSubview:pageIndexLabel];
-    [pageIndexLabel release];
+    _pageIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, [UIScreen mainScreen].bounds.size.height - 103, 160, 30)];
+    _pageIndexLabel.text = @"第0页 共0页";
+    _pageIndexLabel.textAlignment = UITextAlignmentCenter;
+    _pageIndexLabel.backgroundColor = [UIColor clearColor];
+    _pageIndexLabel.font = [UIFont systemFontOfSize:15];
+    [self.view addSubview:_pageIndexLabel];
+    [_pageIndexLabel release];
+    
+    self.tableV = [[UITableView alloc]initWithFrame:CGRectMake(5, 35, 310, [UIScreen mainScreen].bounds.size.height - 150)];
+    _tableV.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _tableV.layer.borderWidth = 1;
+    [self.view addSubview:_tableV];
+    _tableV.dataSource = self;
+    [_tableV release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,6 +125,20 @@
 }
 - (void)queryCaodouDetailOK:(NSNotification *)notification
 {
+    self.dataArray = (NSArray*)notification.userInfo[@"result"];
+    [_tableV reloadData];
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _dataArray.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"cellIdentifiertypetwo";
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (nil == cell)
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
     
+    return cell;
 }
 @end
