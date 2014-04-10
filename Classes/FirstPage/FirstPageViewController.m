@@ -1311,13 +1311,36 @@
 #pragma  mark tableDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
 {
-    return 1;
+    if (tableView.tag==1) {
+        return 2;
+    }
+    else{
+        return 1;
+    }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //    return 15;
 //    if (tableView==self.tableView) {
+    if (tableView.tag==1) {
+        if (section==1) {
+            NSInteger i = 0;
+            
+            for (NSString *switchString in self.stateSwitchArr) {
+                if ([switchString isEqualToString:@"1"]) {
+                    i++;
+                }
+            }
+            return  i;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+    else
+    {
         NSInteger i = 0;
         
         for (NSString *switchString in self.stateSwitchArr) {
@@ -1325,7 +1348,9 @@
                 i++;
             }
         }
-        return  i;//每个分区通常对应不同的数组，返回其元素个数来确定分区的行数
+        return  i;
+    }
+        //每个分区通常对应不同的数组，返回其元素个数来确定分区的行数
 //    }
 //    else
 //    {
@@ -1337,7 +1362,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (tableView.tag==1) {
-        return 80.0f;
+        if (indexPath.section==1) {
+            return 80;
+        }
+        else
+            return 65.0f;
     }
     else
     {
@@ -1351,81 +1380,82 @@
 {
     
     if (tableView.tag == 1) {
-        static NSString *m_cell = @"buyLotteryCell";
-        BuyLotteryTableViewCell *cell = (BuyLotteryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:m_cell];
-        
-        if (cell == nil)
-        {
-            cell = [[[BuyLotteryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:m_cell] autorelease];
-        }
-        
-        NSMutableDictionary *orderLottery = [[NSUserDefaults standardUserDefaults] objectForKey:kDefultLotteryShowDicKey];
-        
-        NSInteger orderInteger = [[orderLottery objectForKey:[self.showArray objectAtIndex:indexPath.row]] integerValue];
-        
-        if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSQ])
-        {
-
+        if (indexPath.section==1) {
+            static NSString *m_cell = @"buyLotteryCell";
+            BuyLotteryTableViewCell *cell = (BuyLotteryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:m_cell];
+            
+            if (cell == nil)
+            {
+                cell = [[[BuyLotteryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:m_cell] autorelease];
+            }
+            
+            NSMutableDictionary *orderLottery = [[NSUserDefaults standardUserDefaults] objectForKey:kDefultLotteryShowDicKey];
+            
+            NSInteger orderInteger = [[orderLottery objectForKey:[self.showArray objectAtIndex:indexPath.row]] integerValue];
+            
+            if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSQ])
+            {
+                
                 cell.iconImg.image = RYCImageNamed(@"scc_c_main.png");
                 cell.lotteryName = @"双色球";
                 cell.kLotNoType = kLotNoSSQ;
                 cell.endTime = @"0时0分";
                 cell.lotteryADContent = @"2元赢取1000万";
-
-            
-        }
-        else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleDLT])
-        {
- 
+                
+                
+            }
+            else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleDLT])
+            {
+                
                 cell.iconImg.image = RYCImageNamed(@"dlt_c_main.png");
                 cell.lotteryName = @"大乐透";
                 cell.kLotNoType = kLotNoDLT;
                 cell.endTime = @"0时0分";
                 cell.lotteryADContent = @"3元赢取最高奖1600万";
-
-            
-        }
-        else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleFC3D])
-        {
- 
+                
+                
+            }
+            else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleFC3D])
+            {
+                
                 cell.iconImg.image = RYCImageNamed(@"fc3d_c_main.png");
                 cell.lotteryName = @"福彩3D";
                 cell.kLotNoType = kLotNoFC3D;
                 cell.endTime = @"0时0分";
                 cell.lotteryADContent = @"2元赢取1000元";
-
-            
-        }
-        else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSC])
-        {
- 
+                
+                
+            }
+            else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSC])
+            {
+                
                 cell.iconImg.image = RYCImageNamed(@"ssc_c_main.png");
                 cell.lotteryName = @"时时彩";
                 cell.kLotNoType = kLotNoSSC;
                 cell.endTime = @"0分0秒";
                 cell.lotteryADContent = @"每天120期中奖机会";
-
-
-            
-        }
-        else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitle11YDJ])
-        {
- 
+                
+                
+                
+            }
+            else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitle11YDJ])
+            {
+                
                 cell.iconImg.image = RYCImageNamed(@"11ydj_c_.png");
                 cell.lotteryName = @"十一运夺金";
                 cell.kLotNoType = kLotNo11YDJ;
                 cell.endTime = @"0分0秒";
                 cell.lotteryADContent = @"10分钟赢千元";
                 
+                
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.prizeType = TodayNothing;
             
-        }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.prizeType = TodayNothing;
-        
-        
-        
-        if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSQ]){
-  
+            
+            
+            if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSQ]){
+                
                 if ([self.ticketPropagandaDic objectForKey:kLotNoSSQ]) {
                     cell.lotteryADContent = [self.ticketPropagandaDic objectForKey:kLotNoSSQ];
                 }
@@ -1441,10 +1471,10 @@
                 if ([self.prizeInfomationDictionary objectForKey:kLotNoSSQ]) {
                     cell.prizeType = [(NSNumber *)[self.prizeInfomationDictionary objectForKey:kLotNoSSQ] integerValue];
                 }
-
-            
-        }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleDLT]){
-  
+                
+                
+            }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleDLT]){
+                
                 if ([self.lotNoBatchCodeDictionary objectForKey:kLotNoDLT]) {
                     NSString *numStr = [self.lotNoBatchCodeDictionary objectForKey:kLotNoDLT];
                     cell.numStage = [NSNumber numberWithDouble:[numStr doubleValue]];
@@ -1459,9 +1489,9 @@
                 if ([self.ticketPropagandaDic objectForKey:kLotNoDLT]) {
                     cell.lotteryADContent = [self.ticketPropagandaDic objectForKey:kLotNoDLT];
                 }
-            
-        }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleFC3D]){
-  
+                
+            }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleFC3D]){
+                
                 if ([self.lotNoBatchCodeDictionary objectForKey:kLotNoFC3D]) {
                     NSString *numStr = [self.lotNoBatchCodeDictionary objectForKey:kLotNoFC3D];
                     cell.numStage = [NSNumber numberWithDouble:[numStr doubleValue]];
@@ -1475,10 +1505,10 @@
                 }
                 if ([self.prizeInfomationDictionary objectForKey:kLotNoFC3D]) {
                     cell.prizeType = [(NSNumber *)[self.prizeInfomationDictionary objectForKey:kLotNoFC3D] integerValue];
-                }            
-            
-        }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSC]){
-  
+                }
+                
+            }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSC]){
+                
                 if ([self.lotNoBatchCodeDictionary objectForKey:kLotNoSSC] ) {
                     NSString *numStr = [self.lotNoBatchCodeDictionary objectForKey:kLotNoSSC];
                     cell.numStage = [NSNumber numberWithDouble:[numStr doubleValue]];
@@ -1493,11 +1523,11 @@
                 if ([self.ticketPropagandaDic objectForKey:kLotNoSSC]) {
                     cell.lotteryADContent = [self.ticketPropagandaDic objectForKey:kLotNoSSC];
                 }
-            
-            
-            
-        }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitle11YDJ]){
-  
+                
+                
+                
+            }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitle11YDJ]){
+                
                 if ([self.lotNoBatchCodeDictionary objectForKey:kLotNo11YDJ] ){
                     NSString *numStr = [self.lotNoBatchCodeDictionary objectForKey:kLotNo11YDJ];
                     cell.numStage = [NSNumber numberWithDouble:[numStr doubleValue]];
@@ -1513,12 +1543,28 @@
                     cell.lotteryADContent = [self.ticketPropagandaDic objectForKey:kLotNo11YDJ];
                 }
                 
+                
+                
+            }
+            [cell refreshDate];
             
-            
+            return cell;
+
         }
-        [cell refreshDate];
-        
-        return cell;
+        else
+        {
+            static NSString *myCellIdentifier = @"firstPagetopcell";
+            FirstPageTopCell *cell = (FirstPageTopCell*)[tableView dequeueReusableCellWithIdentifier:myCellIdentifier];
+            if (cell == nil)
+            {
+                cell = [[[FirstPageTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myCellIdentifier] autorelease];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell updateLogInStatus];
+            [cell setRemainingBuyTimes:3];
+            return cell;
+
+        }
     }
     else if(tableView.tag==2){
         static NSString *myCellIdentifier = @"MyCellIdentifier";
@@ -1669,25 +1715,39 @@
 
     }
     else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
-        if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSQ]){
-      
+        
+        if (indexPath.section==1) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+            if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSQ]){
+                
                 [self pushSSQView];
-           }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleDLT]){
-      
+            }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleDLT]){
+                
                 [self pushDLTView];
-           }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleFC3D]){
-      
+            }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleFC3D]){
+                
                 [self pushFC3DView];
-           }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSC]){
-      
+            }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitleSSC]){
+                
                 [self pushSSCView];
-               
-           }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitle11YDJ]){
-      
+                
+            }else  if([[self.showArray objectAtIndex:indexPath.row]isEqualToString:kLotTitle11YDJ]){
+                
                 [self push11YDJView];
                 
-           }
+            }
+
+        }
+        else
+        {
+            if ([[RuYiCaiNetworkManager sharedManager] hasLogin])
+            {
+                
+            }
+            else{
+                [self loginClick];
+            }
+        }
     }
     
 }

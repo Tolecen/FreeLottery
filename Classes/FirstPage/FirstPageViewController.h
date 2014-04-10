@@ -20,6 +20,7 @@
 #import "ZCOpenLotteryViewController.h"
 #import "InstantScoreViewController.h"
 #import "AnimationTabView.h"
+#import "FirstPageTopCell.h"
 typedef enum{
     LOTTERY_SHUANG_SE_QIU = 0,
     LOTTERY_DA_LE_TOU,
