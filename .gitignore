@@ -1,0 +1,14 @@
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+build
+.DS_Store
+._*
+.svn
+*.xcworkspace
+Boyacai.xcworkspace/xcuserdata/*
+Pods
+Pods/*
+Podfile.lock
+Pods.xcodeproj/xcuserdata/*
+Boyacai.xcodeproj/project.xcworkspace/xcuserdata/*
+Boyacai.xcodeproj/project.xcworkspace/xcuserdata/Tolecen.xcuserdatad/UserInterfaceState.xcuserstate
