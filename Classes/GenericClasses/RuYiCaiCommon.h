@@ -87,7 +87,10 @@
 
 /********新渠道号，用channel********/
 #define kRuYiCaiCoopid   @"1"  //AppStore
-//#define kRuYiCaiCoopid   @"101"  //91市场
+
+//#define kRuYiCaiCoopid    @"110"  //葫芦商城
+//#define kRuYiCaiCoopid   @"111"  //91市场
+//#define kRuYiCaiCoopid   @"112"  //同步推
 
 //#define appStoreORnormal    @"appStore"
 #define appStoreORnormal    @"normal"

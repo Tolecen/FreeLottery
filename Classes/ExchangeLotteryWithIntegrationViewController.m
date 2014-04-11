@@ -94,7 +94,8 @@
         self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
         if (![self.theUserID isEqualToString:previousUserno]) {
 //            NSString * loginN = [RuYiCaiNetworkManager sharedManager].loginName;
-            if ([self.theUserID isEqualToString:TestUNum]&&[@"1" isEqualToString:CheatApple]) {
+            if (([appStoreORnormal isEqualToString:@"appStore"] &&
+                 [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
                 realAdwall = NO;
                 titleArray = notRealArray;
                 [self loadDisk];
@@ -186,7 +187,8 @@
 {
     self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
 //    NSString * loginN = [RuYiCaiNetworkManager sharedManager].loginName;
-    if ([self.theUserID isEqualToString:TestUNum]&&[@"1" isEqualToString:CheatApple]) {
+    if (([appStoreORnormal isEqualToString:@"appStore"] &&
+         [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
         realAdwall = NO;
         titleArray = notRealArray;
         [self loadDisk];
@@ -298,7 +300,8 @@
         AdWallTopCell* cell = (AdWallTopCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (nil == cell)
             cell = [[[AdWallTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-        if ([[RuYiCaiNetworkManager sharedManager].userno isEqualToString:TestUNum]&&[@"1" isEqualToString:CheatApple]) {
+        if (([appStoreORnormal isEqualToString:@"appStore"] &&
+             [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
             NSString * yy = [[RuYiCaiNetworkManager sharedManager] userBalance];
             yy = [yy substringToIndex:(yy.length-1)];
             NSString * jiaMoney = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];

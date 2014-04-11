@@ -792,7 +792,8 @@
     if ([[RuYiCaiNetworkManager sharedManager] hasLogin])
     {
         if ([BuyAndInfoSeparated isEqualToString:@"1"]) {
-            if ([[RuYiCaiNetworkManager sharedManager].userno isEqualToString:TestUNum]&&[@"1" isEqualToString:CheatApple]) {
+            if (([appStoreORnormal isEqualToString:@"appStore"] &&
+                 [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
                 NSString * yy = [[RuYiCaiNetworkManager sharedManager] userBalance];
                 yy = [yy substringToIndex:(yy.length-1)];
                 NSString * jiaMoney = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];
@@ -992,7 +993,7 @@
 {
     NSString * ifNeedMetion = [[NSUserDefaults standardUserDefaults] objectForKey:@"ifNeedMetion"];
     
-    if (!ifNeedMetion&&![[RuYiCaiNetworkManager sharedManager].userno isEqualToString:TestUNum]&&![@"1" isEqualToString:CheatApple]) {
+    if (!ifNeedMetion&&![[RuYiCaiNetworkManager sharedManager].userno isEqualToString:TestUNum]&&![@"appStore" isEqualToString:appStoreORnormal]) {
         metionVBG.hidden = NO;
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.8];

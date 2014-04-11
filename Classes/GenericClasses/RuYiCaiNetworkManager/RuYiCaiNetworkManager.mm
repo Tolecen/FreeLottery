@@ -73,6 +73,7 @@
 @synthesize isRefreshUserCenter;
 @synthesize m_presentId;
 @synthesize userCenterInfo = m_userCenterInfo;
+@synthesize shouldCheat;
 //@synthesize isHideTabbar;
 @synthesize activityTitleStr = m_activityTitleStr;
 @synthesize queryRecordCashStr = m_queryRecordCashStr;
@@ -164,6 +165,8 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         isBindPhone = YES;
         isRefreshUserCenter = NO;
         haveAlert = NO;
+        
+        self.shouldCheat = NO;
 //        isHideTabbar = NO;
         //test code
         //m_hasLogin = YES;
@@ -171,6 +174,16 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         //m_password = kTestPassword;
 	}
     return self;
+}
+
+-(int)oneYuanToCaidou
+{
+    NSString * theV = [[NSUserDefaults standardUserDefaults] objectForKey:@"ADWallExchangeScale"];
+    int aas = 250;
+    if (theV) {
+        aas = [theV intValue];
+    }
+    return aas;
 }
 
 - (NSString*)constructJson:(NSMutableDictionary*)data
@@ -3418,7 +3431,17 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
     NSString* errorCode = [parserDict objectForKey:@"error_code"];
     NSDictionary* message = (NSDictionary *)[parserDict objectForKey:@"upgrade"];
+    NSDictionary* reviewInfo = (NSDictionary *)[parserDict objectForKey:@"info"];
     [jsonParser release];
+    if (reviewInfo) {
+        NSString * reviewValue = [reviewInfo objectForKey:@"iphoneAuditState"];
+        if (reviewValue) {
+            if ([reviewValue isEqualToString:@"1"]) {
+                [RuYiCaiNetworkManager sharedManager].shouldCheat = YES;
+            }
+        }
+    }
+
     if ([errorCode isEqualToString:@"0000"]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"newVersionCheckOK" object:message];
         

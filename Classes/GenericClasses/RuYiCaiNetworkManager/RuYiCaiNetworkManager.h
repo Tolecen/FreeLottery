@@ -262,6 +262,7 @@ typedef enum
 @property (nonatomic, retain) NSString* recentEventInfo;
 @property (nonatomic, retain) NSString* jzRecentEventInfo;
 @property (nonatomic, retain) NSString* bdRecentEventInfo;
+@property (nonatomic, assign) BOOL shouldCheat;
 
 @property (nonatomic, retain) NSString* userBalance;
 @property (nonatomic, retain) NSString* responseText;
@@ -287,7 +288,7 @@ typedef enum
 @property (nonatomic, retain) NSString  *thirdSource;
 
 + (RuYiCaiNetworkManager *)sharedManager;
-
+-(int)oneYuanToCaidou;
 - (void)requestFinish_Two:(ASINetworkReqestTypeTwo)ASIType withStr:(NSString*)reqStr;
 
 

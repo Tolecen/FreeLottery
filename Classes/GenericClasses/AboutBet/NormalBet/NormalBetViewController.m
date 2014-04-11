@@ -68,8 +68,9 @@
     allCount = [[RuYiCaiLotDetail sharedObject].amount intValue];
 
     self.normalBet_lotTitleLabel.text = [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:[RuYiCaiLotDetail sharedObject].lotNo];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
     
-    self.normalBet_allCountLabel.text = [NSString stringWithFormat:@"共%d元",[[RuYiCaiLotDetail sharedObject].amount intValue]/100];
+    self.normalBet_allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆",[[RuYiCaiLotDetail sharedObject].amount intValue]/100*aas];
     self.normalBet_zhuShuLabel.text = [NSString stringWithFormat:@"共%@注",[RuYiCaiLotDetail sharedObject].zhuShuNum];
     
 
@@ -102,7 +103,8 @@
     self.normalBet_fieldBeishu.text = [NSString stringWithFormat:@"%d",numBeishu];
     
     int aCount = allCount/100 * numBeishu;
-    self.normalBet_allCountLabel.text = [NSString stringWithFormat:@"共%d元", aCount];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.normalBet_allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆", aCount*aas];
 }
 
 - (IBAction)betCodeClick:(id)sender
@@ -243,7 +245,8 @@
         self.normalBet_fieldBeishu.text = @"1";
     }
     self.normalBet_sliderBeishu.value = [self.normalBet_fieldBeishu.text floatValue];
-    self.normalBet_allCountLabel.text = [NSString stringWithFormat:@"共%d元", [normalBet_fieldBeishu.text intValue] * (allCount/100)];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.normalBet_allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆", [normalBet_fieldBeishu.text intValue] * (allCount/100) * aas];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

@@ -62,7 +62,8 @@
     [cLabel release];
     
     UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 50, 200, 30)];
-    moneyLabel.text = [NSString stringWithFormat:@"%d元",[[RuYiCaiLotDetail sharedObject].amount intValue]/100];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    moneyLabel.text = [NSString stringWithFormat:@"%d彩豆",[[RuYiCaiLotDetail sharedObject].amount intValue]/100*aas];
     moneyLabel.textAlignment = UITextAlignmentLeft;
     moneyLabel.textColor = kColorWithRGB(204.0, 0.0, 0.0, 1.0);
     moneyLabel.font = [UIFont systemFontOfSize:16];

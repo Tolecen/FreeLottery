@@ -7,7 +7,7 @@
 //
 
 #import "HistoryTrackDetailtableViewCell.h"
-
+#import "RuYiCaiNetworkManager.h"
 @implementation HistoryTrackDetailtableViewCell
 
 @synthesize batchCodeStr;
@@ -110,7 +110,8 @@
 {
     batchCodeLabel.text = [NSString stringWithFormat:@"期号：%@", self.batchCodeStr];
     lotMultiLabel.text = [NSString stringWithFormat:@"倍数：%@倍", self.lotMultiStr];
-    amountLabel.text = [NSString stringWithFormat:@"金额：%d元", [self.amountStr intValue]/100];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    amountLabel.text = [NSString stringWithFormat:@"金额：%d彩豆", [self.amountStr intValue]/100*aas];
     stateLabel.text = [NSString stringWithFormat:@"状态：%@", self.stateStr];
     if([self.winCodeStr isEqualToString:@""])
         self.winCodeStr = @"未开奖";

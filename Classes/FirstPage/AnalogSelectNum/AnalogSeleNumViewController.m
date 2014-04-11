@@ -256,7 +256,9 @@
     //金额 = 注数 * 倍数 *（2元）* 期数
     int numCost = numZhu * 2;
     
-    NSString* allAmountStr = [NSString stringWithFormat:@"已选%d注,共%d元:", numZhu, numCost];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    
+    NSString* allAmountStr = [NSString stringWithFormat:@"已选%d注,共%d彩豆:", numZhu, numCost*aas];
     CGSize allAmountSize = [allAmountStr sizeWithFont:[UIFont systemFontOfSize:labelSizeFont]];
     m_selectAllCountLabel.frame = CGRectMake(5, 0, allAmountSize.width, 36);
     m_selectAllCountLabel.text = allAmountStr;

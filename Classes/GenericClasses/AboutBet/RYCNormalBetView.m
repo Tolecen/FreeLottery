@@ -220,7 +220,9 @@
       
     allCount = [[RuYiCaiLotDetail sharedObject].amount intValue];
     
-    self.allCountLabel.text = [NSString stringWithFormat:@"共%d元",[[RuYiCaiLotDetail sharedObject].amount intValue]/100];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    
+    self.allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆",[[RuYiCaiLotDetail sharedObject].amount intValue]/100*aas];
     self.zhuShuLabel.text = [NSString stringWithFormat:@"共%@注",[RuYiCaiLotDetail sharedObject].zhuShuNum];
 
     self.lotTitleLabel.text = [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:[RuYiCaiLotDetail sharedObject].lotNo];
@@ -423,7 +425,9 @@
         aCount = 3 * [[RuYiCaiLotDetail sharedObject].zhuShuNum intValue] * numBeishu;
     else
         aCount = allCount/100 * numBeishu;
-    self.allCountLabel.text = [NSString stringWithFormat:@"共%d元", aCount];
+    
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆", aCount*aas];
 }
 
 
@@ -450,7 +454,8 @@
         [zhuiJiaButton setBackgroundImage:[UIImage imageNamed:@"select2_select.png"] forState:UIControlStateHighlighted];  
         aCount = 2 * [[RuYiCaiLotDetail sharedObject].zhuShuNum intValue] * numBeishu;
     }
-    self.allCountLabel.text = [NSString stringWithFormat:@"共%d元", aCount];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆", aCount*aas];
 }
 
 - (BOOL)normalBetCheck
@@ -485,8 +490,8 @@
         [[RuYiCaiNetworkManager sharedManager] showLoginAlertView];
         return;
     }
-    if([appStoreORnormal isEqualToString:@"appStore"]&&
-       [appTestPhone isEqualToString:[RuYiCaiNetworkManager sharedManager].phonenum])
+    if(([appStoreORnormal isEqualToString:@"appStore"] &&
+        [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat))
     {
         if([self normalBetCheck])
         {
@@ -822,7 +827,9 @@
         aCount = 3 * [[RuYiCaiLotDetail sharedObject].zhuShuNum intValue] * numBeishu;
     else
         aCount =  [fieldBeishu.text intValue] * (allCount/100);
-    self.allCountLabel.text = [NSString stringWithFormat:@"共%d元", aCount];
+    
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆", aCount*aas];
             
  }
 

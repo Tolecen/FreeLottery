@@ -841,7 +841,8 @@ typedef enum _ChooseLotteryStyle{
         //拼注码
         [self appendDXBetingNumber:lotterysModelDX];
         lotterysModelDX.amountString = [NSString stringWithFormat:@"%d",i * 200];
-        lotterysModelDX.betSumStrimng = [NSString stringWithFormat:@"和值 %d注 %d元",i,i * 2];
+        int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+        lotterysModelDX.betSumStrimng = [NSString stringWithFormat:@"和值 %d注 %d彩豆",i,i * 2*aas];
     }
     
     if ([lotterysModelDX.lotterys count] == 0) {
@@ -887,7 +888,8 @@ typedef enum _ChooseLotteryStyle{
         //拼注码
         [self appendDXBetingNumber:lotterysModelDX];
         lotterysModelDX.amountString = [NSString stringWithFormat:@"%d",i * 200];
-        lotterysModelDX.betSumStrimng = [NSString stringWithFormat:@"三不同号 %d注 %d元",i,i * 2];
+        int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+        lotterysModelDX.betSumStrimng = [NSString stringWithFormat:@"三不同号 %d注 %d彩豆",i,i * 2*aas];
         
     }else if (lotterysModelDX.lotterys.count == 0) {
         

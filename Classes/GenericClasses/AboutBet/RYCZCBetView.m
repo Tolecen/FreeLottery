@@ -205,8 +205,8 @@
     self.fieldBeishu.text = @"1";
     
     allCount = [[RuYiCaiLotDetail sharedObject].amount intValue];
-    
-    self.allCountLabel.text = [NSString stringWithFormat:@"共%d元",[[RuYiCaiLotDetail sharedObject].amount intValue]/100];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆",[[RuYiCaiLotDetail sharedObject].amount intValue]/100*aas];
     self.zhuShuLabel.text = [NSString stringWithFormat:@"共%@注",[RuYiCaiLotDetail sharedObject].zhuShuNum];
     self.batchCodeLabel.text = [RuYiCaiLotDetail sharedObject].batchCode;
 //    self.batchEndTimeLabel.text = [RuYiCaiLotDetail sharedObject].batchEndTime;
@@ -340,7 +340,8 @@
     self.fieldBeishu.text = [NSString stringWithFormat:@"%d",numBeishu];
     
     int aCount = allCount/100 * numBeishu;
-    self.allCountLabel.text = [NSString stringWithFormat:@"共%d元", aCount];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆", aCount*aas];
     
     [RuYiCaiLotDetail sharedObject].lotMulti = [NSString stringWithFormat:@"%d", numBeishu];
     [RuYiCaiLotDetail sharedObject].amount = [NSString stringWithFormat:@"%d",allCount * numBeishu];
@@ -711,8 +712,8 @@
     }
 
     self.sliderBeishu.value = [self.fieldBeishu.text floatValue];
-    
-    self.allCountLabel.text = [NSString stringWithFormat:@"共%d元", [fieldBeishu.text intValue] * (allCount/100)];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆", [fieldBeishu.text intValue] * (allCount/100)*aas];
     
     [RuYiCaiLotDetail sharedObject].lotMulti = [NSString stringWithFormat:@"%d", [fieldBeishu.text intValue]];
     [RuYiCaiLotDetail sharedObject].amount = [NSString stringWithFormat:@"%d",allCount * [self.fieldBeishu.text intValue]];

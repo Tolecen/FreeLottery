@@ -283,8 +283,8 @@
         [self.zhuiHaoViewController buildBetCode];
     }
     
-    if([appStoreORnormal isEqualToString:@"appStore"] &&
-       [appTestPhone isEqualToString:[RuYiCaiNetworkManager sharedManager].phonenum])
+    if(([appStoreORnormal isEqualToString:@"appStore"] &&
+        [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat))
         
     {
         if([self.normalBetViewController normalBetCheck])

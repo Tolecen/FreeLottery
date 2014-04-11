@@ -1092,7 +1092,8 @@
                 m_totalCost.textColor = [UIColor  blackColor];
                 m_totalCost.frame = CGRectMake(5,7,132,21);
                 [alreaderLabel setHidden:YES];
-                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
             }
 		}
 		else//直2 直3
@@ -1209,7 +1210,8 @@
                 self.totalCost.textColor = [UIColor blackColor];
                 m_totalCost.frame = CGRectMake(5,7,132,21);
                 [alreaderLabel setHidden:YES];
-                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];	
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
             }
         }		
 	}
@@ -1282,7 +1284,8 @@
             self.totalCost.textColor = [UIColor blackColor];
             m_totalCost.frame = CGRectMake(5,7,132,21);
             [alreaderLabel setHidden:YES];
-            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
         }
         else
         {
@@ -1291,7 +1294,8 @@
             m_totalCost.frame = CGRectMake(5,7,132,21);
             [alreaderLabel setHidden:YES];
             self.totalCost.textColor = [UIColor blackColor];
-            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
         }
     }
     self.totalCost.text = totalStr;

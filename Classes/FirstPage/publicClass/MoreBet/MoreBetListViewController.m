@@ -149,7 +149,8 @@
     
     
     m_inforBetLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 320, 30)];
-    m_inforBetLabel.text = [NSString stringWithFormat:@"已选：共%d注 ，共%d元", self.zhuShu, self.allAmount];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    m_inforBetLabel.text = [NSString stringWithFormat:@"已选：共%d注 ，共%d彩豆", self.zhuShu, self.allAmount*aas];
     m_inforBetLabel.backgroundColor = [UIColor clearColor];
     m_inforBetLabel.font = [UIFont systemFontOfSize:14];
     m_inforBetLabel.textColor = [UIColor blackColor];
@@ -369,7 +370,8 @@
 
 - (void)refreshLabelText
 {
-     m_inforBetLabel.text = [NSString stringWithFormat:@"已选：共%d注 ，共%d元", self.zhuShu, self.allAmount];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+     m_inforBetLabel.text = [NSString stringWithFormat:@"已选：共%d注 ，共%d彩豆", self.zhuShu, self.allAmount*aas];
 }
 
 - (void)editTableView:(id)sender
@@ -441,8 +443,8 @@
     cell.betCodeStr = [[[RuYiCaiLotDetail sharedObject].moreDisBetCodeInfor objectAtIndex:indexPath.row] objectForKey:MORE_BETCODE];
     NSString*  zhuShuStr = [[[RuYiCaiLotDetail sharedObject].moreDisBetCodeInfor objectAtIndex:indexPath.row] objectForKey:MORE_ZHUSHU];
     NSString*  allAmountStr = [[[RuYiCaiLotDetail sharedObject].moreDisBetCodeInfor objectAtIndex:indexPath.row] objectForKey:MORE_AMOUNT];
-    
-    cell.inforStr = [zhuShuStr stringByAppendingFormat:@"注       %d元", [allAmountStr intValue]/100];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    cell.inforStr = [zhuShuStr stringByAppendingFormat:@"注       %d彩豆", [allAmountStr intValue]/100*aas];
     [cell refreshCell];
     return cell;
 }

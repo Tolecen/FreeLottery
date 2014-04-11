@@ -1082,7 +1082,8 @@
                 m_totalCost.frame = CGRectMake(5,7,132,21);
                 alreaderLabel.frame = CGRectMake(0, 0, 0, 0);
                 m_totalCost.textColor = [UIColor  blackColor];
-                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
             }
             
 		}
@@ -1195,7 +1196,8 @@
             else
             {
                 self.totalCost.textColor = [UIColor blackColor];
-                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
             }
             
 		}
@@ -1267,14 +1269,16 @@
             m_numZhu = RYCChoose(baseBallCount - nDanBalls, nTuoBalls);
             m_numCost = m_numZhu * 2;
             self.totalCost.textColor = [UIColor blackColor];
-            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
         }
         else
         {
             m_numZhu = 0;
             m_numCost = m_numZhu * 2;
             self.totalCost.textColor = [UIColor blackColor];
-            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
         }
     }
     

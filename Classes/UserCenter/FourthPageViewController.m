@@ -655,7 +655,8 @@
         [m_isBindPhone addSubview:imagebg];
         [imagebg release];
     }
-    if ([[RuYiCaiNetworkManager sharedManager].userno isEqualToString:TestUNum]&&[@"1" isEqualToString:CheatApple]) {
+    if (([appStoreORnormal isEqualToString:@"appStore"] &&
+         [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
         NSString * yy = [parserDict objectForKey:@"bet_balance"];
         yy = [yy substringToIndex:(yy.length-1)];
         NSString * jiaMoney = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];

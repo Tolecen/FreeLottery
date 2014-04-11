@@ -1607,7 +1607,8 @@
             else
             {
                 self.totalCost.textColor = [UIColor blackColor];
-                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
             }
 			break;
 		}
@@ -1632,7 +1633,8 @@
                 else
                 {
                     self.totalCost.textColor = [UIColor blackColor];
-                    totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                    totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
                 }
                 
 			}
@@ -1650,7 +1652,8 @@
                 else
                 {
                     self.totalCost.textColor = [UIColor blackColor];
-                    totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                    totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
                 }
 			}
 			else
@@ -1660,7 +1663,8 @@
 				m_numZhu = NumberOf2XingSum(indexArray);
 				m_numCost = m_numZhu * 2;
                 self.totalCost.textColor = [UIColor blackColor];
-				totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+				totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
 			}
             
 			break;
@@ -1705,7 +1709,8 @@
             else
             {
                 self.totalCost.textColor = [UIColor blackColor];
-                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
             }
 			break;
 		}
@@ -1738,7 +1743,8 @@
             else
             {
                 self.totalCost.textColor = [UIColor blackColor];
-                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
             }
 			break;
 		}
@@ -1778,7 +1784,8 @@
             //金额 = 注数 * 倍数 *（2元）* 期数
             m_numCost = m_numZhu * 2;
             self.totalCost.textColor = [UIColor blackColor];
-            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
 			[array release];
 			
 			break;

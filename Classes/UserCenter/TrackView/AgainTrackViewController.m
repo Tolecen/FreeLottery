@@ -252,7 +252,8 @@
         case 3:
         {
             cell.cellTitle = @"单期付款";
-            cell.cellDetailTitle = [NSString stringWithFormat:@"%d元", [self.oneAmount intValue]*[self.zhuShu intValue]*[m_againTrackBeiField.text intValue]/100];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            cell.cellDetailTitle = [NSString stringWithFormat:@"%d彩豆", [self.oneAmount intValue]*[self.zhuShu intValue]*[m_againTrackBeiField.text intValue]/100*aas];
             cell.isRedText = YES;
             cell.isTextView = NO;
         }break;

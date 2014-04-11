@@ -127,7 +127,8 @@
     {
         allAmount = 2 * [[RuYiCaiLotDetail sharedObject].zhuShuNum intValue] * numBeishu;
     }
-    self.amountLabel.text = [NSString stringWithFormat:@"共%d元", allAmount];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.amountLabel.text = [NSString stringWithFormat:@"共%d彩豆", allAmount*aas];
 }
 
 - (IBAction)zhuiJiaSwitchChange:(id)sender 

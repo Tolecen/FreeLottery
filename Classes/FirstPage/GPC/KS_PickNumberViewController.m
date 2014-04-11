@@ -243,7 +243,8 @@
     NSArray *array = [kSLotterysModel getLotters];
     NSLog(@"%d",[array count]);
     [self.betLabel setText:[NSString stringWithFormat:@"共%d注",[array count]]];
-    [self.moneyLabel setText:[NSString stringWithFormat:@"%d元",[array count] * 2]];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    [self.moneyLabel setText:[NSString stringWithFormat:@"%d彩豆",[array count] * 2 *aas]];
     
 }
 
@@ -344,7 +345,8 @@
     //    [self reloadData:kSLotterysModel];
     NSArray * array = [kSLotterysModel getLotters];
     [self.betLabel setText:[NSString stringWithFormat:@"共%d注",[array count]]];
-    [self.moneyLabel setText:[NSString stringWithFormat:@"%d元",[array count] * 2]];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    [self.moneyLabel setText:[NSString stringWithFormat:@"%d彩豆",[array count] * 2*aas]];
     
     
 }
@@ -367,7 +369,8 @@
     
     NSLog(@"%d",[array count]);
     [self.betLabel setText:[NSString stringWithFormat:@"共%d注",[array count]]];
-    [self.moneyLabel setText:[NSString stringWithFormat:@"%d元",[array count] * 2]];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    [self.moneyLabel setText:[NSString stringWithFormat:@"%d彩豆",[array count] * 2*aas]];
     
     if (self.betViewController != nil) {
         [self.betViewController reloadTableViewData];
@@ -389,7 +392,8 @@
     }
     
     [self.betLabel setText:[NSString stringWithFormat:@"共%d注",i]];
-    [self.moneyLabel setText:[NSString stringWithFormat:@"%d元",i * 2]];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    [self.moneyLabel setText:[NSString stringWithFormat:@"%d彩豆",i * 2*aas]];
     
 }
 

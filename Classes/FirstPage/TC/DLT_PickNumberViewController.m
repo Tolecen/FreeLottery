@@ -1176,7 +1176,8 @@ CGRect frameRedDanBall = CGRectMake((320 - (8 * kBallVerticalSpacing) - 9 * kBal
 //            alreaderLabel.frame = CGRectMake(0, 0, 0, 0);
             m_totalCost.textColor = [UIColor  blackColor];
             m_totalCost.frame = CGRectMake(5,7,132,21);
-            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
         }
 
     }
@@ -1237,7 +1238,8 @@ CGRect frameRedDanBall = CGRectMake((320 - (8 * kBallVerticalSpacing) - 9 * kBal
         m_totalCost.textColor = [UIColor  blackColor];
         [alreaderLabel setHidden:YES];
         m_totalCost.frame = CGRectMake(5,7,132,21);
-        totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+        int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+        totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
     }
     else if (kSegmented12Xuan2 == self.segmentedView.segmentedIndex)
     {
@@ -1256,7 +1258,8 @@ CGRect frameRedDanBall = CGRectMake((320 - (8 * kBallVerticalSpacing) - 9 * kBal
             [alreaderLabel setHidden:YES];
             m_totalCost.textColor = [UIColor  blackColor];
             m_totalCost.frame = CGRectMake(5,7,132,21);
-            totalStr = [NSString stringWithFormat:@"您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@"您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
         }
  
     }

@@ -1651,7 +1651,8 @@
                 m_totalCost.frame = CGRectMake(5,7,132,21);
 //                alreaderLabel.frame = CGRectMake(0, 0, 0, 0);
                 m_totalCost.textColor = [UIColor  blackColor];
-                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 元", m_numZhu, m_numCost];
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注，共 %d 彩豆", m_numZhu, m_numCost*aas];
             }
         }
         else
@@ -1666,7 +1667,8 @@
             self.totalCost.textColor = [UIColor blackColor];
             [alreaderLabel setHidden:YES];
             m_totalCost.frame = CGRectMake(5,7,132,21);
-            totalStr = [NSString stringWithFormat:@"  您已选择了 %d 注,共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@"  您已选择了 %d 注,共 %d 彩豆", m_numZhu, m_numCost*aas];
         }
     }
     else if (kSegmentedGroup3 == self.segmentedView.segmentedIndex)
@@ -1733,7 +1735,8 @@
                 [alreaderLabel setHidden:YES];
                 m_totalCost.frame = CGRectMake(5,7,132,21);
                 self.totalCost.textColor = [UIColor blackColor];
-                totalStr = [NSString stringWithFormat:@"  您已选择了 %d 注,共 %d 元", m_numZhu, m_numCost];
+                int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+                totalStr = [NSString stringWithFormat:@"  您已选择了 %d 注,共 %d 彩豆", m_numZhu, m_numCost*aas];
             }
         }
         else if(1 == m_group3Type)//复式
@@ -1746,7 +1749,8 @@
             self.totalCost.textColor = [UIColor blackColor];
             [alreaderLabel setHidden:YES];
             m_totalCost.frame = CGRectMake(5,7,132,21);
-            totalStr = [NSString stringWithFormat:@"  您已选择了 %d 注,共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@"  您已选择了 %d 注,共 %d 彩豆", m_numZhu, m_numCost*aas];
         }
         else//组三
         {
@@ -1759,7 +1763,8 @@
             self.totalCost.textColor = [UIColor blackColor];
             [alreaderLabel setHidden:YES];
             m_totalCost.frame = CGRectMake(5,7,132,21);
-            totalStr = [NSString stringWithFormat:@"  您已选择了 %d 注,共 %d 元", m_numZhu, m_numCost];
+            int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+            totalStr = [NSString stringWithFormat:@"  您已选择了 %d 注,共 %d 彩豆", m_numZhu, m_numCost*aas];
         }
     }
     else
@@ -1784,7 +1789,8 @@
         self.totalCost.textColor = [UIColor blackColor];
         [alreaderLabel setHidden:YES];
         m_totalCost.frame = CGRectMake(5,7,132,21);
-        totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注,共 %d 元", m_numZhu, m_numCost];
+        int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+        totalStr = [NSString stringWithFormat:@" 您已选择了 %d 注,共 %d 彩豆", m_numZhu, m_numCost*aas];
     }
     
     self.totalCost.text = totalStr;

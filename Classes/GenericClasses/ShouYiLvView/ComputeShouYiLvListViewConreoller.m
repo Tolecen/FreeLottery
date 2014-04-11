@@ -117,7 +117,8 @@
     [self.myTableView reloadData];
     
     UILabel* detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 32, 300, 20)];
-    detailLabel.text = [NSString stringWithFormat:@"您已选了 %@ 注，共 %d 元", [RuYiCaiLotDetail sharedObject].zhuShuNum, [[[self.dataArray objectAtIndex:([self.dataArray count] - 1)] objectForKey:@"accumulatedInput"] intValue]/100];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    detailLabel.text = [NSString stringWithFormat:@"您已选了 %@ 注，共 %d 彩豆", [RuYiCaiLotDetail sharedObject].zhuShuNum, [[[self.dataArray objectAtIndex:([self.dataArray count] - 1)] objectForKey:@"accumulatedInput"] intValue]/100*aas];
     [detailLabel setTextColor:[UIColor blackColor]];
     detailLabel.textAlignment = UITextAlignmentLeft;
     detailLabel.backgroundColor = [UIColor clearColor];

@@ -549,10 +549,10 @@
 	[mLabel setTextColor:[UIColor whiteColor]];
 	mLabel.textAlignment = UITextAlignmentCenter;
 	mLabel.font = [UIFont systemFontOfSize:12];
-	
+	int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
 	if(m_maxChangShu - m_changShu == 0)
 	{
-		mLabel.text = [NSString stringWithFormat:@"已选%d注,共%d元",m_numZhu,m_numZhu * 2];
+		mLabel.text = [NSString stringWithFormat:@"已选%d注,共%d彩豆",m_numZhu,m_numZhu * 2*aas];
 	}
 	else if(m_maxChangShu - m_changShu == m_maxChangShu)
 	{

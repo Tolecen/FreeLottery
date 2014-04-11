@@ -202,7 +202,8 @@
     //    m_betNumber = [self getDuoChuanChooseCountBy_X_Y:self.gameCount Y_1:0];//单关
     m_betNumber = [self getFreeChuanBetNum:m_DanCount + 1];
     self.betNumberLable.text = [NSString stringWithFormat:@"共%d注", m_betNumber];
-    self.allCountLabel.text = [NSString stringWithFormat:@"共%d元", m_betNumber * 2];
+    int aas = [[RuYiCaiNetworkManager sharedManager] oneYuanToCaidou];
+    self.allCountLabel.text = [NSString stringWithFormat:@"共%d彩豆", m_betNumber * 2*aas];
     
     min_amount = [self calculationMinAmount:1];
     max_amount = 0.0;
