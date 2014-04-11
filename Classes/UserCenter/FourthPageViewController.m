@@ -67,6 +67,7 @@
 @synthesize loginTopView    =  m_loginTopView;
 @synthesize notLoginView    = m_notLoginView;
 @synthesize idCardimage     = m_idCardimage;
+@synthesize idPhoneimage    = m_idPhoneimage;
 @synthesize sectionTitleArray =m_sectionTitleArray;
 @synthesize cellTitlArray    =m_cellTitlArray;
 
@@ -76,6 +77,7 @@
     [m_cellTitlArray release];
     [m_tableView release], m_tableView = nil;
     [m_idCardimage release];
+    [m_idPhoneimage release];
     [m_nickName release];
     [m_balanceLabel release];
     [m_integralLabel release];
@@ -272,11 +274,6 @@
     
     [self setUpTopView];
 //    [self setUpTopView_notLogin];
-    self.idCardimage = [[[UIImageView alloc] init] autorelease];
-    
-    m_idCardimage.tag = ViewTag + 3;
-    m_idCardimage.frame = CGRectMake(0, 5, 23, 23);
-    [m_isBindCertid addSubview:m_idCardimage];
     flag[0]=YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goLogOut:) name:@"myLogOut" object:nil];
@@ -458,8 +455,6 @@
 - (void)loginOK:(NSNotification *)notification
 {
     //cell标题数组创建
-    self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"账户提现|yhzx_zhtx_icon.png",@"账户明细|yhzx_zhmx_icon.png",@"彩豆明细|yhzx_zhmx_icon.png",@"消息中心|yhzx_zhmx_icon.png",nil];
-    
     if (m_tableView)
     {
         [m_tableView reloadData];
@@ -554,32 +549,39 @@
     
 
     
-    m_isBindCertid = [[UIButton alloc] initWithFrame:CGRectMake(10, 92,110, 30)];
+    m_isBindCertid = [[UIButton alloc] initWithFrame:CGRectMake(30, 92,110, 30)];
     [m_isBindCertid setBackgroundColor:[UIColor clearColor]];
     [m_isBindCertid setTitle:@"未绑定身份证" forState:UIControlStateNormal];
-    m_isBindCertid.titleLabel.font = [UIFont systemFontOfSize:12];
+    m_isBindCertid.titleLabel.font = [UIFont systemFontOfSize:16];
     
     [m_isBindCertid addTarget:self action:@selector(setUpBindCertId) forControlEvents:UIControlEventTouchUpInside];
-    
-    m_idCardimage.image = [UIImage imageNamed:@"user_ncert.png"];
     
     [m_isBindCertid setTitleColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     //m_isBindCertid.contentEdgeInsets = UIEdgeInsetsMake(0, 12, 0, 0);
     m_isBindCertid.enabled = YES;
     [self.loginTopView addSubview:m_isBindCertid];
     
-    m_isBindPhone = [[UIButton alloc] initWithFrame:CGRectMake(147, 92, 110, 30)];
+    m_isBindPhone = [[UIButton alloc] initWithFrame:CGRectMake(167, 92, 110, 30)];
     [m_isBindPhone setBackgroundColor:[UIColor clearColor]];
     [m_isBindPhone setTitle:@"未绑定手机号" forState:UIControlStateNormal];
-    m_isBindPhone.titleLabel.font = [UIFont systemFontOfSize:12];
+    m_isBindPhone.titleLabel.font = [UIFont systemFontOfSize:16];
     
     [m_isBindPhone addTarget:self action:@selector(setUpBindPhone) forControlEvents:UIControlEventTouchUpInside];
     
     [m_isBindPhone setTitleColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-    m_idCardimage.image = [UIImage imageNamed:@"user_ncert.png"];
     
     m_isBindPhone.enabled = YES;
     [self.loginTopView addSubview:m_isBindPhone];
+    
+    self.idCardimage = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_ncert"]] autorelease];
+    m_idCardimage.frame = CGRectMake(10, 97, 18, 18);
+    [m_loginTopView addSubview:m_idCardimage];
+    [m_idCardimage release];
+    
+    self.idPhoneimage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_nphone"]];
+    m_idPhoneimage.frame = CGRectMake(152, 97, 18, 18);
+    [m_loginTopView addSubview:m_idPhoneimage];
+    [m_idPhoneimage release];
     
     UIButton * caidouB = [UIButton buttonWithType:UIButtonTypeCustom];
     caidouB.frame = CGRectMake(230,71, 60, 20);
@@ -640,23 +642,13 @@
     {
         [m_isBindPhone setTitle:@"已绑定手机号" forState:UIControlStateNormal];
         [m_isBindPhone setTitleColor:[UIColor colorWithRed:51.0/255.0 green:102.0/255.0 blue:51.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [[m_isBindPhone viewWithTag:ViewTag + 4] removeFromSuperview];
-        UIImageView *imagebg = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"user_yphone.png"]];
-        imagebg.tag = ViewTag + 4;
-        imagebg.frame = CGRectMake(0, 5, 23, 23);
-        [m_isBindPhone addSubview:imagebg];
-        [imagebg release];
+        m_idPhoneimage.image = [UIImage imageNamed:@"user_yphone.png"];
     }
     else
     {
         [m_isBindPhone setTitle:@"未绑定手机号" forState:UIControlStateNormal];
         [m_isBindPhone setTitleColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [[m_isBindPhone viewWithTag:ViewTag + 4] removeFromSuperview];
-        UIImageView *imagebg = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"user_nphone.png"]];
-        imagebg.tag = ViewTag + 4;
-        imagebg.frame = CGRectMake(0, 5, 23, 23);
-        [m_isBindPhone addSubview:imagebg];
-        [imagebg release];
+        m_idPhoneimage.image = [UIImage imageNamed:@"user_nphone.png"];
     }
     if (([appStoreORnormal isEqualToString:@"appStore"] &&
          [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
@@ -692,7 +684,6 @@
     {
         [m_isBindCertid setTitle:@"未绑定身份证" forState:UIControlStateNormal];
         [m_isBindCertid setTitleColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [[m_isBindCertid viewWithTag:100] removeFromSuperview];
         m_idCardimage.image = [UIImage imageNamed:@"user_ncert.png"];
         
     }
@@ -702,7 +693,6 @@
         
         [m_isBindCertid setTitle:@"已绑定身份证" forState:UIControlStateNormal];
         [m_isBindCertid setTitleColor:[UIColor colorWithRed:51.0/255.0 green:102.0/255.0 blue:51.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [[m_isBindCertid viewWithTag:100] removeFromSuperview];
         
         m_idCardimage.image = [UIImage imageNamed:@"user_ycert.png"];
         
