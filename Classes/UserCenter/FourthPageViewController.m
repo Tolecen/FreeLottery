@@ -349,8 +349,8 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
     ExchangeCaidouViewController* viewController = [[ExchangeCaidouViewController alloc] init];
-    viewController.caidouStr =m_moneyLabel.text;
-    viewController.jiangjinStr = m_balanceLabel.text;
+    viewController.caidouStr = [NSString stringWithString:m_moneyLabel.text];
+    viewController.jiangjinStr = [NSString stringWithString:m_balanceLabel.text];
     viewController.navigationItem.title =@"兑换彩豆",
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
@@ -664,7 +664,7 @@
     }
     else
     {
-        m_balanceLabel.text = [NSString stringWithFormat:@"%@", [parserDict objectForKey:@"bet_balance"]];//ke'tou'zhu
+        m_balanceLabel.text = [parserDict objectForKey:@"bet_balance"];//ke'tou'zhu
     }
     
     m_moneyLabel.text = [NSString stringWithFormat:@"%@", [parserDict objectForKey:@"lotPea"]];
