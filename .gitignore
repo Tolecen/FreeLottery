@@ -10,5 +10,5 @@ Pods
 Pods/*
 Podfile.lock
 Pods.xcodeproj/xcuserdata/*
-Boyacai.xcodeproj/project.xcworkspace/xcuserdata/*
-Boyacai.xcodeproj/project.xcworkspace/xcuserdata/Tolecen.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcodeproj/project.xcworkspace/xcuserdata/*
+*.xcodeproj/project.xcworkspace/xcuserdata/Tolecen.xcuserdatad/UserInterfaceState.xcuserstate
