@@ -108,6 +108,7 @@
 -(void)doQianDao
 {
     [m_delegate.activityView activityViewShow];
+    [m_delegate.activityView.titleLabel setText:@"签到中..."];
     [self performSelector:@selector(theQianDaoSuccess) withObject:nil afterDelay:2];
 }
 -(void)theQianDaoSuccess
