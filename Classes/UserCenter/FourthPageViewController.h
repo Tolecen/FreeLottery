@@ -36,7 +36,7 @@
     
     NSIndexPath*        selectTableRow;
     UIImageView         *m_idCardimage;
-    
+    UIImageView         *m_idPhoneimage;
     //区头标题和cell标题数组
     NSMutableArray      *m_cellTitlArray;
     BOOL                isRequestBindEmeil;
@@ -48,6 +48,7 @@
 @property (nonatomic, retain)NSMutableArray      *cellTitlArray;
 @property (nonatomic, retain)NSMutableArray      *totalToolsArray;
 @property (nonatomic, retain)UIImageView         *idCardimage;
+@property (nonatomic, retain)UIImageView         *idPhoneimage;
 @property (nonatomic, retain)UIButton           *m_nickName;
 @property (nonatomic, retain)UIButton           *m_bPhone;
 @property (nonatomic, retain)UILabel            *m_balanceLabel;
