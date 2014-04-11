@@ -1,19 +1,19 @@
 //
-//  ExchangeCaidouViewController.m
+//  MessageCenterViewController.m
 //  Boyacai
 //
-//  Created by wangxr on 14-4-10.
+//  Created by wangxr on 14-4-11.
 //
 //
 
-#import "ExchangeCaidouViewController.h"
+#import "MessageCenterViewController.h"
 #import "BackBarButtonItemUtils.h"
 #import "AdaptationUtils.h"
-@interface ExchangeCaidouViewController ()
-
+@interface MessageCenterViewController ()
+@property (nonatomic,retain)UITableView * tableV;
 @end
 
-@implementation ExchangeCaidouViewController
+@implementation MessageCenterViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,7 +23,11 @@
     }
     return self;
 }
-
+- (void)dealloc
+{
+    [_tableV release];
+    [super dealloc];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,6 +35,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [AdaptationUtils adaptation:self];
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
+    self.tableV = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height)];
+//    _tableV.hidden = YES;
+    [self.view addSubview:_tableV];
+//    _tableV.dataSource = self;
+//    _tableV.delegate = self;
+    [_tableV release];
 }
 
 - (void)didReceiveMemoryWarning

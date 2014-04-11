@@ -1132,6 +1132,8 @@
 		6FF96FB2163E714E0031F2A1 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FAC163E714E0031F2A1 /* SinaWeiboAuthorizeView.m */; };
 		6FF96FB3163E714E0031F2A1 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FAF163E714E0031F2A1 /* SinaWeiboRequest.m */; };
 		6FF96FB7163E715D0031F2A1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FB6163E715D0031F2A1 /* JSONKit.m */; };
+		726ADAF718F788C3007624AD /* exchange-click.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF518F788C3007624AD /* exchange-click.png */; };
+		726ADAF818F788C3007624AD /* exchange-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF618F788C3007624AD /* exchange-normal.png */; };
 		72A2335618F69C3600155684 /* ExchangeCaidouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */; };
 		72BC605B18F53DD60002B217 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC605A18F53DD60002B217 /* immobSDK.framework */; };
 		72BC606418F53E390002B217 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72BC606218F53E390002B217 /* DomobOfferWallBundle.bundle */; };
@@ -1144,6 +1146,9 @@
 		72BC607918F53EAE0002B217 /* WeiXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BC607218F53EAE0002B217 /* WeiXinViewController.xib */; };
 		72BC607B18F53F2D0002B217 /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC607A18F53F2D0002B217 /* libYouMi.a */; };
 		72BC607E18F5402B0002B217 /* QueryCaidouBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */; };
+		72CF019318F78AB900310F49 /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CF019218F78AB900310F49 /* MessageCenterViewController.m */; };
+		72CF019618F7908900310F49 /* yhzx_caidou_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF019418F7908900310F49 /* yhzx_caidou_icon.png */; };
+		72CF019718F7908900310F49 /* yhzx_message_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF019518F7908900310F49 /* yhzx_message_icon.png */; };
 		9703653218D6A93700060FB1 /* tishitext.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9703653118D6A93700060FB1 /* tishitext.txt */; };
 		9704B23C18DAA16300588D91 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9704B23B18DAA16300588D91 /* iAd.framework */; };
 		9704B23F18DACC4E00588D91 /* deletenewop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704B23E18DACC4E00588D91 /* deletenewop.png */; };
@@ -2855,6 +2860,8 @@
 		6FF96FAF163E714E0031F2A1 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		6FF96FB5163E715D0031F2A1 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		6FF96FB6163E715D0031F2A1 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		726ADAF518F788C3007624AD /* exchange-click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-click.png"; sourceTree = "<group>"; };
+		726ADAF618F788C3007624AD /* exchange-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-normal.png"; sourceTree = "<group>"; };
 		72A2335418F69C3600155684 /* ExchangeCaidouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeCaidouViewController.h; sourceTree = "<group>"; };
 		72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeCaidouViewController.m; sourceTree = "<group>"; };
 		72BC605A18F53DD60002B217 /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
@@ -2879,6 +2886,10 @@
 		72BC607A18F53F2D0002B217 /* libYouMi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYouMi.a; sourceTree = "<group>"; };
 		72BC607C18F5402B0002B217 /* QueryCaidouBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryCaidouBalanceViewController.h; sourceTree = "<group>"; };
 		72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryCaidouBalanceViewController.m; sourceTree = "<group>"; };
+		72CF019118F78AB900310F49 /* MessageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterViewController.h; sourceTree = "<group>"; };
+		72CF019218F78AB900310F49 /* MessageCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenterViewController.m; sourceTree = "<group>"; };
+		72CF019418F7908900310F49 /* yhzx_caidou_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yhzx_caidou_icon.png; sourceTree = "<group>"; };
+		72CF019518F7908900310F49 /* yhzx_message_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yhzx_message_icon.png; sourceTree = "<group>"; };
 		9703653118D6A93700060FB1 /* tishitext.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tishitext.txt; sourceTree = "<group>"; };
 		9704B23B18DAA16300588D91 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		9704B23E18DACC4E00588D91 /* deletenewop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletenewop.png; sourceTree = "<group>"; };
@@ -4739,6 +4750,8 @@
 		5224955518320393005F7577 /* ForthPage */ = {
 			isa = PBXGroup;
 			children = (
+				726ADAF518F788C3007624AD /* exchange-click.png */,
+				726ADAF618F788C3007624AD /* exchange-normal.png */,
 				9704B24018DAD4CA00588D91 /* adbanner.png */,
 				9704B23E18DACC4E00588D91 /* deletenewop.png */,
 				28A60D23183A3069007E25D7 /* yhzx_yxbd_icon.png */,
@@ -4804,6 +4817,8 @@
 				5224959118320393005F7577 /* yhzx_zjcx_icon.png */,
 				5224959218320393005F7577 /* yhzx_zjxq_icon.png */,
 				5224959318320393005F7577 /* yhzx_zscx_icon.png */,
+				72CF019418F7908900310F49 /* yhzx_caidou_icon.png */,
+				72CF019518F7908900310F49 /* yhzx_message_icon.png */,
 				5224959418320393005F7577 /* zhifubao_safe_icon.png */,
 				5224959518320393005F7577 /* zhmx_cz_cilck.png */,
 				5224959618320393005F7577 /* zhmx_cz_normal.png */,
@@ -5918,6 +5933,8 @@
 				72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */,
 				72A2335418F69C3600155684 /* ExchangeCaidouViewController.h */,
 				72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */,
+				72CF019118F78AB900310F49 /* MessageCenterViewController.h */,
+				72CF019218F78AB900310F49 /* MessageCenterViewController.m */,
 				9E9D6801142901C100540D29 /* AccountDetailView.h */,
 				9E9D6802142901C100540D29 /* AccountDetailView.m */,
 			);
@@ -6950,6 +6967,7 @@
 				522496BA18320393005F7577 /* scc_c_main.png in Resources */,
 				5224984818320393005F7577 /* zc_fenxi_noraml.png in Resources */,
 				5224976318320393005F7577 /* more_list_button_click.png in Resources */,
+				726ADAF818F788C3007624AD /* exchange-normal.png in Resources */,
 				522499B418320393005F7577 /* alert-red-button.png in Resources */,
 				522496F718320393005F7577 /* Item_3t_button_normal_image.png in Resources */,
 				5224967118320393005F7577 /* zhuan_jia_tui_jian.png in Resources */,
@@ -7323,6 +7341,7 @@
 				522499A418320393005F7577 /* zxkq_hover_btn.png in Resources */,
 				522497CE18320393005F7577 /* diBuBeiJing.png in Resources */,
 				D57A599715203AE900993743 /* RYCNormalBetView.xib in Resources */,
+				726ADAF718F788C3007624AD /* exchange-click.png in Resources */,
 				D5F60D02152434CF00FE8D37 /* RYCHighBetView.xib in Resources */,
 				522498D218320393005F7577 /* zc_backgroungsmall.png in Resources */,
 				522498B818320393005F7577 /* sfc_s_select_normal.png in Resources */,
@@ -7596,6 +7615,7 @@
 				522498F518320393005F7577 /* txLogBtn.png in Resources */,
 				5224976D18320393005F7577 /* nmk3_smallball_normal.png in Resources */,
 				5224965818320393005F7577 /* lotter_people_zone_cell_back_ground_img_normal.png in Resources */,
+				72CF019618F7908900310F49 /* yhzx_caidou_icon.png in Resources */,
 				977A727718C06AF6007DE71B /* dianru_title_1.jpg in Resources */,
 				522496C318320393005F7577 /* zc_c_rxj_click.png in Resources */,
 				D5BA06AA15E49F4A0086546B /* protocol.txt in Resources */,
@@ -7949,6 +7969,7 @@
 				522498B018320393005F7577 /* ph_btnclick.png in Resources */,
 				5224994E18320393005F7577 /* segment_control_fx_normal.png in Resources */,
 				2845C984183BCB6900B2E786 /* action-gray-button@2x.png in Resources */,
+				72CF019718F7908900310F49 /* yhzx_message_icon.png in Resources */,
 				522497F818320393005F7577 /* jcgamechoose_ico.png in Resources */,
 				5224982F18320393005F7577 /* jc_teambutton_click.png in Resources */,
 				5224992818320393005F7577 /* backgroundbot.png in Resources */,
@@ -8273,6 +8294,7 @@
 				689FC6D9165CA255007069AC /* UserCenterAutoOrderDetailView.m in Sources */,
 				68E9E166166743F300616B93 /* LotteryBetWarnViewController.m in Sources */,
 				689BD925166C573F007676AE /* ZC_TabView.m in Sources */,
+				72CF019318F78AB900310F49 /* MessageCenterViewController.m in Sources */,
 				689B2DC9166F518900C03970 /* SetYaoYiYaoViewController.m in Sources */,
 				68F9164E1676CED300FD14CB /* ChangePassViewController.m in Sources */,
 				68F916511676FCE200FD14CB /* BindCertViewController.m in Sources */,

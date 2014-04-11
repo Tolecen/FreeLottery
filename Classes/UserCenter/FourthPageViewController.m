@@ -36,6 +36,7 @@
 #import "TopUserCell.h"
 #import "AdaptationUtils.h"
 #import "ExchangeCaidouViewController.h"
+#import "MessageCenterViewController.h"
 
 
 #define ViewTag  (30)
@@ -153,7 +154,7 @@
     }
     
     //区内容数组和cell标题数组创建
-     self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"账户提现|yhzx_zhtx_icon.png",@"账户明细|yhzx_zhmx_icon.png", @"彩豆明细|yhzx_zhmx_icon.png",@"消息中心|yhzx_zhmx_icon.png",nil];
+     self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"账户提现|yhzx_zhtx_icon.png",@"账户明细|yhzx_zhmx_icon.png", @"彩豆明细|yhzx_caidou_icon.png",@"消息中心|yhzx_message_icon.png",nil];
    
     if (m_tableView)
     {
@@ -582,6 +583,8 @@
     
     UIButton * caidouB = [UIButton buttonWithType:UIButtonTypeCustom];
     caidouB.frame = CGRectMake(230,71, 60, 20);
+    [caidouB setBackgroundImage:[UIImage imageNamed:@"exchange-normal"] forState:UIControlStateNormal];
+    [caidouB setBackgroundImage:[UIImage imageNamed:@"exchange-click"] forState:UIControlStateHighlighted];
     [caidouB setTitle:@"兑换彩豆" forState:UIControlStateNormal];
     [caidouB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     caidouB.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -922,7 +925,8 @@
                 case 5://消息中心
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
-                QueryAccountDetailViewController* viewController = [[QueryAccountDetailViewController alloc] init];
+                MessageCenterViewController* viewController = [[MessageCenterViewController alloc] init];
+                viewController.navigationItem.title =@"消息中心",
                 [self.navigationController pushViewController:viewController animated:YES];
                 [viewController release];
                 break;
