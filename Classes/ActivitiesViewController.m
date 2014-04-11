@@ -24,14 +24,17 @@
 }
 -(void)dealloc
 {
+    [actsArray release];
     [self.listTableV release];
     [super dealloc];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
+    NSDictionary * actoneDict = [NSDictionary dictionaryWithObjectsAndKeys:@"新手任务:累计赚取5000彩豆，即送500彩豆",@"actDescribe",@"no",@"actName",@"4000/5000",@"progress",@"3245678900",@"experTime",@"1",@"type", nil];
+    NSDictionary * actTwoDict = [NSDictionary dictionaryWithObjectsAndKeys:@"每日签到，即送彩豆",@"actDescribe",@"每日签到",@"actName",@"1",@"status", @"2",@"type",nil];
+    NSDictionary * actThreeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"给我5星好评，送彩豆哦",@"actDescribe",@"五星好评，送彩豆",@"actName",@"1",@"ststus",@"3",@"type", nil];
+    actsArray = [[NSMutableArray alloc] initWithObjects:actoneDict,actTwoDict,actThreeDict, nil];
     
     self.view.backgroundColor = [UIColor whiteColor];
     [AdaptationUtils adaptation:self];
@@ -66,11 +69,15 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row==0) {
+    NSDictionary * actV = actsArray[indexPath.row];
+    if ([[actV objectForKey:@"type"] isEqualToString:@"1"]) {
         static NSString *cellIdentifier = @"cellIdentifiertypetwo";
         ActivityTypeTwoCell* cell = (ActivityTypeTwoCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (nil == cell)
             cell = [[[ActivityTypeTwoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.nameLabel.text = [actV objectForKey:@"actDescribe"];
+        cell.progressLabel.text = [actV objectForKey:@"progress"];
         
         return cell;
     }
@@ -79,13 +86,43 @@
         ActivityTypeOneCell* cell = (ActivityTypeOneCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (nil == cell)
             cell = [[[ActivityTypeOneCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.imageV.image = [UIImage imageNamed:@"act-caidou"];
+        cell.nameLabel.text = [actV objectForKey:@"actName"];
+        cell.descriptionLabel.text = [actV objectForKey:@"actDescribe"];
+        if ([[actV objectForKey:@"type"] isEqualToString:@"2"]) {
+            [cell.doitBtn setTitle:@"立刻签到" forState:UIControlStateNormal];
+            [cell.doitBtn addTarget:self action:@selector(doQianDao) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else
+        {
+            [cell.doitBtn setTitle:@"立刻好评" forState:UIControlStateNormal];
+            [cell.doitBtn addTarget:self action:@selector(toCommentInAppStore) forControlEvents:UIControlEventTouchUpInside];
+        }
         
         return cell;
     }
     
     
 }
-
+-(void)doQianDao
+{
+    [m_delegate.activityView activityViewShow];
+    [m_delegate.activityView.titleLabel setText:@"签到中..."];
+    [self performSelector:@selector(theQianDaoSuccess) withObject:nil afterDelay:2];
+}
+-(void)theQianDaoSuccess
+{
+    [m_delegate.activityView disActivityView];
+}
+-(void)toCommentInAppStore
+{
+    NSURL *url = [NSURL URLWithString:kAppStorPingFen];
+    if([[UIApplication sharedApplication] canOpenURL:url])
+    {
+        [[UIApplication sharedApplication] openURL:url];
+    }
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
 }

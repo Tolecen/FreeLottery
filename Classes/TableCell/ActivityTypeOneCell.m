@@ -27,20 +27,26 @@
         // Initialization code
         
         self.imageV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
-        [self.imageV setBackgroundColor:[UIColor redColor]];
+//        [self.imageV setBackgroundColor:[UIColor redColor]];
         [self.contentView addSubview:self.imageV];
         
-        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 15, 150, 20)];
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 150, 20)];
         [self.nameLabel setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:self.nameLabel];
+        [self.nameLabel setFont:[UIFont systemFontOfSize:16]];
+//        [self.nameLabel setTextColor:[UIColor grayColor]];
         
-        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 35, 180, 30)];
+        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 30, 150, 45)];
         [self.descriptionLabel setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:self.descriptionLabel];
+        [self.descriptionLabel setFont:[UIFont systemFontOfSize:13]];
+        [self.descriptionLabel setTextColor:[UIColor grayColor]];
         
         self.doitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.doitBtn setFrame:CGRectMake(230, 25, 80, 30)];
         [self.doitBtn setBackgroundImage:[UIImage imageNamed:@"tasktodo"] forState:UIControlStateNormal];
+        [self.doitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.doitBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [self.contentView addSubview:self.doitBtn];
     }
     return self;

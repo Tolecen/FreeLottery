@@ -28,13 +28,13 @@
         [ttt setBackgroundColor:[UIColor clearColor]];
         [ttt setFont:[UIFont systemFontOfSize:14]];
         [ttt setTextColor:[UIColor blackColor]];
-        [ttt setText:@"免费获取彩金，0投入0风险，千万大奖等你拿"];
+        [ttt setText:@"做任务获取彩豆，0投入0风险，千万大奖等你拿"];
         [self addSubview:ttt];
         [ttt release];
         
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, 65, 20)];
         [self.titleLabel setBackgroundColor:[UIColor clearColor]];
-        self.titleLabel.text = @"您的彩金:";
+        self.titleLabel.text = @"您的彩豆:";
         [self.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [self addSubview:self.titleLabel];
         self.remainMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(72, 35, 128, 30)];
