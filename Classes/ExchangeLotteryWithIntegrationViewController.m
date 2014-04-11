@@ -63,7 +63,7 @@
         adAdded = NO;
 //        titleArray = [[NSArray alloc] initWithObjects:@"美美换彩豆",@"米米换彩豆",@"点点换彩豆",@"易易换彩豆",@"多多换彩豆", nil];
         titleArray = [[NSArray alloc] init];
-        realArray = [[NSArray alloc] initWithObjects:@"免费获取彩金入口1",@"免费获取彩金入口2",@"免费获取彩金入口3",@"免费获取彩金入口4",@"免费获取彩金入口5", nil];
+        realArray = [[NSArray alloc] initWithObjects:@"免费获取彩豆入口1",@"免费获取彩豆入口2",@"免费获取彩豆入口3",@"免费获取彩豆入口4",@"免费获取彩豆入口5", nil];
         notRealArray = [[NSArray alloc] initWithObjects:@"幸运大转盘",@"每日签到",@"更多精彩活动敬请期待", nil];
         
         self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
@@ -137,7 +137,7 @@
         //        self.navigationController.navigationBar.topItem.rightBarButtonItem = nil;
     }
     NSString * theV = [[NSUserDefaults standardUserDefaults] objectForKey:@"ADWallExchangeScale"];
-    exchangeScale = [[NSString stringWithFormat:@"(1彩金=%@彩豆)",theV] mutableCopy];
+    exchangeScale = [[NSString stringWithFormat:@"(1注=%d彩豆)",2*[theV intValue]] mutableCopy];
     
     [self.listTableV reloadData];
 
@@ -308,7 +308,7 @@
             if (!jiaMoney) {
                 jiaMoney = @"0";
             }
-            cell.remainMoneyLabel.text = [NSString stringWithFormat:@"%.2f元",[yy floatValue]+ [jiaMoney floatValue]];
+            cell.remainMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[yy floatValue]+ [jiaMoney floatValue]];
         }
         else
         {
@@ -328,7 +328,7 @@
     
     
     cell.titleName = titleArray[indexPath.row-1];
-    cell.littleTitleName = @"完成推荐应用的任务，就能免费获取彩金";
+    cell.littleTitleName = @"完成推荐应用的任务，就能免费获取彩豆";
     cell.iconImageName = @"ico_c_bank.png";
         
         if (!realAdwall) {
@@ -494,7 +494,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已完成今日签到，获得250彩豆，已转为彩金冲入您的账户" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已完成今日签到，获得250彩豆，已冲入您的账户" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
     [alert show];
     [alert release];
     NSString * dd = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];
