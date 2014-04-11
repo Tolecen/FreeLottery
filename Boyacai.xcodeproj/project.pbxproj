@@ -1284,6 +1284,8 @@
 		97FD04BA18E3BDD3008FF2CB /* ActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FD04B918E3BDD3008FF2CB /* ActivitiesViewController.m */; };
 		97FD04BD18E40691008FF2CB /* ActivityTypeOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FD04BC18E40691008FF2CB /* ActivityTypeOneCell.m */; };
 		97FD04C018E406A5008FF2CB /* ActivityTypeTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FD04BF18E406A5008FF2CB /* ActivityTypeTwoCell.m */; };
+		97FD9D8B18F7967A000E382B /* act-time-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 97FD9D8918F7967A000E382B /* act-time-bg.png */; };
+		97FD9D8C18F7967A000E382B /* act-caidou.png in Resources */ = {isa = PBXBuildFile; fileRef = 97FD9D8A18F7967A000E382B /* act-caidou.png */; };
 		9E1E26CB143B4AD50039AEA9 /* BaseHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1E26CA143B4AD50039AEA9 /* BaseHelpViewController.m */; };
 		9E1E2701143B4FBA0039AEA9 /* ruyihelper_authorizing.html in Resources */ = {isa = PBXBuildFile; fileRef = 9E1E26FA143B4FBA0039AEA9 /* ruyihelper_authorizing.html */; };
 		9E3603D0140A6B2700DDAE64 /* FC3DRandomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3603CF140A6B2700DDAE64 /* FC3DRandomTableViewCell.m */; };
@@ -3068,6 +3070,8 @@
 		97FD04BC18E40691008FF2CB /* ActivityTypeOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTypeOneCell.m; sourceTree = "<group>"; };
 		97FD04BE18E406A5008FF2CB /* ActivityTypeTwoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTypeTwoCell.h; sourceTree = "<group>"; };
 		97FD04BF18E406A5008FF2CB /* ActivityTypeTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTypeTwoCell.m; sourceTree = "<group>"; };
+		97FD9D8918F7967A000E382B /* act-time-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "act-time-bg.png"; sourceTree = "<group>"; };
+		97FD9D8A18F7967A000E382B /* act-caidou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "act-caidou.png"; sourceTree = "<group>"; };
 		9E1E26C9143B4AD50039AEA9 /* BaseHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHelpViewController.h; sourceTree = "<group>"; };
 		9E1E26CA143B4AD50039AEA9 /* BaseHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHelpViewController.m; sourceTree = "<group>"; };
 		9E1E26FA143B4FBA0039AEA9 /* ruyihelper_authorizing.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ruyihelper_authorizing.html; sourceTree = "<group>"; };
@@ -5042,6 +5046,8 @@
 		5224963418320393005F7577 /* ThirdPage */ = {
 			isa = PBXGroup;
 			children = (
+				97FD9D8918F7967A000E382B /* act-time-bg.png */,
+				97FD9D8A18F7967A000E382B /* act-caidou.png */,
 				97F036D018E5193100A94AED /* tasktodo.png */,
 				97F036D118E5193100A94AED /* taskcompleted.png */,
 				97F036D218E5193100A94AED /* taskexpired.png */,
@@ -7506,6 +7512,7 @@
 				5224992E18320393005F7577 /* bottombtn_normal.png in Resources */,
 				5224981518320393005F7577 /* jczq_confusion_line2_click.png in Resources */,
 				5224966818320393005F7577 /* share_message.png in Resources */,
+				97FD9D8C18F7967A000E382B /* act-caidou.png in Resources */,
 				D5CE581515805651004919B9 /* ruyicai_zhuanzhang.html in Resources */,
 				5224977F18320393005F7577 /* random_num_blue_normal.png in Resources */,
 				5224990818320393005F7577 /* yhzx_wdhm_icon.png in Resources */,
@@ -8034,6 +8041,7 @@
 				522496FF18320393005F7577 /* ks_label.png in Resources */,
 				5224997D18320393005F7577 /* accessory_c_normal.png in Resources */,
 				5224981E18320393005F7577 /* jczq_confusion_line4_small_normal.png in Resources */,
+				97FD9D8B18F7967A000E382B /* act-time-bg.png in Resources */,
 				5224974F18320393005F7577 /* gp_touzhu_c_btn.png in Resources */,
 				522497BA18320393005F7577 /* uptimeBg.png in Resources */,
 				2845C97D183BCB6900B2E786 /* action-black-button-selected.png in Resources */,

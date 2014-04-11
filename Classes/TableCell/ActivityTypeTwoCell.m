@@ -32,6 +32,8 @@
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 20)];
         [self.nameLabel setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:self.nameLabel];
+        [self.nameLabel setFont:[UIFont systemFontOfSize:14]];
+        [self.nameLabel setTextColor:[UIColor grayColor]];
         
         self.tLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, 80, 30)];
         [self.tLabel setBackgroundColor:[UIColor clearColor]];

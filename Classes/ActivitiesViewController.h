@@ -12,11 +12,15 @@
 #import "BackBarButtonItemUtils.h"
 #import "ActivityTypeOneCell.h"
 #import "ActivityTypeTwoCell.h"
+#import "RuYiCaiCommon.h"
+#import "ActivityView.h"
 @class RuYiCaiAppDelegate;
 @interface ActivitiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     RuYiCaiAppDelegate  *m_delegate;
     NSMutableArray * typeArray;
+    
+    NSMutableArray * actsArray;
 }
 @property(nonatomic, retain)UITableView * listTableV;
 @end
