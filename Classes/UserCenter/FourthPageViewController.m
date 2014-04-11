@@ -349,6 +349,8 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
     ExchangeCaidouViewController* viewController = [[ExchangeCaidouViewController alloc] init];
+    viewController.caidouStr =m_moneyLabel.text;
+    viewController.jiangjinStr = m_balanceLabel.text;
     viewController.navigationItem.title =@"兑换彩豆",
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
@@ -588,7 +590,7 @@
     [caidouB setBackgroundImage:[UIImage imageNamed:@"exchange-normal"] forState:UIControlStateNormal];
     [caidouB setBackgroundImage:[UIImage imageNamed:@"exchange-click"] forState:UIControlStateHighlighted];
     [caidouB setTitle:@"兑换彩豆" forState:UIControlStateNormal];
-    [caidouB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [caidouB setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     caidouB.titleLabel.font = [UIFont systemFontOfSize:12];
     [caidouB addTarget:self action:@selector(exchangeCaidou) forControlEvents:UIControlEventTouchUpInside];
     [self.loginTopView addSubview:caidouB];
