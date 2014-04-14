@@ -195,7 +195,7 @@
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"恭喜您获得了125彩豆，已经转为彩金冲入您的账号" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
         [alert show];
         [alert release];
-        jiaMoney = [NSString stringWithFormat:@"%f",[jiaMoney floatValue]+0.5];
+        jiaMoney = [NSString stringWithFormat:@"%f",[jiaMoney floatValue]+125];
         [[NSUserDefaults standardUserDefaults] setObject:jiaMoney forKey:@"jiaMoney"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
@@ -203,7 +203,7 @@
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"恭喜您获得了500彩豆，已经转为彩金冲入您的账号" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
         [alert show];
         [alert release];
-        jiaMoney = [NSString stringWithFormat:@"%f",[jiaMoney floatValue]+1];
+        jiaMoney = [NSString stringWithFormat:@"%f",[jiaMoney floatValue]+500];
         [[NSUserDefaults standardUserDefaults] setObject:jiaMoney forKey:@"jiaMoney"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
@@ -211,7 +211,7 @@
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"恭喜您获得了125彩豆，已经转为彩金冲入您的账号" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
         [alert show];
         [alert release];
-        jiaMoney = [NSString stringWithFormat:@"%f",[jiaMoney floatValue]+0.5];
+        jiaMoney = [NSString stringWithFormat:@"%f",[jiaMoney floatValue]+125];
         [[NSUserDefaults standardUserDefaults] setObject:jiaMoney forKey:@"jiaMoney"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }

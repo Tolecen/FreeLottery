@@ -52,6 +52,9 @@
 @synthesize softwareInfo = m_softwareInfo;
 @synthesize highFrequencyInfo = m_highFrequencyInfo;
 @synthesize userBalance = m_userBalance;
+@synthesize userLotPea;
+@synthesize userPrizeBalance;
+@synthesize remainingChance;
 @synthesize responseText = m_responseText;
 @synthesize lotteryInformation = m_lotteryInformation;
 @synthesize lotteryInfoList = m_lotteryInfoList;
@@ -2122,6 +2125,41 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     //[self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
 }
 
+#pragma mark 查询剩余投注次数
+
+-(void)queryRemainingChanceForLot
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"startUp" forKey:@"command"];
+    [mDict setObject:@"upgrade" forKey:@"requestType"];
+    //自动登录
+    //    [m_delegate readAutoLoginPlist];//?????????
+    //    if (m_delegate.autoRememberMystatus && [[m_delegate autoLoginRandomNumber] length] > 0) {
+    //        NSString *str = m_delegate.autoLoginRandomNumber;
+    //        [mDict setObject:str forKey:@"randomNumber"];
+    //    }
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  查询剩余投注次数: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeRemainingChance];
+	[request setDelegate:self];
+	[request startAsynchronous];
+
+}
+
 
 #pragma mark 头部新闻 今日开奖、加奖
 - (void)queryTodayOpenOrAdd
@@ -2296,6 +2334,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 		case ASINetworkRequestTypeSoftUpdate:
 			[self softUpdateComplete:resText];
 			break;
+        case ASINetworkRequestTypeRemainingChance:
+            [self queryRemainingChanceOK:resText];
+            break;
 		case ASINetworkRequestTypeUpdateInformationOfLotteryInServers:
 			[self updateInformationOfLotteryInServers:resText];
 			break;
@@ -2687,7 +2728,10 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	}
     [resText release];
 }
-
+-(void)queryRemainingChanceOK:(NSString*)resText
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRemainingChanceOK" object:resText];
+}
 - (void)queryTodayOpenOrAddComplete:(NSString*)resText
 {
 //     self.responseText = resText;

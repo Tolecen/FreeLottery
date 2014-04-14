@@ -83,6 +83,7 @@ typedef enum _ASINetworkReqestType
     ASINetworkRequestTypeFeedback,
     ASINetworkRequestTypeSoftUpdate,
     ASINetworkRequestTypeCheckNewVersion,
+    ASINetworkRequestTypeRemainingChance,
     ASINetworkRequestTypeGetExchangeScaleForAdWall,
     ASINetworkRequestTypeUpdateInformationOfLotteryInServers,
     ASINetworkRequestTypeUpdatePayStationInServers,

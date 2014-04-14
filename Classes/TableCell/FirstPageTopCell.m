@@ -82,7 +82,20 @@
 {
     if ([[RuYiCaiNetworkManager sharedManager] hasLogin])
     {
-        self.caidouYuELabel.text = [RuYiCaiNetworkManager sharedManager].userBalance;
+        if (([appStoreORnormal isEqualToString:@"appStore"] &&
+             [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
+            NSString * yy = [[RuYiCaiNetworkManager sharedManager] userLotPea];
+            //                yy = [yy substringToIndex:(yy.length-1)];
+            NSString * jiaMoney = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];
+            if (!jiaMoney) {
+                jiaMoney = @"0";
+            }
+            self.caidouYuELabel.text = [NSString stringWithFormat:@"%.0f",[yy floatValue]+ [jiaMoney floatValue]];
+        }
+        else
+        {
+            self.caidouYuELabel.text = [RuYiCaiNetworkManager sharedManager].userLotPea;
+        }
         
     }
     else

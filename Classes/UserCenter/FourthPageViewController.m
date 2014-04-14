@@ -654,21 +654,21 @@
     }
     if (([appStoreORnormal isEqualToString:@"appStore"] &&
          [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
-        NSString * yy = [parserDict objectForKey:@"bet_balance"];
-        yy = [yy substringToIndex:(yy.length-1)];
+        NSString * yy = [parserDict objectForKey:@"lotPea"];
+//        yy = [yy substringToIndex:(yy.length-1)];
         NSString * jiaMoney = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];
         if (!jiaMoney) {
             jiaMoney = @"0";
         }
-        m_balanceLabel.text = [NSString stringWithFormat:@"%.2f元",[yy floatValue]+ [jiaMoney floatValue]];
+        m_moneyLabel.text = [NSString stringWithFormat:@"%.0f",[yy floatValue]+ [jiaMoney floatValue]];
     }
     else
     {
-        m_balanceLabel.text = [parserDict objectForKey:@"bet_balance"];//ke'tou'zhu
+        m_moneyLabel.text = [parserDict objectForKey:@"lotPea"];//ke'tou'zhu
     }
     
-    m_moneyLabel.text = [NSString stringWithFormat:@"%@", [parserDict objectForKey:@"lotPea"]];
-    
+//    m_moneyLabel.text = [NSString stringWithFormat:@"%@", [parserDict objectForKey:@"lotPea"]];
+    m_balanceLabel.text = [RuYiCaiNetworkManager sharedManager].userPrizeBalance;//
     [m_bPhone setTitle:[parserDict objectForKey:@"userName"] forState:UIControlStateNormal];
     //记录登录名
     [RuYiCaiNetworkManager sharedManager].loginName = [parserDict objectForKey:@"userName"];
