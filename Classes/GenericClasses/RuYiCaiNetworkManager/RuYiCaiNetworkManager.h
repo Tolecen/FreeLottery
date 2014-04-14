@@ -265,6 +265,9 @@ typedef enum
 @property (nonatomic, assign) BOOL shouldCheat;
 
 @property (nonatomic, retain) NSString* userBalance;
+@property (nonatomic, retain) NSString* userLotPea;
+@property (nonatomic, retain) NSString* userPrizeBalance;
+@property (nonatomic, retain) NSString* remainingChance;
 @property (nonatomic, retain) NSString* responseText;
 @property (nonatomic, retain) NSString* giftMessageText;
 @property (nonatomic, retain) NSString* lotteryInformation;
@@ -417,6 +420,8 @@ typedef enum
 
 //获取彩种的开奖日期
 - (NSString*)getEndtimeOfLot:(NSString*)lotCode;
+
+-(void)queryRemainingChanceForLot;
 
 //获取高频彩种的剩余时间和当前期数
 - (void)highFrequencyInquiry:(NSString*)lotNo;

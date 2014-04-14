@@ -128,6 +128,8 @@
     {
         self.responseText = resText;
         self.userBalance = [parserDict objectForKey:@"bet_balance"];
+        self.userLotPea = [parserDict objectForKey:@"lotPea"];
+        self.userPrizeBalance = [parserDict objectForKey:@"drawbalance"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"queryUserBalanceOK" object:nil];
     }
     else

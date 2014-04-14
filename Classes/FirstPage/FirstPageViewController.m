@@ -576,6 +576,8 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"querySampleNetOK" object:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"netFailed" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryRemainingChanceOK" object:nil];
+    
     
 
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"netFailedAlert" object:nil];
@@ -635,6 +637,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(querySampleNetOK:) name:@"querySampleNetOK" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netFailed:) name:@"netFailed" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryRemainingChanceOK:) name:@"queryRemainingChanceOK" object:nil];
 
     self.tableViewType = YES;
     
@@ -646,10 +650,17 @@
     [[RuYiCaiNetworkManager sharedManager] queryTodayOpenOrAdd];//今日开奖、加奖
     [[RuYiCaiNetworkManager sharedManager] queryADInformation];//获取广告url
     
+    //此处还差查询剩余投注次数接口！！！！！
+    
+    
     
     [[RuYiCaiNetworkManager sharedManager] requestTicketPropaganda];//查询彩种宣传语
     
 
+}
+-(void)queryRemainingChanceOK:(NSNotification *)noti
+{
+    [RuYiCaiNetworkManager sharedManager].remainingChance = [noti.object objectForKey:@"XXX"];
 }
 -(void)netFailedAlert:(NSNotification *)noti
 {
@@ -794,18 +805,18 @@
         if ([BuyAndInfoSeparated isEqualToString:@"1"]) {
             if (([appStoreORnormal isEqualToString:@"appStore"] &&
                  [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
-                NSString * yy = [[RuYiCaiNetworkManager sharedManager] userBalance];
-                yy = [yy substringToIndex:(yy.length-1)];
+                NSString * yy = [[RuYiCaiNetworkManager sharedManager] userLotPea];
+//                yy = [yy substringToIndex:(yy.length-1)];
                 NSString * jiaMoney = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];
                 if (!jiaMoney) {
                     jiaMoney = @"0";
                 }
-                m_loginStatus.text = [NSString stringWithFormat:@"彩金:%.2f元",[yy floatValue]+ [jiaMoney floatValue]];
+                m_loginStatus.text = [NSString stringWithFormat:@"彩豆:%.0f",[yy floatValue]+ [jiaMoney floatValue]];
             }
             else
             {
                 m_loginStatus.text = [NSString stringWithFormat:kLoginStatusFormat,
-                                      [[RuYiCaiNetworkManager sharedManager] userBalance]];
+                                      [[RuYiCaiNetworkManager sharedManager] userLotPea]];
             }
             //UILabel *label = [[[UILabel alloc] init] autorelease];
             self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:m_loginStatus] autorelease]; //消掉系统的按钮

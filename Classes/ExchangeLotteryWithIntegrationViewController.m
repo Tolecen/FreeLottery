@@ -302,17 +302,16 @@
             cell = [[[AdWallTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         if (([appStoreORnormal isEqualToString:@"appStore"] &&
              [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
-            NSString * yy = [[RuYiCaiNetworkManager sharedManager] userBalance];
-            yy = [yy substringToIndex:(yy.length-1)];
+            NSString * yy = [[RuYiCaiNetworkManager sharedManager] userLotPea];
             NSString * jiaMoney = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];
             if (!jiaMoney) {
                 jiaMoney = @"0";
             }
-            cell.remainMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[yy floatValue]+ [jiaMoney floatValue]];
+            cell.remainMoneyLabel.text = [NSString stringWithFormat:@"%.0f",[yy floatValue]+ [jiaMoney floatValue]];
         }
         else
         {
-            cell.remainMoneyLabel.text = [[RuYiCaiNetworkManager sharedManager] userBalance];
+            cell.remainMoneyLabel.text = [[RuYiCaiNetworkManager sharedManager] userLotPea];
         }
         cell.disLabel.text = exchangeScale;
         return cell;
@@ -498,7 +497,7 @@
     [alert show];
     [alert release];
     NSString * dd = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];
-    NSString * gg = [NSString stringWithFormat:@"%.2f",[dd floatValue]+1.0];
+    NSString * gg = [NSString stringWithFormat:@"%.0f",[dd floatValue]+250];
     [[NSUserDefaults standardUserDefaults] setObject:gg forKey:@"jiaMoney"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self.listTableV reloadData];
