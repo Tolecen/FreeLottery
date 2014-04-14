@@ -14,4 +14,5 @@
 @property(nonatomic,retain)UILabel * progressLabel;
 @property(nonatomic,retain)UIImageView * imgV;
 @property(nonatomic,retain)UILabel * timeLabel;
+@property(nonatomic,retain)UIImageView * statusImgV;
 @end

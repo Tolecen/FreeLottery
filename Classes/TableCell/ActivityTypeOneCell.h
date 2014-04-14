@@ -13,4 +13,5 @@
 @property(nonatomic,retain)UILabel * nameLabel;
 @property(nonatomic,retain)UILabel * descriptionLabel;
 @property(nonatomic,retain)UIButton * doitBtn;
+@property(nonatomic,retain)UIImageView * statusImgV;
 @end
