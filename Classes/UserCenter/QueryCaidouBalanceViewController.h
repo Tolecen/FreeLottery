@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@interface CaidouCell : UITableViewCell
+@property (nonatomic,retain)NSDictionary * dataDic;
+@end
 @interface QueryCaidouBalanceViewController : UIViewController
 
 @end

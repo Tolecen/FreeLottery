@@ -13,6 +13,63 @@
 #import "RYCImageNamed.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RuYiCaiNetworkManager.h"
+@interface CaidouCell ()
+@property (nonatomic,retain)UILabel * sourceL;//明细
+@property (nonatomic,retain)UILabel * timeL;//时间
+@property (nonatomic,retain)UILabel * lotPeaL;//数目
+@end
+
+@implementation CaidouCell
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.sourceL = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 200, 20)];
+        _sourceL.font = [UIFont boldSystemFontOfSize:18];
+        [self.contentView addSubview:_sourceL];
+        self.timeL = [[UILabel alloc]initWithFrame:CGRectMake(20, 30, 200, 20)];
+        [self.contentView addSubview:_timeL];
+        _timeL.textColor = [UIColor grayColor];
+        _timeL.font = [UIFont systemFontOfSize:14];
+        self.lotPeaL = [[UILabel alloc]initWithFrame:CGRectMake(220, 10, 90, 20)];
+        _lotPeaL.font = [UIFont systemFontOfSize:16];
+        [self.contentView addSubview:_lotPeaL];
+    }
+    return self;
+}
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    _sourceL.text = _dataDic[@"source"];
+    _timeL.text = _dataDic[@"createTime"];
+    
+    if ([_dataDic[@"blsign"] intValue]==1) {
+        _lotPeaL.textColor = [UIColor redColor];
+         _lotPeaL.text = [NSString stringWithFormat:@"+%@个",_dataDic[@"lotPea"]];
+    }
+    if ([_dataDic[@"blsign"] intValue]==-1) {
+        _lotPeaL.textColor = [UIColor greenColor];
+        _lotPeaL.text = [NSString stringWithFormat:@"-%@个",_dataDic[@"lotPea"]];
+    }
+    
+}
+- (void)dealloc
+{
+    [_dataDic release];
+    [_sourceL release];
+    [_timeL release];
+    [_lotPeaL release];
+    [super dealloc];
+}
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    
+    // Configure the view for the selected state
+}
+@end
+
 @interface QueryCaidouBalanceViewController ()<UITableViewDataSource,CustomSegmentedControlDelegate>
 {
     int curPageIndex;
@@ -56,17 +113,17 @@
     CustomSegmentedControl*segmentView = [[[CustomSegmentedControl alloc]
                          initWithFrame:CGRectMake(5, 5, 310, 30)
                          andNormalImages:[NSArray arrayWithObjects:
-                                          @"zhmx_qb_normal.png",
-                                          @"zhmx_cz_normal.png",
-                                          @"zhmx_tx_normal.png",nil]
+                                          @"pea_all_normal.png",
+                                          @"pea_get_normal.png",
+                                          @"pea_consume_normal.png",nil]
                          andHighlightedImages:[NSArray arrayWithObjects:
-                                               @"zhmx_qb_normal.png",
-                                               @"zhmx_cz_normal.png",
-                                               @"zhmx_tx_normal.png",nil]
+                                               @"pea_all_normal.png",
+                                               @"pea_get_normal.png",
+                                               @"pea_consume_normal.png",nil]
                          andSelectImage:[NSArray arrayWithObjects:
-                                         @"zhmx_qb_click.png",
-                                         @"zhmx_cz_cilck.png",
-                                         @"zhmx_tx_click.png",nil]]autorelease];
+                                         @"pea_all_highlight.png",
+                                         @"pea_get_highlight.png",
+                                         @"pea_consume_highlight",nil]]autorelease];
     segmentView.delegate = self;
     [self.view addSubview:segmentView];
     
@@ -107,6 +164,7 @@
     _tableV.hidden = YES;
     [self.view addSubview:_tableV];
     _tableV.dataSource = self;
+    _tableV.rowHeight = 60;
     [_tableV release];
 }
 
@@ -141,13 +199,13 @@
     curPageIndex = 0;
     switch (index) {
         case 0:
-            self.repustStr = @"detail";
+            self.repustStr = nil;
             break;
         case 1:
-            self.repustStr = @"detail";
+            self.repustStr = @"add";
             break;
         case 2:
-            self.repustStr = @"detail";
+            self.repustStr = @"cut";
             break;
         default:
             break;
@@ -170,11 +228,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"cellIdentifiertypetwo";
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    CaidouCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (nil == cell){
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell = [[[CaidouCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
     }
-    cell.textLabel.text =((NSDictionary*)_dataArray[indexPath.row])[@"lotPea"];
+    cell.dataDic =_dataArray[indexPath.row];
     return cell;
 }
 @end
