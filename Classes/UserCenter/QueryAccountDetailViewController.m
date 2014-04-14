@@ -108,23 +108,20 @@
     self.segmentView = [[[CustomSegmentedControl alloc]
                          initWithFrame:CGRectMake(5, 5, 310, 30)
                          andNormalImages:[NSArray arrayWithObjects:
-                                          @"zhmx_qb_normal.png",
-                                          @"zhmx_cz_normal.png",
-                                          @"zhmx_zf_normal.png",
-                                          @"zhmx_pj_normal.png",
-                                          @"zhmx_tx_normal.png",nil]
+                                          @"prize_all_normal",
+                                          @"prize_duihuan_normal",
+                                          @"prize_zhongjiang_normal",
+                                          @"prize_tixian_normal",nil]
                          andHighlightedImages:[NSArray arrayWithObjects:
-                                               @"zhmx_qb_normal.png",
-                                               @"zhmx_cz_normal.png",
-                                               @"zhmx_zf_normal.png",
-                                               @"zhmx_pj_normal.png",
-                                               @"zhmx_tx_normal.png",nil]
+                                               @"prize_all_normal",
+                                               @"prize_duihuan_normal",
+                                               @"prize_zhongjiang_normal",
+                                               @"prize_tixian_normal",nil]
                          andSelectImage:[NSArray arrayWithObjects:
-                                         @"zhmx_qb_click.png",
-                                         @"zhmx_cz_cilck.png",
-                                         @"zhmx_zf_click.png",
-                                         @"zhmx_pj_click.png",
-                                         @"zhmx_tx_click.png",nil]]autorelease];
+                                         @"prize_all_highlight",
+                                         @"prize_duihuan_highlight",
+                                         @"prize_zhongjiang_highlight",
+                                         @"prize_tixian_highlight",nil]]autorelease];
     self.segmentView.delegate = self;
     [self.view addSubview:_segmentView];
     

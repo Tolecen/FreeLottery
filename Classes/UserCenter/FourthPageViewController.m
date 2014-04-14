@@ -156,7 +156,7 @@
     }
     
     //区内容数组和cell标题数组创建
-     self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"账户提现|yhzx_zhtx_icon.png",@"账户明细|yhzx_zhmx_icon.png", @"彩豆明细|yhzx_caidou_icon.png",@"消息中心|yhzx_message_icon.png",nil];
+     self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"奖金提现|yhzx_zhtx_icon.png",@"奖金明细|yhzx_zhmx_icon.png", @"彩豆明细|yhzx_caidou_icon.png",@"消息中心|yhzx_message_icon.png",nil];
    
     if (m_tableView)
     {
@@ -475,7 +475,7 @@
 - (void)setUpTopView
 {
     
-    UIImageView *topPhotoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topPhoto_c_Image.png"]];
+    UIImageView *topPhotoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"caishen_icon"]];
     topPhotoImage.frame = CGRectMake(10, 10, 80, 80);
     [self.loginTopView addSubview:topPhotoImage];
     [topPhotoImage release];
@@ -554,7 +554,7 @@
     m_isBindCertid = [[UIButton alloc] initWithFrame:CGRectMake(30, 92,110, 30)];
     [m_isBindCertid setBackgroundColor:[UIColor clearColor]];
     [m_isBindCertid setTitle:@"未绑定身份证" forState:UIControlStateNormal];
-    m_isBindCertid.titleLabel.font = [UIFont systemFontOfSize:16];
+    m_isBindCertid.titleLabel.font = [UIFont systemFontOfSize:14];
     
     [m_isBindCertid addTarget:self action:@selector(setUpBindCertId) forControlEvents:UIControlEventTouchUpInside];
     
@@ -566,7 +566,7 @@
     m_isBindPhone = [[UIButton alloc] initWithFrame:CGRectMake(167, 92, 110, 30)];
     [m_isBindPhone setBackgroundColor:[UIColor clearColor]];
     [m_isBindPhone setTitle:@"未绑定手机号" forState:UIControlStateNormal];
-    m_isBindPhone.titleLabel.font = [UIFont systemFontOfSize:16];
+    m_isBindPhone.titleLabel.font = [UIFont systemFontOfSize:14];
     
     [m_isBindPhone addTarget:self action:@selector(setUpBindPhone) forControlEvents:UIControlEventTouchUpInside];
     
@@ -576,12 +576,12 @@
     [self.loginTopView addSubview:m_isBindPhone];
     
     self.idCardimage = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_ncert"]] autorelease];
-    m_idCardimage.frame = CGRectMake(10, 97, 18, 18);
+    m_idCardimage.frame = CGRectMake(15, 97, 15, 18);
     [m_loginTopView addSubview:m_idCardimage];
     [m_idCardimage release];
     
     self.idPhoneimage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_nphone"]];
-    m_idPhoneimage.frame = CGRectMake(152, 97, 18, 18);
+    m_idPhoneimage.frame = CGRectMake(157, 97, 15, 18);
     [m_loginTopView addSubview:m_idPhoneimage];
     [m_idPhoneimage release];
     

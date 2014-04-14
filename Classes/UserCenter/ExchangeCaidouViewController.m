@@ -13,6 +13,7 @@
 @interface ExchangeCaidouViewController ()
 @property (nonatomic,retain)UILabel * caidouNoL;
 @property (nonatomic,retain)UILabel * jiangjinNoL;
+@property (nonatomic,retain)UITextField * textF;
 @end
 
 @implementation ExchangeCaidouViewController
@@ -27,6 +28,7 @@
 }
 - (void)dealloc
 {
+    [_textF release];
     [_caidouStr release];
     [_jiangjinStr release];
     [_caidouNoL release];
@@ -76,11 +78,16 @@
     [self.view addSubview:guizeL];
     [guizeL release];
     
-    UITextField * textF = [[UITextField alloc]initWithFrame:CGRectMake(120, 130, 200, 22)];
-    textF.font = [UIFont systemFontOfSize:14];
-    textF.placeholder = @"输入兑换金额";
-    [self.view addSubview:textF];
-    [textF release];
+    UIImageView* imageV = [[UIImageView alloc]initWithFrame:CGRectMake(110, 125, 150, 30)];
+    imageV.image = [UIImage imageNamed:@"back_groud_img"];
+    [self.view addSubview:imageV];
+    
+    self.textF = [[UITextField alloc]initWithFrame:CGRectMake(120, 130, 200, 22)];
+    _textF.font = [UIFont systemFontOfSize:14];
+    _textF.placeholder = @"输入兑换金额";
+    _textF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    [self.view addSubview:_textF];
+    [_textF release];
     
     UILabel * tishiL = [[UILabel alloc]initWithFrame:CGRectMake(0, 160, 320, 20)];
     tishiL.font = [UIFont systemFontOfSize:10];
@@ -90,9 +97,11 @@
     [self.view addSubview:tishiL];
     
     UIButton * exchangeB = [UIButton buttonWithType:UIButtonTypeCustom];
+    [exchangeB setBackgroundImage:[UIImage imageNamed:@"tasktodo"] forState:UIControlStateNormal];
     [exchangeB setTitle:@"兑换" forState:UIControlStateNormal];
     exchangeB.frame = CGRectMake(30, 200, 260, 40);
     [self.view addSubview:exchangeB];
+    [exchangeB addTarget:self action:@selector(exchange) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -105,5 +114,13 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)exchange
+{
+    if (0.1>[_textF.text floatValue]||[_textF.text floatValue]>[_jiangjinStr floatValue]) {
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"你造吗,输入的金额应大于0.1小于%.1f", [_jiangjinStr floatValue]] delegate:nil cancelButtonTitle:@"我造了" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
 }
 @end
