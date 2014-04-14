@@ -87,7 +87,7 @@
             [self bindCertid];
             break;
         case NET_APP_CAIDOU_DETAIL:
-            [self queryCaidouDetailOfPage:0 requestType:@"detail"];
+            [self queryCaidouDetailOfPage:0 requestType:nil];
             break;
         default:
             break;
@@ -507,11 +507,18 @@
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
     [mDict setObject:@"lotPea" forKey:@"command"];
-    [mDict setObject:type forKey:@"requestType"];
+    [mDict setObject:@"detail" forKey:@"requestType"];
     [mDict setObject:self.userno forKey:@"userno"];
     [mDict setObject:[NSString stringWithFormat:@"%d", pageIndex] forKey:@"pageindex"];
-    [mDict setObject:@"10" forKey:@"maxresult"];
-    
+    [mDict setObject:@"7" forKey:@"maxresult"];
+    if (type) {
+        if ([type isEqualToString:@"add"]) {
+            [mDict setObject:@"1" forKey:@"blsign"];
+        }
+        if ([type isEqualToString:@"cut"]) {
+            [mDict setObject:@"-1" forKey:@"blsign"];
+        }
+    }
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
     [jsonWriter release];
