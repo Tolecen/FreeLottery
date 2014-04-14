@@ -85,7 +85,7 @@
     self.textF = [[UITextField alloc]initWithFrame:CGRectMake(120, 130, 200, 22)];
     _textF.font = [UIFont systemFontOfSize:14];
     _textF.placeholder = @"输入兑换金额";
-    _textF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    _textF.keyboardType = UIKeyboardTypeDecimalPad;
     [self.view addSubview:_textF];
     [_textF release];
     
