@@ -15,12 +15,14 @@
 #import "RuYiCaiCommon.h"
 #import "ActivityView.h"
 @class RuYiCaiAppDelegate;
-@interface ActivitiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface ActivitiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 {
     RuYiCaiAppDelegate  *m_delegate;
     NSMutableArray * typeArray;
     
     NSMutableArray * actsArray;
+//    NSString * timeStr;
 }
 @property(nonatomic, retain)UITableView * listTableV;
+@property(nonatomic, retain)NSString * timeStr;
 @end

@@ -14,8 +14,10 @@
 @synthesize progressLabel;
 @synthesize imgV;
 @synthesize timeLabel;
+@synthesize statusImgV;
 -(void)dealloc
 {
+    [self.statusImgV release];
     [self.nameLabel release];
     [self.tLabel release];
     [self.progressLabel release];
@@ -57,6 +59,10 @@
         [self.timeLabel setFont:[UIFont systemFontOfSize:14]];
         [self.timeLabel setAdjustsFontSizeToFitWidth:YES];
         [self.contentView addSubview:self.timeLabel];
+        
+        self.statusImgV = [[UIImageView alloc] initWithFrame:CGRectMake(245, 14, 62.5, 51)];
+        [self.contentView addSubview:self.statusImgV];
+        
 
 
     }

@@ -14,6 +14,7 @@
 
 @implementation ActivitiesViewController
 @synthesize listTableV;
+@synthesize timeStr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,9 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSDictionary * actoneDict = [NSDictionary dictionaryWithObjectsAndKeys:@"新手任务:累计赚取5000彩豆，即送500彩豆",@"actDescribe",@"no",@"actName",@"4000/5000",@"progress",@"3245678900",@"experTime",@"1",@"type", nil];
-    NSDictionary * actTwoDict = [NSDictionary dictionaryWithObjectsAndKeys:@"每日签到，即送彩豆",@"actDescribe",@"每日签到",@"actName",@"1",@"status", @"2",@"type",nil];
-    NSDictionary * actThreeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"给我5星好评，送彩豆哦",@"actDescribe",@"五星好评，送彩豆",@"actName",@"1",@"ststus",@"3",@"type", nil];
+    NSDictionary * actoneDict = [NSDictionary dictionaryWithObjectsAndKeys:@"新手任务:累计赚取5000彩豆，即送500彩豆",@"actDescribe",@"no",@"actName",@"4000/5000",@"progress",@"1397559130",@"experTime",@"1",@"type",@"1",@"status", nil];
+    NSDictionary * actTwoDict = [NSDictionary dictionaryWithObjectsAndKeys:@"每日签到，即送彩豆",@"actDescribe",@"每日签到",@"actName",@"-1",@"status", @"2",@"type",nil];
+    NSDictionary * actThreeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"给我5星好评，送彩豆哦",@"actDescribe",@"五星好评，送彩豆",@"actName",@"-1",@"status",@"3",@"type", nil];
     actsArray = [[NSMutableArray alloc] initWithObjects:actoneDict,actTwoDict,actThreeDict, nil];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -63,6 +64,40 @@
     [self.view addSubview:self.listTableV];
 	// Do any additional setup after loading the view.
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+//    NSTimeInterval hhh = [[NSDate date] timeIntervalSince1970];
+//    NSLog(@"nowTime:%f",hhh);
+    NSString * sss = [actsArray[0] objectForKey:@"experTime"];
+    if (sss) {
+        [self calRemainingTime:sss];
+    }
+    [self.listTableV reloadData];
+    
+}
+-(void)calRemainingTime:(NSString *)remainTime
+{
+    NSTimeInterval hhh = [[NSDate date] timeIntervalSince1970];
+    NSString * endTimeStr = remainTime;//剩余秒数
+    double leftTime = [endTimeStr doubleValue] - hhh;
+	if (leftTime > 0)
+	{
+        int numDay = (int)(leftTime / (3600.0 * 24));
+        leftTime -= numDay *(3600*24);
+        int numHour = (int)(leftTime / 3600.0);
+        leftTime -= numHour * 3600.0;
+	    int numMinute = (int)(leftTime / 60.0);
+		leftTime -= numMinute * 60.0;
+        //		int numSecond = (int)(leftTime);
+        if (numDay>0) {
+            self.timeStr = [NSString stringWithFormat:@"%02d天%02d时%02d分",numDay,numHour, numMinute];
+        }
+        else
+            self.timeStr = [NSString stringWithFormat:@"%02d时%02d分",
+                   numHour, numMinute];
+    }
+
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return 3;
@@ -78,7 +113,31 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.nameLabel.text = [actV objectForKey:@"actDescribe"];
         cell.progressLabel.text = [actV objectForKey:@"progress"];
-        
+        if ([[actV objectForKey:@"status"] isEqualToString:@"0"]) {
+            cell.tLabel.textColor = [UIColor grayColor];
+            cell.nameLabel.textColor = [UIColor grayColor];
+            cell.progressLabel.textColor = [UIColor grayColor];
+            cell.timeLabel.textColor = [UIColor grayColor];
+            cell.timeLabel.text = @" ";
+            [cell.statusImgV setImage:[UIImage imageNamed:@"taskcompleted"]];
+        }
+        else if ([[actV objectForKey:@"status"] isEqualToString:@"-1"]) {
+            cell.tLabel.textColor = [UIColor grayColor];
+            cell.nameLabel.textColor = [UIColor grayColor];
+            cell.progressLabel.textColor = [UIColor grayColor];
+            cell.timeLabel.textColor = [UIColor grayColor];
+            cell.timeLabel.text = @" ";
+            [cell.statusImgV setImage:[UIImage imageNamed:@"taskexpired"]];
+        }
+        else
+        {
+            cell.tLabel.textColor = [UIColor redColor];
+            cell.nameLabel.textColor = [UIColor blackColor];
+            cell.progressLabel.textColor = [UIColor redColor];
+            cell.timeLabel.textColor = [UIColor grayColor];
+            cell.timeLabel.text = self.timeStr;
+            [cell.statusImgV setImage:nil];
+        }
         return cell;
     }
     else{
@@ -91,6 +150,7 @@
         cell.nameLabel.text = [actV objectForKey:@"actName"];
         cell.descriptionLabel.text = [actV objectForKey:@"actDescribe"];
         if ([[actV objectForKey:@"type"] isEqualToString:@"2"]) {
+            
             [cell.doitBtn setTitle:@"立刻签到" forState:UIControlStateNormal];
             [cell.doitBtn addTarget:self action:@selector(doQianDao) forControlEvents:UIControlEventTouchUpInside];
         }
@@ -99,11 +159,34 @@
             [cell.doitBtn setTitle:@"立刻好评" forState:UIControlStateNormal];
             [cell.doitBtn addTarget:self action:@selector(toCommentInAppStore) forControlEvents:UIControlEventTouchUpInside];
         }
-        
+        if ([[actV objectForKey:@"status"] isEqualToString:@"0"]) {
+            cell.nameLabel.textColor = [UIColor grayColor];
+            cell.doitBtn.hidden = YES;
+            [cell.statusImgV setImage:[UIImage imageNamed:@"taskcompleted"]];
+        }
+        else if ([[actV objectForKey:@"status"] isEqualToString:@"-1"]) {
+            cell.nameLabel.textColor = [UIColor grayColor];
+            cell.doitBtn.hidden = YES;
+            [cell.statusImgV setImage:[UIImage imageNamed:@"taskexpired"]];
+        }
+        else
+        {
+            cell.nameLabel.textColor = [UIColor blackColor];
+            cell.doitBtn.hidden = NO;
+            [cell.statusImgV setImage:nil];
+        }
         return cell;
     }
     
     
+}
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSString * sss = [actsArray[0] objectForKey:@"experTime"];
+    if (sss) {
+        [self calRemainingTime:sss];
+    }
+    [self.listTableV reloadData];
 }
 -(void)doQianDao
 {

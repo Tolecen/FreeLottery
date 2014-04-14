@@ -13,8 +13,10 @@
 @synthesize nameLabel;
 @synthesize descriptionLabel;
 @synthesize doitBtn;
+@synthesize statusImgV;
 -(void)dealloc
 {
+    [self.statusImgV release];
     [self.imageV release];
     [self.nameLabel release];
     [self.descriptionLabel release];
@@ -48,6 +50,9 @@
         [self.doitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.doitBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [self.contentView addSubview:self.doitBtn];
+        
+        self.statusImgV = [[UIImageView alloc] initWithFrame:CGRectMake(245, 14, 62.5, 51)];
+        [self.contentView addSubview:self.statusImgV];
     }
     return self;
 }
