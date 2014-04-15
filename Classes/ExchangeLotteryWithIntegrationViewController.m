@@ -11,7 +11,7 @@
 #import "UINavigationBarCustomBg.h"
 #import "BackBarButtonItemUtils.h"
 #import "ADWallViewController.h"
-
+#import <objc/runtime.h>
 @interface ExchangeLotteryWithIntegrationViewController ()
 
 @end
@@ -21,6 +21,7 @@
 @synthesize adView_adWall;
 @synthesize theUserID;
 @synthesize shouldShowTabbar;
+//@synthesize rtbAdWall;
 
 -(void)didReceiveGetScoreResult:(int)point
 {
@@ -111,6 +112,7 @@
     //            [self EScoreWallInit];
                 [self LiMeiAdWallInit];
                 [self midiInit];
+//                [self AdviewAdWallInit];
             }
 //            AdWallHaveInit = YES;
             previousUserno = [self.theUserID mutableCopy];
@@ -202,6 +204,7 @@
         //            [self EScoreWallInit];
         [self LiMeiAdWallInit];
         [self midiInit];
+//        [self AdviewAdWallInit];
     }
 
     previousUserno = [self.theUserID mutableCopy];
@@ -212,6 +215,7 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [bgv release];
     }
+//    [self.rtbAdWall release];
     _offerWallController.delegate = nil;
     [_offerWallController release];
     _offerWallController = nil;
@@ -244,8 +248,15 @@
     //    self.navigationItem.title = @"积分换彩";
 
     float h = [UIScreen mainScreen].bounds.size.height;
-    
-    self.listTableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, h-44-50-20) style:UITableViewStylePlain];
+    float tabbarH = 0;
+    if (self.shouldShowTabbar) {
+        tabbarH = 50;
+    }
+    else
+        tabbarH = 0;
+    self.listTableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, h-44-tabbarH-20) style:UITableViewStylePlain];
+    if (self.shouldShowTabbar) {
+    }
     self.listTableV.delegate = self;
     self.listTableV.dataSource = self;
     self.listTableV.rowHeight = 68;
@@ -462,6 +473,12 @@
             
         }
             break;
+//        case 6:
+//        {
+//            [self showAdviewWall];
+//            
+//        }
+//            break;
             
         default:
             break;
@@ -791,8 +808,27 @@
     
 }
 
-
-
+//-(void)AdviewAdWallInit
+//{
+//    self.rtbAdWall = [[RTBWall alloc]initWithAppID:AdViewKey andDelegate:self];
+//}
+//
+//-(void)showAdviewWall
+//{
+////    int num = arc4random()%6;
+//    
+//    [self.rtbAdWall setRTBWallColor:RTBWallThemeColor_Red];
+//    [self.rtbAdWall setRTBWallModel:YES];
+//    [self.rtbAdWall showRTBWallWithController:self];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+//}
+//
+//-(void)rtbWallDidDismissScreen:(UIViewController *)adWall
+//{
+//    if (self.shouldShowTabbar) {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+//    }
+//}
 
 
 -(void)backAction:(UIButton * )button{

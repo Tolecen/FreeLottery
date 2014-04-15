@@ -24,7 +24,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        UIImageView *lineImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 79, 320, 1)];
+        UIImageView *lineImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 64, 320, 1)];
         [lineImgView setImage:[UIImage imageNamed:@"gou_cai_da_ting_cell_separator.png"]];
         [self.contentView addSubview:lineImgView];
         [lineImgView release];
