@@ -3951,6 +3951,11 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"notEnoughMoney" object:nil];
 
     }
+    else if([errorCode isEqualToString:@"1113"])//彩豆余额不足
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notEnoughMoney" object:nil];
+        
+    }
     else if([errorCode isEqualToString:@"1001"])//过期处理
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"betOutTime" object:[parserDict objectForKey:@"batchcode"]];

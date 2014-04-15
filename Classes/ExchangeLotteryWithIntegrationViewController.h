@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import "RTBWall.h"
 #import <iAd/iAd.h>
 #import "iAd/ADBannerView.h"
 #import "ThirdPageTabelCellView.h"
@@ -38,6 +39,7 @@
 #import "MiidiAdDesc.h"
 #import "MiidiAdWall.h"
 
+
 #define LiMeiAdID     @"2ccba7d7614fbdc10c1c532c822205ca"
 #define YouMiAdWallPublishID  @"1915de8d0608f33f"
 #define YouMiAdWallSecret  @"92e33e961d5789c0"
@@ -49,6 +51,7 @@
 #define DuoMengPublisherID   @"96ZJ21XAzePizwTAUd"
 #define MiidiPublisher       @"17140"
 #define MiidiAppSecret       @"37spm32qxkrsxn90"
+//#define AdViewKey      @"RTB20140915090425fqfoawfedeh48n9"
 
 
 
@@ -79,6 +82,7 @@
 @property(nonatomic, assign)BOOL isShowTabBar;
 @property(nonatomic, retain)UITableView * listTableV;
 @property(nonatomic, retain)NSString * theUserID;
+//@property(nonatomic, retain)RTBWall * rtbAdWall; //Adview
 @property (nonatomic) BOOL isShowBackButton;
 @property (nonatomic,assign) BOOL shouldShowTabbar;
 

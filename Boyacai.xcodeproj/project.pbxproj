@@ -1128,13 +1128,6 @@
 		72A2335618F69C3600155684 /* ExchangeCaidouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */; };
 		72BC605B18F53DD60002B217 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC605A18F53DD60002B217 /* immobSDK.framework */; };
 		72BC606418F53E390002B217 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72BC606218F53E390002B217 /* DomobOfferWallBundle.bundle */; };
-		72BC606518F53E390002B217 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC606318F53E390002B217 /* libDomobOfferWallSDK.a */; };
-		72BC606918F53E780002B217 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC606718F53E780002B217 /* libMobClickLibrary.a */; };
-		72BC607518F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC606B18F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a */; };
-		72BC607618F53EAE0002B217 /* RespForWeChatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 72BC606D18F53EAE0002B217 /* RespForWeChatViewController.mm */; };
-		72BC607718F53EAE0002B217 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BC606F18F53EAE0002B217 /* TextViewController.m */; };
-		72BC607818F53EAE0002B217 /* WeiXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BC607118F53EAE0002B217 /* WeiXinViewController.m */; };
-		72BC607918F53EAE0002B217 /* WeiXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BC607218F53EAE0002B217 /* WeiXinViewController.xib */; };
 		72BC607B18F53F2D0002B217 /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC607A18F53F2D0002B217 /* libYouMi.a */; };
 		72BC607E18F5402B0002B217 /* QueryCaidouBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */; };
 		72C52F1C18FB813400AC2763 /* pea_all_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C52F1618FB813400AC2763 /* pea_all_highlight.png */; };
@@ -1167,6 +1160,14 @@
 		9704B23C18DAA16300588D91 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9704B23B18DAA16300588D91 /* iAd.framework */; };
 		9704B23F18DACC4E00588D91 /* deletenewop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704B23E18DACC4E00588D91 /* deletenewop.png */; };
 		9704B24118DAD4CA00588D91 /* adbanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704B24018DAD4CA00588D91 /* adbanner.png */; };
+		971653E918FCDAD900AA40C3 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 971653E818FCDAD900AA40C3 /* libDomobOfferWallSDK.a */; };
+		971653EB18FCDAF700AA40C3 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 971653EA18FCDAF700AA40C3 /* libMobClickLibrary.a */; };
+		971653F718FCDB3E00AA40C3 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 971653ED18FCDB3E00AA40C3 /* libWeChatSDK_armv7_armv7s.a */; };
+		971653F818FCDB3E00AA40C3 /* RespForWeChatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 971653EF18FCDB3E00AA40C3 /* RespForWeChatViewController.mm */; };
+		971653F918FCDB3E00AA40C3 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971653F118FCDB3E00AA40C3 /* TextViewController.m */; };
+		971653FA18FCDB3E00AA40C3 /* WeiXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971653F318FCDB3E00AA40C3 /* WeiXinViewController.m */; };
+		971653FB18FCDB3E00AA40C3 /* WeiXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 971653F418FCDB3E00AA40C3 /* WeiXinViewController.xib */; };
+		9716547D18FCDBB900AA40C3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716547C18FCDBB900AA40C3 /* CoreText.framework */; };
 		973A8C3418CD92A800E8D36F /* OtherActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 973A8C3318CD92A800E8D36F /* OtherActivityViewController.m */; };
 		973A8C3818CD9EBB00E8D36F /* ASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 973A8C3718CD9EBB00E8D36F /* ASettingViewController.m */; };
 		973A8C3C18CDC27F00E8D36F /* commonQuestion.txt in Resources */ = {isa = PBXBuildFile; fileRef = 973A8C3B18CDC27F00E8D36F /* commonQuestion.txt */; };
@@ -2877,19 +2878,7 @@
 		72BC605F18F53E390002B217 /* DMOfferWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferWallViewController.h; sourceTree = "<group>"; };
 		72BC606018F53E390002B217 /* DMVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVideoViewController.h; sourceTree = "<group>"; };
 		72BC606218F53E390002B217 /* DomobOfferWallBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DomobOfferWallBundle.bundle; sourceTree = "<group>"; };
-		72BC606318F53E390002B217 /* libDomobOfferWallSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDomobOfferWallSDK.a; sourceTree = "<group>"; };
-		72BC606718F53E780002B217 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		72BC606818F53E780002B217 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
-		72BC606B18F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
-		72BC606C18F53EAE0002B217 /* RespForWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespForWeChatViewController.h; sourceTree = "<group>"; };
-		72BC606D18F53EAE0002B217 /* RespForWeChatViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RespForWeChatViewController.mm; sourceTree = "<group>"; };
-		72BC606E18F53EAE0002B217 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
-		72BC606F18F53EAE0002B217 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
-		72BC607018F53EAE0002B217 /* WeiXinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiXinViewController.h; sourceTree = "<group>"; };
-		72BC607118F53EAE0002B217 /* WeiXinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiXinViewController.m; sourceTree = "<group>"; };
-		72BC607218F53EAE0002B217 /* WeiXinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiXinViewController.xib; sourceTree = "<group>"; };
-		72BC607318F53EAE0002B217 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		72BC607418F53EAE0002B217 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		72BC607A18F53F2D0002B217 /* libYouMi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYouMi.a; sourceTree = "<group>"; };
 		72BC607C18F5402B0002B217 /* QueryCaidouBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryCaidouBalanceViewController.h; sourceTree = "<group>"; };
 		72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryCaidouBalanceViewController.m; sourceTree = "<group>"; };
@@ -2924,6 +2913,19 @@
 		9704B23B18DAA16300588D91 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		9704B23E18DACC4E00588D91 /* deletenewop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletenewop.png; sourceTree = "<group>"; };
 		9704B24018DAD4CA00588D91 /* adbanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adbanner.png; sourceTree = "<group>"; };
+		971653E818FCDAD900AA40C3 /* libDomobOfferWallSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDomobOfferWallSDK.a; sourceTree = "<group>"; };
+		971653EA18FCDAF700AA40C3 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		971653ED18FCDB3E00AA40C3 /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
+		971653EE18FCDB3E00AA40C3 /* RespForWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespForWeChatViewController.h; sourceTree = "<group>"; };
+		971653EF18FCDB3E00AA40C3 /* RespForWeChatViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RespForWeChatViewController.mm; sourceTree = "<group>"; };
+		971653F018FCDB3E00AA40C3 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		971653F118FCDB3E00AA40C3 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		971653F218FCDB3E00AA40C3 /* WeiXinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiXinViewController.h; sourceTree = "<group>"; };
+		971653F318FCDB3E00AA40C3 /* WeiXinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiXinViewController.m; sourceTree = "<group>"; };
+		971653F418FCDB3E00AA40C3 /* WeiXinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiXinViewController.xib; sourceTree = "<group>"; };
+		971653F518FCDB3E00AA40C3 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		971653F618FCDB3E00AA40C3 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		9716547C18FCDBB900AA40C3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		973A8C3218CD92A800E8D36F /* OtherActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherActivityViewController.h; sourceTree = "<group>"; };
 		973A8C3318CD92A800E8D36F /* OtherActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherActivityViewController.m; sourceTree = "<group>"; };
 		973A8C3618CD9EBB00E8D36F /* ASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASettingViewController.h; sourceTree = "<group>"; };
@@ -3533,14 +3535,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9716547D18FCDBB900AA40C3 /* CoreText.framework in Frameworks */,
+				D52F32F0153D2B070057651F /* AudioToolbox.framework in Frameworks */,
 				9704B23C18DAA16300588D91 /* iAd.framework in Frameworks */,
-				72BC607518F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 				651FFD40175737CD002CA9B0 /* Security.framework in Frameworks */,
 				28A65EF61805B4E900DDA635 /* AdSupport.framework in Frameworks */,
 				C5F3838413E5B4EC00F2971A /* SystemConfiguration.framework in Frameworks */,
 				D577D02C14920CA300A4426E /* MessageUI.framework in Frameworks */,
-				72BC606518F53E390002B217 /* libDomobOfferWallSDK.a in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				971653E918FCDAD900AA40C3 /* libDomobOfferWallSDK.a in Frameworks */,
 				D5F0BE5A14A31E0C0070B79B /* QuartzCore.framework in Frameworks */,
 				D5DBCD101592C3E600213B4B /* AVFoundation.framework in Frameworks */,
 				977A72D918C0760C007DE71B /* CoreMedia.framework in Frameworks */,
@@ -3554,18 +3557,17 @@
 				289D6224174E169A00FBB45A /* MobileCoreServices.framework in Frameworks */,
 				977A71F218C0319F007DE71B /* MediaPlayer.framework in Frameworks */,
 				977A71F018C03192007DE71B /* MapKit.framework in Frameworks */,
-				72BC606918F53E780002B217 /* libMobClickLibrary.a in Frameworks */,
 				977A71EE18C0318A007DE71B /* EventKitUI.framework in Frameworks */,
 				977A71EC18C0315B007DE71B /* EventKit.framework in Frameworks */,
 				2825F2C217F71F8D00AE612E /* CoreTelephony.framework in Frameworks */,
 				977A71EA18C0314C007DE71B /* CoreLocation.framework in Frameworks */,
 				C5F3830513E5B02700F2971A /* CFNetwork.framework in Frameworks */,
 				72BC607B18F53F2D0002B217 /* libYouMi.a in Frameworks */,
-				D52F32F0153D2B070057651F /* AudioToolbox.framework in Frameworks */,
 				2825F2C617F71FD000AE612E /* libz.dylib in Frameworks */,
 				2825F2CB17F721AB00AE612E /* TencentOpenAPI.framework in Frameworks */,
 				2825F2C417F71FAB00AE612E /* libstdc++.dylib in Frameworks */,
 				28ABC795173CFCCE00C6D109 /* libiconv.2.dylib in Frameworks */,
+				971653EB18FCDAF700AA40C3 /* libMobClickLibrary.a in Frameworks */,
 				D551BB3E1616D98F0033EACC /* libxml2.2.dylib in Frameworks */,
 				D5DD0054148F03C400BD32A3 /* AddressBook.framework in Frameworks */,
 				977A72C918C06EB2007DE71B /* Escore.framework in Frameworks */,
@@ -3573,6 +3575,7 @@
 				973E5EA618D7E2BE00935BFE /* MiidiAdLib.a in Frameworks */,
 				D5DD0056148F03C400BD32A3 /* AddressBookUI.framework in Frameworks */,
 				6590BDE81758445D0025E5AD /* libcrypto.a in Frameworks */,
+				971653F718FCDB3E00AA40C3 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 				6590BDE91758445D0025E5AD /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3938,6 +3941,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9716547C18FCDBB900AA40C3 /* CoreText.framework */,
 				9704B23B18DAA16300588D91 /* iAd.framework */,
 				977A72D818C0760C007DE71B /* CoreMedia.framework */,
 				977A72CA18C06F18007DE71B /* ImageIO.framework */,
@@ -5596,8 +5600,8 @@
 				72BC605E18F53E390002B217 /* DMOfferWallManagerDelegate.h */,
 				72BC605F18F53E390002B217 /* DMOfferWallViewController.h */,
 				72BC606018F53E390002B217 /* DMVideoViewController.h */,
+				971653E818FCDAD900AA40C3 /* libDomobOfferWallSDK.a */,
 				72BC606118F53E390002B217 /* DomobOfferWallBundle */,
-				72BC606318F53E390002B217 /* libDomobOfferWallSDK.a */,
 			);
 			path = DMOfferWallSDK;
 			sourceTree = "<group>";
@@ -5613,25 +5617,25 @@
 		72BC606618F53E780002B217 /* UMENGPlug */ = {
 			isa = PBXGroup;
 			children = (
-				72BC606718F53E780002B217 /* libMobClickLibrary.a */,
+				971653EA18FCDAF700AA40C3 /* libMobClickLibrary.a */,
 				72BC606818F53E780002B217 /* MobClick.h */,
 			);
 			path = UMENGPlug;
 			sourceTree = "<group>";
 		};
-		72BC606A18F53EAE0002B217 /* WeiXin */ = {
+		971653EC18FCDB3E00AA40C3 /* WeiXin */ = {
 			isa = PBXGroup;
 			children = (
-				72BC606B18F53EAE0002B217 /* libWeChatSDK_armv7_armv7s.a */,
-				72BC606C18F53EAE0002B217 /* RespForWeChatViewController.h */,
-				72BC606D18F53EAE0002B217 /* RespForWeChatViewController.mm */,
-				72BC606E18F53EAE0002B217 /* TextViewController.h */,
-				72BC606F18F53EAE0002B217 /* TextViewController.m */,
-				72BC607018F53EAE0002B217 /* WeiXinViewController.h */,
-				72BC607118F53EAE0002B217 /* WeiXinViewController.m */,
-				72BC607218F53EAE0002B217 /* WeiXinViewController.xib */,
-				72BC607318F53EAE0002B217 /* WXApi.h */,
-				72BC607418F53EAE0002B217 /* WXApiObject.h */,
+				971653ED18FCDB3E00AA40C3 /* libWeChatSDK_armv7_armv7s.a */,
+				971653EE18FCDB3E00AA40C3 /* RespForWeChatViewController.h */,
+				971653EF18FCDB3E00AA40C3 /* RespForWeChatViewController.mm */,
+				971653F018FCDB3E00AA40C3 /* TextViewController.h */,
+				971653F118FCDB3E00AA40C3 /* TextViewController.m */,
+				971653F218FCDB3E00AA40C3 /* WeiXinViewController.h */,
+				971653F318FCDB3E00AA40C3 /* WeiXinViewController.m */,
+				971653F418FCDB3E00AA40C3 /* WeiXinViewController.xib */,
+				971653F518FCDB3E00AA40C3 /* WXApi.h */,
+				971653F618FCDB3E00AA40C3 /* WXApiObject.h */,
 			);
 			path = WeiXin;
 			sourceTree = "<group>";
@@ -6895,7 +6899,7 @@
 		D5E9ADFE15A4117300089211 /* ShareFunction */ = {
 			isa = PBXGroup;
 			children = (
-				72BC606A18F53EAE0002B217 /* WeiXin */,
+				971653EC18FCDB3E00AA40C3 /* WeiXin */,
 				D5E9AE1E15A419CA00089211 /* ShareViewController.h */,
 				D5E9AE1F15A419CB00089211 /* ShareViewController.m */,
 				D5E0D36C15A527B50071129C /* TengXun */,
@@ -7357,7 +7361,6 @@
 				522497FE18320393005F7577 /* jcinstantscore_dianqiu.png in Resources */,
 				5224992018320393005F7577 /* back_click.png in Resources */,
 				5224984D18320393005F7577 /* zc_yapan_click.png in Resources */,
-				72BC607918F53EAE0002B217 /* WeiXinViewController.xib in Resources */,
 				5224987A18320393005F7577 /* sxb_c_11.png in Resources */,
 				5224974D18320393005F7577 /* gp_hemai_c_btn.png in Resources */,
 				522496F518320393005F7577 /* Item_3bt_button_normal_image.png in Resources */,
@@ -7406,6 +7409,7 @@
 				5224968918320393005F7577 /* group_down.png in Resources */,
 				522498AF18320393005F7577 /* normal.png in Resources */,
 				976D33E118C87876004E6E82 /* 5.png in Resources */,
+				971653FB18FCDB3E00AA40C3 /* WeiXinViewController.xib in Resources */,
 				D5FFD808152D2CE60021627C /* X11YDJ_PickNumberViewController.xib in Resources */,
 				5224973B18320393005F7577 /* dcgg_c_btn.png in Resources */,
 				5224996718320393005F7577 /* tab2.png in Resources */,
@@ -8258,9 +8262,9 @@
 				D51D4FD015AC2ACF00082BD0 /* ShouYiLvSetViewController.m in Sources */,
 				D5E520A515AD0B3800881C89 /* SetWeiBoViewController.m in Sources */,
 				D501D70115AD7FEC005733FB /* FC3D_PickNumberViewController.m in Sources */,
+				971653F818FCDB3E00AA40C3 /* RespForWeChatViewController.mm in Sources */,
 				52F096401885069C008E90B0 /* ExchangeLotteryWithIntegrationViewController.m in Sources */,
 				D501D70215AD7FEC005733FB /* SSQ_PickNumberViewController.m in Sources */,
-				72BC607718F53EAE0002B217 /* TextViewController.m in Sources */,
 				D501D70715AD805A005733FB /* QLC_PickNumberViewController.m in Sources */,
 				D501D70815AD805A005733FB /* SSC_PickNumberViewController.m in Sources */,
 				D501D71915AD8116005733FB /* PLS_PickNumberViewController.m in Sources */,
@@ -8290,6 +8294,7 @@
 				D5E54E2215AE5BCD003B2924 /* RYCNormalBetView.m in Sources */,
 				D5E54E2315AE5BCD003B2924 /* RYCZCBetView.m in Sources */,
 				D5E54E2D15AE9492003B2924 /* ComputeShouYiLvListViewConreoller.m in Sources */,
+				971653FA18FCDB3E00AA40C3 /* WeiXinViewController.m in Sources */,
 				D5E54E3015AE9A01003B2924 /* ShouYiLvTableViewCell.m in Sources */,
 				D5E54E4B15AFB7F1003B2924 /* SeeDetailTableViewCell.m in Sources */,
 				D5E54E5115AFC29D003B2924 /* QueryLotTrackViewController.m in Sources */,
@@ -8329,7 +8334,6 @@
 				D5E1712815F9868E0003AD65 /* CaipiaoInformationViewController.m in Sources */,
 				D5E1712915F9868E0003AD65 /* NewsViewController.m in Sources */,
 				D5E1712F15F9875F0003AD65 /* DaiLiChargeViewController.m in Sources */,
-				72BC607818F53EAE0002B217 /* WeiXinViewController.m in Sources */,
 				D5E1714115F9DC090003AD65 /* DLT_PickNumberViewController.m in Sources */,
 				D5EF38D515FDBC7B00569C6D /* LoadView.m in Sources */,
 				D5E96505160039BB0025F05B /* KLSF_PickNumberViewController.m in Sources */,
@@ -8423,7 +8427,6 @@
 				28A5445C1741332A007CE553 /* UserInformationAlertView.m in Sources */,
 				28708AB41742532A009AC9C6 /* NSString+MD5Addition.m in Sources */,
 				28708AB51742532A009AC9C6 /* UIDevice+IdentifierAddition.m in Sources */,
-				72BC607618F53EAE0002B217 /* RespForWeChatViewController.mm in Sources */,
 				28708ABC1742534C009AC9C6 /* RankingMainViewController.m in Sources */,
 				28708ABD1742534C009AC9C6 /* RankingOnceViewController.m in Sources */,
 				9745AF8D18CEAEF700510E8F /* DiskViewController.m in Sources */,
@@ -8438,6 +8441,7 @@
 				97FD04BD18E40691008FF2CB /* ActivityTypeOneCell.m in Sources */,
 				289D6211174E154700FBB45A /* ASIDataDecompressor.m in Sources */,
 				289D6212174E154700FBB45A /* ASIDownloadCache.m in Sources */,
+				971653F918FCDB3E00AA40C3 /* TextViewController.m in Sources */,
 				289D6213174E154700FBB45A /* ASICloudFilesCDNRequest.m in Sources */,
 				289D6214174E154700FBB45A /* ASICloudFilesContainer.m in Sources */,
 				28E02D9D1809855600A2C856 /* ZipArchive.mm in Sources */,
@@ -8562,6 +8566,7 @@
 					/Users/wangxr/Desktop/FreeLottery/Classes/GenericClasses/UMENGPlug,
 					/Users/wangxr/Desktop/FreeLottery/Classes/FifthPage/ShareFunction/WeiXin,
 					/Users/wangxr/Desktop/FreeLottery/Classes,
+					/Projects/Boyacai_iphone_quanmin/Classes/RTBWallSDK,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
@@ -8602,6 +8607,7 @@
 					/Users/wangxr/Desktop/FreeLottery/Classes/GenericClasses/UMENGPlug,
 					/Users/wangxr/Desktop/FreeLottery/Classes/FifthPage/ShareFunction/WeiXin,
 					/Users/wangxr/Desktop/FreeLottery/Classes,
+					/Projects/Boyacai_iphone_quanmin/Classes/RTBWallSDK,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
@@ -8625,6 +8631,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
 				SDKROOT = iphoneos;
@@ -8662,6 +8669,7 @@
 					/Users/wangxr/Desktop/FreeLottery/Classes/GenericClasses/UMENGPlug,
 					/Users/wangxr/Desktop/FreeLottery/Classes/FifthPage/ShareFunction/WeiXin,
 					/Users/wangxr/Desktop/FreeLottery/Classes,
+					/Projects/Boyacai_iphone_quanmin/Classes/RTBWallSDK,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
@@ -8685,6 +8693,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
 				SDKROOT = iphoneos;
@@ -8703,6 +8712,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
 				SDKROOT = iphoneos;
