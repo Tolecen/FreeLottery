@@ -47,6 +47,7 @@
     caidouL.font = [UIFont boldSystemFontOfSize:14];
     caidouL.textColor = [UIColor grayColor];
     [self.view addSubview:caidouL];
+    caidouL.backgroundColor = [UIColor clearColor];
     [caidouL release];
     
     self.caidouNoL = [[UILabel alloc]initWithFrame:CGRectMake(60, 20, 100, 20)];
@@ -54,6 +55,7 @@
     _caidouNoL.textColor = [UIColor redColor];
     _caidouNoL.text = _caidouStr;
     [self.view addSubview:_caidouNoL];
+    _caidouNoL.backgroundColor = [UIColor clearColor];
     [_caidouNoL release];
     
     UILabel *jiangjinL = [[UILabel alloc]initWithFrame:CGRectMake(20, 50, 40, 20)];
@@ -61,6 +63,7 @@
     jiangjinL.font = [UIFont boldSystemFontOfSize:14];
     jiangjinL.textColor = [UIColor grayColor];
     [self.view addSubview:jiangjinL];
+    jiangjinL.backgroundColor = [UIColor clearColor];
     [jiangjinL release];
     
     self.jiangjinNoL = [[UILabel alloc]initWithFrame:CGRectMake(60, 50, 100, 20)];
@@ -68,6 +71,7 @@
     _jiangjinNoL.textColor = [UIColor redColor];
     _jiangjinNoL.text = _jiangjinStr;
     [self.view addSubview:_jiangjinNoL];
+    _jiangjinNoL.backgroundColor = [UIColor clearColor];
     [_jiangjinNoL release];
     
     UILabel * guizeL = [[UILabel alloc]initWithFrame:CGRectMake(20, 80, 300, 70)];
@@ -76,11 +80,13 @@
     guizeL.font = [UIFont systemFontOfSize:14];
     guizeL.textColor = [UIColor blackColor];
     [self.view addSubview:guizeL];
+    guizeL.backgroundColor = [UIColor clearColor];
     [guizeL release];
     
     UIImageView* imageV = [[UIImageView alloc]initWithFrame:CGRectMake(110, 125, 150, 30)];
     imageV.image = [UIImage imageNamed:@"back_groud_img"];
     [self.view addSubview:imageV];
+    [imageV release];
     
     self.textF = [[UITextField alloc]initWithFrame:CGRectMake(120, 130, 200, 22)];
     _textF.font = [UIFont systemFontOfSize:14];
@@ -95,6 +101,8 @@
     tishiL.backgroundColor = [UIColor clearColor];
     tishiL.text = [NSString stringWithFormat:@"输入的金额应为不小于0.1元,且不大于%@,最小单位到角",_jiangjinStr];
     [self.view addSubview:tishiL];
+    tishiL.backgroundColor = [UIColor clearColor];
+    [tishiL release];
     
     UIButton * exchangeB = [UIButton buttonWithType:UIButtonTypeCustom];
     [exchangeB setBackgroundImage:[UIImage imageNamed:@"tasktodo"] forState:UIControlStateNormal];

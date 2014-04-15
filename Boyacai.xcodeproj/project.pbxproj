@@ -1125,6 +1125,7 @@
 		6FF96FB7163E715D0031F2A1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FB6163E715D0031F2A1 /* JSONKit.m */; };
 		726ADAF718F788C3007624AD /* exchange-click.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF518F788C3007624AD /* exchange-click.png */; };
 		726ADAF818F788C3007624AD /* exchange-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF618F788C3007624AD /* exchange-normal.png */; };
+		7276665218FCCB98006DB950 /* ActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7276665118FCCB98006DB950 /* ActionView.m */; };
 		72A2335618F69C3600155684 /* ExchangeCaidouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */; };
 		72BC605B18F53DD60002B217 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC605A18F53DD60002B217 /* immobSDK.framework */; };
 		72BC606418F53E390002B217 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72BC606218F53E390002B217 /* DomobOfferWallBundle.bundle */; };
@@ -2869,6 +2870,8 @@
 		6FF96FB6163E715D0031F2A1 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		726ADAF518F788C3007624AD /* exchange-click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-click.png"; sourceTree = "<group>"; };
 		726ADAF618F788C3007624AD /* exchange-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-normal.png"; sourceTree = "<group>"; };
+		7276665018FCCB98006DB950 /* ActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionView.h; sourceTree = "<group>"; };
+		7276665118FCCB98006DB950 /* ActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionView.m; sourceTree = "<group>"; };
 		72A2335418F69C3600155684 /* ExchangeCaidouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeCaidouViewController.h; sourceTree = "<group>"; };
 		72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeCaidouViewController.m; sourceTree = "<group>"; };
 		72BC605A18F53DD60002B217 /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
@@ -5166,6 +5169,8 @@
 				52F0963F1885069C008E90B0 /* ExchangeLotteryWithIntegrationViewController.m */,
 				97FD04B818E3BDD3008FF2CB /* ActivitiesViewController.h */,
 				97FD04B918E3BDD3008FF2CB /* ActivitiesViewController.m */,
+				7276665018FCCB98006DB950 /* ActionView.h */,
+				7276665118FCCB98006DB950 /* ActionView.m */,
 				9745AF8B18CEAEF700510E8F /* DiskViewController.h */,
 				9745AF8C18CEAEF700510E8F /* DiskViewController.m */,
 				97775E2E18C9C47E00F0BEBD /* ADIntroduceViewController.h */,
@@ -8216,6 +8221,7 @@
 				D517F6B515887B3B00C967BC /* FuWuSetViewController.m in Sources */,
 				D54AB0D11589B82E003B3B39 /* HelpViewController.m in Sources */,
 				D54AB1711589BB69003B3B39 /* LuckViewController.m in Sources */,
+				7276665218FCCB98006DB950 /* ActionView.m in Sources */,
 				D5E4C422158B19370007346E /* LuckListViewController.m in Sources */,
 				D5D1B802159037D300D9B2BC /* RuYiCaiNetworkManager+RuYiCaiDownLoad_Net.m in Sources */,
 				D5D044C41591711900941AB8 /* RuYiCaiNetHelpCenter.m in Sources */,

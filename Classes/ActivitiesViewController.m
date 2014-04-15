@@ -8,6 +8,8 @@
 
 #import "ActivitiesViewController.h"
 #import "RuYiCaiAppDelegate.h"
+#import "ActionView.h"
+#import "RuYiCaiNetworkManager.h"
 @interface ActivitiesViewController ()
 
 @end
@@ -62,6 +64,19 @@
     self.listTableV.rowHeight = 80;
     [self.listTableV setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:self.listTableV];
+    if([[RuYiCaiNetworkManager sharedManager] testConnection])
+    {
+        ActionView* actionV = [[ActionView alloc]init];
+        if (actionV.actionType) {
+            actionV.frame = CGRectMake(0, h - 194, 0, 0);
+        }else
+        {
+            actionV.frame = CGRectMake(0, h - 154, 0, 0);
+        }
+        [self.view addSubview:actionV];
+        [actionV release];
+    }
+    
 	// Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated
