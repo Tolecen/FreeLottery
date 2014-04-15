@@ -93,7 +93,7 @@
     tishiL.font = [UIFont systemFontOfSize:10];
     tishiL.textAlignment = NSTextAlignmentCenter;
     tishiL.backgroundColor = [UIColor clearColor];
-    tishiL.text = [NSString stringWithFormat:@"输入的金额应为大于0.1元,且小于%@,最小单位到角",_jiangjinStr];
+    tishiL.text = [NSString stringWithFormat:@"输入的金额应为不小于0.1元,且不大于%@,最小单位到角",_jiangjinStr];
     [self.view addSubview:tishiL];
     
     UIButton * exchangeB = [UIButton buttonWithType:UIButtonTypeCustom];
