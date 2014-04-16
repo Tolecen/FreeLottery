@@ -79,16 +79,25 @@
     
 	// Do any additional setup after loading the view.
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"loginOK" object:nil];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
 //    NSTimeInterval hhh = [[NSDate date] timeIntervalSince1970];
 //    NSLog(@"nowTime:%f",hhh);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOK:) name:@"loginOK" object:nil];
     NSString * sss = [actsArray[0] objectForKey:@"experTime"];
     if (sss) {
         [self calRemainingTime:sss];
     }
     [self.listTableV reloadData];
     
+}
+- (void)loginOK:(NSNotification *)notification
+{
+    [self.listTableV reloadData];
 }
 -(void)calRemainingTime:(NSString *)remainTime
 {
@@ -153,6 +162,14 @@
             cell.timeLabel.text = self.timeStr;
             [cell.statusImgV setImage:nil];
         }
+        if([RuYiCaiNetworkManager sharedManager].hasLogin)
+        {
+            cell.progressLabel.text = [actV objectForKey:@"progress"];
+        }
+        else
+        {
+            cell.progressLabel.text = @"点击登录查看";
+        }
         return cell;
     }
     else{
@@ -174,12 +191,12 @@
             [cell.doitBtn setTitle:@"立刻好评" forState:UIControlStateNormal];
             [cell.doitBtn addTarget:self action:@selector(toCommentInAppStore) forControlEvents:UIControlEventTouchUpInside];
         }
-        if ([[actV objectForKey:@"status"] isEqualToString:@"0"]) {
+        if ([[actV objectForKey:@"status"] isEqualToString:@"0"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
             cell.nameLabel.textColor = [UIColor grayColor];
             cell.doitBtn.hidden = YES;
             [cell.statusImgV setImage:[UIImage imageNamed:@"taskcompleted"]];
         }
-        else if ([[actV objectForKey:@"status"] isEqualToString:@"-1"]) {
+        else if ([[actV objectForKey:@"status"] isEqualToString:@"-1"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
             cell.nameLabel.textColor = [UIColor grayColor];
             cell.doitBtn.hidden = YES;
             [cell.statusImgV setImage:[UIImage imageNamed:@"taskexpired"]];
@@ -205,6 +222,12 @@
 }
 -(void)doQianDao
 {
+    if(![RuYiCaiNetworkManager sharedManager].hasLogin)
+    {
+        [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
+        [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:YES];
+        return;
+    }
     [m_delegate.activityView activityViewShow];
     [m_delegate.activityView.titleLabel setText:@"签到中..."];
     [self performSelector:@selector(theQianDaoSuccess) withObject:nil afterDelay:2];
@@ -215,6 +238,12 @@
 }
 -(void)toCommentInAppStore
 {
+    if(![RuYiCaiNetworkManager sharedManager].hasLogin)
+    {
+        [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
+        [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:YES];
+        return;
+    }
     NSURL *url = [NSURL URLWithString:kAppStorPingFen];
     if([[UIApplication sharedApplication] canOpenURL:url])
     {
@@ -222,7 +251,12 @@
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    if(![RuYiCaiNetworkManager sharedManager].hasLogin)
+    {
+        [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
+        [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:YES];
+        return;
+    }
 }
 - (void)didReceiveMemoryWarning
 {

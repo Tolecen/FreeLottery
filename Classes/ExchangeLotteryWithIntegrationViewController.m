@@ -67,7 +67,7 @@
         realArray = [[NSArray alloc] initWithObjects:@"免费获取彩豆入口1",@"免费获取彩豆入口2",@"免费获取彩豆入口3",@"免费获取彩豆入口4",@"免费获取彩豆入口5", nil];
         notRealArray = [[NSArray alloc] initWithObjects:@"幸运大转盘",@"每日签到",@"更多精彩活动敬请期待", nil];
         
-        self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
+        self.theUserID = [NSString stringWithFormat:@"%@_%@",[RuYiCaiNetworkManager sharedManager].userno,kRuYiCaiCoopid];
 //        self.theUserID = @"00000866";
     }
     return self;
@@ -90,9 +90,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOK:) name:@"loginOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUserBalanceOK:) name:@"queryUserBalanceOK" object:nil];
 //    self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
-    if([RuYiCaiNetworkManager sharedManager].hasLogin)
-    {
-        self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
+//    if([RuYiCaiNetworkManager sharedManager].hasLogin)
+//    {
+        if([RuYiCaiNetworkManager sharedManager].hasLogin)
+        {
+        self.theUserID = [NSString stringWithFormat:@"%@_%@",[RuYiCaiNetworkManager sharedManager].userno,kRuYiCaiCoopid];
+        }
+    else
+        self.theUserID = @"notlog";
         if (![self.theUserID isEqualToString:previousUserno]) {
 //            NSString * loginN = [RuYiCaiNetworkManager sharedManager].loginName;
             if (([appStoreORnormal isEqualToString:@"appStore"] &&
@@ -117,27 +122,31 @@
 //            AdWallHaveInit = YES;
             previousUserno = [self.theUserID mutableCopy];
         }
+    else
+    {
+        
+    }
 
 //        [[RuYiCaiNetworkManager sharedManager] UpdateUserInfo];
 //        self.loginTopView.hidden = NO;
 //        self.notLoginView.hidden = YES;
 //        
 //        [self setupNavigationBarStatus];
-    }
-    else
-    {
-//        selectTableRow = nil;
-//        AdWallHaveInit = NO;
-
-        
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有登录呢，要想免费获取彩豆先去登录吧" delegate:self cancelButtonTitle:@"好的，去登录" otherButtonTitles: nil];
-        alert.tag = 101;
-        [alert show];
-        
-//        self.loginTopView.hidden = YES;
-//        self.notLoginView.hidden = NO;
-        //        self.navigationController.navigationBar.topItem.rightBarButtonItem = nil;
-    }
+//    }
+//    else
+//    {
+////        selectTableRow = nil;
+////        AdWallHaveInit = NO;
+//
+//        
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有登录呢，要想免费获取彩豆先去登录吧" delegate:self cancelButtonTitle:@"好的，去登录" otherButtonTitles: nil];
+//        alert.tag = 101;
+//        [alert show];
+//        
+////        self.loginTopView.hidden = YES;
+////        self.notLoginView.hidden = NO;
+//        //        self.navigationController.navigationBar.topItem.rightBarButtonItem = nil;
+//    }
     NSString * theV = [[NSUserDefaults standardUserDefaults] objectForKey:@"ADWallExchangeScale"];
     exchangeScale = [[NSString stringWithFormat:@"(1注=%d彩豆)",2*[theV intValue]] mutableCopy];
     
@@ -187,7 +196,7 @@
 }
 -(void)loginOK:(NSNotification *)notification
 {
-    self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
+    self.theUserID = [NSString stringWithFormat:@"%@_%@",[RuYiCaiNetworkManager sharedManager].userno,kRuYiCaiCoopid];
 //    NSString * loginN = [RuYiCaiNetworkManager sharedManager].loginName;
     if (([appStoreORnormal isEqualToString:@"appStore"] &&
          [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
@@ -318,11 +327,25 @@
             if (!jiaMoney) {
                 jiaMoney = @"0";
             }
-            cell.remainMoneyLabel.text = [NSString stringWithFormat:@"%.0f",[yy floatValue]+ [jiaMoney floatValue]];
+            if([RuYiCaiNetworkManager sharedManager].hasLogin)
+            {
+                cell.remainMoneyLabel.text = [NSString stringWithFormat:@"%.0f",[yy floatValue]+ [jiaMoney floatValue]];
+            }
+            else
+            {
+                cell.remainMoneyLabel.text = @"点击登录查看";
+            }
         }
         else
         {
-            cell.remainMoneyLabel.text = [[RuYiCaiNetworkManager sharedManager] userLotPea];
+            if([RuYiCaiNetworkManager sharedManager].hasLogin)
+            {
+                cell.remainMoneyLabel.text = [[RuYiCaiNetworkManager sharedManager] userLotPea];
+            }
+            else
+            {
+                cell.remainMoneyLabel.text = @"点击登录查看";
+            }
         }
         cell.disLabel.text = exchangeScale;
         return cell;
@@ -357,6 +380,12 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(![RuYiCaiNetworkManager sharedManager].hasLogin)
+    {
+        [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
+        [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:YES];
+        return;
+    }
     switch (indexPath.row) {
         case 0:
         {

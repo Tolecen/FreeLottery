@@ -24,7 +24,7 @@
 #define kRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
 
 //#define kRuYiCaiServer   @"http://www.caifree.com/freelot/freelotServlet"
-//#define kRuYiCaiServer   @"http://220.231.48.232:4231/freelotserver/BoyacaiServlet"
+
 
 #define CaiJinDuiHuanTiShi   @"尊敬的用户，您的彩豆余额不足，赶紧免费兑换吧！"
 
