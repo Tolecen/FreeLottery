@@ -60,7 +60,7 @@
 
 /*主要是判断是否跳safira界面和第三个界面是否显示手机卡充值方式和normal用户更多页面不显示评分*/
 #define kRuYiCaiPlatform @"iPhone"
-#define kRuYiCaiVersion  @"2.0.0"
+#define kRuYiCaiVersion  @"3.0.0"
 
 //#define kRuYiCaiCoopid   @"28" //appStore
 //#define kRuYiCaiCoopid   @"58" //APPstore官方版	58

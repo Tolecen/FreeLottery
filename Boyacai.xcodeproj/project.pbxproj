@@ -6987,7 +6987,7 @@
 				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = GM3VHPP425;
+						DevelopmentTeam = 4225KQ7WC5;
 					};
 				};
 			};
@@ -8543,8 +8543,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8577,8 +8577,8 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = Boyacai;
-				PROVISIONING_PROFILE = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
+				PROVISIONING_PROFILE = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -8587,8 +8587,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8618,8 +8618,8 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = Boyacai;
-				PROVISIONING_PROFILE = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
+				PROVISIONING_PROFILE = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8628,8 +8628,8 @@
 		656F49C316CF80500064A6C4 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_SSE41_EXTENSIONS = NO;
 				GCC_THUMB_SUPPORT = NO;
@@ -8638,8 +8638,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
+				PROVISIONING_PROFILE = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
@@ -8648,8 +8648,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8680,8 +8680,8 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = Boyacai;
-				PROVISIONING_PROFILE = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
+				PROVISIONING_PROFILE = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -8690,8 +8690,8 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_SSE41_EXTENSIONS = NO;
 				GCC_THUMB_SUPPORT = NO;
@@ -8700,8 +8700,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
+				PROVISIONING_PROFILE = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -8709,8 +8709,8 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhongshan Zhang (4ZJV2KP3QN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_SSE41_EXTENSIONS = NO;
 				GCC_THUMB_SUPPORT = NO;
@@ -8719,8 +8719,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED70B10C-AE8B-400E-A37B-BB2E6155479B";
+				PROVISIONING_PROFILE = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B976298-86E5-4FBF-9A54-E4FF97D04A2F";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
