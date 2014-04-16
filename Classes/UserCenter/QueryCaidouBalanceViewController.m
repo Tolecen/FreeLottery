@@ -26,14 +26,15 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.sourceL = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 200, 20)];
-        _sourceL.font = [UIFont boldSystemFontOfSize:18];
+        _sourceL.font = [UIFont systemFontOfSize:15];
         [self.contentView addSubview:_sourceL];
         self.timeL = [[UILabel alloc]initWithFrame:CGRectMake(20, 30, 200, 20)];
         [self.contentView addSubview:_timeL];
         _timeL.textColor = [UIColor grayColor];
-        _timeL.font = [UIFont systemFontOfSize:14];
+        _timeL.font = [UIFont systemFontOfSize:15];
         self.lotPeaL = [[UILabel alloc]initWithFrame:CGRectMake(220, 10, 90, 20)];
-        _lotPeaL.font = [UIFont systemFontOfSize:16];
+        _lotPeaL.font = [UIFont systemFontOfSize:15];
+        _lotPeaL.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:_lotPeaL];
     }
     return self;
@@ -45,11 +46,11 @@
     _timeL.text = _dataDic[@"createTime"];
     
     if ([_dataDic[@"blsign"] intValue]==1) {
-        _lotPeaL.textColor = [UIColor redColor];
+        _lotPeaL.textColor = [UIColor colorWithRed:196.0/255.0 green:30.0/255.0 blue:30.0/255.0 alpha:1.0];
          _lotPeaL.text = [NSString stringWithFormat:@"+%@个",_dataDic[@"lotPea"]];
     }
     if ([_dataDic[@"blsign"] intValue]==-1) {
-        _lotPeaL.textColor = [UIColor greenColor];
+        _lotPeaL.textColor = [UIColor colorWithRed:32.0/255.0 green:124.0/255.0 blue:35.0/255.0 alpha:1.0];
         _lotPeaL.text = [NSString stringWithFormat:@"-%@个",_dataDic[@"lotPea"]];
     }
     
