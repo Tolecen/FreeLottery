@@ -32,8 +32,9 @@
         [self.contentView addSubview:_timeL];
         _timeL.textColor = [UIColor grayColor];
         _timeL.font = [UIFont systemFontOfSize:15];
-        self.lotPeaL = [[UILabel alloc]initWithFrame:CGRectMake(220, 10, 90, 20)];
+        self.lotPeaL = [[UILabel alloc]initWithFrame:CGRectMake(210, 10, 90, 20)];
         _lotPeaL.font = [UIFont systemFontOfSize:15];
+        _lotPeaL.textAlignment = NSTextAlignmentRight;
         _lotPeaL.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:_lotPeaL];
     }
