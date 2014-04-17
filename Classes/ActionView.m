@@ -74,11 +74,11 @@
 - (NSString*)randomString
 {
     NSInteger b ;
-    if (arc4random()%10<8) {
-        b = 3;
+    if (arc4random()%10<7) {
+        b = 2;
     }else
     {
-        b = 5;
+        b = 4;
     }
     NSInteger a = arc4random()%b;
     switch (a) {
@@ -86,15 +86,13 @@
             return [NSString stringWithFormat:@"恭喜用户%@完成任务获得%d彩豆。",[self randomPhoneNo],(arc4random()%500+100)];
         }break;
         case 1:{
-            return [NSString stringWithFormat:@"恭喜用户%@成功购买%d注彩票。",[self randomPhoneNo],(arc4random()%5+1)];
+            return [NSString stringWithFormat:@"恭喜用户%@成功购买一注%@。",[self randomPhoneNo],[self randomLotterType]];
         }break;
+        
         case 2:{
-            return [NSString stringWithFormat:@"恭喜用户%@成功兑换%d彩豆。",[self randomPhoneNo],(arc4random()%9900+100)];
+            return [NSString stringWithFormat:@"恭喜用户%@成功提现%d元。",[self randomPhoneNo],(arc4random()%100+1)*10];
         }break;
         case 3:{
-            return [NSString stringWithFormat:@"恭喜用户%@成功提现%d元。",[self randomPhoneNo],(arc4random()%5000+1)*10];
-        }break;
-        case 4:{
             return [NSString stringWithFormat:@"恭喜用户%@中奖获得%d元。",[self randomPhoneNo],[self randommoney]];
         }break;
             
@@ -105,9 +103,32 @@
     }
     
 }
+- (NSString*)randomLotterType
+{
+    if (arc4random()%2) {
+        return @"双色球";
+    }
+    switch (arc4random()%5) {
+        case 0:
+            return @"双色球";
+        case 1:
+            return @"时时彩";
+        case 2:
+            return @"大乐透";
+        case 3:
+            return @"福利3D";
+        case 4:
+            return @"十一运夺金";
+        default:
+            return @"";
+    }
+}
 - (NSInteger)randommoney
 {
-    NSArray * array = @[@"4",@"5",@"6",@"9",@"10",@"11",@"13",@"19",@"20",@"26",@"30",@"58",@"65",@"78",@"90",@"116",@"117",@"130",@"160",@"190",@"195",@"540"];
+    NSArray * array = @[@"4",@"5",@"9",@"10",@"100",@"160",@"200",@"320",@"540",@"1000"];
+    if (arc4random()%5<4) {
+        return (arc4random()%5+1)*[array[arc4random()%7] integerValue];
+    }
     return (arc4random()%5+1)*[array[arc4random()%array.count] integerValue];
 }
 - (NSString*)randomPhoneNo
