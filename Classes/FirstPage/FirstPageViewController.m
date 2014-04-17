@@ -652,7 +652,7 @@
     
     //此处还差查询剩余投注次数接口！！！！！
     
-    
+    [[RuYiCaiNetworkManager sharedManager] queryRemainingChanceForLot];
     
     [[RuYiCaiNetworkManager sharedManager] requestTicketPropaganda];//查询彩种宣传语
     
@@ -660,7 +660,8 @@
 }
 -(void)queryRemainingChanceOK:(NSNotification *)noti
 {
-    [RuYiCaiNetworkManager sharedManager].remainingChance = [noti.object objectForKey:@"XXX"];
+    [RuYiCaiNetworkManager sharedManager].remainingChance = noti.object;
+    [self.tableView reloadData];
 }
 -(void)netFailedAlert:(NSNotification *)noti
 {
@@ -1573,7 +1574,7 @@
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell updateLogInStatus];
-            [cell setRemainingBuyTimes:3];
+            [cell setRemainingBuyTimes:[[RuYiCaiNetworkManager sharedManager].remainingChance intValue]];
             return cell;
 
         }

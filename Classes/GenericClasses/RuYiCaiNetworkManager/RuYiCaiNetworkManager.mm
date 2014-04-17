@@ -2135,8 +2135,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
-    [mDict setObject:@"startUp" forKey:@"command"];
-    [mDict setObject:@"upgrade" forKey:@"requestType"];
+    [mDict setObject:@"user" forKey:@"command"];
+    [mDict setObject:@"leftBetNum" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
     //自动登录
     //    [m_delegate readAutoLoginPlist];//?????????
     //    if (m_delegate.autoRememberMystatus && [[m_delegate autoLoginRandomNumber] length] > 0) {
@@ -2730,7 +2731,16 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 }
 -(void)queryRemainingChanceOK:(NSString*)resText
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRemainingChanceOK" object:resText];
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+//    NSString* message = [parserDict objectForKey:@"message"];
+    NSString * leftBetNum =[NSString stringWithFormat:@"%@",[parserDict objectForKey:@"leftBetNum"]];
+    [jsonParser release];
+    if ([errorCode isEqualToString:@"0000"])
+	{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRemainingChanceOK" object:leftBetNum];
+    }
 }
 - (void)queryTodayOpenOrAddComplete:(NSString*)resText
 {
@@ -3706,6 +3716,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     if (NET_APP_LOGIN == m_netAppType)
     {
         [self queryUserBalance];
+        [self queryRemainingChanceForLot];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginOK" object:nil];
     }
     else if (NET_APP_JOIN_ACTION == m_netAppType)
