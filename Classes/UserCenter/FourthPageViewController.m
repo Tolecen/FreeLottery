@@ -746,7 +746,7 @@
         }
         
         GetCashViewController* viewController = [[GetCashViewController alloc] init];
-        viewController.navigationItem.title = @"账户提现";
+        viewController.navigationItem.title = @"奖金提现";
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
         [self.navigationController pushViewController:viewController animated:YES];
         [viewController release];
@@ -899,7 +899,7 @@
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
                 QueryAccountDetailViewController* viewController = [[QueryAccountDetailViewController alloc] init];
-                viewController.navigationItem.title =@"账户明细",
+                viewController.navigationItem.title =@"奖金明细",
                 [self.navigationController pushViewController:viewController animated:YES];
                 [viewController release];
                 break;
