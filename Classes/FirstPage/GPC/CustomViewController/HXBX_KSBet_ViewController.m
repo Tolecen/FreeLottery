@@ -336,7 +336,7 @@
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
     view.backgroundColor = [ColorUtils parseColorFromRGB:@"#0b5c58"];
     [self.tableView addSubview:view];
-    
+    [view release];
     UIView * footerView = [[UIView alloc ] init];
     footerView.backgroundColor = [UIColor clearColor];
     
@@ -353,6 +353,7 @@
     [footerView addSubview:buttonf];
     
     self.tableView.tableFooterView = footerView;
+    [footerView release];
 }
 
 
@@ -558,7 +559,7 @@
     [label1 setTextAlignment:NSTextAlignmentLeft];
     [label1 setText:@"连续买              期"];
     [bottomView2 addSubview:label1];
-    
+    [label1 release];
     UIView * textFieldBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(75, 10, 60, 30)];
     
     [textFieldBackgroundView setBackgroundColor:[ColorUtils parseColorFromRGB:@"#96ada5"]];
@@ -587,7 +588,7 @@
     [label2 setTextAlignment:NSTextAlignmentLeft];
     [label2 setText:@"投              倍"];
     [bottomView2 addSubview:label2];
-    
+    [label2 release];
     UIView * textFieldBackgroundView2 = [[UIView alloc] initWithFrame:CGRectMake(223, 10, 60, 30)];
     
     [textFieldBackgroundView2 setBackgroundColor:[ColorUtils parseColorFromRGB:@"#96ada5"]];
@@ -890,7 +891,7 @@
     selectedView.backgroundColor = [ColorUtils parseColorFromRGB:@"#003432"];
     
     [cell setSelectedBackgroundView:selectedView];
-    
+    [selectedView release];
     KSLotterysModel * lotterys = [self.dataSource objectAtIndex:indexPath.row];
     
     cell.betNumberLabel.text = lotterys.betNumberString;
@@ -903,7 +904,7 @@
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 59, 320, 1)];
     view.backgroundColor = [ColorUtils parseColorFromRGB:@"#0b5c58"];
     [cell addSubview:view];
-    
+    [view release];
     
     return cell;
     

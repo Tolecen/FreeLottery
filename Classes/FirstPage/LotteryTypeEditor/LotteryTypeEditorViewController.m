@@ -298,7 +298,7 @@
         return  nil;
     }
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 22)];
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 22)] autorelease];
     label.backgroundColor = [UIColor clearColor];
     //    label.backgroundColor = [UIColor redColor];
     label.font=[UIFont fontWithName:@"Helvetica-Bold" size:14];

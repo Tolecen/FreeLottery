@@ -85,7 +85,7 @@
     UIView * view = [[UIView alloc] init];
     view.backgroundColor = [ColorUtils parseColorFromRGB:colorString];
     view.frame = frame;
-    return view;
+    return [view autorelease];
 }
 
 @end

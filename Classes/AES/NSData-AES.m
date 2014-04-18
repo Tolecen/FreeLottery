@@ -139,6 +139,7 @@
     
     NSData* encryptData = [NSData dataWithBytes:(const char*)encryptStr length:len];
     NSData* finalData = [encryptData AESDecryptWithPassphrase:pass];
+    free(encryptStr);
     return finalData;
 }
 

@@ -1654,11 +1654,7 @@
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
-    NSMutableDictionary* mDict = [NSMutableDictionary dictionary];
-//    if([RuYiCaiNetworkManager sharedManager].hasLogin){
-        mDict = [self getCommonCookieDictionary];
-//    }
-    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
     [mDict setObject:@"feedback" forKey:@"command"];
     [mDict setObject:content forKey:@"content"];
     [mDict setObject:contactway forKey:@"contactway"];

@@ -129,7 +129,7 @@
     
     
     //获取本地用户配置的显示彩种
-    NSMutableArray *showLotteryInLothostArr = [NSMutableArray array];
+    NSMutableArray *showLotteryInLothostArr = nil;
     NSMutableArray* mutableArr = [[NSUserDefaults standardUserDefaults] objectForKey:kLotteryShowDicKey];
     if(!mutableArr)//没调开机介绍图里的初始化时
     {
@@ -179,9 +179,10 @@
             [tempDic setObject:@"1" forKey:[showLotteryArr objectAtIndex:i]];
         }
         [tempArray addObject:tempDic];
+        [tempDic release];
     }
     
-
+    [showLotteryInLothostArr release];
     
 //    [[NSUserDefaults standardUserDefaults] setObject:tempArray forKey:kLotteryShowDicKey];
 	[[NSUserDefaults standardUserDefaults] synchronize];//同步
@@ -193,8 +194,7 @@
     NSString *lotNo = [[CommonRecordStatus commonRecordStatusManager]lotNoWithLotTitle:lotTitleNo];
     if(![KISDictionaryHaveKey(dic, lotNo) isEqual:@""]) {
 
-        NSDictionary *lotDic = [NSDictionary dictionary];
-        lotDic = KISDictionaryHaveKey(dic, lotNo);
+        NSDictionary *lotDic = KISDictionaryHaveKey(dic, lotNo);
         
         if([[lotDic objectForKey:@"saleState"] isEqual:@"1"]){
             

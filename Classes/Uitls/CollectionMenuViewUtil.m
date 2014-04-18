@@ -90,7 +90,7 @@
         [self addSubview:backGroundView];
         
         [KSCutomerControl superView:backGroundView subViewColor:[ColorUtils parseColorFromRGB:@"#002321"] lineWith:2];
-        
+        [backGroundView release];
         //设置按钮
         for (int i = 0; i<[self.imagesArray count]; i++) {
             UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];

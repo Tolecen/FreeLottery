@@ -19,7 +19,7 @@
     }
     
     NSMutableArray *array = [[NSMutableArray alloc]init];
-    NSMutableArray *allChooseArray = [[NSMutableArray alloc] init];
+    NSMutableArray *allChooseArray = [[[NSMutableArray alloc] init] autorelease];
     
     
     // (1,1,1,0,0)
@@ -46,7 +46,7 @@
     }
     
     [allChooseArray addObject:firstArray];
-    
+    [firstArray release];
     int count = 0;
     for(int i = 0; i < n-1; i++)
     {
@@ -88,12 +88,13 @@
             }
             
             [allChooseArray addObject:middleArray];
-            
+            [middleArray release];
             i = -1;
             count = 0;
         }
     }
-    
+    [array release];
+    [retArray release];
     return [allChooseArray count];
     
 }
