@@ -57,7 +57,7 @@
         UIImageView *secionLineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 58, 320, 2)];
         secionLineImageView.image = [UIImage imageNamed:@"secion_c_Line.png"];
         [self addSubview:secionLineImageView];
-
+        [secionLineImageView release];
         
         //    UIImageView *secionSubLineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 58, 320, 2)];
         //    secionSubLineImageView.image = [UIImage imageNamed:@"secion_c_Line.png"];

@@ -213,7 +213,7 @@
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 5, 320, [UIScreen mainScreen].bounds.size.height - 180)];
     [view setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:view];
-    
+    [view release];
     self.yilouBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.yilouBtn setBackgroundImage:[UIImage imageNamed:@"yilou_normal.png"] forState:UIControlStateNormal];
     [self.yilouBtn setBackgroundImage:[UIImage imageNamed:@"yilou_highlight.png"] forState:UIControlStateHighlighted];
@@ -238,7 +238,7 @@
     [yilouLabel setBackgroundColor:[UIColor clearColor]];
     [yilouLabel setTextColor:[ColorUtils parseColorFromRGB:@"#c3e8e9"]];
     [self.view addSubview:yilouLabel];
-    
+    [yilouLabel release];
     explainLabel = [[UILabel alloc]initWithFrame:CGRectMake(70, 15, 150, 20)];
     [explainLabel setBackgroundColor:[UIColor clearColor]];
     [explainLabel setText:@"猜开奖号码相加的和"];
@@ -250,7 +250,7 @@
     UIImageView *yaoyiyaoImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"yaoyiyao.png"]];
     yaoyiyaoImageView.frame = CGRectMake(221, 15, 21, 21);
     [self.view addSubview:yaoyiyaoImageView];
-    
+    [yaoyiyaoImageView release];
 //    UILabel *yaoyiyaoLabel = [[UILabel alloc]initWithFrame:CGRectMake(250, 20, 80, 20)];
 //    yaoyiyaoLabel.text = @"摇一摇机选";
 //    yaoyiyaoLabel.font = [UIFont boldSystemFontOfSize:12.0f];

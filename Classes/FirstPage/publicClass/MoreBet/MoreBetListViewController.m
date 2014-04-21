@@ -691,7 +691,7 @@
             disBetCode = [disBetCode stringByAppendingFormat:@"%d|", nValue];
         }
     }
-
+    [tempController release];
     NSMutableDictionary* tempDic = [NSMutableDictionary dictionaryWithCapacity:1];
     [tempDic setObject:betCode forKey:MORE_BETCODE];
     [tempDic setObject:@"1" forKey:MORE_ZHUSHU];
@@ -730,6 +730,7 @@
             disBetCode = [disBetCode stringByAppendingFormat:@"%d,",nValue];
         }
     }
+    [tempController release];
     NSMutableDictionary* tempDic = [NSMutableDictionary dictionaryWithCapacity:1];
     [tempDic setObject:betCode forKey:MORE_BETCODE];
     [tempDic setObject:@"1" forKey:MORE_ZHUSHU];

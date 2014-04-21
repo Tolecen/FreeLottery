@@ -191,6 +191,7 @@
         {
             imagePath = @"dice_zero.png";
         }
+             break;
         case 1:
         {
             imagePath = @"dice_one.png";

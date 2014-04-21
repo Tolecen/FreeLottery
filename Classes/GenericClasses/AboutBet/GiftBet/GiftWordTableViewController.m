@@ -46,6 +46,7 @@
 {
     SBJsonParser *jsonParser = [SBJsonParser new];
     NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:[RuYiCaiNetworkManager sharedManager].giftMessageText];
+    [jsonParser release];
     NSArray* contentArray = (NSArray*)[parserDict objectForKey:@"result"];
 
     for(int i = 0; i < [contentArray count]; i++)

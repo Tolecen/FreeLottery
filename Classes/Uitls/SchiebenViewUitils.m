@@ -36,16 +36,18 @@
         topImageView.image = [UIImage imageNamed:@"scroller_Bg_Button.png"];
         
         [self addSubview:topImageView];
+        [topImageView release];
         
         UIImageView *bottomImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 35, 320, 5)];
         bottomImageView.image = [UIImage imageNamed:@"red_bg_down.png"];
         [self addSubview:bottomImageView];
+        [bottomImageView release];
         
         UIImageView *redBottomImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 35, 320/[self.titiles count], 5)];
         redBottomImageView.image = [UIImage imageNamed:@"red_bg_up.png"];
         redBottomImageView.tag = 1010;
         [self addSubview:redBottomImageView];
-        
+        [redBottomImageView release];
         //根据标题数组动态创建按钮
         for (int i =0; i<[self.titiles count]; i++)
         {

@@ -38,7 +38,7 @@
 }
 
 -(CGSize)getFontSize:(NSString *)content{
-    CGSize size7 = CGSizeMake(0, 0); //初始化size7
+    CGSize size7 = CGSizeZero; //初始化size7
     NSString *label7String = content;
     
     UIFont *font = [UIFont boldSystemFontOfSize:20]; //指定字符串的大小
@@ -178,6 +178,7 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.font = font;
     controller.navigationItem.titleView = label;
+    [label release];
 }
 
 

@@ -115,6 +115,7 @@
        UIImageView *accessoryImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 1, 320, 42)];
         accessoryImageView.image = [UIImage imageNamed:@"cell_c_gengduo.png"];
         [cell addSubview:accessoryImageView];
+        [accessoryImageView release];
         UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 150,30 )];
         titleLable.backgroundColor = [UIColor clearColor];
         

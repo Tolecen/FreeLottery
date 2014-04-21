@@ -141,7 +141,7 @@
     dateLabel.text = @"选择期号:";
     dateLabel.font = [UIFont systemFontOfSize:15.0];
     [self.view addSubview:dateLabel];
-    
+    [dateLabel release];
     m_dateChooseButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 35, 135, 32)];
     [m_dateChooseButton setBackgroundImage:RYCImageNamed(@"select3_normal.png") forState:UIControlStateNormal];
     [m_dateChooseButton setBackgroundImage:RYCImageNamed(@"select3_click.png") forState:UIControlStateHighlighted];

@@ -119,7 +119,7 @@
 
     if (cell == nil)
     {
-        cell = [[KS_HistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellKey] ;
+        cell = [[[KS_HistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellKey] autorelease];
     }
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -33,7 +33,7 @@
     [self.navigationController.navigationBar setBackground];
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
     UITextView*a = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320,self.view.frame.size.height)];
-    NSString *path;
+    NSString *path = nil;
     if (theTextType==TextTypeAdIntro) {
         self.navigationItem.title = @"换彩说明";
         path=[[NSString alloc]initWithString:[[NSBundle mainBundle]pathForResource:@"detailIntroduce"ofType:@"txt"]];
@@ -49,9 +49,11 @@
     a.editable = NO;
     a.font = [UIFont systemFontOfSize:16];
     a.backgroundColor = [UIColor clearColor];
-    a.text = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    a.text = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     [self.view addSubview:a];
-
+    [data release];
+    [path release];
+    [a release];
 	// Do any additional setup after loading the view.
 }
 -(void)back:(UIButton *)sender

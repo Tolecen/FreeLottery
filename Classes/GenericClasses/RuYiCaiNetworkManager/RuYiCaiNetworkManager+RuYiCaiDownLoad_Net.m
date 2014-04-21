@@ -283,6 +283,7 @@
 	NSMutableArray* sameImageList = [[NSMutableArray alloc] initWithContentsOfFile:strPath_image];
     
     NSMutableDictionary *sameDic = [sameImageList objectAtIndex:0];
+    [sameImageList release];
     if([sameDic count] != [urls count]){
         [CommonRecordStatus commonRecordStatusManager].useADImageIds =[NSMutableDictionary dictionaryWithCapacity:[urls count]];
         [CommonRecordStatus commonRecordStatusManager].useADImages = [NSMutableDictionary dictionaryWithCapacity:[urls count]];

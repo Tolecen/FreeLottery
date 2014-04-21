@@ -73,7 +73,7 @@
     [image drawInRect:view.bounds];
     UIImage *newImage=UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
+    [view release];
     if ([self respondsToSelector:@selector( setBackgroundImage:forBarMetrics:)]){
         [self setBackgroundImage:newImage forBarMetrics:0];
     }
