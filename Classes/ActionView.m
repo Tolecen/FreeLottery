@@ -75,7 +75,7 @@
 {
     NSInteger b ;
     if (arc4random()%10<7) {
-        b = 2;
+        b = 3;
     }else
     {
         b = 4;
@@ -90,10 +90,10 @@
         }break;
         
         case 2:{
-            return [NSString stringWithFormat:@"恭喜用户%@成功提现%d元。",[self randomPhoneNo],(arc4random()%100+1)*10];
+            return [NSString stringWithFormat:@"恭喜用户%@中奖获得%d元。",[self randomPhoneNo],[self randommoney]];
         }break;
         case 3:{
-            return [NSString stringWithFormat:@"恭喜用户%@中奖获得%d元。",[self randomPhoneNo],[self randommoney]];
+            return [NSString stringWithFormat:@"恭喜用户%@成功提现%d元。",[self randomPhoneNo],(arc4random()%100+1)*10];
         }break;
             
         default:{

@@ -62,7 +62,7 @@
 }
 -(void)dealloc{
     
-    NSLog(@"%d",self.historyTableView.retainCount) ;
+    NSLog(@"%lu",(unsigned long)self.historyTableView.retainCount) ;
     [_historyTableView release];
     _historyTableView = nil;
     [_ksPNVC release];
