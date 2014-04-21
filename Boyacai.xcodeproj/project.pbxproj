@@ -1169,6 +1169,11 @@
 		971653FA18FCDB3E00AA40C3 /* WeiXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971653F318FCDB3E00AA40C3 /* WeiXinViewController.m */; };
 		971653FB18FCDB3E00AA40C3 /* WeiXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 971653F418FCDB3E00AA40C3 /* WeiXinViewController.xib */; };
 		9716547D18FCDBB900AA40C3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716547C18FCDBB900AA40C3 /* CoreText.framework */; };
+		973122451904B973006ECD17 /* rukou1.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122401904B973006ECD17 /* rukou1.png */; };
+		973122461904B973006ECD17 /* rukou2.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122411904B973006ECD17 /* rukou2.png */; };
+		973122471904B973006ECD17 /* rukou3.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122421904B973006ECD17 /* rukou3.png */; };
+		973122481904B973006ECD17 /* rukou4.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122431904B973006ECD17 /* rukou4.png */; };
+		973122491904B973006ECD17 /* rukou5.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122441904B973006ECD17 /* rukou5.png */; };
 		973A8C3418CD92A800E8D36F /* OtherActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 973A8C3318CD92A800E8D36F /* OtherActivityViewController.m */; };
 		973A8C3818CD9EBB00E8D36F /* ASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 973A8C3718CD9EBB00E8D36F /* ASettingViewController.m */; };
 		973A8C3C18CDC27F00E8D36F /* commonQuestion.txt in Resources */ = {isa = PBXBuildFile; fileRef = 973A8C3B18CDC27F00E8D36F /* commonQuestion.txt */; };
@@ -2929,6 +2934,11 @@
 		971653F518FCDB3E00AA40C3 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		971653F618FCDB3E00AA40C3 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		9716547C18FCDBB900AA40C3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		973122401904B973006ECD17 /* rukou1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou1.png; sourceTree = "<group>"; };
+		973122411904B973006ECD17 /* rukou2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou2.png; sourceTree = "<group>"; };
+		973122421904B973006ECD17 /* rukou3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou3.png; sourceTree = "<group>"; };
+		973122431904B973006ECD17 /* rukou4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou4.png; sourceTree = "<group>"; };
+		973122441904B973006ECD17 /* rukou5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou5.png; sourceTree = "<group>"; };
 		973A8C3218CD92A800E8D36F /* OtherActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherActivityViewController.h; sourceTree = "<group>"; };
 		973A8C3318CD92A800E8D36F /* OtherActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherActivityViewController.m; sourceTree = "<group>"; };
 		973A8C3618CD9EBB00E8D36F /* ASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASettingViewController.h; sourceTree = "<group>"; };
@@ -5095,6 +5105,11 @@
 		5224963418320393005F7577 /* ThirdPage */ = {
 			isa = PBXGroup;
 			children = (
+				973122401904B973006ECD17 /* rukou1.png */,
+				973122411904B973006ECD17 /* rukou2.png */,
+				973122421904B973006ECD17 /* rukou3.png */,
+				973122431904B973006ECD17 /* rukou4.png */,
+				973122441904B973006ECD17 /* rukou5.png */,
 				97FD9D8918F7967A000E382B /* act-time-bg.png */,
 				97FD9D8A18F7967A000E382B /* act-caidou.png */,
 				97F036D018E5193100A94AED /* tasktodo.png */,
@@ -7129,6 +7144,7 @@
 				5224971018320393005F7577 /* login_hov_c_btn.png in Resources */,
 				5224969C18320393005F7577 /* 22x5_c_main.png in Resources */,
 				522496B318320393005F7577 /* nmks_c_main.png in Resources */,
+				973122461904B973006ECD17 /* rukou2.png in Resources */,
 				5224966D18320393005F7577 /* ump_bg_body.png in Resources */,
 				522498BF18320393005F7577 /* hemai_click.png in Resources */,
 				5224968B18320393005F7577 /* hm_jindu_order_click.png in Resources */,
@@ -7264,6 +7280,7 @@
 				522497B118320393005F7577 /* ssxz_c_btnnomal.png in Resources */,
 				5224975518320393005F7577 /* jixuan_click.png in Resources */,
 				5224988518320393005F7577 /* touzhu_normal.png in Resources */,
+				973122491904B973006ECD17 /* rukou5.png in Resources */,
 				9EDAF4A5143F5E430071FC7D /* preinst in Resources */,
 				5224985C18320393005F7577 /* input_year.png in Resources */,
 				524623EB1887AA0D003CDA0D /* menu_kjzx_hov.png in Resources */,
@@ -7482,6 +7499,7 @@
 				5224999A18320393005F7577 /* same_bg.png in Resources */,
 				5224995718320393005F7577 /* segment_control_yp_click.png in Resources */,
 				5224975218320393005F7577 /* jctx_touzhu_btnclick.png in Resources */,
+				973122481904B973006ECD17 /* rukou4.png in Resources */,
 				5224970E18320393005F7577 /* login_c_btn.png in Resources */,
 				5224968F18320393005F7577 /* hm_sort_click.png in Resources */,
 				D5071CBE155CD4470035BB18 /* JCLQ_PickGameView.xib in Resources */,
@@ -7797,6 +7815,7 @@
 				522497A618320393005F7577 /* ssc_3x_btn.png in Resources */,
 				5224970718320393005F7577 /* yilou_normal.png in Resources */,
 				28C494D616B2131700D5E7D5 /* SenderInformationCell.xib in Resources */,
+				973122451904B973006ECD17 /* rukou1.png in Resources */,
 				5224978B18320393005F7577 /* segment_3_sylzh_normal.png in Resources */,
 				5224970B18320393005F7577 /* log_zhmm_hov_btn.png in Resources */,
 				65367DD116B2768600DD403A /* DLT_PickNumberViewController.xib in Resources */,
@@ -7883,6 +7902,7 @@
 				522498C518320393005F7577 /* menu_gd.png in Resources */,
 				5224979218320393005F7577 /* segment_high_bet_tz_click.png in Resources */,
 				5224981718320393005F7577 /* jczq_confusion_line3_click.png in Resources */,
+				973122471904B973006ECD17 /* rukou3.png in Resources */,
 				522497D318320393005F7577 /* hm_bottom_bg.png in Resources */,
 				5224969218320393005F7577 /* hm_zonge_order_normal.png in Resources */,
 				5224975018320393005F7577 /* gp_touzhu_c_hover_btn.png in Resources */,

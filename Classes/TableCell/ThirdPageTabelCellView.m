@@ -31,7 +31,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) 
     {
-        m_icoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 10, 60, 45)];
+        m_icoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 8, 50, 50)];
         [self addSubview:m_icoImageView];
         
         m_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 0, 140, 48)];

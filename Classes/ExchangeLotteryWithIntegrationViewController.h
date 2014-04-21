@@ -77,6 +77,8 @@
     UIButton * imgV;
     UIImageView * bgv;
     BOOL adAdded;
+    
+    NSArray * jifenImgArray;
 }
 
 @property(nonatomic, assign)BOOL isShowTabBar;

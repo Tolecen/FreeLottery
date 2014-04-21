@@ -362,7 +362,7 @@
     
     cell.titleName = titleArray[indexPath.row-1];
     cell.littleTitleName = @"完成推荐应用的任务，就能免费获取彩豆";
-    cell.iconImageName = @"ico_c_bank.png";
+    cell.iconImageName = [NSString stringWithFormat:@"rukou%d",indexPath.row];
         
         if (!realAdwall) {
             if (indexPath.row==1) {
