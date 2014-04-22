@@ -41,7 +41,7 @@
 @synthesize bindName   = m_bindName;
 
 @synthesize hasLogin = m_hasLogin;
-
+@synthesize requestedAdwallSuccess;
 @synthesize userno = m_userno;
 @synthesize loginName = m_loginName;
 @synthesize phonenum = m_phonenum;
@@ -170,6 +170,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         haveAlert = NO;
         
         self.shouldCheat = NO;
+        self.requestedAdwallSuccess = NO;
 //        isHideTabbar = NO;
         //test code
         //m_hasLogin = YES;
@@ -2160,6 +2161,110 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request startAsynchronous];
 
 }
+-(void)queryADWallList
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"activiy" forKey:@"command"];
+    [mDict setObject:@"partakeList" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+//    [mDict setObject:thePage forKey:@"pageindex"];
+//    [mDict setObject:@"10" forKey:@"maxresult"];
+    //自动登录
+    //    [m_delegate readAutoLoginPlist];//?????????
+    //    if (m_delegate.autoRememberMystatus && [[m_delegate autoLoginRandomNumber] length] > 0) {
+    //        NSString *str = m_delegate.autoLoginRandomNumber;
+    //        [mDict setObject:str forKey:@"randomNumber"];
+    //    }
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  查询积分墙列表: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeQueryADWallList];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
+-(void)queryActListWithPage:(NSString *)thePage
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"activiy" forKey:@"command"];
+    [mDict setObject:@"partakeList" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    [mDict setObject:thePage forKey:@"pageindex"];
+    [mDict setObject:@"10" forKey:@"maxresult"];
+    //自动登录
+    //    [m_delegate readAutoLoginPlist];//?????????
+    //    if (m_delegate.autoRememberMystatus && [[m_delegate autoLoginRandomNumber] length] > 0) {
+    //        NSString *str = m_delegate.autoLoginRandomNumber;
+    //        [mDict setObject:str forKey:@"randomNumber"];
+    //    }
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  查询活动列表: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeQueryActList];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
+
+-(void)doQianDaoWithID:(NSString *)theID
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"activiy" forKey:@"command"];
+    [mDict setObject:@"everydayCheck" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    [mDict setObject:theID forKey:@"id"];
+    //自动登录
+    //    [m_delegate readAutoLoginPlist];//?????????
+    //    if (m_delegate.autoRememberMystatus && [[m_delegate autoLoginRandomNumber] length] > 0) {
+    //        NSString *str = m_delegate.autoLoginRandomNumber;
+    //        [mDict setObject:str forKey:@"randomNumber"];
+    //    }
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  查询剩余投注次数: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeDoQianDao];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
 
 
 #pragma mark 头部新闻 今日开奖、加奖
@@ -2337,6 +2442,15 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 			break;
         case ASINetworkRequestTypeRemainingChance:
             [self queryRemainingChanceOK:resText];
+            break;
+        case ASINetworkRequestTypeQueryADWallList:
+            [self queryADWallListOK:resText];
+            break;
+        case ASINetworkRequestTypeQueryActList:
+            [self queryActListOK:resText];
+            break;
+        case ASINetworkRequestTypeDoQianDao:
+            [self doQianDaoOK:resText];
             break;
 		case ASINetworkRequestTypeUpdateInformationOfLotteryInServers:
 			[self updateInformationOfLotteryInServers:resText];
@@ -2728,6 +2842,42 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 			break;
 	}
     [resText release];
+}
+-(void)doQianDaoOK:(NSString *)resText
+{
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+//    NSArray * arrayG = [parserDict objectForKey:@"result"];
+//    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+//    if ([errorCode isEqualToString:@"0000"])
+//	{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TodayQianDaoOK" object:parserDict];
+//    }
+}
+-(void)queryActListOK:(NSString *)resText
+{
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSArray * arrayG = [parserDict objectForKey:@"result"];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    if ([errorCode isEqualToString:@"0000"])
+	{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryActListOK" object:arrayG];
+    }
+}
+-(void)queryADWallListOK:(NSString*)resText
+{
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+//    NSArray * arrayG = [parserDict objectForKey:@"result"];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    if ([errorCode isEqualToString:@"0000"])
+	{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryADWallListOK" object:nil];
+    }
 }
 -(void)queryRemainingChanceOK:(NSString*)resText
 {

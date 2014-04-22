@@ -64,18 +64,28 @@
         adAdded = NO;
 //        titleArray = [[NSArray alloc] initWithObjects:@"美美换彩豆",@"米米换彩豆",@"点点换彩豆",@"易易换彩豆",@"多多换彩豆", nil];
         titleArray = [[NSArray alloc] init];
-        realArray = [[NSArray alloc] initWithObjects:@"免费获取彩豆入口1",@"免费获取彩豆入口2",@"免费获取彩豆入口3",@"免费获取彩豆入口4",@"免费获取彩豆入口5", nil];
-        notRealArray = [[NSArray alloc] initWithObjects:@"幸运大转盘",@"每日签到",@"更多精彩活动敬请期待", nil];
+        realArray = [[NSArray alloc] initWithObjects:[self rr:@"免费获取彩豆入口1" De:@"免费获取彩豆入口1" ID:@"limei"],[self rr:@"免费获取彩豆入口2" De:@"免费获取彩豆入口2" ID:@"youmi"],[self rr:@"免费获取彩豆入口3" De:@"免费获取彩豆入口3" ID:@"dianru"],[self rr:@"免费获取彩豆入口4" De:@"免费获取彩豆入口4" ID:@"duomeng"],[self rr:@"免费获取彩豆入口5" De:@"免费获取彩豆入口5" ID:@"midi"], nil];
+        
+        notRealArray = [[NSArray alloc] initWithObjects:[self rr:@"幸运大转盘" De:@"免费获取彩豆入口1" ID:@"limei"],[self rr:@"每日签到" De:@"免费获取彩豆入口1" ID:@"limei"],[self rr:@"更多精彩活动敬请期待" De:@"免费获取彩豆入口1" ID:@"limei"], nil];
         
         self.theUserID = [NSString stringWithFormat:@"%@_%@",[RuYiCaiNetworkManager sharedManager].userno,kRuYiCaiCoopid];
 //        self.theUserID = @"00000866";
     }
     return self;
 }
+-(NSDictionary *)rr:(NSString *)theName De:(NSString *)theD ID:(NSString *)theID
+{
+    NSMutableDictionary * kk = [NSMutableDictionary dictionary];
+    [kk setObject:theName forKey:@"name"];
+    [kk setObject:theD forKey:@"description"];
+    [kk setObject:theID forKey:@"id"];
+    return kk;
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"loginOK" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryUserBalanceOK" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryADWallListOK" object:nil];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 //        [bgv removeFromSuperview];
     }
@@ -85,6 +95,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryADWallListOK:) name:@"queryADWallListOK" object:nil];
     [self.navigationController.navigationBar setBackground];
  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOK:) name:@"loginOK" object:nil];
@@ -153,6 +164,24 @@
     [self.listTableV reloadData];
 
 
+
+}
+-(void)queryADWallListOK:(NSNotification *)noti
+{
+    if (([appStoreORnormal isEqualToString:@"appStore"] &&
+         [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
+        realAdwall = NO;
+        titleArray = notRealArray;
+        [self loadDisk];
+    }
+    else
+    {
+        realAdwall = YES;
+        titleArray = realArray;
+
+    }
+    [RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess = YES;
+    [self.listTableV reloadData];
 
 }
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
@@ -296,7 +325,9 @@
         }
 
     }
-    
+    if (![RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess) {
+        [[RuYiCaiNetworkManager sharedManager] queryADWallList];
+    }
 
 
 }
@@ -360,8 +391,8 @@
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     
-    cell.titleName = titleArray[indexPath.row-1];
-    cell.littleTitleName = @"完成推荐应用的任务，就能免费获取彩豆";
+    cell.titleName = [titleArray[indexPath.row-1] objectForKey:@"name"];
+    cell.littleTitleName = [titleArray[indexPath.row-1] objectForKey:@"description"];
     cell.iconImageName = [NSString stringWithFormat:@"rukou%d",indexPath.row];
         
         if (!realAdwall) {
@@ -376,6 +407,26 @@
     [cell refresh];
     
     return cell;
+    }
+}
+
+-(void)enterADWALLWithID:(int)theIndex
+{
+    NSString * theID = [titleArray[theIndex] objectForKey:@"id"];
+    if ([theID isEqualToString:@"limei"]) {
+        [self enterLiMeiAdWall];
+    }
+    else if ([theID isEqualToString:@"youmi"]){
+        [self showYouMiWall];
+    }
+    else if ([theID isEqualToString:@"dianru"]){
+        [self showDianRuWall];
+    }
+    else if ([theID isEqualToString:@"duomeng"]){
+        [self showDuoMengAdWall];
+    }
+    else if ([theID isEqualToString:@"midi"]){
+        [self showMiidiAdWall];
     }
 }
 
@@ -410,7 +461,8 @@
             //            [self presentModalViewController:adWallV animated:YES];
             //            [adWallV release];
             if (realAdwall) {
-                [self enterLiMeiAdWall];
+//                [self enterLiMeiAdWall];
+                [self enterADWALLWithID:indexPath.row-1];
             }
             else
             {
@@ -431,7 +483,8 @@
             //            [self presentModalViewController:adWallV animated:YES];
             //            [adWallV release];
             if (realAdwall) {
-                [self showYouMiWall];
+//                [self showYouMiWall];
+                [self enterADWALLWithID:indexPath.row-1];
             }
             else
             {
@@ -455,7 +508,8 @@
             //            [adWallV release];
             
             if (realAdwall) {
-                [self showDianRuWall];
+//                [self showDianRuWall];
+                [self enterADWALLWithID:indexPath.row-1];
             }
             else
             {
@@ -484,7 +538,8 @@
             
             //            [self presentModalViewController:adWallV animated:YES];
             //            [adWallV release];
-            [self showDuoMengAdWall];
+//            [self showDuoMengAdWall];
+            [self enterADWALLWithID:indexPath.row-1];
             
         }
             break;
@@ -495,7 +550,8 @@
             
             //            [self presentModalViewController:adWallV animated:YES];
             //            [adWallV release];
-            [self showMiidiAdWall];
+//            [self showMiidiAdWall];
+            [self enterADWALLWithID:indexPath.row-1];
 //            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"米迪暂不可用" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
 //            [alert show];
 //            [alert release];

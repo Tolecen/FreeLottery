@@ -79,21 +79,62 @@
     
 	// Do any additional setup after loading the view.
 }
+-(void)queryActListOK:(NSNotification *)noti
+{
+    NSArray * hh = noti.object;
+    actsArray = [(NSMutableArray *)hh retain];
+    [self.listTableV reloadData];
+    for (NSDictionary * dict in actsArray) {
+        if ([[dict objectForKey:@"type"] isEqualToString:@"2"]) {
+            qiandaoID = [dict objectForKey:@"id"];
+            break;
+        }
+    }
+    NSLog(@"hjhjhjhhhjhj:%@",hh);
+    
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"loginOK" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryActListOK" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TodayQianDaoOK" object:nil];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
 //    NSTimeInterval hhh = [[NSDate date] timeIntervalSince1970];
 //    NSLog(@"nowTime:%f",hhh);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOK:) name:@"loginOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryActListOK:) name:@"queryActListOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(todayQianDaoOK:) name:@"TodayQianDaoOK" object:nil];
+    if([RuYiCaiNetworkManager sharedManager].hasLogin)
+    {
+        [[RuYiCaiNetworkManager sharedManager] queryActListWithPage:@"0"];
+    }
+
+    
     NSString * sss = [actsArray[0] objectForKey:@"experTime"];
     if (sss) {
         [self calRemainingTime:sss];
     }
     [self.listTableV reloadData];
     
+}
+-(void)todayQianDaoOK:(NSNotification *)noti
+{
+    NSDictionary * dict = noti.object;
+    NSString* errorCode = [dict objectForKey:@"error_code"];
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"恭喜您，今日签到成功" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }
+    else
+    {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"不好意思哦，签到失败了" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }
 }
 - (void)loginOK:(NSNotification *)notification
 {
@@ -135,9 +176,9 @@
         if (nil == cell)
             cell = [[[ActivityTypeTwoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.nameLabel.text = [actV objectForKey:@"actDescribe"];
+        cell.nameLabel.text = [NSString stringWithFormat:@"%@:%@",[actV objectForKey:@"name"],[actV objectForKey:@"description"]];
         cell.progressLabel.text = [actV objectForKey:@"progress"];
-        if ([[actV objectForKey:@"status"] isEqualToString:@"0"]) {
+        if ([[actV objectForKey:@"state"] isEqualToString:@"2"]) {
             cell.tLabel.textColor = [UIColor grayColor];
             cell.nameLabel.textColor = [UIColor grayColor];
             cell.progressLabel.textColor = [UIColor grayColor];
@@ -145,7 +186,7 @@
             cell.timeLabel.text = @" ";
             [cell.statusImgV setImage:[UIImage imageNamed:@"taskcompleted"]];
         }
-        else if ([[actV objectForKey:@"status"] isEqualToString:@"-1"]) {
+        else if ([[actV objectForKey:@"state"] isEqualToString:@"-1"]) {
             cell.tLabel.textColor = [UIColor grayColor];
             cell.nameLabel.textColor = [UIColor grayColor];
             cell.progressLabel.textColor = [UIColor grayColor];
@@ -178,25 +219,34 @@
         if (nil == cell)
             cell = [[[ActivityTypeOneCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.imageV.image = [UIImage imageNamed:@"act-caidou"];
-        cell.nameLabel.text = [actV objectForKey:@"actName"];
-        cell.descriptionLabel.text = [actV objectForKey:@"actDescribe"];
+        
+        cell.nameLabel.text = [actV objectForKey:@"name"];
+        cell.descriptionLabel.text = [actV objectForKey:@"description"];
         if ([[actV objectForKey:@"type"] isEqualToString:@"2"]) {
-            
+            cell.imageV.image = nil;
+            cell.imageV.backgroundColor = [UIColor redColor];
+            NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+            [formatter setDateFormat:@"MM-dd"];
+            NSString* dateS = [formatter stringFromDate:[NSDate date]];
+            [formatter release];
+            cell.qianDaoTimeLabel.text = dateS;
             [cell.doitBtn setTitle:@"立刻签到" forState:UIControlStateNormal];
             [cell.doitBtn addTarget:self action:@selector(doQianDao) forControlEvents:UIControlEventTouchUpInside];
         }
         else
         {
+            cell.imageV.backgroundColor = [UIColor clearColor];
+            cell.qianDaoTimeLabel.text = @"";
+            cell.imageV.image = [UIImage imageNamed:@"act-caidou"];
             [cell.doitBtn setTitle:@"立刻好评" forState:UIControlStateNormal];
             [cell.doitBtn addTarget:self action:@selector(toCommentInAppStore) forControlEvents:UIControlEventTouchUpInside];
         }
-        if ([[actV objectForKey:@"status"] isEqualToString:@"0"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
+        if ([[actV objectForKey:@"state"] isEqualToString:@"2"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
             cell.nameLabel.textColor = [UIColor grayColor];
             cell.doitBtn.hidden = YES;
             [cell.statusImgV setImage:[UIImage imageNamed:@"taskcompleted"]];
         }
-        else if ([[actV objectForKey:@"status"] isEqualToString:@"-1"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
+        else if ([[actV objectForKey:@"state"] isEqualToString:@"-1"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
             cell.nameLabel.textColor = [UIColor grayColor];
             cell.doitBtn.hidden = YES;
             [cell.statusImgV setImage:[UIImage imageNamed:@"taskexpired"]];
@@ -230,7 +280,8 @@
     }
     [m_delegate.activityView activityViewShow];
     [m_delegate.activityView.titleLabel setText:@"签到中..."];
-    [self performSelector:@selector(theQianDaoSuccess) withObject:nil afterDelay:2];
+    [[RuYiCaiNetworkManager sharedManager] doQianDaoWithID:qiandaoID];
+//    [self performSelector:@selector(theQianDaoSuccess) withObject:nil afterDelay:2];
 }
 -(void)theQianDaoSuccess
 {

@@ -21,6 +21,10 @@
     NSMutableArray * typeArray;
     
     NSMutableArray * actsArray;
+    
+    NSString * qiandaoID;
+    NSString * pinglunID;
+    NSString * newtaskID;
 //    NSString * timeStr;
 }
 @property(nonatomic, retain)UITableView * listTableV;
