@@ -194,6 +194,16 @@
     [MobClick startWithAppkey:@"532aaac256240b47db0b151b" reportPolicy:SEND_ON_EXIT channelId:@""];
     [DianRuAdWall beforehandAdWallWithDianRuAppKey:@"0000911311000001"];
     
+    if (launchOptions) {
+        //截取apns推送的消息
+        NSDictionary* pushInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
+        if ([pushInfo objectForKey:@"type"]) {
+            [self loadNotificationWithID:[pushInfo objectForKey:@"id"]];
+        }
+        
+        
+    }
+    
     return YES;
 }
 
@@ -333,15 +343,9 @@
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    //推送消息处理
-   // NSLog(@"&&&&&&& %@", userInfo);
-    //{
-    //aps =     {
-    //    alert = "This is some fany message.";
-    //    badge = 1;
-    //    sound = "received5.caf";
-    //};
-//     NSLog(@"%@",[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
+    if ([userInfo objectForKey:@"type"]) {
+        [self loadNotificationWithID:[userInfo objectForKey:@"id"]];
+    }
 }
 
 //本地消息回调
@@ -759,6 +763,11 @@
     }
         
 }
+- (void)loadNotificationWithID:(NSString*)messageID
+{
+    
+}
+
 /*
 //然后在你的View控制器中添加/重载canBecomeFirstResponder, viewDidAppear:以及viewWillDisappear:
 
