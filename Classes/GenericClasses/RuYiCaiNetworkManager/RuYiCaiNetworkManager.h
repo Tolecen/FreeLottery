@@ -264,6 +264,7 @@ typedef enum
 @property (nonatomic, retain) NSString* bdRecentEventInfo;
 @property (nonatomic, assign) BOOL shouldCheat;
 
+@property (nonatomic, assign) BOOL requestedAdwallSuccess;
 @property (nonatomic, retain) NSString* userBalance;
 @property (nonatomic, retain) NSString* userLotPea;
 @property (nonatomic, retain) NSString* userPrizeBalance;
@@ -421,8 +422,10 @@ typedef enum
 //获取彩种的开奖日期
 - (NSString*)getEndtimeOfLot:(NSString*)lotCode;
 
+-(void)queryADWallList;
+-(void)doQianDaoWithID:(NSString *)theID;
 -(void)queryRemainingChanceForLot;
-
+-(void)queryActListWithPage:(NSString *)thePage;
 //获取高频彩种的剩余时间和当前期数
 - (void)highFrequencyInquiry:(NSString*)lotNo;
 - (NSString*)highFrequencyLeftTime;

@@ -19,7 +19,7 @@
 #define UnionBankLTInterfaceType (0) //银联生产线
 //#define UnionBankLTInterfaceType (1)  //银联测试线
 
-//正式接口
+
 
 #define kRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
 
