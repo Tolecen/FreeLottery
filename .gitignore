@@ -12,5 +12,5 @@ Podfile.lock
 Pods.xcodeproj/xcuserdata/*
 *.xcodeproj/project.xcworkspace/xcuserdata/*
 *.xcodeproj/project.xcworkspace/xcuserdata/Tolecen.xcuserdatad/UserInterfaceState.xcuserstate
-*.xcodeproj/project.xcworkspace/xcshareddata/*
+Boyacai.xcodeproj/project.xcworkspace/xcshareddata/Boyacai.xccheckout
 .gitignore
