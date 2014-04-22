@@ -1,5 +1,5 @@
 *.xcodeproj/*
-!*.xcodeproj/project.pbxproj
+*.xcodeproj/project.pbxproj
 build
 .DS_Store
 ._*
@@ -12,3 +12,5 @@ Podfile.lock
 Pods.xcodeproj/xcuserdata/*
 *.xcodeproj/project.xcworkspace/xcuserdata/*
 *.xcodeproj/project.xcworkspace/xcuserdata/Tolecen.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcodeproj/project.xcworkspace/xcshareddata/*
+.gitignore
