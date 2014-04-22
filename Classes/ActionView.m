@@ -116,7 +116,7 @@
         case 2:
             return @"大乐透";
         case 3:
-            return @"福利3D";
+            return @"福彩3D";
         case 4:
             return @"十一运夺金";
         default:
