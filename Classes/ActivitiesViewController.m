@@ -87,7 +87,9 @@
     for (NSDictionary * dict in actsArray) {
         if ([[dict objectForKey:@"type"] isEqualToString:@"2"]) {
             qiandaoID = [dict objectForKey:@"id"];
-            break;
+        }
+        if ([[dict objectForKey:@"type"] isEqualToString:@"3"]) {
+            pinglunID = [dict objectForKey:@"id"];
         }
     }
     NSLog(@"hjhjhjhhhjhj:%@",hh);
@@ -251,11 +253,21 @@
             cell.doitBtn.hidden = YES;
             [cell.statusImgV setImage:[UIImage imageNamed:@"taskexpired"]];
         }
+        else if ([[actV objectForKey:@"state"] isEqualToString:@"3"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
+            [cell.doitBtn setTitle:@"处理中" forState:UIControlStateNormal];
+            [cell.doitBtn setBackgroundImage:nil forState:UIControlStateNormal];
+            [cell.doitBtn setBackgroundColor:[UIColor lightGrayColor]];
+            [cell.doitBtn setEnabled:NO];
+            cell.doitBtn.hidden = NO;
+        }
         else
         {
             cell.nameLabel.textColor = [UIColor blackColor];
             cell.doitBtn.hidden = NO;
+            [cell.doitBtn setEnabled:YES];
             [cell.statusImgV setImage:nil];
+            [cell.doitBtn setBackgroundImage:[UIImage imageNamed:@"tasktodo"] forState:UIControlStateNormal];
+//            cell.doitBtn setBackgroundColor:[UIColor clearColor]
         }
         return cell;
     }
@@ -298,9 +310,17 @@
     NSURL *url = [NSURL URLWithString:kAppStorPingFen];
     if([[UIApplication sharedApplication] canOpenURL:url])
     {
+        [[RuYiCaiNetworkManager sharedManager] doGoodCommentWithID:pinglunID];
         [[UIApplication sharedApplication] openURL:url];
+        NSTimeInterval nowT = [[NSDate date] timeIntervalSince1970];
+        [RuYiCaiNetworkManager sharedManager].beginCalOutComment = nowT;
+//        [self performSelector:@selector(tellServerCommentDone) withObject:nil afterDelay:30];
     }
 }
+//-(void)tellServerCommentDone
+//{
+//    NSLog(@"30ssss after");
+//}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(![RuYiCaiNetworkManager sharedManager].hasLogin)
     {

@@ -78,7 +78,7 @@
     NSMutableDictionary * kk = [NSMutableDictionary dictionary];
     [kk setObject:theName forKey:@"name"];
     [kk setObject:theD forKey:@"description"];
-    [kk setObject:theID forKey:@"id"];
+    [kk setObject:theID forKey:@"code"];
     return kk;
 }
 -(void)viewWillDisappear:(BOOL)animated
@@ -177,7 +177,7 @@
     else
     {
         realAdwall = YES;
-        titleArray = realArray;
+        titleArray = [(NSArray *)noti.object retain];
 
     }
     [RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess = YES;
@@ -412,7 +412,7 @@
 
 -(void)enterADWALLWithID:(int)theIndex
 {
-    NSString * theID = [titleArray[theIndex] objectForKey:@"id"];
+    NSString * theID = [titleArray[theIndex] objectForKey:@"code"];
     if ([theID isEqualToString:@"limei"]) {
         [self enterLiMeiAdWall];
     }
