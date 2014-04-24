@@ -1113,25 +1113,23 @@
 - (void)getBindPhoneSecurityCode:(NSString*)bindPhone
 {
     self.bindNewPhoneNum = bindPhone;
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
-    request.allowCompressedResponse = NO;
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+	request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
-    [mDict setObject:@"updateUserInfo" forKey:@"command"];
+    [mDict setObject:@"userCenter" forKey:@"command"];
+    [mDict setObject:@"generateCaptcha" forKey:@"type"];
     [mDict setObject:bindPhone forKey:@"bindPhoneNum"];
-    [mDict setObject:@"bindPhoneSecurityCode" forKey:@"type"];
-    [mDict setObject:m_phonenum forKey:@"phonenum"];
-	[mDict setObject:m_userno forKey:@"userno"];
-    
+    [mDict setObject:@"1" forKey:@"requestType"];
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
     [jsonWriter release];
+    NSLog(@"%@",cookieStr);
     NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
     NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
-    [request appendPostData:sendData];  
-    [request buildPostBody];
+    [request appendPostData:sendData];
     
+    [request buildPostBody];
     [request setRequestType:ASINetworkReqestTypeBindPhoneSecurity];
     [request setDelegate:self];
     [request startAsynchronous];
@@ -1145,11 +1143,10 @@
     request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
-    [mDict setObject:@"updateUserInfo" forKey:@"command"];
+    [mDict setObject:@"userCenter" forKey:@"command"];
     [mDict setObject:securityCode forKey:@"securityCode"];
     [mDict setObject:@"bindPhone" forKey:@"type"];
     [mDict setObject:self.bindPhoneNum forKey:@"bindPhoneNum"];
-    [mDict setObject:m_phonenum forKey:@"phonenum"];
 	[mDict setObject:m_userno forKey:@"userno"];
     
     
@@ -1201,8 +1198,8 @@
     request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
-    [mDict setObject:@"updateUserInfo" forKey:@"command"];
-    [mDict setObject:@"removeBindPhone" forKey:@"type"];
+    [mDict setObject:@"userCenter" forKey:@"command"];
+    [mDict setObject:@"unbindPhone" forKey:@"type"];
     [mDict setObject:m_phonenum forKey:@"phonenum"];
 	[mDict setObject:m_userno forKey:@"userno"];
     
