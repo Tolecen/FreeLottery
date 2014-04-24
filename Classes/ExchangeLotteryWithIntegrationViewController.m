@@ -132,12 +132,16 @@
             }
 //            AdWallHaveInit = YES;
             previousUserno = [self.theUserID mutableCopy];
+            [RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess = NO;
+            [[RuYiCaiNetworkManager sharedManager] queryADWallList];
         }
     else
     {
         
     }
-
+    if (![RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess) {
+        [[RuYiCaiNetworkManager sharedManager] queryADWallList];
+    }
 //        [[RuYiCaiNetworkManager sharedManager] UpdateUserInfo];
 //        self.loginTopView.hidden = NO;
 //        self.notLoginView.hidden = YES;

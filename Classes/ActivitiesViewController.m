@@ -34,9 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSDictionary * actoneDict = [NSDictionary dictionaryWithObjectsAndKeys:@"新手任务:累计赚取5000彩豆，即送500彩豆",@"actDescribe",@"no",@"actName",@"4000/5000",@"progress",@"1397559130",@"experTime",@"1",@"type",@"1",@"status", nil];
-    NSDictionary * actTwoDict = [NSDictionary dictionaryWithObjectsAndKeys:@"每日签到，即送彩豆",@"actDescribe",@"每日签到",@"actName",@"-1",@"status", @"2",@"type",nil];
-    NSDictionary * actThreeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"给我5星好评，送彩豆哦",@"actDescribe",@"五星好评，送彩豆",@"actName",@"-1",@"status",@"3",@"type", nil];
+    NSDictionary * actoneDict = [NSDictionary dictionaryWithObjectsAndKeys:@"新手任务:累计赚取5000彩豆，即送500彩豆",@"actDescribe",@"no",@"actName",@"4000/5000",@"progress",@"1397559130",@"expireTime",@"1",@"type",@"1",@"state", nil];
+    NSDictionary * actTwoDict = [NSDictionary dictionaryWithObjectsAndKeys:@"每日签到，即送彩豆",@"actDescribe",@"每日签到",@"actName",@"1",@"state", @"2",@"type",nil];
+    NSDictionary * actThreeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"给我5星好评，送彩豆哦",@"actDescribe",@"五星好评，送彩豆",@"actName",@"1",@"state",@"3",@"type", nil];
     actsArray = [[NSMutableArray alloc] initWithObjects:actoneDict,actTwoDict,actThreeDict, nil];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -83,8 +83,11 @@
 {
     NSArray * hh = noti.object;
     actsArray = [(NSMutableArray *)hh retain];
-    [self.listTableV reloadData];
+    NSString * sss = @"1398152650";
     for (NSDictionary * dict in actsArray) {
+        if ([[dict objectForKey:@"type"] isEqualToString:@"1"]) {
+            sss = [dict objectForKey:@"expireTime"];
+        }
         if ([[dict objectForKey:@"type"] isEqualToString:@"2"]) {
             qiandaoID = [dict objectForKey:@"id"];
         }
@@ -92,6 +95,19 @@
             pinglunID = [dict objectForKey:@"id"];
         }
     }
+    
+    if (sss) {
+        [self calRemainingTime:sss];
+    }
+    [self.listTableV reloadData];
+//    for (NSDictionary * dict in actsArray) {
+//        if ([[dict objectForKey:@"type"] isEqualToString:@"2"]) {
+//            qiandaoID = [dict objectForKey:@"id"];
+//        }
+//        if ([[dict objectForKey:@"type"] isEqualToString:@"3"]) {
+//            pinglunID = [dict objectForKey:@"id"];
+//        }
+//    }
     NSLog(@"hjhjhjhhhjhj:%@",hh);
     
 }
@@ -114,7 +130,13 @@
     }
 
     
-    NSString * sss = [actsArray[0] objectForKey:@"experTime"];
+    NSString * sss = @"1398152650";
+    for (NSDictionary * dict in actsArray) {
+        if ([[dict objectForKey:@"type"] isEqualToString:@"1"]) {
+            sss = [dict objectForKey:@"expireTime"];
+        }
+    }
+    
     if (sss) {
         [self calRemainingTime:sss];
     }
@@ -137,6 +159,10 @@
         [alert show];
         [alert release];
     }
+    if([RuYiCaiNetworkManager sharedManager].hasLogin)
+    {
+        [[RuYiCaiNetworkManager sharedManager] queryActListWithPage:@"0"];
+    }
 }
 - (void)loginOK:(NSNotification *)notification
 {
@@ -146,7 +172,7 @@
 {
     NSTimeInterval hhh = [[NSDate date] timeIntervalSince1970];
     NSString * endTimeStr = remainTime;//剩余秒数
-    double leftTime = [endTimeStr doubleValue] - hhh;
+    double leftTime = [endTimeStr doubleValue]/1000 - hhh;
 	if (leftTime > 0)
 	{
         int numDay = (int)(leftTime / (3600.0 * 24));
@@ -184,14 +210,32 @@
             cell.tLabel.textColor = [UIColor grayColor];
             cell.nameLabel.textColor = [UIColor grayColor];
             cell.progressLabel.textColor = [UIColor grayColor];
+            
+            if([RuYiCaiNetworkManager sharedManager].hasLogin)
+            {
+                cell.progressLabel.text = @"已完成";
+            }
+            else
+            {
+                cell.progressLabel.text = @"点击登录查看";
+            }
             cell.timeLabel.textColor = [UIColor grayColor];
             cell.timeLabel.text = @" ";
             [cell.statusImgV setImage:[UIImage imageNamed:@"taskcompleted"]];
         }
-        else if ([[actV objectForKey:@"state"] isEqualToString:@"-1"]) {
+        else if ([[actV objectForKey:@"state"] isEqualToString:@"4"]) {
             cell.tLabel.textColor = [UIColor grayColor];
             cell.nameLabel.textColor = [UIColor grayColor];
             cell.progressLabel.textColor = [UIColor grayColor];
+            
+            if([RuYiCaiNetworkManager sharedManager].hasLogin)
+            {
+                cell.progressLabel.text = @"已过期";
+            }
+            else
+            {
+                cell.progressLabel.text = @"点击登录查看";
+            }
             cell.timeLabel.textColor = [UIColor grayColor];
             cell.timeLabel.text = @" ";
             [cell.statusImgV setImage:[UIImage imageNamed:@"taskexpired"]];
@@ -201,18 +245,27 @@
             cell.tLabel.textColor = [UIColor redColor];
             cell.nameLabel.textColor = [UIColor blackColor];
             cell.progressLabel.textColor = [UIColor redColor];
+            
+            if([RuYiCaiNetworkManager sharedManager].hasLogin)
+            {
+                cell.progressLabel.text = [NSString stringWithFormat:@"%@/5000",[RuYiCaiNetworkManager sharedManager].userLotPea];
+            }
+            else
+            {
+                cell.progressLabel.text = @"点击登录查看";
+            }
             cell.timeLabel.textColor = [UIColor grayColor];
             cell.timeLabel.text = self.timeStr;
             [cell.statusImgV setImage:nil];
         }
-        if([RuYiCaiNetworkManager sharedManager].hasLogin)
-        {
-            cell.progressLabel.text = [actV objectForKey:@"progress"];
-        }
-        else
-        {
-            cell.progressLabel.text = @"点击登录查看";
-        }
+//        if([RuYiCaiNetworkManager sharedManager].hasLogin)
+//        {
+//            cell.progressLabel.text = [actV objectForKey:@"progress"];
+//        }
+//        else
+//        {
+//            cell.progressLabel.text = @"点击登录查看";
+//        }
         return cell;
     }
     else{
@@ -233,7 +286,8 @@
             [formatter release];
             cell.qianDaoTimeLabel.text = dateS;
             [cell.doitBtn setTitle:@"立刻签到" forState:UIControlStateNormal];
-            [cell.doitBtn addTarget:self action:@selector(doQianDao) forControlEvents:UIControlEventTouchUpInside];
+            cell.doitBtn.tag=101;
+            [cell.doitBtn addTarget:self action:@selector(doQianDao:) forControlEvents:UIControlEventTouchUpInside];
         }
         else
         {
@@ -241,7 +295,8 @@
             cell.qianDaoTimeLabel.text = @"";
             cell.imageV.image = [UIImage imageNamed:@"act-caidou"];
             [cell.doitBtn setTitle:@"立刻好评" forState:UIControlStateNormal];
-            [cell.doitBtn addTarget:self action:@selector(toCommentInAppStore) forControlEvents:UIControlEventTouchUpInside];
+            cell.doitBtn.tag = 102;
+            [cell.doitBtn addTarget:self action:@selector(toCommentInAppStore:) forControlEvents:UIControlEventTouchUpInside];
         }
         if ([[actV objectForKey:@"state"] isEqualToString:@"2"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
             cell.nameLabel.textColor = [UIColor grayColor];
@@ -276,14 +331,22 @@
 }
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSString * sss = [actsArray[0] objectForKey:@"experTime"];
+    NSString * sss = @"1398152650";
+    for (NSDictionary * dict in actsArray) {
+        if ([[dict objectForKey:@"type"] isEqualToString:@"1"]) {
+            sss = [dict objectForKey:@"expireTime"];
+        }
+    }
     if (sss) {
         [self calRemainingTime:sss];
     }
     [self.listTableV reloadData];
 }
--(void)doQianDao
+-(void)doQianDao:(UIButton *)sender
 {
+    if (sender.tag!=101) {
+        return;
+    }
     if(![RuYiCaiNetworkManager sharedManager].hasLogin)
     {
         [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
@@ -299,8 +362,11 @@
 {
     [m_delegate.activityView disActivityView];
 }
--(void)toCommentInAppStore
+-(void)toCommentInAppStore:(UIButton *)sender
 {
+    if (sender.tag!=102) {
+        return;
+    }
     if(![RuYiCaiNetworkManager sharedManager].hasLogin)
     {
         [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
@@ -314,6 +380,7 @@
         [[UIApplication sharedApplication] openURL:url];
         NSTimeInterval nowT = [[NSDate date] timeIntervalSince1970];
         [RuYiCaiNetworkManager sharedManager].beginCalOutComment = nowT;
+        NSLog(@"outtime:%f",nowT);
 //        [self performSelector:@selector(tellServerCommentDone) withObject:nil afterDelay:30];
     }
 }

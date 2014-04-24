@@ -290,11 +290,16 @@
     
     if ([RuYiCaiNetworkManager sharedManager].beginCalOutComment>0) {
         NSTimeInterval nowT = [[NSDate date] timeIntervalSince1970];
+        NSLog(@"intime:%f",nowT);
         if (nowT-[RuYiCaiNetworkManager sharedManager].beginCalOutComment>30) {
             [RuYiCaiNetworkManager sharedManager].beginCalOutComment=0;
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"感谢您的评价，接下来我们会审核您的评价，如果满足要求，系统会为您加上相应的彩豆，这个时间可能会有半个小时到几小时，不要着急哦^_^" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
             [alert show];
             [alert release];
+            if([RuYiCaiNetworkManager sharedManager].hasLogin)
+            {
+                [[RuYiCaiNetworkManager sharedManager] queryActListWithPage:@"0"];
+            }
         }
         else
         {
@@ -303,6 +308,7 @@
             [alert show];
             [alert release];
         }
+        
     }
 }
 
