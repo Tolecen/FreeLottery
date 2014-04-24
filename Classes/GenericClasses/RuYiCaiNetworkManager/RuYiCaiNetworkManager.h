@@ -265,6 +265,7 @@ typedef enum
 @property (nonatomic, assign) BOOL shouldCheat;
 
 @property (nonatomic, assign) BOOL requestedAdwallSuccess;
+@property (nonatomic, assign) float beginCalOutComment;
 @property (nonatomic, retain) NSString* userBalance;
 @property (nonatomic, retain) NSString* userLotPea;
 @property (nonatomic, retain) NSString* userPrizeBalance;
@@ -422,6 +423,7 @@ typedef enum
 //获取彩种的开奖日期
 - (NSString*)getEndtimeOfLot:(NSString*)lotCode;
 
+-(void)doGoodCommentWithID:(NSString *)theID;
 -(void)queryADWallList;
 -(void)doQianDaoWithID:(NSString *)theID;
 -(void)queryRemainingChanceForLot;

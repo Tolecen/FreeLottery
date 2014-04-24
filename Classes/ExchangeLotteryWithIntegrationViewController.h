@@ -38,6 +38,7 @@
 #import "MiidiAdWallRequestToggleDelegate.h"
 #import "MiidiAdDesc.h"
 #import "MiidiAdWall.h"
+#import "SFHFKeychainUtils.h"
 
 
 #define LiMeiAdID     @"2ccba7d7614fbdc10c1c532c822205ca"
@@ -53,7 +54,10 @@
 #define MiidiAppSecret       @"37spm32qxkrsxn90"
 //#define AdViewKey      @"RTB20140915090425fqfoawfedeh48n9"
 
-
+#define MaxAllowIDFACount   5
+#define CurrentIDFA   @"currentIDFA"
+#define CheckCheatStatus  @"checkcheatstatusfreelotteryquanmin"
+#define IDFACount   @"idfaCount"
 
 @class ADWallViewController;
 @interface ExchangeLotteryWithIntegrationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,immobViewDelegate,DianRuAdWallDelegate,YJFAdWallDelegate,YJFInterstitialDelegate,YJFBannerDelegate,YJFIntegralWallDelegate,DMOfferWallDelegate,MiidiAdWallShowAppOffersDelegate,UIAlertViewDelegate,ADBannerViewDelegate>

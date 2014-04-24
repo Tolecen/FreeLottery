@@ -1161,6 +1161,7 @@
 		72CF01A518F7992D00310F49 /* user_nphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF01A118F7992D00310F49 /* user_nphone.png */; };
 		72CF01A618F7992D00310F49 /* user_ycert.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF01A218F7992D00310F49 /* user_ycert.png */; };
 		72CF01A718F7992D00310F49 /* user_yphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF01A318F7992D00310F49 /* user_yphone.png */; };
+		9702D2BE19089FB9007CA4B1 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9702D2BD19089FB9007CA4B1 /* SFHFKeychainUtils.m */; };
 		9703653218D6A93700060FB1 /* tishitext.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9703653118D6A93700060FB1 /* tishitext.txt */; };
 		9704B23C18DAA16300588D91 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9704B23B18DAA16300588D91 /* iAd.framework */; };
 		9704B23F18DACC4E00588D91 /* deletenewop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704B23E18DACC4E00588D91 /* deletenewop.png */; };
@@ -2925,6 +2926,8 @@
 		72CF01A118F7992D00310F49 /* user_nphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_nphone.png; sourceTree = "<group>"; };
 		72CF01A218F7992D00310F49 /* user_ycert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_ycert.png; sourceTree = "<group>"; };
 		72CF01A318F7992D00310F49 /* user_yphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_yphone.png; sourceTree = "<group>"; };
+		9702D2BC19089FB9007CA4B1 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		9702D2BD19089FB9007CA4B1 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		9703653118D6A93700060FB1 /* tishitext.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tishitext.txt; sourceTree = "<group>"; };
 		9704B23B18DAA16300588D91 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		9704B23E18DACC4E00588D91 /* deletenewop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletenewop.png; sourceTree = "<group>"; };
@@ -5363,6 +5366,7 @@
 		658E168E16ACF33800C196E3 /* Uitls */ = {
 			isa = PBXGroup;
 			children = (
+				9702D2BB19089FB9007CA4B1 /* SFHFKeychainUtils */,
 				2848E59C17F2090C0063896E /* AlertViewUitils */,
 				280B3BB317E9B6740036B54B /* AdaptationUitils */,
 				28708AAF1742532A009AC9C6 /* UUIDUtils */,
@@ -5651,6 +5655,15 @@
 				72BC606818F53E780002B217 /* MobClick.h */,
 			);
 			path = UMENGPlug;
+			sourceTree = "<group>";
+		};
+		9702D2BB19089FB9007CA4B1 /* SFHFKeychainUtils */ = {
+			isa = PBXGroup;
+			children = (
+				9702D2BC19089FB9007CA4B1 /* SFHFKeychainUtils.h */,
+				9702D2BD19089FB9007CA4B1 /* SFHFKeychainUtils.m */,
+			);
+			path = SFHFKeychainUtils;
 			sourceTree = "<group>";
 		};
 		971653EC18FCDB3E00AA40C3 /* WeiXin */ = {
@@ -8324,6 +8337,7 @@
 				28A7E7F518153A9B00DF8A13 /* KSSumViewController.m in Sources */,
 				D501D74415AD8295005733FB /* ZCSixCBView.m in Sources */,
 				D501D74515AD8295005733FB /* ZJJHViewController.m in Sources */,
+				9702D2BE19089FB9007CA4B1 /* SFHFKeychainUtils.m in Sources */,
 				D5E54E0A15AE5A95003B2924 /* RuYiCaiNetwork_Category_UserCenter_ReqComplete.m in Sources */,
 				D5E54E0B15AE5A95003B2924 /* RuYiCaiNetwork_Category_UserCenter_Request.m in Sources */,
 				D5E54E0C15AE5A95003B2924 /* RuYiCaiNetworkManager.mm in Sources */,

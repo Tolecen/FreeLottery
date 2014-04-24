@@ -87,6 +87,7 @@ typedef enum _ASINetworkReqestType
     ASINetworkRequestTypeQueryActList,
     ASINetworkRequestTypeQueryADWallList,
     ASINetworkRequestTypeDoQianDao,
+    ASINetworkRequestTypeDoGoodComment,
     ASINetworkRequestTypeGetExchangeScaleForAdWall,
     ASINetworkRequestTypeUpdateInformationOfLotteryInServers,
     ASINetworkRequestTypeUpdatePayStationInServers,

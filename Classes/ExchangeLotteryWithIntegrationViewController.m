@@ -78,7 +78,7 @@
     NSMutableDictionary * kk = [NSMutableDictionary dictionary];
     [kk setObject:theName forKey:@"name"];
     [kk setObject:theD forKey:@"description"];
-    [kk setObject:theID forKey:@"id"];
+    [kk setObject:theID forKey:@"code"];
     return kk;
 }
 -(void)viewWillDisappear:(BOOL)animated
@@ -177,7 +177,7 @@
     else
     {
         realAdwall = YES;
-        titleArray = realArray;
+        titleArray = [(NSArray *)noti.object retain];
 
     }
     [RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess = YES;
@@ -412,7 +412,31 @@
 
 -(void)enterADWALLWithID:(int)theIndex
 {
-    NSString * theID = [titleArray[theIndex] objectForKey:@"id"];
+    NSString * theID = [titleArray[theIndex] objectForKey:@"code"];
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+//    [SFHFKeychainUtils storeUsername:CurrentIDFA andPassword:idfa forServiceName:CheckCheatStatus updateExisting:YES error:nil];
+    NSString * lastIDFA = [SFHFKeychainUtils getPasswordForUsername:CurrentIDFA andServiceName:CheckCheatStatus error:nil];
+    NSString * idfacount = [SFHFKeychainUtils getPasswordForUsername:IDFACount andServiceName:CheckCheatStatus error:nil];
+    if (!lastIDFA) {
+        lastIDFA = @"no";
+    }
+    int theCount = 0;
+    if (idfacount) {
+        theCount = [idfacount intValue];
+    }
+    if (![lastIDFA isEqualToString:idfa]) {
+        theCount++;
+    }
+    [SFHFKeychainUtils storeUsername:IDFACount andPassword:[NSString stringWithFormat:@"%d",theCount] forServiceName:CheckCheatStatus updateExisting:YES error:nil];
+    [SFHFKeychainUtils storeUsername:CurrentIDFA andPassword:idfa forServiceName:CheckCheatStatus updateExisting:YES error:nil];
+    
+    if (theCount>MaxAllowIDFACount) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"检测到你有点作弊，先缓一缓吧，明天再说" delegate:self cancelButtonTitle:@"好吧" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    
     if ([theID isEqualToString:@"limei"]) {
         [self enterLiMeiAdWall];
     }
