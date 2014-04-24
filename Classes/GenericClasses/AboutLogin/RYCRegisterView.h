@@ -15,6 +15,7 @@
     UIButton         *_commiteRegisterButton;
     UIView           *_commitProtcolView;
 }
+@property(nonatomic,retain) NSString * phoneNo;
 @property(nonatomic, retain) IBOutlet  UILabel      *navgationTitleLable;
 @property(nonatomic, retain) IBOutlet  UIView       *navgationView;
 @property(nonatomic, retain) IBOutlet  UIButton*    goBackBtn;
