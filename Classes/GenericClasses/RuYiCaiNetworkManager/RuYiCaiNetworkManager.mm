@@ -2258,7 +2258,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
     [jsonWriter release];
     
-    NSLog(@"  查询剩余投注次数: \nsendData:%@" , cookieStr);
+    NSLog(@"  签到: \nsendData:%@" , cookieStr);
     NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
     NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
     [request appendPostData:sendData];
@@ -2292,7 +2292,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
     [jsonWriter release];
     
-    NSLog(@"  查询剩余投注次数: \nsendData:%@" , cookieStr);
+    NSLog(@"  好评: \nsendData:%@" , cookieStr);
     NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
     NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
     [request appendPostData:sendData];
