@@ -55,7 +55,7 @@
     [navImg release];
     
     UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    registerButton.frame = CGRectMake(10, 26, 52, 30);
+    registerButton.frame = CGRectMake(10, h-38, 52, 30);
     
     [registerButton setBackgroundImage:[UIImage imageNamed:@"back_triangle_c_normal.png"] forState:UIControlStateNormal];
     [registerButton setBackgroundImage:[UIImage imageNamed:@"back_triangle_c_click.png"] forState:UIControlStateHighlighted];
@@ -64,7 +64,7 @@
     [registerButton addTarget:self action: @selector(cancelCheck) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:registerButton];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 320, 30)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, h-39, 320, 30)];
     titleLabel.text = @"用户注册";
     titleLabel.textAlignment = UITextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
