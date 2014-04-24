@@ -16,7 +16,7 @@
 //#import "AliLog.h"
 #import "ColorUtils.h"
 #import "BindeUserAccountVC.h"
-
+#import "CheckoutViewController.h"
 #define ALI_MOD   ("SPTicketViewController")
 
 
@@ -487,9 +487,9 @@
     [m_loginPhonenumTextField resignFirstResponder];
     [m_loginPswTextField resignFirstResponder];
     
-    RYCRegisterView *registerView = [[RYCRegisterView alloc] init];
-    [self presentModalViewController:registerView animated:YES];
-    [registerView release];
+    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:[[[CheckoutViewController alloc] init] autorelease]];
+    [self presentModalViewController:nav animated:YES];
+    [nav release];
 }
 
 - (void)loginButtonClick:(id)sender

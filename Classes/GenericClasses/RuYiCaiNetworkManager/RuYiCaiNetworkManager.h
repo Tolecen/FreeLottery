@@ -667,7 +667,10 @@ typedef enum
 //用户反馈
 - (void)sendFeedBack:(NSString*)content contactWay:(NSString*)contactway;
 //- (void)sendFeedBack:(NSString*)content contactWay:(NSString*)contactway qNumTextField:(NSString*)qNumTextField;
-
+//获取验证码
+- (void)getCheckoutNoWithPhongNo:(NSString*)phoneNo requestType:(NSString*)type;
+//验证yanzhengma
+- (void)checkoutCaptchaNoWithPjoneNo:(NSString*)phoneNo CaptchaNo:(NSString*)CaptchaNo;
 @end
 /*
  ///////////////////////////////////////////////////

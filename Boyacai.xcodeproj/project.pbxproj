@@ -1123,8 +1123,12 @@
 		7243F98E190600A50072AF6B /* fc3d_c_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 7243F989190600A50072AF6B /* fc3d_c_main.png */; };
 		7243F98F190600A50072AF6B /* scc_c_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 7243F98A190600A50072AF6B /* scc_c_main.png */; };
 		7243F990190600A50072AF6B /* ssc_c_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 7243F98B190600A50072AF6B /* ssc_c_main.png */; };
+		724BD671190769C000A41AC1 /* modelinfo_c_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 724BD670190769C000A41AC1 /* modelinfo_c_bg.png */; };
+		724BD67419076C1600A41AC1 /* checkout.png in Resources */ = {isa = PBXBuildFile; fileRef = 724BD67219076C1600A41AC1 /* checkout.png */; };
+		724BD67519076C1600A41AC1 /* uncheckout.png in Resources */ = {isa = PBXBuildFile; fileRef = 724BD67319076C1600A41AC1 /* uncheckout.png */; };
 		726ADAF718F788C3007624AD /* exchange-click.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF518F788C3007624AD /* exchange-click.png */; };
 		726ADAF818F788C3007624AD /* exchange-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF618F788C3007624AD /* exchange-normal.png */; };
+		7274570619066E710043A3B8 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274570519066E710043A3B8 /* CheckoutViewController.m */; };
 		7276665218FCCB98006DB950 /* ActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7276665118FCCB98006DB950 /* ActionView.m */; };
 		72A2335618F69C3600155684 /* ExchangeCaidouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */; };
 		72BC605B18F53DD60002B217 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BC605A18F53DD60002B217 /* immobSDK.framework */; };
@@ -2595,7 +2599,6 @@
 		5224961B18320393005F7577 /* golottery_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = golottery_normal.png; sourceTree = "<group>"; };
 		5224961D18320393005F7577 /* jc_play_click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jc_play_click.png; sourceTree = "<group>"; };
 		5224961E18320393005F7577 /* jc_play_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jc_play_normal.png; sourceTree = "<group>"; };
-		5224961F18320393005F7577 /* jclottery_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jclottery_bg.png; sourceTree = "<group>"; };
 		5224962018320393005F7577 /* same_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = same_bg.png; sourceTree = "<group>"; };
 		5224962118320393005F7577 /* same_count_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = same_count_bg.png; sourceTree = "<group>"; };
 		5224962218320393005F7577 /* qtz_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qtz_btn.png; sourceTree = "<group>"; };
@@ -2875,8 +2878,13 @@
 		7243F989190600A50072AF6B /* fc3d_c_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc3d_c_main.png; sourceTree = "<group>"; };
 		7243F98A190600A50072AF6B /* scc_c_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scc_c_main.png; sourceTree = "<group>"; };
 		7243F98B190600A50072AF6B /* ssc_c_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ssc_c_main.png; sourceTree = "<group>"; };
+		724BD670190769C000A41AC1 /* modelinfo_c_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modelinfo_c_bg.png; sourceTree = "<group>"; };
+		724BD67219076C1600A41AC1 /* checkout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkout.png; sourceTree = "<group>"; };
+		724BD67319076C1600A41AC1 /* uncheckout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheckout.png; sourceTree = "<group>"; };
 		726ADAF518F788C3007624AD /* exchange-click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-click.png"; sourceTree = "<group>"; };
 		726ADAF618F788C3007624AD /* exchange-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-normal.png"; sourceTree = "<group>"; };
+		7274570419066E710043A3B8 /* CheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutViewController.h; sourceTree = "<group>"; };
+		7274570519066E710043A3B8 /* CheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutViewController.m; sourceTree = "<group>"; };
 		7276665018FCCB98006DB950 /* ActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionView.h; sourceTree = "<group>"; };
 		7276665118FCCB98006DB950 /* ActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionView.m; sourceTree = "<group>"; };
 		72A2335418F69C3600155684 /* ExchangeCaidouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeCaidouViewController.h; sourceTree = "<group>"; };
@@ -4480,6 +4488,9 @@
 		5224943D18320392005F7577 /* FirstPageMain */ = {
 			isa = PBXGroup;
 			children = (
+				724BD670190769C000A41AC1 /* modelinfo_c_bg.png */,
+				724BD67219076C1600A41AC1 /* checkout.png */,
+				724BD67319076C1600A41AC1 /* uncheckout.png */,
 				5224943E18320392005F7577 /* arrow.png */,
 				5224943F18320392005F7577 /* arrow2.png */,
 				5224944018320392005F7577 /* auto_order_click.png */,
@@ -5076,7 +5087,6 @@
 			children = (
 				5224961D18320393005F7577 /* jc_play_click.png */,
 				5224961E18320393005F7577 /* jc_play_normal.png */,
-				5224961F18320393005F7577 /* jclottery_bg.png */,
 				5224962018320393005F7577 /* same_bg.png */,
 			);
 			path = JC_BD_open;
@@ -6880,6 +6890,8 @@
 				D5E54E0F15AE5B2A003B2924 /* RYCForgetPasswordView.m */,
 				D5E54E1015AE5B2A003B2924 /* RYCLoginView.h */,
 				D5E54E1115AE5B2A003B2924 /* RYCLoginView.m */,
+				7274570419066E710043A3B8 /* CheckoutViewController.h */,
+				7274570519066E710043A3B8 /* CheckoutViewController.m */,
 				D5F4A6671601C91500B7F3F8 /* RYCRegisterView.h */,
 				D5F4A6681601C91500B7F3F8 /* RYCRegisterView.m */,
 				28A6AF5A17F49B6900E338F5 /* RYCRegisterView.xib */,
@@ -7409,6 +7421,7 @@
 				5224982A18320393005F7577 /* jc_leagueBackground.png in Resources */,
 				977A725C18C06AF6007DE71B /* dianru_blue_all_cell.png in Resources */,
 				5224993E18320393005F7577 /* login_state_select.png in Resources */,
+				724BD671190769C000A41AC1 /* modelinfo_c_bg.png in Resources */,
 				5224982318320393005F7577 /* jc_confusion_normal.png in Resources */,
 				5224965A18320393005F7577 /* ranking_num_10.png in Resources */,
 				2845C971183BCA9900B2E786 /* alert-window-landscape.png in Resources */,
@@ -7584,6 +7597,7 @@
 				72C52F2B18FBB5E400AC2763 /* prize_all_normal.png in Resources */,
 				5224987B18320393005F7577 /* sxb_c_12.png in Resources */,
 				5224975718320393005F7577 /* jsbf_c_btn_click.png in Resources */,
+				724BD67419076C1600A41AC1 /* checkout.png in Resources */,
 				5224979318320393005F7577 /* segment_high_bet_tz_nomarl.png in Resources */,
 				522498EC18320393005F7577 /* receiver_c_nomal.png in Resources */,
 				5224978218320393005F7577 /* random_num_red_click.png in Resources */,
@@ -7777,6 +7791,7 @@
 				72C52F3318FBCEE000AC2763 /* caishen_icon.png in Resources */,
 				522498E518320393005F7577 /* leaveMessageClick.png in Resources */,
 				5224978918320393005F7577 /* randomnum_c_bg.png in Resources */,
+				724BD67519076C1600A41AC1 /* uncheckout.png in Resources */,
 				5224988318320393005F7577 /* sxb_c_9.png in Resources */,
 				977A727518C06AF6007DE71B /* dianru_set_btn.png in Resources */,
 				522498DA18320393005F7577 /* bankTxBtn_naomal.png in Resources */,
@@ -8371,6 +8386,7 @@
 				D5DDEFD715EF6A7D00226036 /* OnlyHaveTextViewTableCell.m in Sources */,
 				D539FD6F15F4938500C30970 /* XinShouZhiNanViewController.m in Sources */,
 				D539FD9215F4A8FB00C30970 /* SetLotShowViewController.m in Sources */,
+				7274570619066E710043A3B8 /* CheckoutViewController.m in Sources */,
 				D5E1712815F9868E0003AD65 /* CaipiaoInformationViewController.m in Sources */,
 				D5E1712915F9868E0003AD65 /* NewsViewController.m in Sources */,
 				D5E1712F15F9875F0003AD65 /* DaiLiChargeViewController.m in Sources */,

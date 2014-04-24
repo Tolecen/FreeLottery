@@ -113,6 +113,8 @@
     }
     [self.navgationBarReg setBackground];
     m_registerPhonenumTextField.delegate = self;
+    m_registerPhonenumTextField.text = self.phoneNo;
+    m_registerPhonenumTextField.enabled = NO;
     m_registerPswTextField.delegate = self;
     m_registerCertidTextField.delegate = self;
     m_registerNameTextField.delegate = self;
@@ -177,8 +179,9 @@
 
 - (IBAction)backButtonClick:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+//    [self dismissModalViewControllerAnimated:YES];
 //    [self.parentViewController dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)sureButtonClick:(id)sender
