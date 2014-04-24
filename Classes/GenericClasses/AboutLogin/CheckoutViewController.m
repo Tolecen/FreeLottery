@@ -10,6 +10,7 @@
 #import "ColorUtils.h"
 #import "RYCRegisterView.h"
 #import "AgreementViewController.h"
+#import "RuYiCaiNetworkManager.h"
 @interface CheckoutViewController ()
 @property (nonatomic,retain)UITextField* phoneNoTF;
 @property (nonatomic,retain)UITextField* checkoutNoTF;
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#f7f3ec"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkoutCaptchaOK:) name:@"WXRCheckoutCaptchaOK" object:nil];
 	// Do any additional setup after loading the view.
     float h = 0;
     if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0){
@@ -181,6 +183,7 @@
         [alert show];
         return;
     }
+    [[RuYiCaiNetworkManager sharedManager] getCheckoutNoWithPhongNo:_phoneNoTF.text requestType:@"0"];
     btn.enabled =NO;
     [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [btn setTitle:@"60s之后可以重新发送" forState:UIControlStateNormal];
@@ -216,6 +219,13 @@
         [alert show];
         return;
     }
+    [[RuYiCaiNetworkManager sharedManager] checkoutCaptchaNoWithPjoneNo:_phoneNoTF.text CaptchaNo:_checkoutNoTF.text];
+    if (checkoutCaptcha) {
+        [self checkoutCaptchaOK:nil];
+    }
+}
+- (void)checkoutCaptchaOK:(NSNotification *)notification
+{
     RYCRegisterView *checkoutView = [[RYCRegisterView alloc] init];
     checkoutView.phoneNo = _phoneNoTF.text;
     [self.navigationController pushViewController:checkoutView animated:YES];

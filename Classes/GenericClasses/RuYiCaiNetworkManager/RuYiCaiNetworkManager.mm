@@ -2877,6 +2877,12 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         case ASINetworkRequestTypeCaidouDetail:
             [self queryCaodouDetailComplete:resText];
             break;
+        case ASINetworkRequestTypeGetCaptcha:
+            [self getCaptcha:resText];
+            break;
+        case ASINetworkRequestTypeCheckoutCaptcha:
+            [self CheckoutCaptcha:resText];
+            break;
 		default:
 			break;
 	}
@@ -3979,7 +3985,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         
         //[m_registerAlertView dismissWithClickedButtonIndex:0 animated:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"registerOK" object:nil];
-        [self showMessage:message withTitle:@"注册成功" buttonTitle:@"确定"];
+//        [self showMessage:message withTitle:@"注册成功" buttonTitle:@"确定"];
         
         m_netAppType = NET_APP_LOGIN;//更新登录状态
         [self loginWithPhonenum:self.phonenum withPassword:self.password];
@@ -4189,6 +4195,43 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     self.lotteryInformation = resText;
 	
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateLottery" object:nil];
+}
+- (void)CheckoutCaptcha:(NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    NSString* message = [parserDict objectForKey:@"message"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRCheckoutCaptchaOK" object:nil userInfo:parserDict];
+    }
+    else
+    {
+        [self showMessage:message withTitle:@"账户查询" buttonTitle:@"确定"];
+    }
+}
+- (void)getCaptcha:(NSString*)resText
+{
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    NSString* message = [parserDict objectForKey:@"message"];
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+    }
+    else
+    {
+        [self showMessage:message withTitle:@"账户查询" buttonTitle:@"确定"];
+    }
 }
 - (void)queryCaodouDetailComplete:(NSString*)resText
 {

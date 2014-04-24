@@ -179,8 +179,9 @@
 
 - (IBAction)backButtonClick:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+//    [self dismissModalViewControllerAnimated:YES];
 //    [self.parentViewController dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)sureButtonClick:(id)sender

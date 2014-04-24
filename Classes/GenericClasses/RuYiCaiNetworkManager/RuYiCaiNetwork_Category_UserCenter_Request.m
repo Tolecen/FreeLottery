@@ -93,7 +93,53 @@
             break;
     }
 }
-
+- (void)checkoutCaptchaNoWithPjoneNo:(NSString*)phoneNo CaptchaNo:(NSString*)CaptchaNo
+{
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+	request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"userCenter" forKey:@"command"];
+    [mDict setObject:@"validateCaptcha" forKey:@"type"];
+    [mDict setObject:phoneNo forKey:@"bindPhoneNum"];
+    [mDict setObject:CaptchaNo forKey:@"securityCode"];
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeCheckoutCaptcha];
+	[request setDelegate:self];
+	[request startAsynchronous];
+    [self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
+}
+- (void)getCheckoutNoWithPhongNo:(NSString*)phoneNo requestType:(NSString*)type
+{
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+	request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"userCenter" forKey:@"command"];
+    [mDict setObject:@"generateCaptcha" forKey:@"type"];
+    [mDict setObject:phoneNo forKey:@"bindPhoneNum"];
+    [mDict setObject:type forKey:@"requestType"];
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    NSLog(@"%@",cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeGetCaptcha];
+	[request setDelegate:self];
+	[request startAsynchronous];
+    [self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
+}
 - (void)queryLotWinOfPage:(NSUInteger)pageIndex
 {
 //    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
