@@ -170,6 +170,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bindphoneOK) name:@"WXRBindPhoneOk" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelBindPhoneOk) name:@"WXRCancelBindPhoneOk" object:nil];
     [AdaptationUtils adaptation:self];
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
     
@@ -595,7 +597,18 @@
     [caidouB addTarget:self action:@selector(exchangeCaidou) forControlEvents:UIControlEventTouchUpInside];
     [self.loginTopView addSubview:caidouB];
 }
-
+- (void)bindphoneOK
+{
+    [m_isBindPhone setTitle:@"已绑定手机号" forState:UIControlStateNormal];
+    [m_isBindPhone setTitleColor:[UIColor colorWithRed:51.0/255.0 green:102.0/255.0 blue:51.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    m_idPhoneimage.image = [UIImage imageNamed:@"user_yphone.png"];
+}
+- (void)cancelBindPhoneOk
+{
+    [m_isBindPhone setTitle:@"未绑定手机号" forState:UIControlStateNormal];
+    [m_isBindPhone setTitleColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    m_idPhoneimage.image = [UIImage imageNamed:@"user_nphone.png"];
+}
 - (void)getUserCenterInfoOK:(NSNotification *)notification
 {
     SBJsonParser *jsonParser = [SBJsonParser new];

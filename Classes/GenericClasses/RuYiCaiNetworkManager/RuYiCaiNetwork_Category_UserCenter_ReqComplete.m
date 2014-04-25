@@ -394,6 +394,7 @@
         UIAlertView *bindPhoneSucAlertView = [[UIAlertView alloc] initWithTitle:@"手机绑定" message:mess delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [bindPhoneSucAlertView show];
         [bindPhoneSucAlertView release];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRBindPhoneOk" object:nil userInfo:parserDict];
 	}
 	else
 	{
@@ -448,7 +449,7 @@
         [m_cancelBindPhoneAlterView dismissWithClickedButtonIndex:0 animated:YES];
         self.bindPhoneNum = @"";
         [self setCancelOKbindPhoneView];	
-//        [self UpdateUserInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRCancelBindPhoneOk" object:nil userInfo:parserDict];
 	}
 	else
 	{

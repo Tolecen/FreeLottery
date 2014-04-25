@@ -75,7 +75,8 @@
     [_jiangjinNoL release];
     
     UILabel * guizeL = [[UILabel alloc]initWithFrame:CGRectMake(20, 80, 300, 70)];
-    guizeL.text = @"兑换比例: 1元=250彩豆(500彩豆换取一注彩票)\n\n\n输入兑换金额:";
+    int a  = [[[NSUserDefaults standardUserDefaults] objectForKey:@"ADWallExchangeScale"] intValue];
+    guizeL.text =[NSString stringWithFormat:@"兑换比例: 1元=%d彩豆(%d彩豆换取一注彩票)\n\n\n输入兑换金额:",a ,2*a];
     guizeL.numberOfLines = 0;
     guizeL.font = [UIFont systemFontOfSize:14];
     guizeL.textColor = [UIColor blackColor];
