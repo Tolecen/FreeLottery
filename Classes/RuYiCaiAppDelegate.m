@@ -298,8 +298,7 @@
             [alert release];
             if([RuYiCaiNetworkManager sharedManager].hasLogin)
             {
-                [[RuYiCaiNetworkManager sharedManager] queryActListWithPage:@"0"];
-            }
+             }
         }
         else
         {
