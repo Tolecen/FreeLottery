@@ -90,7 +90,10 @@
 {
     [self refreshMySubViews];
 }
-
+-(void)queryRemainingIDFAOK:(NSNotification *)noti
+{
+    
+}
 
 #pragma mark UITableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 

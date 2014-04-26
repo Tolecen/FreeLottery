@@ -89,6 +89,11 @@
     [self.view addSubview:topBottomImageView];
     [topBottomImageView release];
     
+    UIImageView *topBottomImageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(20,[UIScreen mainScreen].bounds.size.height - 130 , 280, 1)];
+    topBottomImageView2.image = [UIImage imageNamed:@"secion_c_Line.png"];
+    [self.view addSubview:topBottomImageView2];
+    [topBottomImageView2 release];
+    
     
 //    UILabel *qqLable = [[UILabel alloc] initWithFrame:CGRectMake(30, [UIScreen mainScreen].bounds.size.height - 270, 100, 30)];
 //    qqLable.textColor = [ColorUtils parseColorFromRGB:@"#3c3c3c"];
@@ -136,8 +141,24 @@
     [self.view addSubview:phoneNumBtn];
     [phoneNumBtn release];
     
+    UILabel *phoneLable2 = [[UILabel alloc] initWithFrame:CGRectMake(30, [UIScreen mainScreen].bounds.size.height - 170, 100, 30)];
+    phoneLable2.textColor = [ColorUtils parseColorFromRGB:@"#3c3c3c"];
+    phoneLable2.font = [UIFont systemFontOfSize:16];
+    phoneLable2.backgroundColor = [UIColor clearColor];
+    phoneLable2.text = @"客服QQ";
+    [self.view addSubview:phoneLable2];
+    [phoneLable2 release];
     
-    UILabel *bottomLable = [[UILabel alloc] initWithFrame:CGRectMake(30, [UIScreen mainScreen].bounds.size.height - 150, 260, 30)];
+    UIButton *phoneNumBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(163, [UIScreen mainScreen].bounds.size.height - 170, 150, 30)];
+    [phoneNumBtn2 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    phoneNumBtn2.titleLabel.font= [UIFont systemFontOfSize:16];
+    [phoneNumBtn2 setTitle:KQQNumber forState:UIControlStateNormal];
+    [phoneNumBtn2 addTarget:self action:@selector(qqClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:phoneNumBtn2];
+    [phoneNumBtn2 release];
+    
+    
+    UILabel *bottomLable = [[UILabel alloc] initWithFrame:CGRectMake(30, [UIScreen mainScreen].bounds.size.height - 120, 260, 30)];
     bottomLable.textColor = [ColorUtils parseColorFromRGB:@"#a49d8f"];
     bottomLable.font = [UIFont systemFontOfSize:14];
     bottomLable.backgroundColor = [UIColor clearColor];
@@ -163,6 +184,14 @@
 {
     [[RuYiCaiNetworkManager sharedManager] checkNewVersion];
 }
+-(void)qqClick
+{
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"复制QQ号？" delegate:self cancelButtonTitle:@"不了" otherButtonTitles:@"复制", nil];
+    [alert show];
+    alert.tag = 12;
+    [alert release];
+}
+
 - (void)phoneClick
 {
     UIDevice* device = [UIDevice currentDevice];
@@ -209,6 +238,12 @@
     if (alertView.tag==kNewVersionAlertViewTag) {
         if (buttonIndex==1) {
             [self gotoUpgrade];
+        }
+    }
+    if (alertView.tag==12) {
+        if (buttonIndex==1) {
+            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+            pasteboard.string = KQQNumber;
         }
     }
 }

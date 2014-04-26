@@ -2199,6 +2199,41 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request startAsynchronous];
 }
 
+-(void)queryRemainingIDFA
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"scorewall" forKey:@"command"];
+    [mDict setObject:@"leftDeviceNum" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+//    [mDict setObject:@"0" forKey:@"pageindex"];
+//    [mDict setObject:@"7" forKey:@"maxresult"];
+    //自动登录
+    //    [m_delegate readAutoLoginPlist];//?????????
+    //    if (m_delegate.autoRememberMystatus && [[m_delegate autoLoginRandomNumber] length] > 0) {
+    //        NSString *str = m_delegate.autoLoginRandomNumber;
+    //        [mDict setObject:str forKey:@"randomNumber"];
+    //    }
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  查询设备: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTyPeQueryRemainingIDFA];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
 -(void)queryActListWithPage:(NSString *)thePage
 {
     NSTrace();
@@ -2481,6 +2516,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
             break;
         case ASINetworkRequestTypeQueryADWallList:
             [self queryADWallListOK:resText];
+            break;
+        case ASINetworkRequestTyPeQueryRemainingIDFA:
+            [self queryRemainingIDFAOK:resText];
             break;
         case ASINetworkRequestTypeQueryActList:
             [self queryActListOK:resText];
@@ -2923,6 +2961,19 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"queryActListOK" object:arrayG];
     }
+}
+-(void)queryRemainingIDFAOK:(NSString*)resText
+{
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+//    NSArray * arrayG = [parserDict objectForKey:@"values"];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    if ([errorCode isEqualToString:@"0000"])
+	{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRemainingIDFAOK" object:nil];
+    }
+
 }
 -(void)queryADWallListOK:(NSString*)resText
 {

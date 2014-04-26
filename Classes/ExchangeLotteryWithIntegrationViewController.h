@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "RTBWall.h"
+#import "RTBWall.h"
 #import <iAd/iAd.h>
 #import "iAd/ADBannerView.h"
 #import "ThirdPageTabelCellView.h"
@@ -52,7 +52,7 @@
 #define DuoMengPublisherID   @"96ZJ21XAzePizwTAUd"
 #define MiidiPublisher       @"17140"
 #define MiidiAppSecret       @"37spm32qxkrsxn90"
-//#define AdViewKey      @"RTB20140915090425fqfoawfedeh48n9"
+#define AdViewKey      @"RTB20140915090425fqfoawfedeh48n9"
 
 #define MaxAllowIDFACount   5
 #define CurrentIDFA   @"currentIDFA"
@@ -60,7 +60,7 @@
 #define IDFACount   @"idfaCount"
 
 @class ADWallViewController;
-@interface ExchangeLotteryWithIntegrationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,immobViewDelegate,DianRuAdWallDelegate,YJFAdWallDelegate,YJFInterstitialDelegate,YJFBannerDelegate,YJFIntegralWallDelegate,DMOfferWallDelegate,MiidiAdWallShowAppOffersDelegate,UIAlertViewDelegate,ADBannerViewDelegate>
+@interface ExchangeLotteryWithIntegrationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,immobViewDelegate,DianRuAdWallDelegate,YJFAdWallDelegate,YJFInterstitialDelegate,YJFBannerDelegate,YJFIntegralWallDelegate,DMOfferWallDelegate,MiidiAdWallShowAppOffersDelegate,UIAlertViewDelegate,RTBWallDelegate,ADBannerViewDelegate>
 {
     RuYiCaiAppDelegate  *m_delegate;
     NSArray * titleArray;
@@ -88,7 +88,7 @@
 @property(nonatomic, assign)BOOL isShowTabBar;
 @property(nonatomic, retain)UITableView * listTableV;
 @property(nonatomic, retain)NSString * theUserID;
-//@property(nonatomic, retain)RTBWall * rtbAdWall; //Adview
+@property(nonatomic, retain)RTBWall * rtbAdWall; //Adview
 @property (nonatomic) BOOL isShowBackButton;
 @property (nonatomic,assign) BOOL shouldShowTabbar;
 
