@@ -4297,13 +4297,12 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     if ([errorCode isEqualToString:@"0000"])
     {
         self.responseText = resText;
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCaodouDetailOK" object:nil userInfo:parserDict];
     }
     else
     {
         [self showMessage:message withTitle:@"账户查询" buttonTitle:@"确定"];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"queryCaodouDetailOK" object:nil userInfo:parserDict];
 }
 #pragma mark Login Operation
 

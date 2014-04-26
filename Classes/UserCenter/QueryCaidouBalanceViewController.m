@@ -243,17 +243,18 @@
     _tableV.hidden = NO;
     [_tableV reloadData];
     NSString* sumPea = notification.userInfo[@"sumPea"];
-    if (_segmentView.segmentedIndex == 0) {
+    if (_segmentView.segmentedIndex == 0||!sumPea) {
         _allCountBg.hidden = YES;
         _allAmountLabel.text = @"";
-    }
-    if (_segmentView.segmentedIndex == 1) {
-        _allCountBg.hidden = NO;
-        _allAmountLabel.text = [NSString stringWithFormat:@"彩豆获取总数:%@",sumPea];
-    }
-    if (_segmentView.segmentedIndex == 2) {
-        _allCountBg.hidden = NO;
-        _allAmountLabel.text = [NSString stringWithFormat:@"彩豆消费总数:%@",sumPea];
+    }else{
+        if (_segmentView.segmentedIndex == 1) {
+            _allCountBg.hidden = NO;
+            _allAmountLabel.text = [NSString stringWithFormat:@"彩豆获取总数:%@",sumPea];
+        }
+        if (_segmentView.segmentedIndex == 2) {
+            _allCountBg.hidden = NO;
+            _allAmountLabel.text = [NSString stringWithFormat:@"彩豆消费总数:%@",sumPea];
+        }
     }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
