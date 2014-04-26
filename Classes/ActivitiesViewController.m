@@ -64,18 +64,7 @@
     self.listTableV.rowHeight = 80;
     [self.listTableV setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:self.listTableV];
-    if([[RuYiCaiNetworkManager sharedManager] testConnection])
-    {
-        ActionView* actionV = [[ActionView alloc]init];
-        if (actionV.actionType) {
-            actionV.frame = CGRectMake(0, h - 194, 0, 0);
-        }else
-        {
-            actionV.frame = CGRectMake(0, h - 154, 0, 0);
-        }
-        [self.view addSubview:actionV];
-        [actionV release];
-    }
+
     
 	// Do any additional setup after loading the view.
 }
@@ -117,6 +106,24 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryActListOK" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TodayQianDaoOK" object:nil];
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    float h = [UIScreen mainScreen].bounds.size.height;
+    if([[RuYiCaiNetworkManager sharedManager] testConnection])
+    {
+        ActionView* actionV = [[ActionView alloc]init];
+        if (actionV.actionType) {
+            actionV.frame = CGRectMake(0, h - 194, 0, 0);
+        }else
+        {
+            actionV.frame = CGRectMake(0, h - 154, 0, 0);
+        }
+        [self.view addSubview:actionV];
+        [actionV release];
+    }
+    
+
+}
 -(void)viewWillAppear:(BOOL)animated
 {
 //    NSTimeInterval hhh = [[NSDate date] timeIntervalSince1970];
@@ -128,7 +135,7 @@
     {
         [[RuYiCaiNetworkManager sharedManager] queryActListWithPage:@"0"];
     }
-
+    
     
     NSString * sss = @"1398152650";
     for (NSDictionary * dict in actsArray) {
@@ -141,7 +148,6 @@
         [self calRemainingTime:sss];
     }
     [self.listTableV reloadData];
-    
 }
 -(void)todayQianDaoOK:(NSNotification *)noti
 {
