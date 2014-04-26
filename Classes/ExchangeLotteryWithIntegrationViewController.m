@@ -745,44 +745,44 @@
     [self getMyBalance];
 }
 
--(void)EScoreWallInit
-{
-    [YJFUserMessage shareInstance].yjfUserAppId =EScoreUserAppId;//应用ID
-    [YJFUserMessage shareInstance].yjfUserDevId =EScoreUserDevId;//开发者ID
-    [YJFUserMessage shareInstance].yjfAppKey =EScoreAppkey;//appKey
-    [YJFUserMessage shareInstance].yjfChannel =EScoreChannel;//市场渠道号
-    [YJFUserMessage shareInstance].yjfCoop_info = self.theUserID;
-    
-    YJFInitServer *InitData = [[YJFInitServer alloc]init];
-    [InitData getInitEscoreData];
-    [InitData release];
-}
+//-(void)EScoreWallInit
+//{
+//    [YJFUserMessage shareInstance].yjfUserAppId =EScoreUserAppId;//应用ID
+//    [YJFUserMessage shareInstance].yjfUserDevId =EScoreUserDevId;//开发者ID
+//    [YJFUserMessage shareInstance].yjfAppKey =EScoreAppkey;//appKey
+//    [YJFUserMessage shareInstance].yjfChannel =EScoreChannel;//市场渠道号
+//    [YJFUserMessage shareInstance].yjfCoop_info = self.theUserID;
+//    
+//    YJFInitServer *InitData = [[YJFInitServer alloc]init];
+//    [InitData getInitEscoreData];
+//    [InitData release];
+//}
 
--(void)showEscoreWall
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
-    YJFIntegralWall *integralWall = [[YJFIntegralWall
-                                      alloc]init];
-    integralWall.delegate = self;
-    [self presentViewController:integralWall animated:YES
-                     completion:nil];
-    [integralWall release];
-}
--(void)OpenIntegralWall:(int)_value
-{
-    
-}
--(void)CloseIntegralWall
-{
-    if (!self.isShowBackButton) {
-        if (self.shouldShowTabbar) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
-        }
-        
-    }
-    [self getMyBalance];
-    
-}
+//-(void)showEscoreWall
+//{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+//    YJFIntegralWall *integralWall = [[YJFIntegralWall
+//                                      alloc]init];
+//    integralWall.delegate = self;
+//    [self presentViewController:integralWall animated:YES
+//                     completion:nil];
+//    [integralWall release];
+//}
+//-(void)OpenIntegralWall:(int)_value
+//{
+//    
+//}
+//-(void)CloseIntegralWall
+//{
+//    if (!self.isShowBackButton) {
+//        if (self.shouldShowTabbar) {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+//        }
+//        
+//    }
+//    [self getMyBalance];
+//    
+//}
 
 -(void)DianRuInit
 {

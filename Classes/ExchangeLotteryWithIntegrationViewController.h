@@ -22,13 +22,13 @@
 #import "DianRuAdWall.h"
 #import "DiskViewController.h"
 #import "OtherActivityViewController.h"
-#import<Escore/YJFUserMessage.h>
-#import<Escore/YJFInitServer.h>
-#import<Escore/YJFAdWall.h>
-#import<Escore/YJFIntegralWall.h>
-#import<Escore/YJFBanner.h>
-#import<Escore/YJFInterstitial.h>
-#import<Escore/YJFScore.h>
+//#import<Escore/YJFUserMessage.h>
+//#import<Escore/YJFInitServer.h>
+//#import<Escore/YJFAdWall.h>
+//#import<Escore/YJFIntegralWall.h>
+//#import<Escore/YJFBanner.h>
+//#import<Escore/YJFInterstitial.h>
+//#import<Escore/YJFScore.h>
 #import "DMOfferWallViewController.h"
 #import "MiidiManager.h"
 #import "MiidiAdWallSpendPointsDelegate.h"
@@ -60,7 +60,7 @@
 #define IDFACount   @"idfaCount"
 
 @class ADWallViewController;
-@interface ExchangeLotteryWithIntegrationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,immobViewDelegate,DianRuAdWallDelegate,YJFAdWallDelegate,YJFInterstitialDelegate,YJFBannerDelegate,YJFIntegralWallDelegate,DMOfferWallDelegate,MiidiAdWallShowAppOffersDelegate,UIAlertViewDelegate,RTBWallDelegate,ADBannerViewDelegate>
+@interface ExchangeLotteryWithIntegrationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,immobViewDelegate,DianRuAdWallDelegate,DMOfferWallDelegate,MiidiAdWallShowAppOffersDelegate,UIAlertViewDelegate,RTBWallDelegate,ADBannerViewDelegate>
 {
     RuYiCaiAppDelegate  *m_delegate;
     NSArray * titleArray;

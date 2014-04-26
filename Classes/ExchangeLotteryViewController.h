@@ -15,13 +15,13 @@
 #import "YouMiConfig.h"
 #import "YouMiWall.h"
 #import "DianRuAdWall.h"
-#import<Escore/YJFUserMessage.h> 
-#import<Escore/YJFInitServer.h>
-#import<Escore/YJFAdWall.h> 
-#import<Escore/YJFIntegralWall.h> 
-#import<Escore/YJFBanner.h> 
-#import<Escore/YJFInterstitial.h> 
-#import<Escore/YJFScore.h>
+//#import<Escore/YJFUserMessage.h> 
+//#import<Escore/YJFInitServer.h>
+//#import<Escore/YJFAdWall.h> 
+//#import<Escore/YJFIntegralWall.h> 
+//#import<Escore/YJFBanner.h> 
+//#import<Escore/YJFInterstitial.h> 
+//#import<Escore/YJFScore.h>
 #import "DMOfferWallViewController.h"
 
 #define LiMeiAdID     @"2ccba7d7614fbdc10c1c532c822205ca"
@@ -35,7 +35,7 @@
 #define DuoMengPublisherID   @"96ZJ21XAzePizwTAUd"
 
 @class ADWallViewController;
-@interface ExchangeLotteryViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,immobViewDelegate,DianRuAdWallDelegate,YJFAdWallDelegate,YJFInterstitialDelegate,YJFBannerDelegate,YJFIntegralWallDelegate,DMOfferWallDelegate>
+@interface ExchangeLotteryViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,immobViewDelegate,DianRuAdWallDelegate,DMOfferWallDelegate>
 {
     RuYiCaiAppDelegate  *m_delegate;
     NSArray * titleArray;
