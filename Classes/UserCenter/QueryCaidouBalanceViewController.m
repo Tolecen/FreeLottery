@@ -81,6 +81,9 @@
 @property (nonatomic,retain)UILabel * pageIndexLabel;
 @property (nonatomic,retain)NSArray * dataArray;
 @property (nonatomic,retain)NSString * repustStr;
+@property (nonatomic,retain)UIImageView* allCountBg;
+@property (nonatomic,retain)UILabel* allAmountLabel;
+@property (nonatomic,retain)CustomSegmentedControl*segmentView;
 @end
 
 @implementation QueryCaidouBalanceViewController
@@ -90,6 +93,9 @@
     [_tableV release];
     [_pageIndexLabel release];
     [_dataArray release];
+    [_allCountBg release];
+    [_allAmountLabel release];
+    [_segmentView release];
     
     [super dealloc];
 }
@@ -112,7 +118,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryCaodouDetailOK:) name:@"queryCaodouDetailOK" object:nil];
     [AdaptationUtils adaptation:self];
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
-    CustomSegmentedControl*segmentView = [[[CustomSegmentedControl alloc]
+    self.segmentView = [[[CustomSegmentedControl alloc]
                          initWithFrame:CGRectMake(5, 5, 310, 30)
                          andNormalImages:[NSArray arrayWithObjects:
                                           @"pea_all_normal.png",
@@ -126,8 +132,8 @@
                                          @"pea_all_highlight.png",
                                          @"pea_get_highlight.png",
                                          @"pea_consume_highlight",nil]]autorelease];
-    segmentView.delegate = self;
-    [self.view addSubview:segmentView];
+    _segmentView.delegate = self;
+    [self.view addSubview:_segmentView];
     
     UIImageView* bottomBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 113, 320, 50)];
     bottomBarImageView.image = RYCImageNamed(@"select_num_bg.png");
@@ -168,6 +174,20 @@
     _tableV.dataSource = self;
     _tableV.rowHeight = 60;
     [_tableV release];
+    
+    self.allCountBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 143, 320, 29)];
+    _allCountBg.image = RYCImageNamed(@"select_num_bg.png");
+    [self.view addSubview:_allCountBg];
+    _allCountBg.hidden = YES;
+    [_allCountBg release];
+    
+    self.allAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 300, 29)];
+    _allAmountLabel.textColor = [UIColor redColor];
+    _allAmountLabel.font = [UIFont systemFontOfSize:14.0f];
+    _allAmountLabel.backgroundColor = [UIColor clearColor];
+    [_allCountBg addSubview:_allAmountLabel];
+    [_allAmountLabel release];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -222,6 +242,19 @@
     _pageIndexLabel.text = [NSString stringWithFormat:@"第%d页 共%d页",curPageIndex+1,totalPageCount];
     _tableV.hidden = NO;
     [_tableV reloadData];
+    NSString* sumPea = notification.userInfo[@"sumPea"];
+    if (_segmentView.segmentedIndex == 0) {
+        _allCountBg.hidden = YES;
+        _allAmountLabel.text = @"";
+    }
+    if (_segmentView.segmentedIndex == 1) {
+        _allCountBg.hidden = NO;
+        _allAmountLabel.text = [NSString stringWithFormat:@"彩豆获取总数:%@",sumPea];
+    }
+    if (_segmentView.segmentedIndex == 2) {
+        _allCountBg.hidden = NO;
+        _allAmountLabel.text = [NSString stringWithFormat:@"彩豆消费总数:%@",sumPea];
+    }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
