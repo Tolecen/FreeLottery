@@ -418,7 +418,7 @@
 
 -(void)enterADWALLWithID:(int)theIndex
 {
-//    [[RuYiCaiNetworkManager sharedManager] queryRemainingIDFA];
+    [[RuYiCaiNetworkManager sharedManager] queryRemainingIDFA];
     
     
     
@@ -462,6 +462,9 @@
     }
     else if ([theID isEqualToString:@"midi"]){
         [self showMiidiAdWall];
+    }
+    else if ([theID isEqualToString:@"adview"]){
+        [self showAdviewWall];
     }
 }
 
