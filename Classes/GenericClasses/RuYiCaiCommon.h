@@ -142,11 +142,12 @@
 #define KAppWapDoload   @"http://3g.boyacai.com/w3g/"
 
 
-//博雅彩官方QQ群
-#define KQQNumber   @"247533407"
+//免费彩官方QQ
+#define KQQNumber   @"2492831607"
 
 //博雅彩客服热线
 #define KCustomerServiceNum   @"400-856-1000"
+
 
 /*
  用来判断 字典的值 是否为null

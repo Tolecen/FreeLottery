@@ -423,6 +423,7 @@ typedef enum
 //获取彩种的开奖日期
 - (NSString*)getEndtimeOfLot:(NSString*)lotCode;
 
+-(void)queryRemainingIDFA;
 -(void)doGoodCommentWithID:(NSString *)theID;
 -(void)queryADWallList;
 -(void)doQianDaoWithID:(NSString *)theID;

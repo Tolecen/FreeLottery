@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewVersionIntroduction : UIViewController
+@interface NewVersionIntroduction : UIViewController<UIAlertViewDelegate>
 
 {
 //    UITextView *_msgTextView;

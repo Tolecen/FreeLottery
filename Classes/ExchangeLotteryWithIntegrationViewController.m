@@ -86,6 +86,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"loginOK" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryUserBalanceOK" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryADWallListOK" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryRemainingIDFAOK" object:nil];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 //        [bgv removeFromSuperview];
     }
@@ -100,6 +101,7 @@
  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOK:) name:@"loginOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUserBalanceOK:) name:@"queryUserBalanceOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryRemainingIDFAOK:) name:@"queryRemainingIDFAOK" object:nil];
 //    self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
 //    if([RuYiCaiNetworkManager sharedManager].hasLogin)
 //    {
@@ -128,7 +130,7 @@
     //            [self EScoreWallInit];
                 [self LiMeiAdWallInit];
                 [self midiInit];
-//                [self AdviewAdWallInit];
+                [self AdviewAdWallInit];
             }
 //            AdWallHaveInit = YES;
             previousUserno = [self.theUserID mutableCopy];
@@ -246,7 +248,7 @@
         //            [self EScoreWallInit];
         [self LiMeiAdWallInit];
         [self midiInit];
-//        [self AdviewAdWallInit];
+        [self AdviewAdWallInit];
     }
 
     previousUserno = [self.theUserID mutableCopy];
@@ -416,6 +418,11 @@
 
 -(void)enterADWALLWithID:(int)theIndex
 {
+    [[RuYiCaiNetworkManager sharedManager] queryRemainingIDFA];
+    
+    
+    
+    
     NSString * theID = [titleArray[theIndex] objectForKey:@"code"];
     NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 //    [SFHFKeychainUtils storeUsername:CurrentIDFA andPassword:idfa forServiceName:CheckCheatStatus updateExisting:YES error:nil];
@@ -455,6 +462,9 @@
     }
     else if ([theID isEqualToString:@"midi"]){
         [self showMiidiAdWall];
+    }
+    else if ([theID isEqualToString:@"adview"]){
+        [self showAdviewWall];
     }
 }
 
@@ -738,44 +748,44 @@
     [self getMyBalance];
 }
 
--(void)EScoreWallInit
-{
-    [YJFUserMessage shareInstance].yjfUserAppId =EScoreUserAppId;//应用ID
-    [YJFUserMessage shareInstance].yjfUserDevId =EScoreUserDevId;//开发者ID
-    [YJFUserMessage shareInstance].yjfAppKey =EScoreAppkey;//appKey
-    [YJFUserMessage shareInstance].yjfChannel =EScoreChannel;//市场渠道号
-    [YJFUserMessage shareInstance].yjfCoop_info = self.theUserID;
-    
-    YJFInitServer *InitData = [[YJFInitServer alloc]init];
-    [InitData getInitEscoreData];
-    [InitData release];
-}
+//-(void)EScoreWallInit
+//{
+//    [YJFUserMessage shareInstance].yjfUserAppId =EScoreUserAppId;//应用ID
+//    [YJFUserMessage shareInstance].yjfUserDevId =EScoreUserDevId;//开发者ID
+//    [YJFUserMessage shareInstance].yjfAppKey =EScoreAppkey;//appKey
+//    [YJFUserMessage shareInstance].yjfChannel =EScoreChannel;//市场渠道号
+//    [YJFUserMessage shareInstance].yjfCoop_info = self.theUserID;
+//    
+//    YJFInitServer *InitData = [[YJFInitServer alloc]init];
+//    [InitData getInitEscoreData];
+//    [InitData release];
+//}
 
--(void)showEscoreWall
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
-    YJFIntegralWall *integralWall = [[YJFIntegralWall
-                                      alloc]init];
-    integralWall.delegate = self;
-    [self presentViewController:integralWall animated:YES
-                     completion:nil];
-    [integralWall release];
-}
--(void)OpenIntegralWall:(int)_value
-{
-    
-}
--(void)CloseIntegralWall
-{
-    if (!self.isShowBackButton) {
-        if (self.shouldShowTabbar) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
-        }
-        
-    }
-    [self getMyBalance];
-    
-}
+//-(void)showEscoreWall
+//{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+//    YJFIntegralWall *integralWall = [[YJFIntegralWall
+//                                      alloc]init];
+//    integralWall.delegate = self;
+//    [self presentViewController:integralWall animated:YES
+//                     completion:nil];
+//    [integralWall release];
+//}
+//-(void)OpenIntegralWall:(int)_value
+//{
+//    
+//}
+//-(void)CloseIntegralWall
+//{
+//    if (!self.isShowBackButton) {
+//        if (self.shouldShowTabbar) {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+//        }
+//        
+//    }
+//    [self getMyBalance];
+//    
+//}
 
 -(void)DianRuInit
 {
@@ -921,27 +931,27 @@
     
 }
 
-//-(void)AdviewAdWallInit
-//{
-//    self.rtbAdWall = [[RTBWall alloc]initWithAppID:AdViewKey andDelegate:self];
-//}
-//
-//-(void)showAdviewWall
-//{
-////    int num = arc4random()%6;
-//    
-//    [self.rtbAdWall setRTBWallColor:RTBWallThemeColor_Red];
-//    [self.rtbAdWall setRTBWallModel:YES];
-//    [self.rtbAdWall showRTBWallWithController:self];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
-//}
-//
-//-(void)rtbWallDidDismissScreen:(UIViewController *)adWall
-//{
-//    if (self.shouldShowTabbar) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
-//    }
-//}
+-(void)AdviewAdWallInit
+{
+    self.rtbAdWall = [[RTBWall alloc]initWithAppID:AdViewKey andDelegate:self];
+}
+
+-(void)showAdviewWall
+{
+//    int num = arc4random()%6;
+    [self.rtbAdWall setDeveloperUserID:self.theUserID];
+    [self.rtbAdWall setRTBWallColor:RTBWallThemeColor_Red];
+    [self.rtbAdWall setRTBWallModel:YES];
+    [self.rtbAdWall showRTBWallWithController:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+}
+
+-(void)rtbWallDidDismissScreen:(UIViewController *)adWall
+{
+    if (self.shouldShowTabbar) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+    }
+}
 
 
 -(void)backAction:(UIButton * )button{

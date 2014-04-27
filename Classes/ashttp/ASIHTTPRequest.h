@@ -86,6 +86,7 @@ typedef enum _ASINetworkReqestType
     ASINetworkRequestTypeRemainingChance,
     ASINetworkRequestTypeQueryActList,
     ASINetworkRequestTypeQueryADWallList,
+    ASINetworkRequestTyPeQueryRemainingIDFA,
     ASINetworkRequestTypeDoQianDao,
     ASINetworkRequestTypeDoGoodComment,
     ASINetworkRequestTypeGetExchangeScaleForAdWall,
