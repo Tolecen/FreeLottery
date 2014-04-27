@@ -25,7 +25,7 @@
 //#import "MobClick.h"//友盟
 
 #import "ActivityView.h"
-
+#import "KGStatusBar.h"
 
 //腾讯微博
 #define AppKey			@"appKey"
@@ -197,9 +197,7 @@
     if (launchOptions) {
         //截取apns推送的消息
         NSDictionary* pushInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
-        if ([pushInfo objectForKey:@"type"]) {
-            [self loadNotificationWithID:[pushInfo objectForKey:@"id"]];
-        }
+        [self havePushNotification:pushInfo];
         
         
     }
@@ -366,7 +364,7 @@
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     if ([userInfo objectForKey:@"type"]) {
-        [self loadNotificationWithID:[userInfo objectForKey:@"id"]];
+        [self havePushNotification:userInfo];
     }
 }
 
@@ -784,6 +782,18 @@
         [[NSUserDefaults standardUserDefaults] synchronize];//同步
     }
         
+}
+- (void)havePushNotification:(NSDictionary*)dic
+{
+    if ([dic[@"type"] isEqualToString:@"announcement"]) {//系统消息
+         
+    }
+    if ([dic[@"type"] isEqualToString:@"adwall"]) {//积分墙返彩豆
+        
+    }
+    if ([dic[@"type"] isEqualToString:@"buyfailed"]) {//购买失败
+        
+    }
 }
 - (void)loadNotificationWithID:(NSString*)messageID
 {
