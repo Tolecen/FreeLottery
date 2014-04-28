@@ -784,7 +784,7 @@ typedef enum
 - (void)chargeByLaKaLa:(NSMutableDictionary*)otherDict;
 
 - (void)queryChargeWarnStr:(NSString*)keyStr;
-
+- (void)exchangeLotPeaWithAmount:(NSString*)amount;
 @end
 
 /* 

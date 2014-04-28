@@ -111,7 +111,12 @@
 //        [[RuYiCaiNetworkManager sharedManager] updateUserInformation];
 //    }
     m_delegate = (RuYiCaiAppDelegate *)[[UIApplication sharedApplication] delegate];
-
+    if ([RuYiCaiNetworkManager sharedManager].hasLogin)//取余额
+    {
+        [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_QUERY_BALANCE;
+        [[RuYiCaiNetworkManager sharedManager] queryUserBalance];
+        
+    }
     //已经登陆 切不是联合登陆
     if ([[RuYiCaiNetworkManager sharedManager] hasLogin] && [[CommonRecordStatus commonRecordStatusManager].loginWay isEqualToString: kNormalLogin]) {
         if (m_delegate.autoRememberMystatus) {
@@ -172,6 +177,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bindphoneOK) name:@"WXRBindPhoneOk" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelBindPhoneOk) name:@"WXRCancelBindPhoneOk" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUserBalanceOK:) name:@"queryUserBalanceOK" object:nil];
     [AdaptationUtils adaptation:self];
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
     
@@ -942,6 +948,9 @@
     [RuYiCaiNetworkManager sharedManager].netAppType = type;
     [[RuYiCaiNetworkManager sharedManager] handleUserCenterClick];
 }
-
+- (void)queryUserBalanceOK:(NSNotification*)notification
+{
+    m_balanceLabel.text = [RuYiCaiNetworkManager sharedManager].userPrizeBalance;
+}
 @end
 

@@ -10,6 +10,7 @@
 #import "BackBarButtonItemUtils.h"
 #import "AdaptationUtils.h"
 #import "ColorUtils.h"
+#import "RuYiCaiNetworkManager.h"
 @interface ExchangeCaidouViewController ()
 @property (nonatomic,retain)UILabel * caidouNoL;
 @property (nonatomic,retain)UILabel * jiangjinNoL;
@@ -38,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exchangeLotPeaOK:) name:@"WXRExchangeLotPeaOK" object:nil];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
     [AdaptationUtils adaptation:self];
@@ -135,5 +137,11 @@
         [alert show];
         return;
     }
+    [[RuYiCaiNetworkManager sharedManager] exchangeLotPeaWithAmount:_textF.text];
+}
+- (void)exchangeLotPeaOK:(NSNotification*)info
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end
