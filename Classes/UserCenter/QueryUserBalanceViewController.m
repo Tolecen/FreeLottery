@@ -92,6 +92,8 @@
 }
 -(void)queryRemainingIDFAOK:(NSNotification *)noti
 {
+    NSString * theRemainIDFA = noti.object;
+    int remainIDFA = [theRemainIDFA intValue];
     
 }
 

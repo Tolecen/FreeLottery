@@ -83,7 +83,7 @@
 //#define kRuYiCaiCoopid   @"104" //IOS积分	104
 
 
-
+#define forBoyaCoopID   @"104"
 
 /********新渠道号，用channel********/
 #define kRuYiCaiCoopid   @"1"  //AppStore
