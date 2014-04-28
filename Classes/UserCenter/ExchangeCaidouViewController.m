@@ -137,6 +137,11 @@
         [alert show];
         return;
     }
+    if ((int)([_textF.text floatValue]*100)%10) {
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:@"你造吗,输入的金额最小单位为角" delegate:nil cancelButtonTitle:@"我造了" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
     [[RuYiCaiNetworkManager sharedManager] exchangeLotPeaWithAmount:_textF.text];
 }
 - (void)exchangeLotPeaOK:(NSNotification*)info
