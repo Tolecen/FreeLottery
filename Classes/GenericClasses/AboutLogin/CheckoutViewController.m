@@ -152,7 +152,7 @@
     [proctoclButton addTarget:self action:@selector(protocolButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:proctoclButton];
     
-    UIView  *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-100, 320, 50)];
+    UIView  *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-100, 320, 100)];
     bottomView.backgroundColor = [ColorUtils parseColorFromRGB:@"#ebe7e1"];
     [self.view addSubview:bottomView];
     [bottomView release];
