@@ -786,19 +786,17 @@
 - (void)havePushNotification:(NSDictionary*)dic
 {
     if ([dic[@"type"] isEqualToString:@"announcement"]) {//系统消息
-         
+        [[RuYiCaiNetworkManager sharedManager] getMessageDetailWithID:dic[@"id"]];
     }
     if ([dic[@"type"] isEqualToString:@"adwall"]) {//积分墙返彩豆
-        
+        [KGStatusBar showStatusBarWithoutAutoHide:@"彩豆已返回"];
     }
     if ([dic[@"type"] isEqualToString:@"buyfailed"]) {//购买失败
-        
+        UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil message:@"购彩失败,您可以选择重新购买" delegate:nil cancelButtonTitle:@"知道啦" otherButtonTitles: nil];
+        [alertView show];
     }
 }
-- (void)loadNotificationWithID:(NSString*)messageID
-{
-    
-}
+
 
 /*
 //然后在你的View控制器中添加/重载canBecomeFirstResponder, viewDidAppear:以及viewWillDisappear:

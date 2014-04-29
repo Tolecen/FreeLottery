@@ -208,7 +208,9 @@ typedef enum _ASINetworkReqestType
     ASINetworkRequestTypeCheckoutCaptcha,
     ASINetworkRequestTypeExchangeLotPea,
     ASINetworkRequestTypeGetMessageList,
-    ASINetworkRequestTypeGetMessageDetail
+    ASINetworkRequestTypeGetMessageDetail,
+    ASINetworkRequestTypeGetTopOneMessage,
+    ASINetworkRequestTypeGetNotification
 } ASINetworkReqestType;
 
 
