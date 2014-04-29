@@ -163,6 +163,9 @@
     [self.view addSubview:proctoclButton];
     
     UIView  *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-100, 320, 100)];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
+        bottomView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-120, 320, 120);
+    }
     bottomView.backgroundColor = [ColorUtils parseColorFromRGB:@"#ebe7e1"];
     [self.view addSubview:bottomView];
     [bottomView release];
@@ -172,7 +175,7 @@
     lable.text = @"重要提示:\n手机号码是彩票兑换的重要依据,同时也是中奖后领取奖金的重要凭据,建议您如实填写.如果有因为手机号码错误造成的经济损失,后果自行承担.";
     lable.backgroundColor = [UIColor clearColor];
     lable.font = [UIFont systemFontOfSize:12];
-    lable.textColor =[ColorUtils parseColorFromRGB:@"#b4b1ad"];
+    lable.textColor =[ColorUtils parseColorFromRGB:@"#3c3c3c"];
     [self.view addSubview:lable];
     [lable release];
 }
