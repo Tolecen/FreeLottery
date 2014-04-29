@@ -477,7 +477,7 @@
                 cell.remainMoneyLabel.text = @"点击登录查看";
             }
         }
-        cell.disLabel.text = exchangeScale;
+        cell.disLabel.text = @" ";
         return cell;
     }
     else{

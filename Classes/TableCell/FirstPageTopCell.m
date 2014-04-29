@@ -53,7 +53,7 @@
         [self.tishiLabel setTextColor:[UIColor darkGrayColor]];
 //        [self.tishiLabel setTextColor:[UIColor redColor]];
         [self.contentView addSubview:self.tishiLabel];
-        [self.tishiLabel setText:@"理性博彩,今日还有10次购彩机会"];
+        [self.tishiLabel setText:@"每注500彩豆,今日还有10次购彩机会"];
         
         self.moreTimesLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 34, 100, 20)];
         [self.moreTimesLabel setFont:[UIFont boldSystemFontOfSize:15]];
@@ -106,7 +106,7 @@
 
 -(void)setRemainingBuyTimes:(int)theTime
 {
-    [self.tishiLabel setText:[NSString stringWithFormat:@"理性博彩,今日还有%d注购彩机会",theTime]];
+    [self.tishiLabel setText:[NSString stringWithFormat:@"每注500彩豆,今日还有%d注购彩机会",theTime]];
     if (theTime<=5) {
         for (int i = 0; i<5; i++) {
             UIImageView * tempimgV = (UIImageView *)[self.contentView viewWithTag:i+1];
