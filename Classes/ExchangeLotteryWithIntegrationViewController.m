@@ -172,6 +172,66 @@
 
 
 }
+-(void)queryRemainingIDFAOK:(NSNotification *)noti
+{
+    NSDictionary * parserDict = noti.object;
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    if ([errorCode isEqualToString:@"0000"])
+	{
+        NSString * v = [parserDict objectForKey:@"value"];
+        int rv = [v intValue];
+        if (rv<=1) {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"系统判定您设备识别符修改次数过多，有作弊刷积分嫌疑，现给予您警告，如果再有此行为，将进行封号处理，如果您确实有这么多设备，可以添加客服QQ为您处理" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+        }
+        else if (rv==0){
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"检测到本账号有严重作弊行为（刷豆设备已达10个），已进行封号处理，如果有什么问题和特殊情况，您可以致电400-856-1000或者联系官方QQ2492831607咨询. 期待您对全面免费彩票更多的支持。" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+        }
+        if (rv>=1) {
+            if ([theAdwallID isEqualToString:@"limei"]) {
+                [self enterLiMeiAdWall];
+            }
+            else if ([theAdwallID isEqualToString:@"youmi"]){
+                [self showYouMiWall];
+            }
+            else if ([theAdwallID isEqualToString:@"dianru"]){
+                [self showDianRuWall];
+            }
+            else if ([theAdwallID isEqualToString:@"duomeng"]){
+                [self showDuoMengAdWall];
+            }
+            else if ([theAdwallID isEqualToString:@"midi"]){
+                [self showMiidiAdWall];
+            }
+            else if ([theAdwallID isEqualToString:@"adview"]){
+                [self showAdviewWall];
+            }
+
+        }
+    }
+    else if ([errorCode isEqualToString:@"1114"]){
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"对不起，您还没有绑定手机号，不能进行积分兑换操作，请先到用户中心执行绑定手机号操作，谢谢" delegate:self cancelButtonTitle:@"好的，去绑定" otherButtonTitles: nil];
+        alert.tag = 22;
+        [alert show];
+        [alert release];
+    }
+    else
+    {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络有点问题" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }
+    [m_delegate.activityView disActivityView];
+    
+}
+- (void)setUpBindPhone
+{
+    [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_BIND_PHONE;
+    [[RuYiCaiNetworkManager sharedManager] handleUserCenterClick];
+}
 -(void)queryADWallListOK:(NSNotification *)noti
 {
     if (([appStoreORnormal isEqualToString:@"appStore"] &&
@@ -227,6 +287,9 @@
             [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
             [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:NO];
         }
+    }
+    if (alertView.tag==22) {
+        [self setUpBindPhone];
     }
 }
 -(void)loginOK:(NSNotification *)notification
@@ -418,12 +481,16 @@
 
 -(void)enterADWALLWithID:(int)theIndex
 {
-    [[RuYiCaiNetworkManager sharedManager] queryRemainingIDFA];
-    
-    
-    
-    
     NSString * theID = [titleArray[theIndex] objectForKey:@"code"];
+    theAdwallID = theID;
+    [[RuYiCaiNetworkManager sharedManager] queryRemainingIDFA];
+    [m_delegate.activityView activityViewShow];
+    
+    
+    
+
+    
+/*********
     NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 //    [SFHFKeychainUtils storeUsername:CurrentIDFA andPassword:idfa forServiceName:CheckCheatStatus updateExisting:YES error:nil];
     NSString * lastIDFA = [SFHFKeychainUtils getPasswordForUsername:CurrentIDFA andServiceName:CheckCheatStatus error:nil];
@@ -447,25 +514,9 @@
         [alert release];
         return;
     }
+ 
+ ********/
     
-    if ([theID isEqualToString:@"limei"]) {
-        [self enterLiMeiAdWall];
-    }
-    else if ([theID isEqualToString:@"youmi"]){
-        [self showYouMiWall];
-    }
-    else if ([theID isEqualToString:@"dianru"]){
-        [self showDianRuWall];
-    }
-    else if ([theID isEqualToString:@"duomeng"]){
-        [self showDuoMengAdWall];
-    }
-    else if ([theID isEqualToString:@"midi"]){
-        [self showMiidiAdWall];
-    }
-    else if ([theID isEqualToString:@"adview"]){
-        [self showAdviewWall];
-    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

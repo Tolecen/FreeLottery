@@ -83,6 +83,8 @@
     BOOL adAdded;
     
     NSArray * jifenImgArray;
+    
+    NSString * theAdwallID;
 }
 
 @property(nonatomic, assign)BOOL isShowTabBar;

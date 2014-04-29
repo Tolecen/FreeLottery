@@ -2970,12 +2970,12 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     SBJsonParser *jsonParser = [SBJsonParser new];
     NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
 //    NSArray * arrayG = [parserDict objectForKey:@"values"];
-    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+//    NSString* errorCode = [parserDict objectForKey:@"error_code"];
     [jsonParser release];
-    if ([errorCode isEqualToString:@"0000"])
-	{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRemainingIDFAOK" object:nil];
-    }
+//    if ([errorCode isEqualToString:@"0000"])
+//	{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRemainingIDFAOK" object:parserDict];
+//    }
 
 }
 -(void)queryADWallListOK:(NSString*)resText

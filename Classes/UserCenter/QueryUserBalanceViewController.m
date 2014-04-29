@@ -90,12 +90,6 @@
 {
     [self refreshMySubViews];
 }
--(void)queryRemainingIDFAOK:(NSNotification *)noti
-{
-    NSString * theRemainIDFA = noti.object;
-    int remainIDFA = [theRemainIDFA intValue];
-    
-}
 
 #pragma mark UITableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
