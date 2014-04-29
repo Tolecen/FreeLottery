@@ -4407,14 +4407,14 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     SBJsonParser *jsonParser = [SBJsonParser new];
     NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
     NSString* errorCode = [parserDict objectForKey:@"error_code"];
-    NSString* message = [parserDict objectForKey:@"message"];
+//    NSString* message = [parserDict objectForKey:@"message"];
     if ([errorCode isEqualToString:@"0000"])
     {
         self.responseText = resText;
     }
     else
     {
-        [self showMessage:message withTitle:@"账户查询" buttonTitle:@"确定"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetCheckoutNoWithPhongNoFail" object:nil userInfo:parserDict];
     }
 }
 - (void)queryCaodouDetailComplete:(NSString*)resText
