@@ -175,7 +175,12 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         self.requestedAdwallSuccess = NO;
         
         self.beginCalOutComment = 0;
-        self.realServerURL = NNRuYiCaiServer;
+        
+        if ([ifCeShi isEqualToString:@"0"]) {
+            self.realServerURL = NNRuYiCaiServer;
+        }
+        else
+            self.realServerURL = CeshiRuYiCaiServer;
 //        isHideTabbar = NO;
         //test code
         //m_hasLogin = YES;
