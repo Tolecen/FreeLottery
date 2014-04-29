@@ -45,7 +45,7 @@
 }
 
 + (void)showWithStatus:(NSString*)status Controller:(UIViewController *)controller {
-    [[KGStatusBar sharedView] showWithStatus:status barColor:[UIColor orangeColor] textColor:[UIColor whiteColor] Controller:controller];
+    [[KGStatusBar sharedView] showWithStatus:status barColor:[UIColor blackColor] textColor:[UIColor whiteColor] Controller:controller];
 }
 
 + (void)showErrorWithStatus:(NSString*)status {

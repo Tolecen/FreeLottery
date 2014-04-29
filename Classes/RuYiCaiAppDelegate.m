@@ -786,10 +786,10 @@
 - (void)havePushNotification:(NSDictionary*)dic
 {
     if ([dic[@"type"] isEqualToString:@"announcement"]) {//系统消息
-        [[RuYiCaiNetworkManager sharedManager] getMessageDetailWithID:dic[@"id"]];
+        [[RuYiCaiNetworkManager sharedManager] getNotificationWithID:dic[@"id"]];
     }
     if ([dic[@"type"] isEqualToString:@"adwall"]) {//积分墙返彩豆
-        [KGStatusBar showStatusBarWithoutAutoHide:@"彩豆已返回"];
+        [KGStatusBar showSuccessWithStatus:@"彩豆已加入您的账户"];
     }
     if ([dic[@"type"] isEqualToString:@"buyfailed"]) {//购买失败
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil message:@"购彩失败,您可以选择重新购买" delegate:nil cancelButtonTitle:@"知道啦" otherButtonTitles: nil];
