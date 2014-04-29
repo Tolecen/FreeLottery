@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/UserCenter/FourthPageViewController.m"
-            timestampString = "420359482.487688"
+            filePath = "Classes/ActivitiesViewController.m"
+            timestampString = "420441421.990391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "730"
-            endingLineNumber = "730"
-            landmarkName = "-setUpBindPhone"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/UserCenter/FourthPageViewController.m"
-            timestampString = "420359550.179716"
+            filePath = "Classes/ActivitiesViewController.m"
+            timestampString = "420441518.169982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "621"
-            endingLineNumber = "621"
-            landmarkName = "-getUserCenterInfoOK:"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetwork_Category_UserCenter_Request.m"
-            timestampString = "420361626.085571"
+            filePath = "Classes/ActivitiesViewController.m"
+            timestampString = "420441528.528135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1087"
-            endingLineNumber = "1087"
-            landmarkName = "-bindWithCertid:tureName:"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,13 +67,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetwork_Category_UserCenter_ReqComplete.m"
-            timestampString = "420361713.979586"
+            filePath = "Classes/ActivitiesViewController.m"
+            timestampString = "420441537.205151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
-            landmarkName = "-bindCertidComplete:"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-queryActListOK:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetworkManager.mm"
+            timestampString = "420442115.809868"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3751"
+            endingLineNumber = "3751"
+            landmarkName = "-checkNewVersionSuccess:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
