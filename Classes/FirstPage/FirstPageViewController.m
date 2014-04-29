@@ -656,6 +656,10 @@
     
     [[RuYiCaiNetworkManager sharedManager] requestTicketPropaganda];//查询彩种宣传语
     
+    
+    
+    
+    
 
 }
 -(void)queryRemainingChanceOK:(NSNotification *)noti
