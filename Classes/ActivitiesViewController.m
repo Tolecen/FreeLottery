@@ -423,6 +423,7 @@
     if(![RuYiCaiNetworkManager sharedManager].hasLogin)
     {
         [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
+        [RuYiCaiNetworkManager sharedManager].goBackType = GO_GDSZ_TYPE;
         [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:YES];
         return;
     }

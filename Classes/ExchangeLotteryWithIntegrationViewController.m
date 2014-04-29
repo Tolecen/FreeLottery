@@ -552,7 +552,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(![RuYiCaiNetworkManager sharedManager].hasLogin)
     {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
+        [RuYiCaiNetworkManager sharedManager].goBackType = GO_GDSZ_TYPE;
         [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:YES];
         return;
     }
