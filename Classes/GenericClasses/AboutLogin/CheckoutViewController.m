@@ -12,12 +12,21 @@
 #import "AgreementViewController.h"
 #import "RuYiCaiNetworkManager.h"
 @interface CheckoutViewController ()
+{
+    NSTimer* _timer;
+}
 @property (nonatomic,retain)UITextField* phoneNoTF;
 @property (nonatomic,retain)UITextField* checkoutNoTF;
 @end
 
 @implementation CheckoutViewController
-
+- (void)dealloc
+{
+    [_checkoutNoTF release];
+    [_phoneNoTF release];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [super dealloc];
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,6 +42,7 @@
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#f7f3ec"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkoutCaptchaOK:) name:@"WXRCheckoutCaptchaOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCheckoutNoWithPhongNoFail:) name:@"WXRGetCheckoutNoWithPhongNoFail" object:nil];
 	// Do any additional setup after loading the view.
     float h = 0;
     if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0){
@@ -192,7 +202,7 @@
     btn.enabled =NO;
     [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [btn setTitle:@"60s之后可以重新发送" forState:UIControlStateNormal];
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeDone:) userInfo:@{@"btn": btn} repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeDone:) userInfo:@{@"btn": btn} repeats:YES];
 }
 - (void)timeDone:(NSTimer*)timer
 {
@@ -227,6 +237,22 @@
     [[RuYiCaiNetworkManager sharedManager] checkoutCaptchaNoWithPjoneNo:_phoneNoTF.text CaptchaNo:_checkoutNoTF.text];
     if (checkoutCaptcha) {
         [self checkoutCaptchaOK:nil];
+    }
+}
+- (void)getCheckoutNoWithPhongNoFail:(NSNotification*)notification
+{
+    UIAlertView*alert = [[UIAlertView alloc]initWithTitle:nil message:notification.userInfo[@"message"] delegate:nil cancelButtonTitle:@"知道啦" otherButtonTitles:nil];
+    [alert show];
+    UIButton* btn = _timer.userInfo[@"btn"];
+    btn.enabled =YES;
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitle:@"发送验证码到手机" forState:UIControlStateNormal];
+    if (_timer != nil) {
+        if( [_timer isValid])
+        {
+            [_timer invalidate];
+        }
+        _timer = nil;
     }
 }
 - (void)checkoutCaptchaOK:(NSNotification *)notification
