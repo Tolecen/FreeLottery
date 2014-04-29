@@ -214,17 +214,13 @@
         NSString* titleStr;
         if(self.segmentView.segmentedIndex == 1)
         {
-             titleStr = @"充值总金额：";
+             titleStr = @"兑换总金额：";
         }
         else if(self.segmentView.segmentedIndex == 2)
         {
-             titleStr = @"投注总金额：";
-        }
-        else if(self.segmentView.segmentedIndex == 3)
-        {
              titleStr = @"中奖总金额：";
         }
-        else 
+        else if(self.segmentView.segmentedIndex == 3)
         {
              titleStr = @"提现总金额：";
         }

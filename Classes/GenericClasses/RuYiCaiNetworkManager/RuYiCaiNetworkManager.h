@@ -785,6 +785,9 @@ typedef enum
 
 - (void)queryChargeWarnStr:(NSString*)keyStr;
 - (void)exchangeLotPeaWithAmount:(NSString*)amount;
+- (void)getMessageListWithPage:(NSString*)page;
+- (void)getMessageDetailWithID:(NSString*)ID;
+
 @end
 
 /* 
