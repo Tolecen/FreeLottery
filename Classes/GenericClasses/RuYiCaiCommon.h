@@ -23,6 +23,8 @@
 
 //#define NNRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
 
+#define ifCeShi   @"1"
+
 #define CeshiRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
 
 #define NNRuYiCaiServer   @"http://www.caifree.com/freelot/freelotServlet"
