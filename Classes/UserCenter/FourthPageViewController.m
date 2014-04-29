@@ -153,6 +153,7 @@
         selectTableRow = nil;
         
         [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
+        [RuYiCaiNetworkManager sharedManager].goBackType = GO_GCDT_TYPE;
         [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:NO];
         
         self.loginTopView.hidden = YES;
