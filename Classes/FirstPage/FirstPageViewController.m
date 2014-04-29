@@ -361,7 +361,7 @@
     
     
     canShowM = YES;
-    
+    topmsgShowed = NO;
     [self.navigationController.navigationBar setBackground];
     [self.view setBackgroundColor:[ColorUtils parseColorFromRGB:@"#F5F5F5"]];
     int miunesWithed = 320;
@@ -580,6 +580,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"querySampleNetOK" object:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"netFailed" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryRemainingChanceOK" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"sofrWareUpdateOK" object:nil];
     
     
 
@@ -617,12 +618,7 @@
     }
 
     
-	if ([RuYiCaiNetworkManager sharedManager].hasLogin)//取余额
-    {
-        [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_QUERY_BALANCE;
-        [[RuYiCaiNetworkManager sharedManager] queryUserBalance];
-        
-    }
+
 	
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSSQInformation:) name:@"updateSSQInformation" object:nil];
     
@@ -642,6 +638,8 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netFailed:) name:@"netFailed" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryRemainingChanceOK:) name:@"queryRemainingChanceOK" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sofrWareUpdateOK:) name:@"sofrWareUpdateOK" object:nil];
 
     self.tableViewType = YES;
     
@@ -655,11 +653,31 @@
     
     //此处还差查询剩余投注次数接口！！！！！
     
-    [[RuYiCaiNetworkManager sharedManager] queryRemainingChanceForLot];
+    
     
     [[RuYiCaiNetworkManager sharedManager] requestTicketPropaganda];//查询彩种宣传语
     
+    if ([RuYiCaiNetworkManager sharedManager].hasLogin)//取余额
+    {
+        [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_QUERY_BALANCE;
+        [[RuYiCaiNetworkManager sharedManager] queryUserBalance];
+        [[RuYiCaiNetworkManager sharedManager] queryRemainingChanceForLot];
+        
+    }
+    
+    
+    
 
+}
+-(void)sofrWareUpdateOK:(NSNotification *)noti
+{
+    if ([RuYiCaiNetworkManager sharedManager].hasLogin)//取余额
+    {
+        [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_QUERY_BALANCE;
+        [[RuYiCaiNetworkManager sharedManager] queryUserBalance];
+        [[RuYiCaiNetworkManager sharedManager] queryRemainingChanceForLot];
+        
+    }
 }
 -(void)queryRemainingChanceOK:(NSNotification *)noti
 {
@@ -1015,9 +1033,13 @@
 - (void)getTopOneMessageOK:(NSNotification*)notification
 {
     NSDictionary* dic = [notification.userInfo objectForKey:@"value"];
-    if ([dic[@"ifhave"] intValue]&&metionVBG.hidden) {
+    if (metionVBG.hidden) {
         self.theInfoTextView.text = dic[@"content"];
         metionVBG.hidden = NO;
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.8];
+        [metionVBG.layer addAnimation:animation forKey:nil];
+        [UIView commitAnimations];
     }
 }
 -(void)showMentionView

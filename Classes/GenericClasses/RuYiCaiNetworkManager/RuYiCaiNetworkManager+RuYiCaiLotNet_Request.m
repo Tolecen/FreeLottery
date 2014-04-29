@@ -12,7 +12,7 @@
 
 - (void)getLotMissdateWithLotno:(NSString*)lotno sellWay:(NSString*)sellWay//遗落值
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -58,7 +58,7 @@
 
 - (void)getLotMissdateWithString:(NSString*)configurationString//遗落值
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -78,7 +78,7 @@
 
 - (void)getShouYiLvBatchList:(NSString*)lotno//收益率期号
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -106,7 +106,7 @@
 
 - (void)computeShouYiLvWithLotno:(NSString*)lotno batchcode:(NSString*)batchcode batchnum:(NSString*)batchnum lotmulti:(NSString*)lotmulti wholeYield:(NSString*)wholeYield beforeBatchNum:(NSString*)beforeBatchNum beforeYield:(NSString*)beforeYield afterYield:(NSString*)afterYield
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -147,7 +147,7 @@
 
 - (void)queryHistoryTrackDetail:(NSString*)trackId
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -175,7 +175,7 @@
 
 - (void)querySampleLotNetRequest:(NSDictionary*)dict isShowProgress:(BOOL)showPro
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -205,7 +205,7 @@
 
 - (void)quXiaoNetRequest:(NSDictionary*)dict//合买撤单、撤资
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -231,7 +231,7 @@
 }
 - (void)lotteryZCInquiry{
     
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -261,7 +261,7 @@
 
 - (void)queryZCIssueBatchCode:(NSString*)lotNo
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     

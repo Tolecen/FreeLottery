@@ -142,10 +142,10 @@
     m_autoLoginRandomNumber = @"";
     [self readAutoLoginPlist];
     
-    [[RuYiCaiNetworkManager sharedManager] softwareUpdate];
-    [[RuYiCaiNetworkManager sharedManager] getExchangeScaleForAdwall];
-    [[RuYiCaiNetworkManager sharedManager] updateImformationOfLotteryInServers];//获取彩票显示信息
-    [[RuYiCaiNetworkManager sharedManager] updateImformationOfPayStationInServers];//获取支付显示信息
+//    [[RuYiCaiNetworkManager sharedManager] softwareUpdate];
+//    [[RuYiCaiNetworkManager sharedManager] getExchangeScaleForAdwall];
+//    [[RuYiCaiNetworkManager sharedManager] updateImformationOfLotteryInServers];//获取彩票显示信息
+//    [[RuYiCaiNetworkManager sharedManager] updateImformationOfPayStationInServers];//获取支付显示信息
     
     
     
@@ -288,7 +288,7 @@
     
     if ([RuYiCaiNetworkManager sharedManager].beginCalOutComment>0) {
         NSTimeInterval nowT = [[NSDate date] timeIntervalSince1970];
-        NSLog(@"intime:%f",nowT);
+        NSLog(@"intime:%f,originTime:%f,cha:%f",nowT,[RuYiCaiNetworkManager sharedManager].beginCalOutComment,nowT-[RuYiCaiNetworkManager sharedManager].beginCalOutComment);
         if (nowT-[RuYiCaiNetworkManager sharedManager].beginCalOutComment>30) {
             [RuYiCaiNetworkManager sharedManager].beginCalOutComment=0;
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"感谢您的评价，接下来我们会审核您的评价，如果满足要求，系统会为您加上相应的彩豆，这个时间可能会有半个小时到几小时，不要着急哦^_^" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];

@@ -12,7 +12,7 @@
 
 - (void)querySampleChargeNetRequest:(NSDictionary*)dict isShowProgress:(BOOL)showPro
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -43,7 +43,7 @@
 
 - (void)chargeBySecurityAlipay:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -69,7 +69,7 @@
 
 - (void)chargeByLaKaLa:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -97,7 +97,7 @@
 
 - (void)queryChargeWarnStr:(NSString*)keyStr
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     

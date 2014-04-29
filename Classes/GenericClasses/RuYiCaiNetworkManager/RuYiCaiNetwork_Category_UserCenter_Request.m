@@ -18,7 +18,7 @@
 - (void)UpdateUserInfo
 {
 
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -95,7 +95,7 @@
 }
 - (void)checkoutCaptchaNoWithPjoneNo:(NSString*)phoneNo CaptchaNo:(NSString*)CaptchaNo
 {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[RuYiCaiNetworkManager sharedManager].realServerURL]];
 	request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
@@ -118,7 +118,7 @@
 }
 - (void)getCheckoutNoWithPhongNo:(NSString*)phoneNo requestType:(NSString*)type
 {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[RuYiCaiNetworkManager sharedManager].realServerURL]];
 	request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
@@ -142,7 +142,7 @@
 }
 - (void)queryLotWinOfPage:(NSUInteger)pageIndex
 {
-//    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+//    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 //	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 //	request.allowCompressedResponse = NO;
 //    
@@ -172,7 +172,7 @@
 //    [self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
     
     
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -210,7 +210,7 @@
 
 - (void)queryLotBetOfPage:(NSUInteger)pageIndex lotNo:(NSString *)lotno
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -248,7 +248,7 @@
 
 - (void)queryTrackOfPage:(NSUInteger)pageIndex
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -278,7 +278,7 @@
 
 - (void)cancelTrack:(NSString*)tsubscribeNo
 {
-	NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+	NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -305,7 +305,7 @@
 //获得最近一场赛事
 - (void)getRecentlyEvent:(NSString*)numId
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -335,7 +335,7 @@
 //获得最近一场赛事
 - (void)getZQRecentlyEvent:(NSString*)numId
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -365,7 +365,7 @@
 //获得最近一场赛事北京单场
 - (void)getBDRecentlyEvent:(NSString*)numId
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -394,7 +394,7 @@
 
 - (void)queryUserBalance
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -424,7 +424,7 @@
 #pragma mark 投注明细
 - (void)getBetDetailWithDic:(NSMutableDictionary*)inforDic
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -448,7 +448,7 @@
 }
 - (void)exchangeLotPeaWithAmount:(NSString*)amount
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -476,7 +476,7 @@
 }
 - (void)queryGiftOfPage:(NSUInteger)pageIndex hasGift:(BOOL)isGift
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -516,7 +516,7 @@
 
 - (void)queryAccountDetailOfPage:(NSUInteger)pageIndex transactionType:(NSUInteger)type
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -547,7 +547,7 @@
 
 - (void)queryCash
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -575,13 +575,13 @@
 }
 - (void)getNotificationWithID: (NSString *)ID
 {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[RuYiCaiNetworkManager sharedManager].realServerURL]];
 	request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
-    [mDict setObject:@"announcemount" forKey:@"command"];
+    [mDict setObject:@"announcement" forKey:@"command"];
     [mDict setObject:@"msgDetail" forKey:@"requestType"];
-    [mDict setObject:ID forKey:@"msgID"];
+    [mDict setObject:ID forKey:@"id"];
     [mDict setObject:self.userno forKey:@"userno"];
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
@@ -601,11 +601,11 @@
 }
 - (void)getTopOneMessage
 {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[RuYiCaiNetworkManager sharedManager].realServerURL]];
 	request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
-    [mDict setObject:@"announcemount" forKey:@"command"];
+    [mDict setObject:@"announcement" forKey:@"command"];
     [mDict setObject:@"topOne" forKey:@"requestType"];
     [mDict setObject:self.userno forKey:@"userno"];
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
@@ -626,13 +626,13 @@
 }
 - (void)getMessageDetailWithID:(NSString*)ID
 {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[RuYiCaiNetworkManager sharedManager].realServerURL]];
 	request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
-    [mDict setObject:@"announcemount" forKey:@"command"];
+    [mDict setObject:@"announcement" forKey:@"command"];
     [mDict setObject:@"msgDetail" forKey:@"requestType"];
-    [mDict setObject:ID forKey:@"msgID"];
+    [mDict setObject:ID forKey:@"id"];
     [mDict setObject:self.userno forKey:@"userno"];
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
@@ -652,14 +652,14 @@
 }
 - (void)getMessageListWithPage:(NSString*)page
 {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[RuYiCaiNetworkManager sharedManager].realServerURL]];
 	request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
-    [mDict setObject:@"announcemount" forKey:@"command"];
+    [mDict setObject:@"announcement" forKey:@"command"];
     [mDict setObject:@"msgList" forKey:@"requestType"];
-    [mDict setObject:page forKey:@"page"];
-    [mDict setObject:@"10" forKey:@"size"];
+    [mDict setObject:page forKey:@"pageindex"];
+    [mDict setObject:@"10" forKey:@"maxresult"];
     [mDict setObject:self.userno forKey:@"userno"];
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
@@ -679,7 +679,7 @@
 }
 - (void)queryCaidouDetailOfPage:(NSUInteger)pageIndex requestType:(NSString*)type
 {
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[RuYiCaiNetworkManager sharedManager].realServerURL]];
 	request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
@@ -714,7 +714,7 @@
 }
 - (void)queryRecordCash:(NSString*)pageIndex maxResult:(NSString*)maxResult
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -745,7 +745,7 @@
 }
 - (void)getCash:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -770,7 +770,7 @@
 
 - (void)cancelCash:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -802,7 +802,7 @@
 
 - (void)nickNameSet:(NSString*)nickname
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -830,7 +830,7 @@
 
 - (void)queryLeaveMessage:(NSString*)pageIndex
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -859,7 +859,7 @@
 
 //- (void)receiveLotterySecurity:(NSString*)presentId
 //{
-//    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+//    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 //	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 //	request.allowCompressedResponse = NO;
 //    
@@ -890,7 +890,7 @@
 
 //- (void)receiveLottery:(NSString*)security 
 //{
-//    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+//    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 //	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 //	request.allowCompressedResponse = NO;
 //    
@@ -919,7 +919,7 @@
 
 - (void)getIntegralInfo:(NSString*)pageIndex
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -947,7 +947,7 @@
 }
 - (void)integralTransMoneyNeedsScores
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -974,7 +974,7 @@
 
 - (void)transIntegral:(NSString*)score
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -1005,7 +1005,7 @@
 {
     m_netChargeQuestType = NET_ACCOUNT_TAKE_CASH;
     
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -1034,7 +1034,7 @@
 //bank charge
 - (void)chargeDNA:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -1059,7 +1059,7 @@
 
 - (void)chargeByPhoneCard:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -1084,7 +1084,7 @@
 
 - (void)chargeByAlipay:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -1110,7 +1110,7 @@
 
 - (void)umpayByCredit:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -1136,7 +1136,7 @@
 
 - (void)wealthTenpayFor:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -1162,7 +1162,7 @@
 
 - (void)chargeByUnionBankCard:(NSMutableDictionary*)otherDict
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -1188,7 +1188,7 @@
 #pragma mark bindPhone and bindCertid
 - (void)bindWithCertid:(NSString*)certNum tureName:(NSString*)turename
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
     request.allowCompressedResponse = NO;
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
@@ -1218,7 +1218,7 @@
 - (void)getBindEmailSecurityCode:(NSString*)bindEmail
 {
     self.bindEmail = bindEmail;
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
     request.allowCompressedResponse = NO;
     
@@ -1244,7 +1244,7 @@
 - (void)getBindPhoneSecurityCode:(NSString*)bindPhone
 {
     self.bindNewPhoneNum = bindPhone;
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[RuYiCaiNetworkManager sharedManager].realServerURL]];
 	request.allowCompressedResponse = NO;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
@@ -1269,7 +1269,7 @@
 
 - (void)bindPhoneNumWithSecurity:(NSString*)securityCode
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
     request.allowCompressedResponse = NO;
     
@@ -1299,7 +1299,7 @@
 
 - (void)cancelBindEmail
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
     request.allowCompressedResponse = NO;
     
@@ -1324,7 +1324,7 @@
 }
 - (void)cancelBindPhone
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
     request.allowCompressedResponse = NO;
     
@@ -1794,7 +1794,7 @@
 {
     NSTrace();
     self.newPassword = newPsw;
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
@@ -1824,7 +1824,7 @@
 //- (void)sendFeedBack:(NSString*)content contactWay:(NSString*)contactway qNumTextField:(NSString*)qNumTextField
 - (void)sendFeedBack:(NSString*)content contactWay:(NSString*)contactway
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     

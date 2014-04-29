@@ -168,8 +168,38 @@
     exchangeScale = [[NSString stringWithFormat:@"(1注=%d彩豆)",2*[theV intValue]] mutableCopy];
     
     [self.listTableV reloadData];
-
-
+/*
+    NSDictionary * dict1 = [NSDictionary dictionaryWithObjectsAndKeys:@"101",@"id",@"zzzz中大奖了",@"title",@"prizeNoti",@"type", nil];
+    NSDictionary * dict2 = [NSDictionary dictionaryWithObjectsAndKeys:@"102",@"id",@"系统维护大约5个小时",@"title",@"sysNoti",@"type", nil];
+    NSDictionary * dict3 = [NSDictionary dictionaryWithObjectsAndKeys:@"103",@"id",@"asdasddasd中大奖了",@"title",@"prizeNoti",@"type", nil];
+    NSArray * ff = [NSArray arrayWithObjects:dict1,dict2,dict3, nil];
+    NSDictionary * gg = [NSDictionary dictionaryWithObjectsAndKeys:ff,@"value",@"0000",@"error_code", nil];
+    SBJsonWriter *jsonw = [SBJsonWriter new];
+    NSString * hh = [jsonw stringWithObject:gg];
+    NSLog(@"LISTBACK:%@",hh);
+    
+    
+    NSDictionary * cont = [NSDictionary dictionaryWithObjectsAndKeys:@"有个人中过奖了和回复三等奖风口浪尖SD卡浪费就开始束带结发快乐健康了加贷款是附近快乐到死解放军的说法",@"content",@"sssss中奖了",@"title",@"101",@"id", nil];
+    NSDictionary * gg2 = [NSDictionary dictionaryWithObjectsAndKeys:cont,@"value",@"0000",@"error_code", nil];
+    SBJsonWriter *jsonw2 = [SBJsonWriter new];
+    NSString * hh2 = [jsonw2 stringWithObject:gg2];
+    NSLog(@"CONTENTBACK:%@",hh2);
+    
+    NSDictionary * cont2 = [NSDictionary dictionaryWithObjectsAndKeys:@"有个人中过奖了和回复三等奖风口浪尖SD卡浪费就开始束带结发快乐健康了加贷款是附近快乐到死解放军的说法",@"content",@"sssss中奖了",@"title",@"101",@"id",@"1",@"ifhave", nil];
+    NSDictionary * gg3 = [NSDictionary dictionaryWithObjectsAndKeys:cont2,@"value",@"0000",@"error_code", nil];
+//    NSLog(@"KAIJINOTIBACK:%@",gg3);
+    SBJsonWriter *jsonw3 = [SBJsonWriter new];
+    NSString * hh3 = [jsonw3 stringWithObject:gg3];
+    NSLog(@"KAIJINOTIBACK:%@",hh3);
+    
+    
+    NSDictionary * cont4 = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"ifhave", nil];
+    NSDictionary * gg4 = [NSDictionary dictionaryWithObjectsAndKeys:cont4,@"value",@"0000",@"error_code", nil];
+    SBJsonWriter *jsonw4 = [SBJsonWriter new];
+    NSString * hh4 = [jsonw4 stringWithObject:gg4];
+    NSLog(@"KAIJINOTIBACK:%@",hh4);
+    
+    */
 
 }
 -(void)queryRemainingIDFAOK:(NSNotification *)noti

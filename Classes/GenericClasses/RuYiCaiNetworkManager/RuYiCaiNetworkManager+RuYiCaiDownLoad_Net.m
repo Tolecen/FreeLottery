@@ -13,7 +13,7 @@
 
 - (void)sendException:(NSString*)excContent
 {
-    NSString *updateUrl =[NSString stringWithFormat:@"%@", kRuYiCaiServer];
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
 	request.allowCompressedResponse = NO;
     
