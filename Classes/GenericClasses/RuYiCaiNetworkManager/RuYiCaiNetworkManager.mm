@@ -4483,6 +4483,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 //        [m_delegate.loginView.rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateHighlighted];
 //        m_delegate.loginView.isRemberMyLoginStatus = NO;
     }
+    m_delegate.loginView.rememberMyLoginStatusPswButton.hidden = YES;
     
     //    if (m_loginAutoRememberPsw)
     //    {
