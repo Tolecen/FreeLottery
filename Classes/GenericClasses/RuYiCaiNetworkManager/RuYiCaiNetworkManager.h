@@ -265,7 +265,7 @@ typedef enum
 @property (nonatomic, assign) BOOL shouldCheat;
 
 @property (nonatomic, assign) BOOL requestedAdwallSuccess;
-@property (nonatomic, assign) float beginCalOutComment;
+@property (nonatomic, assign) double beginCalOutComment;
 @property (nonatomic, retain) NSString* userBalance;
 @property (nonatomic, retain) NSString* userLotPea;
 @property (nonatomic, retain) NSString* userPrizeBalance;

@@ -279,7 +279,7 @@
             
             if([RuYiCaiNetworkManager sharedManager].hasLogin)
             {
-                cell.progressLabel.text = [NSString stringWithFormat:@"%@/5000",[RuYiCaiNetworkManager sharedManager].userLotPea];
+                cell.progressLabel.text = [actV objectForKey:@"progress"];
             }
             else
             {
