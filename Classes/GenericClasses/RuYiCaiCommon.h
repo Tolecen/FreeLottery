@@ -94,8 +94,8 @@
 //#define kRuYiCaiCoopid   @"111"  //91市场
 //#define kRuYiCaiCoopid   @"112"  //同步推
 
-#define appStoreORnormal    @"appStore"
-//#define appStoreORnormal    @"normal"
+//#define appStoreORnormal    @"appStore"
+#define appStoreORnormal    @"normal"
 #define appTestPhone    @"13522407813"
 
 
