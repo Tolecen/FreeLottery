@@ -157,18 +157,18 @@
     //底部配置文本信息
     UIView  *bottomView;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-50, 320, 50)];
+        bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-70, 320, 50)];
     }else
     {
-       bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-70, 320, 50)];
+       bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-90, 320, 50)];
     }
     
     bottomView.backgroundColor = [ColorUtils parseColorFromRGB:@"#ebe7e1"];
     [self.view addSubview:bottomView];
     [bottomView release];
-    UITextView *promptTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    UITextView *promptTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
     promptTextView.backgroundColor = [UIColor clearColor];
-    promptTextView.text = @"手机号码、身份证信息是彩票兑奖的重要依据，建议您认真填写并核对信息！";
+    promptTextView.text = @"重要提示:\n中国福彩和体彩中心规定，身份证号码是中奖提现的唯一依据，建议您如实填写。如果有因为身份证号码错误造成的经济损失，后果自行承担。";
     promptTextView.editable = NO;
     promptTextView.textColor = [ColorUtils parseColorFromRGB:@"#3c3c3c"];
     [bottomView addSubview:promptTextView];
