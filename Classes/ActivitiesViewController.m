@@ -34,10 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSDictionary * actoneDict = [NSDictionary dictionaryWithObjectsAndKeys:@"新手任务:累计赚取5000彩豆，即送500彩豆",@"actDescribe",@"no",@"actName",@"4000/5000",@"progress",@"1397559130",@"expireTime",@"1",@"type",@"1",@"state", nil];
-    NSDictionary * actTwoDict = [NSDictionary dictionaryWithObjectsAndKeys:@"每日签到，即送彩豆",@"actDescribe",@"每日签到",@"actName",@"1",@"state", @"2",@"type",nil];
-    NSDictionary * actThreeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"给我5星好评，送彩豆哦",@"actDescribe",@"五星好评，送彩豆",@"actName",@"1",@"state",@"3",@"type", nil];
-    actsArray = [[NSMutableArray alloc] initWithObjects:actoneDict,actTwoDict,actThreeDict, nil];
+
+    
     
     self.view.backgroundColor = [UIColor whiteColor];
     [AdaptationUtils adaptation:self];
@@ -71,9 +69,11 @@
 -(void)queryActListOK:(NSNotification *)noti
 {
     NSArray * hh = noti.object;
-    actsArray = [(NSMutableArray *)hh retain];
+//    actsArray = [(NSMutableArray *)hh retain];
     NSString * sss = @"1398152650";
-    for (NSDictionary * dict in actsArray) {
+    int mm= -1;
+    for (int i = 0;i<hh.count;i++) {
+        NSDictionary * dict = hh[i];
         if ([[dict objectForKey:@"type"] isEqualToString:@"1"]) {
             sss = [dict objectForKey:@"expireTime"];
         }
@@ -82,9 +82,17 @@
         }
         if ([[dict objectForKey:@"type"] isEqualToString:@"3"]) {
             pinglunID = [dict objectForKey:@"id"];
+            mm = i;
         }
     }
-    
+    NSMutableArray * tP = [NSMutableArray arrayWithArray:hh];
+    if (([appStoreORnormal isEqualToString:@"appStore"] &&
+         [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
+        if (mm!=-1) {
+            [tP removeObjectAtIndex:mm];
+        }
+    }
+    actsArray = [tP retain];
     if (sss) {
         [self calRemainingTime:sss];
     }
@@ -131,6 +139,19 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOK:) name:@"loginOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryActListOK:) name:@"queryActListOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(todayQianDaoOK:) name:@"TodayQianDaoOK" object:nil];
+    if (!actsArray) {
+        NSDictionary * actoneDict = [NSDictionary dictionaryWithObjectsAndKeys:@"累计赚取5000彩豆，即送500彩豆",@"description",@"新手任务",@"name",@"4000/5000",@"progress",@"1397559130",@"expireTime",@"1",@"type",@"1",@"state", nil];
+        NSDictionary * actTwoDict = [NSDictionary dictionaryWithObjectsAndKeys:@"每日签到，即送彩豆",@"description",@"每日签到",@"name",@"1",@"state", @"2",@"type",nil];
+        NSDictionary * actThreeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"给我5星好评，送彩豆哦",@"description",@"五星好评，送彩豆",@"name",@"1",@"state",@"3",@"type", nil];
+        if (([appStoreORnormal isEqualToString:@"appStore"] &&
+             [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
+            actsArray = [[NSMutableArray alloc] initWithObjects:actoneDict,actTwoDict, nil];
+        }
+        else{
+            actsArray = [[NSMutableArray alloc] initWithObjects:actoneDict,actTwoDict,actThreeDict, nil];
+        }
+    }
+    
     if([RuYiCaiNetworkManager sharedManager].hasLogin)
     {
         [[RuYiCaiNetworkManager sharedManager] queryActListWithPage:@"0"];
@@ -172,6 +193,10 @@
 }
 - (void)loginOK:(NSNotification *)notification
 {
+    if([RuYiCaiNetworkManager sharedManager].hasLogin)
+    {
+        [[RuYiCaiNetworkManager sharedManager] queryActListWithPage:@"0"];
+    }
     [self.listTableV reloadData];
 }
 -(void)calRemainingTime:(NSString *)remainTime
@@ -199,7 +224,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return actsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

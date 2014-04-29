@@ -66,7 +66,7 @@
         titleArray = [[NSArray alloc] init];
         realArray = [[NSArray alloc] initWithObjects:[self rr:@"免费获取彩豆入口1" De:@"免费获取彩豆入口1" ID:@"limei"],[self rr:@"免费获取彩豆入口2" De:@"免费获取彩豆入口2" ID:@"youmi"],[self rr:@"免费获取彩豆入口3" De:@"免费获取彩豆入口3" ID:@"dianru"],[self rr:@"免费获取彩豆入口4" De:@"免费获取彩豆入口4" ID:@"duomeng"],[self rr:@"免费获取彩豆入口5" De:@"免费获取彩豆入口5" ID:@"midi"], nil];
         
-        notRealArray = [[NSArray alloc] initWithObjects:[self rr:@"幸运大转盘" De:@"免费获取彩豆入口1" ID:@"limei"],[self rr:@"每日签到" De:@"免费获取彩豆入口1" ID:@"limei"],[self rr:@"更多精彩活动敬请期待" De:@"免费获取彩豆入口1" ID:@"limei"], nil];
+        notRealArray = [[NSArray alloc] initWithObjects:[self rr:@"幸运大转盘" De:@"免费获取彩豆入口1" ID:@"limei"],[self rr:@"每日送彩豆" De:@"免费获取彩豆入口1" ID:@"limei"],[self rr:@"更多精彩活动敬请期待" De:@"免费获取彩豆入口1" ID:@"limei"], nil];
         
         self.theUserID = [NSString stringWithFormat:@"%@_%@",[RuYiCaiNetworkManager sharedManager].userno,kRuYiCaiCoopid];
 //        self.theUserID = @"00000866";
@@ -213,7 +213,7 @@
         }
     }
     else if ([errorCode isEqualToString:@"1114"]){
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"对不起，您还没有绑定手机号，不能进行积分兑换操作，请先到用户中心执行绑定手机号操作，谢谢" delegate:self cancelButtonTitle:@"好的，去绑定" otherButtonTitles: nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"对不起，您还没有绑定手机号，不能进行积分兑换操作，请先绑定手机号操作，谢谢" delegate:self cancelButtonTitle:@"好的，去绑定" otherButtonTitles: nil];
         alert.tag = 22;
         [alert show];
         [alert release];
