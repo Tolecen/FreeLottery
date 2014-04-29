@@ -52,7 +52,7 @@
 }
 - (void)getMessageDetailOK:(NSNotification*)notification
 {
-    
+    _textView.text = [notification.userInfo objectForKey:@"value"][@"content"];
 }
 - (void)didReceiveMemoryWarning
 {

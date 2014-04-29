@@ -573,6 +573,57 @@
 	[request startAsynchronous];
     [self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
 }
+- (void)getNotificationWithID: (NSString *)ID
+{
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+	request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"announcemount" forKey:@"command"];
+    [mDict setObject:@"msgDetail" forKey:@"requestType"];
+    [mDict setObject:ID forKey:@"msgID"];
+    [mDict setObject:self.userno forKey:@"userno"];
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+	NSLog(@"账户查询%@",cookieStr);
+	
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeGetNotification];
+	[request setDelegate:self];
+	[request startAsynchronous];
+    [self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
+}
+- (void)getTopOneMessage
+{
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];
+	request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"announcemount" forKey:@"command"];
+    [mDict setObject:@"topOne" forKey:@"requestType"];
+    [mDict setObject:self.userno forKey:@"userno"];
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+	NSLog(@"账户查询%@",cookieStr);
+	
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeGetTopOneMessage];
+	[request setDelegate:self];
+	[request startAsynchronous];
+    [self showProgressViewWithTitle:@"联网提示" message:@"加载中..." net:request];
+}
 - (void)getMessageDetailWithID:(NSString*)ID
 {
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kRuYiCaiServer]];

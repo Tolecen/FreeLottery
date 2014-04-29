@@ -395,6 +395,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newVersionCheckOK:) name:@"newVersionCheckOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netFailedAlert:) name:@"netFailedAlert" object:nil];
     
+    [[RuYiCaiNetworkManager sharedManager] getTopOneMessage];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTopOneMessageOK:) name:@"WXRGetTopOneMessageOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNotificationOK:) name:@"WXRGetNotificationOK" object:nil];
     
 }
 -(void)newVersionCheckOK:(NSNotification *)notification
@@ -1004,6 +1007,22 @@
 {
     metionVBG.hidden = YES;
 //    [metionVBG removeFromSuperview];
+}
+- (void)getNotificationOK:(NSNotification*)notification
+{
+    NSDictionary* dic = [notification.userInfo objectForKey:@"value"];
+    if (metionVBG.hidden) {
+        self.theInfoTextView.text = dic[@"content"];
+        metionVBG.hidden = NO;
+    }
+}
+- (void)getTopOneMessageOK:(NSNotification*)notification
+{
+    NSDictionary* dic = [notification.userInfo objectForKey:@"value"];
+    if ([dic[@"ifhave"] intValue]&&metionVBG.hidden) {
+        self.theInfoTextView.text = dic[@"content"];
+        metionVBG.hidden = NO;
+    }
 }
 -(void)showMentionView
 {

@@ -787,7 +787,8 @@ typedef enum
 - (void)exchangeLotPeaWithAmount:(NSString*)amount;
 - (void)getMessageListWithPage:(NSString*)page;
 - (void)getMessageDetailWithID:(NSString*)ID;
-
+- (void)getNotificationWithID: (NSString *)ID;
+- (void)getTopOneMessage;
 @end
 
 /* 
