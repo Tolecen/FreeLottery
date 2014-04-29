@@ -136,6 +136,8 @@ typedef enum {
     UIButton * buyButton1;
     UIButton * buyButton2;
     
+    BOOL topmsgShowed;
+    
 #ifndef isBOYA
     UIImageView        *m_imagePageFour;
     

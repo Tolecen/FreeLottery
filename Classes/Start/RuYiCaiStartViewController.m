@@ -15,12 +15,14 @@
 #import "CommonRecordStatus.h"
 #import "AdaptationUtils.h"
 #import <AdSupport/AdSupport.h>
-
+#import "RuYiCaiNetworkManager.h"
 @implementation RuYiCaiStartViewController
 #define kStartViewShowTime  (5.0f) //开机页面 显示时长
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
+//    checkedOK = NO;
+//    performed = NO;
 	[AdaptationUtils adaptation:self];
 	self.view.backgroundColor = [UIColor clearColor];
 	m_startView = [[RuYiCaiStartView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -28,13 +30,40 @@
 	[self.view insertSubview:m_startView atIndex:0];
     
     m_delegate = (RuYiCaiAppDelegate*)[[UIApplication sharedApplication] delegate];
-    [self performSelector:@selector(showLoading:) withObject:nil afterDelay:kStartViewShowTime];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newVersionCheckOK:) name:@"newVersionCheckOK" object:nil];
+    
+    hh = [[NSDate date] timeIntervalSince1970];
+    [[RuYiCaiNetworkManager sharedManager] checkNewVersion];
+//    [self performSelector:@selector(showLoading:) withObject:nil afterDelay:kStartViewShowTime];
     
 }
-
+-(void)newVersionCheckOK:(NSNotification *)notification
+{
+//    NSDictionary * message = notification.object;
+//    NSString * isUpgrade = [message objectForKey:@"isUpgrade"];
+//    if ([isUpgrade isEqualToString:@"1"]) {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"检测到有新版本\n%@",[message objectForKey:@"description"]] delegate:self cancelButtonTitle:@"暂不升级" otherButtonTitles:@"立刻升级", nil];
+//        alert.tag = kNewVersionAlertViewTag;
+//        [alert show];
+//        [alert release];
+//    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"newVersionCheckOK" object:nil];
+    NSTimeInterval dd = [[NSDate date] timeIntervalSince1970];
+    if (dd-hh<5) {
+        [self performSelector:@selector(showLoading:) withObject:nil afterDelay:2];
+    }
+    else
+        [self showLoading:nil];
+}
 - (void)showLoading:(id)sender
 {
     [m_startView removeFromSuperview];
+    
+    [[RuYiCaiNetworkManager sharedManager] softwareUpdate];
+    [[RuYiCaiNetworkManager sharedManager] getExchangeScaleForAdwall];
+    [[RuYiCaiNetworkManager sharedManager] updateImformationOfLotteryInServers];//获取彩票显示信息
+    [[RuYiCaiNetworkManager sharedManager] updateImformationOfPayStationInServers];//获取支付显示信息
     
     //卸载重装 去除闹钟
     if(![[NSUserDefaults standardUserDefaults] objectForKey:kLotteryBetWarnKey])

@@ -14,16 +14,18 @@
 
 #define kRuYiCaiAesKey   @"<>hj12@#$$%^~~ff"
   
-//#define kRuYiCaiServer   @"http://58.83.193.3/lotserver/RuyicaiServlet"
+//#define [RuYiCaiNetworkManager sharedManager].realServerURL   @"http://58.83.193.3/lotserver/RuyicaiServlet"
 
 #define UnionBankLTInterfaceType (0) //银联生产线
 //#define UnionBankLTInterfaceType (1)  //银联测试线
 
 
 
-#define kRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
+//#define NNRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
 
-//#define kRuYiCaiServer   @"http://www.caifree.com/freelot/freelotServlet"
+#define CeshiRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
+
+#define NNRuYiCaiServer   @"http://www.caifree.com/freelot/freelotServlet"
 
 
 #define CaiJinDuiHuanTiShi   @"尊敬的用户，您的彩豆余额不足，赶紧免费兑换吧！"
@@ -39,7 +41,7 @@
 //#define kZCServer        @"http://www.ruyicai.com/jrtLot/zcAction.do;jsessionid=?method=getFlData&jsonString="
 #define kRuYiCaiBetSafari   @"http://58.83.193.3/lotserver/log/betConfirm.jsp?jsonString="
 //#define unionPayServer @"http://mobilepay.unionpaysecure.com/qzjy/MerOrderAction/deal.action"
-//#define kRuYiCaiServer   @"http://192.168.0.190:8000/lotserver/RuyicaiServlet"
+//#define [RuYiCaiNetworkManager sharedManager].realServerURL   @"http://192.168.0.190:8000/lotserver/RuyicaiServlet"
 
 
 
@@ -92,8 +94,8 @@
 //#define kRuYiCaiCoopid   @"111"  //91市场
 //#define kRuYiCaiCoopid   @"112"  //同步推
 
-//#define appStoreORnormal    @"appStore"
-#define appStoreORnormal    @"normal"
+#define appStoreORnormal    @"appStore"
+//#define appStoreORnormal    @"normal"
 #define appTestPhone    @"13522407813"
 
 

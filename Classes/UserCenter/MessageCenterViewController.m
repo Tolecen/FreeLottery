@@ -29,6 +29,7 @@
 }
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_tableV release];
     [super dealloc];
 }
@@ -61,7 +62,7 @@
 -(void)getMessageListOK:(NSNotification*)info
 {
     self.dataArray = info.userInfo[@"value"];
-    [_tableV release];
+    [_tableV reloadData];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

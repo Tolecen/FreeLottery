@@ -13,6 +13,10 @@
 @interface RuYiCaiStartViewController : UIViewController {
 	RuYiCaiStartView *m_startView;
     RuYiCaiAppDelegate *m_delegate;
+    
+    BOOL checkedOK;
+    BOOL performed;
+    NSTimeInterval hh;
 }
 
 - (void)showLoading:(id)sender;

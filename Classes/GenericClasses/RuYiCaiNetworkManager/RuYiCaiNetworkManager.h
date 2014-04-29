@@ -262,6 +262,7 @@ typedef enum
 @property (nonatomic, retain) NSString* recentEventInfo;
 @property (nonatomic, retain) NSString* jzRecentEventInfo;
 @property (nonatomic, retain) NSString* bdRecentEventInfo;
+@property (nonatomic, retain) NSString* realServerURL;
 @property (nonatomic, assign) BOOL shouldCheat;
 
 @property (nonatomic, assign) BOOL requestedAdwallSuccess;

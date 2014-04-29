@@ -142,10 +142,10 @@
     m_autoLoginRandomNumber = @"";
     [self readAutoLoginPlist];
     
-    [[RuYiCaiNetworkManager sharedManager] softwareUpdate];
-    [[RuYiCaiNetworkManager sharedManager] getExchangeScaleForAdwall];
-    [[RuYiCaiNetworkManager sharedManager] updateImformationOfLotteryInServers];//获取彩票显示信息
-    [[RuYiCaiNetworkManager sharedManager] updateImformationOfPayStationInServers];//获取支付显示信息
+//    [[RuYiCaiNetworkManager sharedManager] softwareUpdate];
+//    [[RuYiCaiNetworkManager sharedManager] getExchangeScaleForAdwall];
+//    [[RuYiCaiNetworkManager sharedManager] updateImformationOfLotteryInServers];//获取彩票显示信息
+//    [[RuYiCaiNetworkManager sharedManager] updateImformationOfPayStationInServers];//获取支付显示信息
     
     
     
