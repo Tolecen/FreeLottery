@@ -152,9 +152,14 @@
     [proctoclButton addTarget:self action:@selector(protocolButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:proctoclButton];
     
+    UIView  *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-100, 320, 50)];
+    bottomView.backgroundColor = [ColorUtils parseColorFromRGB:@"#ebe7e1"];
+    [self.view addSubview:bottomView];
+    [bottomView release];
+    
     UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(10 ,self.view.frame.size.height-100, 300, 80)];
     lable.numberOfLines = 0;
-    lable.text = @"重要提示:\n手机号码是草票兑换的重要依据,同时也是中奖后领取奖金的重要凭据,建议您如实填写.如果有因为手机号码错误造成的经济损失,后果自行承担.";
+    lable.text = @"重要提示:\n手机号码是彩票兑换的重要依据,同时也是中奖后领取奖金的重要凭据,建议您如实填写.如果有因为手机号码错误造成的经济损失,后果自行承担.";
     lable.backgroundColor = [UIColor clearColor];
     lable.font = [UIFont systemFontOfSize:12];
     lable.textColor =[ColorUtils parseColorFromRGB:@"#b4b1ad"];
