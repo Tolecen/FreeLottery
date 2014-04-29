@@ -2924,6 +2924,12 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         case ASINetworkRequestTypeExchangeLotPea:
             [self exchangeLotPea:resText];
             break;
+        case ASINetworkRequestTypeGetMessageList:
+            [self getMessageList:resText];
+            break;
+        case ASINetworkRequestTypeGetMessageDetail:
+            [self getMessageDetail:resText];
+            break;
 		default:
 			break;
 	}
@@ -4249,6 +4255,48 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     self.lotteryInformation = resText;
 	
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateLottery" object:nil];
+}
+- (void)getMessageDetail: (NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    NSString* message = [parserDict objectForKey:@"message"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetMessageDetailOK" object:nil userInfo:parserDict];
+    }
+    else
+    {
+        [self showMessage:message withTitle:@"" buttonTitle:@"确定"];
+    }
+}
+- (void)getMessageList: (NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    NSString* message = [parserDict objectForKey:@"message"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetMessageListOK" object:nil userInfo:parserDict];
+    }
+    else
+    {
+        [self showMessage:message withTitle:@"" buttonTitle:@"确定"];
+    }
 }
 - (void)exchangeLotPea: (NSString*)resText
 {

@@ -1118,6 +1118,7 @@
 		6FF96FB2163E714E0031F2A1 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FAC163E714E0031F2A1 /* SinaWeiboAuthorizeView.m */; };
 		6FF96FB3163E714E0031F2A1 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FAF163E714E0031F2A1 /* SinaWeiboRequest.m */; };
 		6FF96FB7163E715D0031F2A1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF96FB6163E715D0031F2A1 /* JSONKit.m */; };
+		7228AED2190F5B2600BB912E /* MessageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7228AED1190F5B2600BB912E /* MessageContentViewController.m */; };
 		7243F98C190600A50072AF6B /* 11ydj_c_.png in Resources */ = {isa = PBXBuildFile; fileRef = 7243F987190600A50072AF6B /* 11ydj_c_.png */; };
 		7243F98D190600A50072AF6B /* dlt_c_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 7243F988190600A50072AF6B /* dlt_c_main.png */; };
 		7243F98E190600A50072AF6B /* fc3d_c_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 7243F989190600A50072AF6B /* fc3d_c_main.png */; };
@@ -2926,6 +2927,8 @@
 		6FF96FAF163E714E0031F2A1 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		6FF96FB5163E715D0031F2A1 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		6FF96FB6163E715D0031F2A1 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		7228AED0190F5B2600BB912E /* MessageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageContentViewController.h; sourceTree = "<group>"; };
+		7228AED1190F5B2600BB912E /* MessageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageContentViewController.m; sourceTree = "<group>"; };
 		7243F987190600A50072AF6B /* 11ydj_c_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11ydj_c_.png; sourceTree = "<group>"; };
 		7243F988190600A50072AF6B /* dlt_c_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dlt_c_main.png; sourceTree = "<group>"; };
 		7243F989190600A50072AF6B /* fc3d_c_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fc3d_c_main.png; sourceTree = "<group>"; };
@@ -6279,6 +6282,8 @@
 				72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */,
 				72CF019118F78AB900310F49 /* MessageCenterViewController.h */,
 				72CF019218F78AB900310F49 /* MessageCenterViewController.m */,
+				7228AED0190F5B2600BB912E /* MessageContentViewController.h */,
+				7228AED1190F5B2600BB912E /* MessageContentViewController.m */,
 				9E9D6801142901C100540D29 /* AccountDetailView.h */,
 				9E9D6802142901C100540D29 /* AccountDetailView.m */,
 			);
@@ -8560,6 +8565,7 @@
 				28A1D172182263C7006BBF11 /* JC_MyButton.m in Sources */,
 				D51E3DAF15871AC500BF8369 /* RuYiCaiNetworkManager+RuYiCaiNetCharge_ReqComplete.m in Sources */,
 				28A1D173182263C7006BBF11 /* JZHeighTableViewCell.m in Sources */,
+				7228AED2190F5B2600BB912E /* MessageContentViewController.m in Sources */,
 				D51E3DB015871AC500BF8369 /* RuYiCaiNetworkManager+RuYiCaiNetCharge_Request.m in Sources */,
 				D51E3DC115873C7200BF8369 /* HistoryLotteryViewController.m in Sources */,
 				D517F6B21588743C00C967BC /* SetViewController.m in Sources */,
