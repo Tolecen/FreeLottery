@@ -214,33 +214,33 @@
     [self.view addSubview:m_tableView];
     //底部view显示
     
-    UILabel *footUpLable = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, 260, 30)];
-    footUpLable.textColor = [UIColor blackColor];
-    footUpLable.font = [UIFont systemFontOfSize:14];
-    footUpLable.text = @"本软件的彩票运营由博雅彩提供支持";
-    footUpLable.backgroundColor = [UIColor clearColor];
-    
-    UILabel *footDownLable = [[UILabel alloc] initWithFrame:CGRectMake(60, 45, 70, 30)];
-    footDownLable.font = [UIFont systemFontOfSize:14];
-    footDownLable.textColor = [UIColor blackColor];
-    footDownLable.text = @"客服电话：";
-    footDownLable.backgroundColor = [UIColor clearColor];
-
-    UIButton * hotLineButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    hotLineButton.frame = CGRectMake(130, 45, 100, 30);
-    [hotLineButton setTitle:@"400-856-1000" forState:UIControlStateNormal];
-    hotLineButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [hotLineButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [hotLineButton addTarget:self action:@selector(hotLineServiceAction:) forControlEvents:UIControlEventTouchUpInside];
+//    UILabel *footUpLable = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, 260, 30)];
+//    footUpLable.textColor = [UIColor blackColor];
+//    footUpLable.font = [UIFont systemFontOfSize:14];
+//    footUpLable.text = @"本软件的彩票运营由博雅彩提供支持";
+//    footUpLable.backgroundColor = [UIColor clearColor];
+//    
+//    UILabel *footDownLable = [[UILabel alloc] initWithFrame:CGRectMake(60, 45, 70, 30)];
+//    footDownLable.font = [UIFont systemFontOfSize:14];
+//    footDownLable.textColor = [UIColor blackColor];
+//    footDownLable.text = @"客服电话：";
+//    footDownLable.backgroundColor = [UIColor clearColor];
+//
+//    UIButton * hotLineButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    
+//    hotLineButton.frame = CGRectMake(130, 45, 100, 30);
+//    [hotLineButton setTitle:@"400-856-1000" forState:UIControlStateNormal];
+//    hotLineButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+//    [hotLineButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+//    [hotLineButton addTarget:self action:@selector(hotLineServiceAction:) forControlEvents:UIControlEventTouchUpInside];
     
     UIView *footerView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 80)]autorelease];
     [footerView setBackgroundColor:[UIColor clearColor]];
-    [footerView addSubview:footUpLable];
-    [footUpLable release];
-    [footerView addSubview:footDownLable];
-    [footDownLable release];
-    [footerView addSubview:hotLineButton];
+//    [footerView addSubview:footUpLable];
+//    [footUpLable release];
+//    [footerView addSubview:footDownLable];
+//    [footDownLable release];
+//    [footerView addSubview:hotLineButton];
     m_tableView.tableFooterView = footerView;
     
     m_loginTopView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -130, 320, 140)];

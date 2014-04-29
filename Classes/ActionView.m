@@ -55,7 +55,7 @@
         UILabel * label = _labelArray[3];
         label.frame =CGRectMake(0, 80, 320, 20);
         label.hidden = NO;
-        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(animateWithActionType1) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(animateWithActionType1) userInfo:nil repeats:YES];
     }else
     {
         UILabel * label = [[UILabel alloc]init];
@@ -68,7 +68,7 @@
         label.text = [self randomString];
         [self addSubview:label];
         [label release];
-        [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(animateWithActionType0) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(animateWithActionType0) userInfo:nil repeats:YES];
     }
 }
 - (NSString*)randomString

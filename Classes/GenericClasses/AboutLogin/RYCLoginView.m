@@ -219,14 +219,14 @@
     [m_rememberMyLoginStatusPswButton addTarget:self action:@selector(rememberPasswordClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:m_rememberMyLoginStatusPswButton];
     
-    UILabel *LoginLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 260, 150, 25)];
-    LoginLabel.text = @"自动登录";
-    LoginLabel.textAlignment = UITextAlignmentLeft;
-    LoginLabel.textColor = [UIColor blackColor];
-    LoginLabel.font = [UIFont boldSystemFontOfSize:15];
-    LoginLabel.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:LoginLabel];
-    [LoginLabel release];
+//    UILabel *LoginLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 260, 150, 25)];
+//    LoginLabel.text = @"自动登录";
+//    LoginLabel.textAlignment = UITextAlignmentLeft;
+//    LoginLabel.textColor = [UIColor blackColor];
+//    LoginLabel.font = [UIFont boldSystemFontOfSize:15];
+//    LoginLabel.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:LoginLabel];
+//    [LoginLabel release];
     
     _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _loginButton.frame = CGRectMake(20, 205,280, 35);
@@ -545,6 +545,7 @@
     
     self.loginPhonenumTextField.text = [RuYiCaiNetworkManager sharedManager].phonenum;
     self.loginPswTextField.text = @"";
+    
     //self.loginPswTextField.text = [RuYiCaiNetworkManager sharedManager].password;
 //    [self setM_rememberBtn];
     
@@ -585,6 +586,7 @@
         [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_select.png"] forState:UIControlStateNormal];
         //        [m_rememberMyLoginStatusPswButton setBackgroundImage:[UIImage imageNamed:@"login_state_nomal.png"] forState:UIControlStateHighlighted];
     }
+    m_rememberMyLoginStatusPswButton.hidden = YES;
 
 }
 - (void)dismissModalView:(UIView *)subView
