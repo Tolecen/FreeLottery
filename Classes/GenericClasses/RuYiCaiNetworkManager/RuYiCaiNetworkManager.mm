@@ -3773,7 +3773,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         if (reviewValue) {
             if ([reviewValue isEqualToString:@"1"]) {
                 
-                if ([appStoreORnormal isEqualToString:@"appStore"]&&![RuYiCaiNetworkManager sharedManager].shouldCheat) {
+                if (![RuYiCaiNetworkManager sharedManager].shouldCheat) {
                     [RuYiCaiNetworkManager sharedManager].realServerURL = CeshiRuYiCaiServer;
                 }
                 [RuYiCaiNetworkManager sharedManager].shouldCheat = YES;
