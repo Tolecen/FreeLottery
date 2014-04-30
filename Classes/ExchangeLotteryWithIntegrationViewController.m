@@ -394,7 +394,7 @@
     m_delegate = (RuYiCaiAppDelegate*)[[UIApplication sharedApplication] delegate];
 //    [RuYiCaiNetworkManager sharedManager].thirdViewController = self;
     
-    self.navigationItem.title = @"积分换彩";
+    self.navigationItem.title = @"免费彩豆";
     //    [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(backAction:) andAutoPopView:NO];
     //    self.navigationItem.title = @"积分换彩";
 

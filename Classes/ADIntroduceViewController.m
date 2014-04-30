@@ -35,7 +35,7 @@
     UITextView*a = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320,self.view.frame.size.height)];
     NSString *path = nil;
     if (theTextType==TextTypeAdIntro) {
-        self.navigationItem.title = @"换彩说明";
+        self.navigationItem.title = @"换豆说明";
         path=[[NSString alloc]initWithString:[[NSBundle mainBundle]pathForResource:@"detailIntroduce"ofType:@"txt"]];
     }
     else if(theTextType==TextTypeCommonQuestion){

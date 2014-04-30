@@ -349,7 +349,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self performSelector:@selector(showMentionView) withObject:nil afterDelay:2];
+//    [self performSelector:@selector(showMentionView) withObject:nil afterDelay:2];
 }
 - (void)viewDidLoad 
 {

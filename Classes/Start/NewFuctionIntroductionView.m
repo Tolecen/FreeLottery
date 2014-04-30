@@ -185,7 +185,11 @@
 // 点击按钮事件 
 -(void) startButtonClick
 {
-    [self release];
+    for (UIImageView * imageV in m_scrollView.subviews) {
+        [imageV removeFromSuperview];
+    }
+    [m_scrollView removeFromSuperview];
+//    [self release];
     /*
         ////////////////显示主页面\\\\\\\\\\\\\\\\\\\\\\\
     */

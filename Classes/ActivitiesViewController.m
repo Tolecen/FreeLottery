@@ -287,13 +287,16 @@
             if([RuYiCaiNetworkManager sharedManager].hasLogin)
             {
                 cell.progressLabel.text = [actV objectForKey:@"progress"];
+                cell.timeLabel.text = self.timeStr;
             }
             else
             {
                 cell.progressLabel.text = @"点击登录查看";
+                cell.progressLabel.textColor = [UIColor grayColor];
+                cell.timeLabel.text = @" ";
             }
             cell.timeLabel.textColor = [UIColor grayColor];
-            cell.timeLabel.text = self.timeStr;
+            
             [cell.statusImgV setImage:nil];
         }
 //        if([RuYiCaiNetworkManager sharedManager].hasLogin)
