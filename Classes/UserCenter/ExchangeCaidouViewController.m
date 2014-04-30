@@ -11,7 +11,7 @@
 #import "AdaptationUtils.h"
 #import "ColorUtils.h"
 #import "RuYiCaiNetworkManager.h"
-@interface ExchangeCaidouViewController ()
+@interface ExchangeCaidouViewController ()<UITextFieldDelegate>
 @property (nonatomic,retain)UILabel * caidouNoL;
 @property (nonatomic,retain)UILabel * jiangjinNoL;
 @property (nonatomic,retain)UITextField * textF;
@@ -94,6 +94,7 @@
     self.textF = [[UITextField alloc]initWithFrame:CGRectMake(120, 130, 200, 22)];
     _textF.font = [UIFont systemFontOfSize:14];
     _textF.placeholder = @"输入兑换金额";
+    _textF.delegate = self;
     _textF.keyboardType = UIKeyboardTypeDecimalPad;
     [self.view addSubview:_textF];
     [_textF release];
@@ -148,5 +149,12 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([string isEqualToString:@"."]&&[textField.text rangeOfString:@"."].location != NSNotFound) {
+        return NO;
+    }
+    return YES;
 }
 @end
