@@ -62,8 +62,25 @@
     self.listTableV.rowHeight = 80;
     [self.listTableV setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:self.listTableV];
-
-    
+    __block ActivitiesViewController*weekSelf = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        if([[RuYiCaiNetworkManager sharedManager] testConnection])
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                ActionView* actionV = [[ActionView alloc]init];
+                if (actionV.actionType) {
+                    actionV.frame = CGRectMake(0, h - 194, 0, 0);
+                }else
+                {
+                    actionV.frame = CGRectMake(0, h - 154, 0, 0);
+                }
+                [weekSelf.view addSubview:actionV];
+                [actionV release];
+            });
+        }
+    });
 	// Do any additional setup after loading the view.
 }
 -(void)queryActListOK:(NSNotification *)noti
@@ -116,20 +133,6 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    float h = [UIScreen mainScreen].bounds.size.height;
-    if([[RuYiCaiNetworkManager sharedManager] testConnection])
-    {
-        ActionView* actionV = [[ActionView alloc]init];
-        if (actionV.actionType) {
-            actionV.frame = CGRectMake(0, h - 194, 0, 0);
-        }else
-        {
-            actionV.frame = CGRectMake(0, h - 154, 0, 0);
-        }
-        [self.view addSubview:actionV];
-        [actionV release];
-    }
-    
 
 }
 -(void)viewWillAppear:(BOOL)animated
