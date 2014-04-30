@@ -53,27 +53,27 @@
         [self addSubview:self.scrollView];
         
         UIImageView* image1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height)];
-        image1.image = RYCImageNamed(@"1.png");
+        image1.image = RYCImageNamed(@"1.jpg");
         [m_scrollView addSubview:image1];
         [image1 release];
         
         UIImageView* image2 = [[UIImageView alloc] initWithFrame:CGRectMake(320, 0, 320, [UIScreen mainScreen].bounds.size.height)];
-        image2.image = RYCImageNamed(@"2.png");
+        image2.image = RYCImageNamed(@"2.jpg");
         [m_scrollView addSubview:image2];
         [image2 release];
         
         UIImageView* image3 = [[UIImageView alloc] initWithFrame:CGRectMake(320 * 2, 0, 320, [UIScreen mainScreen].bounds.size.height)];
-        image3.image = RYCImageNamed(@"3.png");
+        image3.image = RYCImageNamed(@"3.jpg");
         [m_scrollView addSubview:image3];
         [image3 release];
         
         UIImageView* image4 = [[UIImageView alloc] initWithFrame:CGRectMake(320 * 3, 0, 320, [UIScreen mainScreen].bounds.size.height)];
-        image4.image = RYCImageNamed(@"4.png");
+        image4.image = RYCImageNamed(@"4.jpg");
         [m_scrollView addSubview:image4];
         [image4 release];
         
         UIImageView* image5 = [[UIImageView alloc] initWithFrame:CGRectMake(320 * 4, 0, 320, [UIScreen mainScreen].bounds.size.height)];
-        image5.image = RYCImageNamed(@"5.png");
+        image5.image = RYCImageNamed(@"5.jpg");
         [m_scrollView addSubview:image5];
         [image5 release];
         

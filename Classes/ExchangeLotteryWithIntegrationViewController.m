@@ -357,7 +357,7 @@
         [self midiInit];
         [self AdviewAdWallInit];
     }
-
+    [[RuYiCaiNetworkManager sharedManager] queryADWallList];
     previousUserno = [self.theUserID mutableCopy];
     [self.listTableV reloadData];
 }
