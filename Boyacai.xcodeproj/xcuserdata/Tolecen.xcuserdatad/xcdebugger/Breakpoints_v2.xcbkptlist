@@ -19,22 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetworkManager.mm"
-            timestampString = "420460063.556933"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
-            landmarkName = "-softwareUpdate"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetwork_Category_UserCenter_Request.m"
             timestampString = "420457033.218384"
             startingColumnNumber = "9223372036854775807"
@@ -90,6 +74,22 @@
             startingLineNumber = "3777"
             endingLineNumber = "3777"
             landmarkName = "-checkNewVersionSuccess:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetworkManager.mm"
+            timestampString = "420513389.631843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "-softwareUpdate"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

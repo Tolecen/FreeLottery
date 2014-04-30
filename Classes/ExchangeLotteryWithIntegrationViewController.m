@@ -439,6 +439,10 @@
     [inv release];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
 }
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return titleArray.count+1;

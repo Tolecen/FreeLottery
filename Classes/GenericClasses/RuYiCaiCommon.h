@@ -23,7 +23,7 @@
 
 //#define NNRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
 
-#define ifCeShi   @"1"
+#define ifCeShi   @"0"
 
 #define CeshiRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
 
@@ -96,8 +96,8 @@
 //#define kRuYiCaiCoopid   @"111"  //91市场
 //#define kRuYiCaiCoopid   @"112"  //同步推
 
-//#define appStoreORnormal    @"appStore"
-#define appStoreORnormal    @"normal"
+#define appStoreORnormal    @"appStore"
+//#define appStoreORnormal    @"normal"
 #define appTestPhone    @"13522407813"
 
 
