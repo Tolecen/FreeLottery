@@ -213,7 +213,13 @@
     adwallInfoTitle = [[(NSDictionary *)noti.object objectForKey:@"title"] retain];
     [[NSUserDefaults standardUserDefaults] setObject:[(NSDictionary *)noti.object objectForKey:@"content"] forKey:@"adwallimportantinfo"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    ifhaveImportantInfo = YES;
+    if (([appStoreORnormal isEqualToString:@"appStore"] &&
+        [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)){
+        ifhaveImportantInfo = NO;
+    }
+    else
+        ifhaveImportantInfo = YES;
+    
     [self.listTableV reloadData];
 }
 -(void)queryRemainingIDFAOK:(NSNotification *)noti
