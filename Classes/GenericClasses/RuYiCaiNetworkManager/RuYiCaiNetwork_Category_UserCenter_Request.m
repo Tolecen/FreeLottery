@@ -1398,7 +1398,7 @@
     }
     else
     {
-        [self setUpCancelBindPhoneView];
+//        [self setUpCancelBindPhoneView];
     }
 }
 
