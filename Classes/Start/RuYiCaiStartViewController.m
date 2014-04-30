@@ -23,6 +23,7 @@
     [super viewDidLoad];
 //    checkedOK = NO;
 //    performed = NO;
+    enteredMainView = NO;
 	[AdaptationUtils adaptation:self];
 	self.view.backgroundColor = [UIColor clearColor];
 	m_startView = [[RuYiCaiStartView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -55,9 +56,24 @@
     }
     else
         [self showLoading:nil];
+    [self performSelector:@selector(showLoading:) withObject:@"timeout" afterDelay:25];
 }
 - (void)showLoading:(id)sender
 {
+    if(enteredMainView)
+    {
+        return;
+    }
+    enteredMainView = YES;
+    NSString * hhww = [NSString stringWithFormat:@"%@",sender];
+    if (hhww) {
+        if ([hhww isEqualToString:@"timeout"]) {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络有点问题哦" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+        }
+    }
+
     [m_startView removeFromSuperview];
     
     [[RuYiCaiNetworkManager sharedManager] softwareUpdate];

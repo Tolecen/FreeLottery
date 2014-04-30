@@ -288,7 +288,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     [mDict setObject:deviceName forKey:@"machineid"];
     [mDict setObject:deviceImei forKey:@"imei"];
     [mDict setObject:deviceImsi forKey:@"imsi"];
-    [mDict setObject:kRuYiCaiCoopid forKey:@"coopid"];
+    [mDict setObject:@"104" forKey:@"coopid"];
 //    [mDict setObject:kRuYiCaiCoopid forKey:@"channel"];
 //    [mDict setObject:@"" forKey:@"smscenter"];
     [mDict setObject:kRuYiCaiCoopid forKey:@"channel"];
