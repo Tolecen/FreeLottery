@@ -248,14 +248,16 @@
             if([RuYiCaiNetworkManager sharedManager].hasLogin)
             {
                 cell.progressLabel.text = @"已完成";
+                [cell.statusImgV setImage:[UIImage imageNamed:@"taskcompleted"]];
             }
             else
             {
                 cell.progressLabel.text = @"点击登录查看";
+                [cell.statusImgV setImage:nil];
             }
             cell.timeLabel.textColor = [UIColor grayColor];
             cell.timeLabel.text = @" ";
-            [cell.statusImgV setImage:[UIImage imageNamed:@"taskcompleted"]];
+            
         }
         else if ([[actV objectForKey:@"state"] isEqualToString:@"4"]) {
             cell.tLabel.textColor = [UIColor grayColor];
@@ -265,14 +267,16 @@
             if([RuYiCaiNetworkManager sharedManager].hasLogin)
             {
                 cell.progressLabel.text = @"已过期";
+                [cell.statusImgV setImage:[UIImage imageNamed:@"taskexpired"]];
             }
             else
             {
                 cell.progressLabel.text = @"点击登录查看";
+                [cell.statusImgV setImage:nil];
             }
             cell.timeLabel.textColor = [UIColor grayColor];
             cell.timeLabel.text = @" ";
-            [cell.statusImgV setImage:[UIImage imageNamed:@"taskexpired"]];
+            
         }
         else
         {

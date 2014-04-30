@@ -85,11 +85,17 @@
     NSArray * jifenImgArray;
     
     NSString * theAdwallID;
+    
+    BOOL ifhaveImportantInfo;
+    
+    NSDictionary * importInfoDict;
+    NSString * adwallInfoTitle;
 }
 
 @property(nonatomic, assign)BOOL isShowTabBar;
 @property(nonatomic, retain)UITableView * listTableV;
 @property(nonatomic, retain)NSString * theUserID;
+
 @property(nonatomic, retain)RTBWall * rtbAdWall; //Adview
 @property (nonatomic) BOOL isShowBackButton;
 @property (nonatomic,assign) BOOL shouldShowTabbar;

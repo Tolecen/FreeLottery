@@ -393,6 +393,40 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request startAsynchronous];
 }
 
+-(void)cancelAutoLoginStatus
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"updateUserInfo" forKey:@"command"];
+    [mDict setObject:self.userno forKey:@"userno"];
+    [mDict setObject:@"cancelAutoLogin" forKey:@"type"];
+    //自动登录
+    //    [m_delegate readAutoLoginPlist];//?????????
+    //    if (m_delegate.autoRememberMystatus && [[m_delegate autoLoginRandomNumber] length] > 0) {
+    //        NSString *str = m_delegate.autoLoginRandomNumber;
+    //        [mDict setObject:str forKey:@"randomNumber"];
+    //    }
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  取消自动登录: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeCancelAutoLogin];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
+
 -(void)checkNewVersion
 {
     NSTrace();
@@ -424,6 +458,41 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request setDelegate:self];
 	[request startAsynchronous];
 }
+
+-(void)getAdWallImportantInfo
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"announcement" forKey:@"command"];
+    [mDict setObject:@"headlines" forKey:@"requestType"];
+    [mDict setObject:@"1" forKey:@"type"];
+    [mDict setObject:self.userno forKey:@"userno"];
+    //自动登录
+    //    [m_delegate readAutoLoginPlist];//?????????
+    //    if (m_delegate.autoRememberMystatus && [[m_delegate autoLoginRandomNumber] length] > 0) {
+    //        NSString *str = m_delegate.autoLoginRandomNumber;
+    //        [mDict setObject:str forKey:@"randomNumber"];
+    //    }
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  获取积分墙重要通知: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeGetAdWallImportantInfo];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
 
 
 //获取彩豆彩金兑换比例
@@ -2542,11 +2611,17 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         case ASINetworkRequestTypeUpdatePayStationInServers:
 			[self updatePayStationInServers:resText];
 			break;
+        case ASINetworkRequestTypeCancelAutoLogin:
+			[self cancelAutoLoginOK:resText];
+			break;
         case ASINetworkRequestTypeUpdateInformation:
 			[self updateImformationComplete:resText];
 			break;
 		case ASINetworkRequestTypeCheckNewVersion:
             [self checkNewVersionSuccess:resText];
+            break;
+        case ASINetworkRequestTypeGetAdWallImportantInfo:
+            [self getAdWallImportantInfoSuccess:resText];
             break;
         case ASINetworkRequestTypeGetExchangeScaleForAdWall:
             [self getExchangeScaleSuccess:resText];
@@ -3757,6 +3832,23 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     }
 
 }
+-(void)getAdWallImportantInfoSuccess:(NSString *)resText
+{
+    NSTrace();
+    NSLog(@"查询积分墙重要信息返回:%@",resText);
+    
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSDictionary * vD = [parserDict objectForKey:@"value"];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"getAdwallImportantInfoOK" object:vD];
+  
+    }
+
+}
 -(void)checkNewVersionSuccess:(NSString *)resText
 {
     NSTrace();
@@ -3795,7 +3887,11 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     }
 }
 
-
+-(void)cancelAutoLoginOK:(NSString*)resText
+{
+    NSTrace();
+    NSLog(@"cancelAutoLoginSuccess:%@",resText);
+}
 - (void)updateImformationComplete:(NSString*)resText
 {
     NSTrace();

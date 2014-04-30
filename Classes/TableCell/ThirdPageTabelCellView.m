@@ -40,7 +40,7 @@
         m_titleLabel.font = [UIFont boldSystemFontOfSize:16];
         [self addSubview:m_titleLabel];
         
-        m_littleTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 25, 250, 48)];
+        m_littleTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(68, 25, 250, 48)];
         m_littleTitleLabel.textAlignment = UITextAlignmentLeft;
         m_littleTitleLabel.textColor = [UIColor colorWithRed:131.0/255.0 green:131.0/255.0 blue:131.0/255.0 alpha:1.0];
         m_littleTitleLabel.backgroundColor = [UIColor clearColor];

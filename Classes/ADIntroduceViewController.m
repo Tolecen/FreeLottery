@@ -42,6 +42,10 @@
         self.navigationItem.title = @"常见问题";
         path=[[NSString alloc]initWithString:[[NSBundle mainBundle]pathForResource:@"commonQuestion"ofType:@"txt"]];
     }
+    else if (theTextType==TextTypeAdwallImportantInfo){
+        self.navigationItem.title = @"积分墙重要通知";
+        
+    }
     
 
     
@@ -49,7 +53,12 @@
     a.editable = NO;
     a.font = [UIFont systemFontOfSize:16];
     a.backgroundColor = [UIColor clearColor];
-    a.text = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    if (theTextType==TextTypeAdwallImportantInfo) {
+        a.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"adwallimportantinfo"];
+    }
+    else{
+        a.text = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    }
     [self.view addSubview:a];
     [data release];
     [path release];

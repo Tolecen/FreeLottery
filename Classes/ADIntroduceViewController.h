@@ -12,7 +12,8 @@
 #import "BackBarButtonItemUtils.h"
 typedef enum _TextType {
 	TextTypeAdIntro = 0,
-    TextTypeCommonQuestion = 1
+    TextTypeCommonQuestion = 1,
+    TextTypeAdwallImportantInfo
 } TextType;
 @interface ADIntroduceViewController : UIViewController
 @property (assign) TextType theTextType;

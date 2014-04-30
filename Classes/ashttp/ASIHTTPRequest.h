@@ -83,6 +83,8 @@ typedef enum _ASINetworkReqestType
     ASINetworkRequestTypeFeedback,
     ASINetworkRequestTypeSoftUpdate,
     ASINetworkRequestTypeCheckNewVersion,
+    ASINetworkRequestTypeCancelAutoLogin,
+    ASINetworkRequestTypeGetAdWallImportantInfo,
     ASINetworkRequestTypeRemainingChance,
     ASINetworkRequestTypeQueryActList,
     ASINetworkRequestTypeQueryADWallList,

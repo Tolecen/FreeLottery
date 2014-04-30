@@ -368,9 +368,10 @@
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+    [[RuYiCaiNetworkManager sharedManager] cancelAutoLoginStatus];
     [RuYiCaiNetworkManager sharedManager].hasLogin = NO;
     [CommonRecordStatus commonRecordStatusManager].remmberQuitStatus = YES;
-    
+
     [m_tableView reloadData];//防止代理充值项 注销后不消失
     
     m_delegate = (RuYiCaiAppDelegate*)[[UIApplication sharedApplication] delegate];

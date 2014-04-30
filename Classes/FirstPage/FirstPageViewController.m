@@ -1615,7 +1615,14 @@
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell updateLogInStatus];
-            [cell setRemainingBuyTimes:[[RuYiCaiNetworkManager sharedManager].remainingChance intValue]];
+            if ([RuYiCaiNetworkManager sharedManager].hasLogin) {
+                [cell setRemainingBuyTimes:[[RuYiCaiNetworkManager sharedManager].remainingChance intValue]];
+            }
+            else
+            {
+                [cell setRemainingBuyTimes:5];
+            }
+            
             return cell;
 
         }
