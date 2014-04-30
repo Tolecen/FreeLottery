@@ -331,9 +331,15 @@
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
     NSLog(@"嘻嘻嘻嘻 My token is: %@", deviceToken);
-    NSString* tokenStr = [deviceToken description];
+//    NSString* tokenStr = [deviceToken description];
+    NSString *deviceTokenStr = [NSString stringWithFormat:@"%@",deviceToken];
+    NSLog(@"regisger success:%@", deviceTokenStr);
+    //注册成功，将deviceToken保存到应用服务器数据库中
+    deviceTokenStr = [[deviceTokenStr substringWithRange:NSMakeRange(0, 72)] substringWithRange:NSMakeRange(1, 71)];
+    deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"deviceTokenStr = %@",deviceTokenStr);
     //NSLog(@"%d", tokenStr.length);
-    [CommonRecordStatus commonRecordStatusManager].deviceToken = [tokenStr substringWithRange:NSMakeRange(1, tokenStr.length - 2)];
+    [CommonRecordStatus commonRecordStatusManager].deviceToken = deviceTokenStr;
     NSLog(@"%@",[CommonRecordStatus commonRecordStatusManager].deviceToken);
 }
 //-(void)application:(UIApplication *)applicationdidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{

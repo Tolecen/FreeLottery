@@ -84,12 +84,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetworkManager.mm"
-            timestampString = "420513389.631843"
+            timestampString = "420514844.372913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
-            landmarkName = "-softwareUpdate"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
+            landmarkName = "-checkNewVersion"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
