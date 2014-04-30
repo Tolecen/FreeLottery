@@ -32,7 +32,7 @@
     //    [AdaptationUtils adaptation:self];
     [self.navigationController.navigationBar setBackground];
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
-    UITextView*a = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320,self.view.frame.size.height)];
+    UITextView*a = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-44)];
     NSString *path = nil;
     if (theTextType==TextTypeAdIntro) {
         self.navigationItem.title = @"换豆说明";
