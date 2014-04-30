@@ -155,6 +155,9 @@
     if ([string isEqualToString:@"."]&&[textField.text rangeOfString:@"."].location != NSNotFound) {
         return NO;
     }
+    if ([textField.text rangeOfString:@"."].location != NSNotFound &&[textField.text substringFromIndex:[textField.text rangeOfString:@"."].location].length>1&&![string isEqualToString:@""]) {
+        return NO;
+    }
     return YES;
 }
 @end
