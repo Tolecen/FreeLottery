@@ -14,8 +14,7 @@
 	RuYiCaiStartView *m_startView;
     RuYiCaiAppDelegate *m_delegate;
     
-    BOOL checkedOK;
-    BOOL performed;
+    BOOL enteredMainView;
     NSTimeInterval hh;
 }
 

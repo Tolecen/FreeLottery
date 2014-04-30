@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetwork_Category_UserCenter_Request.m"
-            timestampString = "420457033.218384"
+            timestampString = "420524521.065391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "655"
-            endingLineNumber = "655"
+            startingLineNumber = "656"
+            endingLineNumber = "656"
             landmarkName = "-getMessageListWithPage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetworkManager.mm"
-            timestampString = "420460063.556933"
+            timestampString = "420528523.747374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4359"
-            endingLineNumber = "4359"
+            startingLineNumber = "4454"
+            endingLineNumber = "4454"
             landmarkName = "-getMessageList:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetworkManager.mm"
-            timestampString = "420460063.556933"
+            timestampString = "420528523.747374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4349"
-            endingLineNumber = "4349"
+            startingLineNumber = "4444"
+            endingLineNumber = "4444"
             landmarkName = "-getMessageList:"
             landmarkType = "5">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetworkManager.mm"
-            timestampString = "420460063.556933"
+            timestampString = "420528523.747374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3777"
-            endingLineNumber = "3777"
+            startingLineNumber = "3868"
+            endingLineNumber = "3868"
             landmarkName = "-checkNewVersionSuccess:"
             landmarkType = "5">
          </BreakpointContent>
@@ -84,12 +84,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/GenericClasses/RuYiCaiNetworkManager/RuYiCaiNetworkManager.mm"
-            timestampString = "420514844.372913"
+            timestampString = "420528685.704436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
-            landmarkName = "-checkNewVersion"
+            startingLineNumber = "2493"
+            endingLineNumber = "2493"
+            landmarkName = "-requestFailed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

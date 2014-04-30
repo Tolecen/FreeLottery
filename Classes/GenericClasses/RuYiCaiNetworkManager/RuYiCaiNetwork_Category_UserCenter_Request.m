@@ -606,7 +606,8 @@
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
     [mDict setObject:@"announcement" forKey:@"command"];
-    [mDict setObject:@"topOne" forKey:@"requestType"];
+    [mDict setObject:@"headlines" forKey:@"requestType"];
+    [mDict setObject:@"0" forKey:@"type"];
     [mDict setObject:self.userno forKey:@"userno"];
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];

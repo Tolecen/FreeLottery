@@ -62,6 +62,7 @@
         previousUserno=@"";
         realAdwall = YES;
         adAdded = NO;
+        ifhaveImportantInfo = NO;
 //        titleArray = [[NSArray alloc] initWithObjects:@"美美换彩豆",@"米米换彩豆",@"点点换彩豆",@"易易换彩豆",@"多多换彩豆", nil];
         titleArray = [[NSArray alloc] init];
         realArray = [[NSArray alloc] initWithObjects:[self rr:@"免费获取彩豆入口1" De:@"免费获取彩豆入口1" ID:@"limei"],[self rr:@"免费获取彩豆入口2" De:@"免费获取彩豆入口2" ID:@"youmi"],[self rr:@"免费获取彩豆入口3" De:@"免费获取彩豆入口3" ID:@"dianru"],[self rr:@"免费获取彩豆入口4" De:@"免费获取彩豆入口4" ID:@"duomeng"],[self rr:@"免费获取彩豆入口5" De:@"免费获取彩豆入口5" ID:@"midi"], nil];
@@ -87,6 +88,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryUserBalanceOK" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryADWallListOK" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryRemainingIDFAOK" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"getAdwallImportantInfoOK" object:nil];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 //        [bgv removeFromSuperview];
     }
@@ -102,6 +104,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOK:) name:@"loginOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUserBalanceOK:) name:@"queryUserBalanceOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryRemainingIDFAOK:) name:@"queryRemainingIDFAOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toGetAdwallImportantInfoOK:) name:@"getAdwallImportantInfoOK" object:nil];
 //    self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
 //    if([RuYiCaiNetworkManager sharedManager].hasLogin)
 //    {
@@ -144,6 +147,8 @@
     if (![RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess) {
         [[RuYiCaiNetworkManager sharedManager] queryADWallList];
     }
+    
+    
 //        [[RuYiCaiNetworkManager sharedManager] UpdateUserInfo];
 //        self.loginTopView.hidden = NO;
 //        self.notLoginView.hidden = YES;
@@ -201,6 +206,15 @@
     
     */
 
+}
+-(void)toGetAdwallImportantInfoOK:(NSNotification *)noti
+{
+//    importInfoDict = [(NSDictionary *)noti.object retain];
+    adwallInfoTitle = [[(NSDictionary *)noti.object objectForKey:@"title"] retain];
+    [[NSUserDefaults standardUserDefaults] setObject:[(NSDictionary *)noti.object objectForKey:@"content"] forKey:@"adwallimportantinfo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    ifhaveImportantInfo = YES;
+    [self.listTableV reloadData];
 }
 -(void)queryRemainingIDFAOK:(NSNotification *)noti
 {
@@ -352,7 +366,7 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [bgv release];
     }
-//    [self.rtbAdWall release];
+    [self.rtbAdWall release];
     _offerWallController.delegate = nil;
     [_offerWallController release];
     _offerWallController = nil;
@@ -380,7 +394,7 @@
     m_delegate = (RuYiCaiAppDelegate*)[[UIApplication sharedApplication] delegate];
 //    [RuYiCaiNetworkManager sharedManager].thirdViewController = self;
     
-    self.navigationItem.title = @"积分换彩";
+    self.navigationItem.title = @"免费彩豆";
     //    [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(backAction:) andAutoPopView:NO];
     //    self.navigationItem.title = @"积分换彩";
 
@@ -427,7 +441,7 @@
     if (![RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess) {
         [[RuYiCaiNetworkManager sharedManager] queryADWallList];
     }
-
+    [[RuYiCaiNetworkManager sharedManager] getAdWallImportantInfo];
 
 }
 -(void)toIntroV
@@ -441,75 +455,105 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if(ifhaveImportantInfo)
+    {
+        return 2;
+    }
+    else
+        return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return titleArray.count+1;
+    if(section==0){
+        return titleArray.count+1;
+    }
+    else
+        return 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row==0) {
-        static NSString *cellIdentifier = @"cellIdentifieradwall";
-        AdWallTopCell* cell = (AdWallTopCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (nil == cell)
-            cell = [[[AdWallTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-        if (([appStoreORnormal isEqualToString:@"appStore"] &&
-             [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
-            NSString * yy = [[RuYiCaiNetworkManager sharedManager] userLotPea];
-            NSString * jiaMoney = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];
-            if (!jiaMoney) {
-                jiaMoney = @"0";
-            }
-            if([RuYiCaiNetworkManager sharedManager].hasLogin)
-            {
-                cell.remainMoneyLabel.text = [NSString stringWithFormat:@"%.0f",[yy floatValue]+ [jiaMoney floatValue]];
-            }
-            else
-            {
-                cell.remainMoneyLabel.text = @"点击登录查看";
-            }
-        }
-        else
-        {
-            if([RuYiCaiNetworkManager sharedManager].hasLogin)
-            {
-                cell.remainMoneyLabel.text = [[RuYiCaiNetworkManager sharedManager] userLotPea];
+    if (indexPath.section==0) {
+        if (indexPath.row==0) {
+            static NSString *cellIdentifier = @"cellIdentifieradwall";
+            AdWallTopCell* cell = (AdWallTopCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            if (nil == cell)
+                cell = [[[AdWallTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+            if (([appStoreORnormal isEqualToString:@"appStore"] &&
+                 [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
+                NSString * yy = [[RuYiCaiNetworkManager sharedManager] userLotPea];
+                NSString * jiaMoney = [[NSUserDefaults standardUserDefaults] objectForKey:@"jiaMoney"];
+                if (!jiaMoney) {
+                    jiaMoney = @"0";
+                }
+                if([RuYiCaiNetworkManager sharedManager].hasLogin)
+                {
+                    cell.remainMoneyLabel.text = [NSString stringWithFormat:@"%.0f",[yy floatValue]+ [jiaMoney floatValue]];
+                }
+                else
+                {
+                    cell.remainMoneyLabel.text = @"点击登录查看";
+                }
             }
             else
             {
-                cell.remainMoneyLabel.text = @"点击登录查看";
+                if([RuYiCaiNetworkManager sharedManager].hasLogin)
+                {
+                    cell.remainMoneyLabel.text = [[RuYiCaiNetworkManager sharedManager] userLotPea];
+                }
+                else
+                {
+                    cell.remainMoneyLabel.text = @"点击登录查看";
+                }
             }
+            cell.disLabel.text = @" ";
+            return cell;
         }
-        cell.disLabel.text = @" ";
-        return cell;
+        else{
+            
+            static NSString *cellIdentifier = @"cellIdentifier";
+            ThirdPageTabelCellView* cell = (ThirdPageTabelCellView*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            if (nil == cell)
+                cell = [[[ThirdPageTabelCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+            
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            
+            cell.titleName = [titleArray[indexPath.row-1] objectForKey:@"name"];
+            cell.littleTitleName = [titleArray[indexPath.row-1] objectForKey:@"description"];
+            cell.iconImageName = [NSString stringWithFormat:@"rukou%d",indexPath.row];
+            
+            if (!realAdwall) {
+                if (indexPath.row==1) {
+                    cell.littleTitleName = @"大转盘抽奖获取相应彩豆";
+                }
+                else if (indexPath.row==2){
+                    cell.littleTitleName = @"每日签到获取彩豆";
+                }
+            }
+            
+            [cell refresh];
+            
+            return cell;
+        }
+
     }
-    else{
-    
-    static NSString *cellIdentifier = @"cellIdentifier";
-	ThirdPageTabelCellView* cell = (ThirdPageTabelCellView*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-	if (nil == cell)
-		cell = [[[ThirdPageTabelCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-	
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    
-    cell.titleName = [titleArray[indexPath.row-1] objectForKey:@"name"];
-    cell.littleTitleName = [titleArray[indexPath.row-1] objectForKey:@"description"];
-    cell.iconImageName = [NSString stringWithFormat:@"rukou%d",indexPath.row];
+    else
+    {
+        static NSString *cellIdentifier = @"cellIdentifierinfo";
+        ThirdPageTabelCellView* cell = (ThirdPageTabelCellView*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (nil == cell)
+            cell = [[[ThirdPageTabelCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         
-        if (!realAdwall) {
-            if (indexPath.row==1) {
-               cell.littleTitleName = @"大转盘抽奖获取相应彩豆";
-            }
-            else if (indexPath.row==2){
-                cell.littleTitleName = @"每日签到获取彩豆";
-            }
-        }
-    
-    [cell refresh];
-    
-    return cell;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        
+        cell.titleName = @"积分墙重要通知";
+        cell.littleTitleName = adwallInfoTitle;
+        cell.iconImageName = @"importantinfo";
+        
+        [cell refresh];
+        
+        return cell;
+
     }
 }
 
@@ -561,137 +605,126 @@
         [RuYiCaiNetworkManager sharedManager].goBackType = GO_GDSZ_TYPE;
         [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:YES];
         return;
+        
+        
+        
     }
-    switch (indexPath.row) {
+    if (indexPath.section==0) {
+        switch (indexPath.row) {
         case 0:
-        {
-            
-            //            adWallV = [[ADWallViewController alloc] init];
-            
-            //            [self presentModalViewController:adWallV animated:YES];
-            //            [adWallV release];
-            ADIntroduceViewController * inv = [[ADIntroduceViewController alloc] init];
-            inv.shouldShowTabbar = self.shouldShowTabbar;
-            [self.navigationController pushViewController:inv animated:YES];
-            [inv release];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
-            
-        }
+            {
+                
+                //            adWallV = [[ADWallViewController alloc] init];
+                
+                //            [self presentModalViewController:adWallV animated:YES];
+                //            [adWallV release];
+                ADIntroduceViewController * inv = [[ADIntroduceViewController alloc] init];
+                inv.shouldShowTabbar = self.shouldShowTabbar;
+                [self.navigationController pushViewController:inv animated:YES];
+                [inv release];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+                
+            }
             break;
         case 1:
-        {
-            
-            //            adWallV = [[ADWallViewController alloc] init];
-            
-            //            [self presentModalViewController:adWallV animated:YES];
-            //            [adWallV release];
-            if (realAdwall) {
-//                [self enterLiMeiAdWall];
-                [self enterADWALLWithID:indexPath.row-1];
-            }
-            else
             {
-                DiskViewController * diskV = [[DiskViewController alloc] init];
-                [self.navigationController pushViewController:diskV animated:YES];
-                [diskV release];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+                
+                //            adWallV = [[ADWallViewController alloc] init];
+                
+                //            [self presentModalViewController:adWallV animated:YES];
+                //            [adWallV release];
+                if (realAdwall) {
+                    //                [self enterLiMeiAdWall];
+                    [self enterADWALLWithID:indexPath.row-1];
+                }
+                else
+                {
+                    DiskViewController * diskV = [[DiskViewController alloc] init];
+                    [self.navigationController pushViewController:diskV animated:YES];
+                    [diskV release];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+                }
+                
+                
             }
-            
-            
-        }
             break;
         case 2:
-        {
-            
-            //            adWallV = [[ADWallViewController alloc] init];
-            
-            //            [self presentModalViewController:adWallV animated:YES];
-            //            [adWallV release];
-            if (realAdwall) {
-//                [self showYouMiWall];
-                [self enterADWALLWithID:indexPath.row-1];
-            }
-            else
             {
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-                [self performSelector:@selector(QianDaoSuccess) withObject:nil afterDelay:1];
-//                if([[RuYiCaiNetworkManager sharedManager] testConnection])
-//                {
-//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kRuYiCaiCharge]];
-//                }
+                
+                //            adWallV = [[ADWallViewController alloc] init];
+                
+                //            [self presentModalViewController:adWallV animated:YES];
+                //            [adWallV release];
+                if (realAdwall) {
+                    //                [self showYouMiWall];
+                    [self enterADWALLWithID:indexPath.row-1];
+                }
+                else
+                {
+                    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                    [self performSelector:@selector(QianDaoSuccess) withObject:nil afterDelay:1];
+                    //                if([[RuYiCaiNetworkManager sharedManager] testConnection])
+                    //                {
+                    //                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kRuYiCaiCharge]];
+                    //                }
+                }
+                
+                
             }
-            
-            
-        }
             break;
         case 3:
-        {
-            
-            //            adWallV = [[ADWallViewController alloc] init];
-            
-            //            [self presentModalViewController:adWallV animated:YES];
-            //            [adWallV release];
-            
-            if (realAdwall) {
-//                [self showDianRuWall];
-                [self enterADWALLWithID:indexPath.row-1];
-            }
-            else
             {
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"更多获取彩豆的方法正在开发敬请期待" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
-                [alert show];
-                [alert release];
+                
+                //            adWallV = [[ADWallViewController alloc] init];
+                
+                //            [self presentModalViewController:adWallV animated:YES];
+                //            [adWallV release];
+                
+                if (realAdwall) {
+                    //                [self showDianRuWall];
+                    [self enterADWALLWithID:indexPath.row-1];
+                }
+                else
+                {
+                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"更多获取彩豆的方法正在开发敬请期待" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+                    [alert show];
+                    [alert release];
+                }
+                
             }
-            
-        }
             break;
+
 //        case 4:
-//        {
-//            
-//            //            adWallV = [[ADWallViewController alloc] init];
-//            
-//            //            [self presentModalViewController:adWallV animated:YES];
-//            //            [adWallV release];
-//            [self showEscoreWall];
-//            
-//        }
+//            {
+// 
+//                [self enterADWALLWithID:indexPath.row-1];
+//                
+//            }
 //            break;
-        case 4:
-        {
-            
-            //            adWallV = [[ADWallViewController alloc] init];
-            
-            //            [self presentModalViewController:adWallV animated:YES];
-            //            [adWallV release];
-//            [self showDuoMengAdWall];
-            [self enterADWALLWithID:indexPath.row-1];
-            
-        }
-            break;
-        case 5:
-        {
-            
-            //            adWallV = [[ADWallViewController alloc] init];
-            
-            //            [self presentModalViewController:adWallV animated:YES];
-            //            [adWallV release];
-//            [self showMiidiAdWall];
-            [self enterADWALLWithID:indexPath.row-1];
-//            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"米迪暂不可用" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-//            [alert show];
-//            [alert release];
-            
-        }
-            break;
-//        case 6:
-//        {
-//            [self showAdviewWall];
-//            
-//        }
+//        case 5:
+//            {
+//  
+//                [self enterADWALLWithID:indexPath.row-1];
+// 
+//                
+//            }
 //            break;
             
         default:
+            {
+                [self enterADWALLWithID:indexPath.row-1];
+            }
             break;
+        }
+    }
+    else
+    {
+        ADIntroduceViewController * inv = [[ADIntroduceViewController alloc] init];
+        inv.shouldShowTabbar = self.shouldShowTabbar;
+        inv.theTextType = TextTypeAdwallImportantInfo;
+        [self.navigationController pushViewController:inv animated:YES];
+        [inv release];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

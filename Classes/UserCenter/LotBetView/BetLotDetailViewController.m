@@ -83,22 +83,22 @@
         //快三返回按钮
         [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO normalImage:@"KS_back_normal.png" highlightedImage:@"KS_back_highlighted.png"];
         
-        //右按钮
-        [RightBarButtonItemUtils addRightButtonForController:self addTarget:self action:@selector(againButtonClick:) andTitle:@"再买一次" normalColor:@"#74061f" higheColor:@"#4f0415" rightButtontFrame:CGRectMake(0, 0, 70, 26)];
+//        //右按钮
+//        [RightBarButtonItemUtils addRightButtonForController:self addTarget:self action:@selector(againButtonClick:) andTitle:@"再买一次" normalColor:@"#74061f" higheColor:@"#4f0415" rightButtontFrame:CGRectMake(0, 0, 70, 26)];
     }else{
         
         [BackBarButtonItemUtils addBackButtonForController:self];
         
         if(isRepeatBuy)
         {
-            UIButton *rightBarBtn = [[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 132/2, 30)] autorelease];
-            [rightBarBtn addTarget:self action:@selector(againButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-            [rightBarBtn setBackgroundImage:[UIImage imageNamed:@"four_btn.png"] forState:UIControlStateNormal];
-            [rightBarBtn setBackgroundImage:[UIImage imageNamed:@"four_btn_hover.png"] forState:UIControlStateHighlighted];
-            rightBarBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
-            [rightBarBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [rightBarBtn setTitle:@"再买一次" forState:UIControlStateNormal];
-            self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBarBtn] autorelease];
+//            UIButton *rightBarBtn = [[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 132/2, 30)] autorelease];
+//            [rightBarBtn addTarget:self action:@selector(againButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//            [rightBarBtn setBackgroundImage:[UIImage imageNamed:@"four_btn.png"] forState:UIControlStateNormal];
+//            [rightBarBtn setBackgroundImage:[UIImage imageNamed:@"four_btn_hover.png"] forState:UIControlStateHighlighted];
+//            rightBarBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+//            [rightBarBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [rightBarBtn setTitle:@"再买一次" forState:UIControlStateNormal];
+//            self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:rightBarBtn] autorelease];
         }
 
     }

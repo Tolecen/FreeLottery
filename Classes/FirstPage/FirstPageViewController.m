@@ -349,7 +349,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self performSelector:@selector(showMentionView) withObject:nil afterDelay:2];
+//    [self performSelector:@selector(showMentionView) withObject:nil afterDelay:2];
 }
 - (void)viewDidLoad 
 {
@@ -1615,7 +1615,14 @@
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell updateLogInStatus];
-            [cell setRemainingBuyTimes:[[RuYiCaiNetworkManager sharedManager].remainingChance intValue]];
+            if ([RuYiCaiNetworkManager sharedManager].hasLogin) {
+                [cell setRemainingBuyTimes:[[RuYiCaiNetworkManager sharedManager].remainingChance intValue]];
+            }
+            else
+            {
+                [cell setRemainingBuyTimes:5];
+            }
+            
             return cell;
 
         }

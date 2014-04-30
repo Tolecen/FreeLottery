@@ -318,11 +318,12 @@ typedef enum
 - (void)updateImformationOfLotteryInServers;//获取彩种后台配置的顺序和显示信息
 - (void)updateImformationOfPayStationInServers;//获取充值中心支付方式
 
+-(void)cancelAutoLoginStatus;
 -(void)checkNewVersion;
 -(void)getExchangeScaleForAdwall;
 - (void)softwareUpdate;
 - (void)updateUserInformation;
-
+-(void)getAdWallImportantInfo;
 // 首页广告信息获取
 - (void)queryADInformation;
 // 今日开奖、加奖

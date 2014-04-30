@@ -35,12 +35,16 @@
     UITextView*a = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320,self.view.frame.size.height)];
     NSString *path = nil;
     if (theTextType==TextTypeAdIntro) {
-        self.navigationItem.title = @"换彩说明";
+        self.navigationItem.title = @"换豆说明";
         path=[[NSString alloc]initWithString:[[NSBundle mainBundle]pathForResource:@"detailIntroduce"ofType:@"txt"]];
     }
     else if(theTextType==TextTypeCommonQuestion){
         self.navigationItem.title = @"常见问题";
         path=[[NSString alloc]initWithString:[[NSBundle mainBundle]pathForResource:@"commonQuestion"ofType:@"txt"]];
+    }
+    else if (theTextType==TextTypeAdwallImportantInfo){
+        self.navigationItem.title = @"积分墙重要通知";
+        
     }
     
 
@@ -49,7 +53,12 @@
     a.editable = NO;
     a.font = [UIFont systemFontOfSize:16];
     a.backgroundColor = [UIColor clearColor];
-    a.text = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    if (theTextType==TextTypeAdwallImportantInfo) {
+        a.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"adwallimportantinfo"];
+    }
+    else{
+        a.text = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    }
     [self.view addSubview:a];
     [data release];
     [path release];
