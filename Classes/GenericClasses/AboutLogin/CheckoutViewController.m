@@ -134,7 +134,7 @@
     _checkoutNoTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     _checkoutNoTF.autocorrectionType = UITextAutocorrectionTypeNo;
     _checkoutNoTF.returnKeyType = UIReturnKeyDone;
-    _checkoutNoTF.secureTextEntry = YES;
+//    _checkoutNoTF.secureTextEntry = YES;
     [self.view addSubview:_checkoutNoTF];
     [_checkoutNoTF release];
     

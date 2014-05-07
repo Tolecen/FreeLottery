@@ -37,7 +37,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [AdaptationUtils adaptation:self];
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
-    self.textView = [[UITextView alloc]initWithFrame:self.view.frame];
+    self.textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-44)];
     _textView.editable = NO;
     _textView.font = [UIFont systemFontOfSize:18];
     [self.view addSubview:_textView];

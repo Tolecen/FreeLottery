@@ -4160,7 +4160,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         
         //[m_registerAlertView dismissWithClickedButtonIndex:0 animated:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"registerOK" object:nil];
-//        [self showMessage:message withTitle:@"注册成功" buttonTitle:@"确定"];
+        [self showMessage:message withTitle:@"注册成功" buttonTitle:@"确定"];
         
         m_netAppType = NET_APP_LOGIN;//更新登录状态
         [self loginWithPhonenum:self.phonenum withPassword:self.password];

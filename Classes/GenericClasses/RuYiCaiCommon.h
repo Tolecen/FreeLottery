@@ -32,7 +32,7 @@
 
 #define CaiJinDuiHuanTiShi   @"尊敬的用户，您的彩豆余额不足，赶紧免费兑换吧！"
 
-#define TestUNum    @"00157098"
+#define TestUNum    @"00001135"
 #define CheatApple  @"0"
 
 #define BuyAndInfoSeparated   @"0"
@@ -431,4 +431,4 @@ typedef enum
  
 #define kwinMonneyArray_JXdantuo [NSArray arrayWithObjects:@"奖金：6元",@"奖金：19元",@"奖金：78元",@"奖金：540元",@"奖金：90元",@"奖金：26元",@"奖金：9元",@"奖金：65元",@"奖金：195元",nil]
 
-#define checkoutCaptcha  1
+#define checkoutCaptcha  0
