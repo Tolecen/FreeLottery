@@ -180,7 +180,7 @@
     self.hidden = NO;
     UILabel * label = _labelArray[0];
     label.text = [self randomString];
-    [self performSelector:@selector(hiddenSelf) withObject:nil afterDelay:10];
+    [self performSelector:@selector(hiddenSelf) withObject:nil afterDelay:5];
 }
 - (void)animateWithActionType1
 {
