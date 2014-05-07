@@ -4940,7 +4940,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 - (BOOL)testConnection {
     BOOL result = YES;
     Reachability *reach=[Reachability sharedReachability];
-    [reach setHostName:@"www.apple.com"];
+    [reach setHostName:@"www.baidu.com"];
     NetworkStatus status;
     status=[reach remoteHostStatus];
     if (status == NotReachable) {
