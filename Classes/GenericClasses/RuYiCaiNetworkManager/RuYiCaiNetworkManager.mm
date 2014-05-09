@@ -1116,23 +1116,23 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     [mDict setObject:psw forKey:@"password"];
     if([CommonRecordStatus commonRecordStatusManager].deviceToken)
        [mDict setObject:[CommonRecordStatus commonRecordStatusManager].deviceToken forKey:@"token"];
-    if([appStoreORnormal isEqualToString:@"appStore"] && [RuYiCaiOR91 isEqualToString:@"91"])
-    {
-        [mDict setObject:@"91appStore" forKey:@"type"];
-    }
-    if([appStoreORnormal isEqualToString:@"appStore"] && [RuYiCaiOR91 isEqualToString:@"RuYiCai"])
-    {
-        [mDict setObject:@"appStore" forKey:@"type"];
-    }
-    else if([appStoreORnormal isEqualToString:@"normal"] && [RuYiCaiOR91 isEqualToString:@"91"])
-    {
-        [mDict setObject:@"91" forKey:@"type"];
-    }
-    else
-    {
-        [mDict setObject:@"ruyicai" forKey:@"type"];
-    }
-    //添加 自动登录字段 
+////    if([appStoreORnormal isEqualToString:@"appStore"] && [RuYiCaiOR91 isEqualToString:@"91"])
+////    {
+//        [mDict setObject:@"91appStore" forKey:@"type"];
+////    }
+////    if([appStoreORnormal isEqualToString:@"appStore"] && [RuYiCaiOR91 isEqualToString:@"RuYiCai"])
+////    {
+//        [mDict setObject:@"appStore" forKey:@"type"];
+////    }
+//    else if([appStoreORnormal isEqualToString:@"normal"] && [RuYiCaiOR91 isEqualToString:@"91"])
+//    {
+//        [mDict setObject:@"91" forKey:@"type"];
+//    }
+//    else
+//    {
+        [mDict setObject:appStoreORnormal forKey:@"type"];
+//    }
+    //添加 自动登录字段
     if (m_delegate.loginView.isRemberMyLoginStatus)
     {
         [mDict setObject:@"1" forKey:@"isAutoLogin"];
