@@ -110,7 +110,7 @@
 //            NSLog(@" --------------adIdadId =%@",adId);
 //            UIAlertView*  alter = [[UIAlertView alloc]
 //                                   initWithTitle:@"尊敬的用户" 
-//                                   message:@"博雅彩客户端将访问您的设备识别符" 
+//                                   message:@"全民免费彩客户端将访问您的设备识别符" 
 //                                   delegate:self 
 //                                   cancelButtonTitle:@"确定" 
 //                                   otherButtonTitles:nil];

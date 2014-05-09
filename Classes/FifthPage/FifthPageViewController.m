@@ -451,9 +451,9 @@
         self.shareviewController = [[[ShareViewController alloc] init] autorelease];
         _shareviewController.delegate=self;
         _shareviewController.title = @"分享";
-        _shareviewController.sinShareContent = [NSString stringWithFormat:@"@博雅彩，我刚使用了博雅彩票客户端买彩票，很方便呢！你也试试吧，彩票随身投，大奖时时有！中奖了记的要请客啊！下载地址为：%@", kAppStoreDownLoad];
-        _shareviewController.txShareContent = [NSString stringWithFormat:@"@博雅彩，我刚使用了博雅彩票客户端买彩票，很方便呢！你也试试吧，彩票随身投，大奖时时有！中奖了记的要请客啊！下载地址为：%@", kAppStoreDownLoad];
-        _shareviewController.shareContent = [NSString stringWithFormat:@"@博雅彩，我刚使用了博雅彩买彩票，很方便呢！你也试试吧，彩票随身投，大奖时时有！中奖了记的要请客啊！下载地址为：%@", kAppStoreDownLoad];
+        _shareviewController.sinShareContent = [NSString stringWithFormat:@"@全民免费彩，我刚使用了全民免费彩票客户端买彩票，很方便呢！你也试试吧，彩票随身投，大奖时时有！中奖了记的要请客啊！下载地址为：%@", kAppStoreDownLoad];
+        _shareviewController.txShareContent = [NSString stringWithFormat:@"@全民免费彩，我刚使用了全民免费彩票客户端买彩票，很方便呢！你也试试吧，彩票随身投，大奖时时有！中奖了记的要请客啊！下载地址为：%@", kAppStoreDownLoad];
+        _shareviewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，我刚使用了全民免费彩买彩票，很方便呢！你也试试吧，彩票随身投，大奖时时有！中奖了记的要请客啊！下载地址为：%@", kAppStoreDownLoad];
         [self.navigationController pushViewController:_shareviewController animated:YES];
     }
     else if([indexPath row] == 9)

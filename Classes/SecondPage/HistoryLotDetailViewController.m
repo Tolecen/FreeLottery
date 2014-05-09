@@ -259,11 +259,11 @@
     
     if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
     {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"#博雅彩客户端#，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,博雅彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload];
+        viewController.m_nsLastText = [NSString stringWithFormat:@"#全民免费彩客户端#，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,全民免费彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload];
     }
     else
     {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"#博雅彩客户端#，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,博雅彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100,KAppWapDoload];
+        viewController.m_nsLastText = [NSString stringWithFormat:@"#全民免费彩客户端#，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,全民免费彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100,KAppWapDoload];
     }
     viewController.titleStr = @"分享到朋友圈";
     //    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
@@ -288,11 +288,11 @@
     
     if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
     {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"#博雅彩客户端#，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,博雅彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload];
+        viewController.m_nsLastText = [NSString stringWithFormat:@"#全民免费彩客户端#，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,全民免费彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload];
     }
     else
     {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"#博雅彩客户端#，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,博雅彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100,KAppWapDoload];
+        viewController.m_nsLastText = [NSString stringWithFormat:@"#全民免费彩客户端#，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,全民免费彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100,KAppWapDoload];
     }
     viewController.titleStr = @"分享到微信";
     //    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
@@ -315,11 +315,11 @@
                                                [RuYiCaiNetworkManager sharedManager].responseText];
     if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
     {
-        viewController.shareContent = [NSString stringWithFormat:@"@博雅彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,博雅彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload];
+        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,全民免费彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload];
     }
     else
     {
-        viewController.shareContent = [NSString stringWithFormat:@"@博雅彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,博雅彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100,KAppWapDoload];
+        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,全民免费彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100,KAppWapDoload];
     }
     viewController.title = @"新浪微博分享";
     viewController.XinLang_shareType = XL_LOTTERY_OPEN;
@@ -344,11 +344,11 @@
     
     if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
     {
-        viewController.shareContent = [NSString stringWithFormat:@"@博雅彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,博雅彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload];
+        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,全民免费彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload];
     }
     else
     {
-        viewController.shareContent = [NSString stringWithFormat:@"@博雅彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,博雅彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100,KAppWapDoload];
+        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,全民免费彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100,KAppWapDoload];
     }
     viewController.title = @"腾讯微博分享";
     viewController.TengXun_shareType = TX_LOTTERY_OPEN;
@@ -389,7 +389,7 @@
     NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
                                                [RuYiCaiNetworkManager sharedManager].responseText];
     
-    [self sendsms:[NSString stringWithFormat:@"@博雅彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,博雅彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload]];
+    [self sendsms:[NSString stringWithFormat:@"@全民免费彩，%@第%@期，开奖时间：%@，开奖号码：%@，本期销量：%llu元,奖池滚存：%llu元,全民免费彩下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"], [parserDict objectForKey:@"openTime"], [parserDict objectForKey:@"winNo"], [[parserDict objectForKey:@"sellTotalAmount"] longLongValue]/100, [[parserDict objectForKey:@"prizePoolTotalAmount"] longLongValue]/100,KAppWapDoload]];
 }
 
 - (void)displaySMS:(NSString*)message

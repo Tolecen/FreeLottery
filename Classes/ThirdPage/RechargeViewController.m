@@ -137,12 +137,12 @@
     if([RuYiCaiOR91 isEqualToString:@"91"])
     {
         titleLabel.frame = CGRectMake(10, 0, 300, 50);
-        titleLabel.text = @"登录“91博雅彩”(                                  )用网银网上充值免手续费，支持更多银行。";
+        titleLabel.text = @"登录“91全民免费彩”(                                  )用网银网上充值免手续费，支持更多银行。";
     }
     else if([RuYiCaiOR91 isEqualToString:@"RuYiCai"])
     {
         titleLabel.frame = CGRectMake(10, 0, 300, 50);
-        titleLabel.text = @"登录“博雅彩票”(                                       )用网银网上充值免手续费，支持更多银行。";
+        titleLabel.text = @"登录“全民免费彩票”(                                       )用网银网上充值免手续费，支持更多银行。";
     }
     titleLabel.lineBreakMode = UILineBreakModeWordWrap;
     titleLabel.numberOfLines = 2;

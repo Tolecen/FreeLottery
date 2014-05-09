@@ -223,7 +223,7 @@
     [self setHidesBottomBarWhenPushed:YES];
     [_delegate changeScene:WXSceneTimeline];
     TextViewController* viewController = [[TextViewController alloc] init];
-    viewController.m_nsLastText = [NSString stringWithFormat:@"@博雅彩，我在博雅彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];
+    viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，我在全民免费彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];
     viewController.titleStr  = @"分享到朋友圈";
     //    viewController.XinLang_shareType = XL_SHARE_NEWS;
     viewController.m_delegate = self;
@@ -237,7 +237,7 @@
     [self setHidesBottomBarWhenPushed:YES];
     [_delegate changeScene:WXSceneSession];
     TextViewController* viewController = [[TextViewController alloc] init];
-    viewController.m_nsLastText = [NSString stringWithFormat:@"@博雅彩，我在博雅彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];
+    viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，我在全民免费彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];
     viewController.titleStr = @"分享到微信";
 //    viewController.XinLang_shareType = XL_SHARE_NEWS;
     viewController.m_delegate = self;
@@ -249,7 +249,7 @@
     [self setHidesBottomBarWhenPushed:YES];
 
     ShareSendViewController* viewController = [[ShareSendViewController alloc] init];
-    viewController.shareContent = [NSString stringWithFormat:@"@博雅彩，我在博雅彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];       
+    viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，我在全民免费彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];       
     viewController.title = @"新浪微博分享";
     viewController.XinLang_shareType = XL_SHARE_NEWS;
     [self.navigationController pushViewController:viewController animated:YES];
@@ -261,7 +261,7 @@
     [self setHidesBottomBarWhenPushed:YES];
 
     TengXunSendViewController* viewController = [[TengXunSendViewController alloc] init];
-    viewController.shareContent = [NSString stringWithFormat:@"@博雅彩，我在博雅彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];
+    viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，我在全民免费彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];
     viewController.title = @"腾讯微博分享";
     viewController.TengXun_shareType = TX_SHARE_NEWS;
     [self.navigationController pushViewController:viewController animated:YES];
@@ -293,7 +293,7 @@
     
     [self setHidesBottomBarWhenPushed:YES];
     
-    [self sendsms:[NSString stringWithFormat:@"@博雅彩，我在博雅彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL]];
+    [self sendsms:[NSString stringWithFormat:@"@全民免费彩，我在全民免费彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL]];
 }
 
 - (void)displaySMS:(NSString*)message

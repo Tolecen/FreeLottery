@@ -35,7 +35,7 @@
     [AdaptationUtils adaptation:self];
     [self.view setBackgroundColor:[ColorUtils parseColorFromRGB:@"#f7f3ec"]];
     
-    //默认没有博雅彩票账号的为选中状态
+    //默认没有全民免费彩票账号的为选中状态
     _noAlreadyButton.selected = YES;
     _alreadyButton.selected = NO;
     [_loginUserView setHidden:YES];
@@ -313,7 +313,7 @@
 #pragma mark textField delagate
 - (void)backButtonClick:(id)sender
 {
-    UIAlertView *promptAlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您确定要退出吗？为了您的账户安全，建议您绑定博雅彩账号。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    UIAlertView *promptAlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您确定要退出吗？为了您的账户安全，建议您绑定全民免费彩账号。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
     [promptAlertView show];
     [promptAlertView release];
     

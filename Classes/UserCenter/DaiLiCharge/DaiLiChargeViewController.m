@@ -43,7 +43,7 @@
     [m_accountField setTextColor:[UIColor blackColor]];
     m_accountField.borderStyle = UITextBorderStyleRoundedRect;
     m_accountField.delegate = self;
-    m_accountField.placeholder = @"对方的博雅彩账户名";
+    m_accountField.placeholder = @"对方的全民免费彩账户名";
     m_accountField.font = [UIFont systemFontOfSize:15];
     m_accountField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 //    m_accountField.keyboardType = UIKeyboardTypeNamePhonePad;
@@ -99,7 +99,7 @@
     [m_passwordField setTextColor:[UIColor blackColor]];
     m_passwordField.borderStyle = UITextBorderStyleRoundedRect;
     m_passwordField.delegate = self;
-    m_passwordField.placeholder = @"您的博雅彩账户登录密码";
+    m_passwordField.placeholder = @"您的全民免费彩账户登录密码";
     m_passwordField.font = [UIFont systemFontOfSize:15];
     m_passwordField.secureTextEntry = YES;
     m_passwordField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;

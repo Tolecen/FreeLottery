@@ -1020,9 +1020,9 @@
             shareViewController.delegate = self;
             shareViewController.navigationItem.title=@"合买分享";
             
-            shareViewController.sinShareContent = [NSString stringWithFormat:@"@博雅彩，我刚发起了一个%@的合买,合买中奖率更大!%@", [[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"lotName"],[[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"url"]];
-            shareViewController.txShareContent = [NSString stringWithFormat:@"@博雅彩，我刚发起了一个%@的合买,合买中奖率更大!%@", [[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"lotName"],[[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"url"]];
-            shareViewController.shareContent =[NSString stringWithFormat:@"@博雅彩，我刚发起了一个%@的合买,合买中奖率更大!%@", [[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"lotName"],[[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"url"]];
+            shareViewController.sinShareContent = [NSString stringWithFormat:@"@全民免费彩，我刚发起了一个%@的合买,合买中奖率更大!%@", [[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"lotName"],[[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"url"]];
+            shareViewController.txShareContent = [NSString stringWithFormat:@"@全民免费彩，我刚发起了一个%@的合买,合买中奖率更大!%@", [[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"lotName"],[[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"url"]];
+            shareViewController.shareContent =[NSString stringWithFormat:@"@全民免费彩，我刚发起了一个%@的合买,合买中奖率更大!%@", [[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"lotName"],[[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"url"]];
             shareViewController.pushType = @"PUSHHIDE";
             [self.navigationController pushViewController:shareViewController animated:YES];
             [shareViewController release];
@@ -1181,7 +1181,7 @@
     
     
     
-    UIAlertView *succesAlertView = [[UIAlertView alloc] initWithTitle:@"博雅彩" message:@"恭喜您已成功发起合买，赶紧告诉更多好友一起中大奖！" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView *succesAlertView = [[UIAlertView alloc] initWithTitle:@"全民免费彩" message:@"恭喜您已成功发起合买，赶紧告诉更多好友一起中大奖！" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     succesAlertView.tag =110;
     [succesAlertView show];
     [succesAlertView release];

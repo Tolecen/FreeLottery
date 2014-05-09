@@ -142,14 +142,14 @@
 
 #define KBalanceLess    @"余额不足"
 
-//博雅彩下载地质
+//全民免费彩下载地质
 #define KAppWapDoload   @"http://3g.boyacai.com/w3g/"
 
 
 //免费彩官方QQ
 #define KQQNumber   @"2492831607"
 
-//博雅彩客服热线
+//全民免费彩客服热线
 #define KCustomerServiceNum   @"400-856-1000"
 
 

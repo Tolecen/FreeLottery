@@ -218,7 +218,7 @@
 //    UILabel *footUpLable = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, 260, 30)];
 //    footUpLable.textColor = [UIColor blackColor];
 //    footUpLable.font = [UIFont systemFontOfSize:14];
-//    footUpLable.text = @"本软件的彩票运营由博雅彩提供支持";
+//    footUpLable.text = @"本软件的彩票运营由全民免费彩提供支持";
 //    footUpLable.backgroundColor = [UIColor clearColor];
 //    
 //    UILabel *footDownLable = [[UILabel alloc] initWithFrame:CGRectMake(60, 45, 70, 30)];

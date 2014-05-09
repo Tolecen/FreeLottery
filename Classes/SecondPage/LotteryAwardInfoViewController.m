@@ -871,11 +871,11 @@
                                                [RuYiCaiNetworkManager sharedManager].responseText];
     if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
     {
-        viewController.shareContent = [NSString stringWithFormat:@"@博雅彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
     }
     else
     {
-        viewController.shareContent = [NSString stringWithFormat:@"@博雅彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
     }
     viewController.title = @"新浪微博分享";
     viewController.XinLang_shareType = XL_LOTTERY_OPEN;
@@ -904,11 +904,11 @@
     
     if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
     {
-        viewController.shareContent = [NSString stringWithFormat:@"@博雅彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
     }
     else
     {
-        viewController.shareContent =[NSString stringWithFormat:@"@博雅彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+        viewController.shareContent =[NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
     }
     viewController.title = @"腾讯微博分享";
     viewController.TengXun_shareType = TX_LOTTERY_OPEN;
@@ -938,11 +938,11 @@
     
     if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
     {
-        viewController.m_nsLastText =[NSString stringWithFormat:@"@博雅彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+        viewController.m_nsLastText =[NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
     }
     else
     {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"@博雅彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+        viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
     }
     viewController.titleStr = @"分享到朋友圈";
     //    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
@@ -971,11 +971,11 @@
     
     if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
     {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"@博雅彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+        viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
     }
     else
     {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"@博雅彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+        viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
     }
     viewController.titleStr = @"分享到微信";
     //    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
@@ -1063,7 +1063,7 @@
     NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
                                                [RuYiCaiNetworkManager sharedManager].responseText];
     
-    [self sendsms:[NSString stringWithFormat:@"@博雅彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload]];
+    [self sendsms:[NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload]];
     
 }
 
