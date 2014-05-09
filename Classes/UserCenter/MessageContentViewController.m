@@ -34,10 +34,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    float h = 44;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        h = 64;
+    }
     self.view.backgroundColor = [UIColor whiteColor];
     [AdaptationUtils adaptation:self];
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
-    self.textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-44)];
+    self.textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-h)];
     _textView.editable = NO;
     _textView.font = [UIFont systemFontOfSize:18];
     [self.view addSubview:_textView];

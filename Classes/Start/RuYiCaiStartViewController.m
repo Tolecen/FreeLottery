@@ -106,16 +106,16 @@
         [m_newFuctionInfoView release];
         if([appStoreORnormal isEqualToString: @"appStore"])
         {
-            NSString *adId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-            NSLog(@" --------------adIdadId =%@",adId);
-            UIAlertView*  alter = [[UIAlertView alloc] 
-                                   initWithTitle:@"尊敬的用户" 
-                                   message:@"博雅彩客户端将访问您的设备识别符" 
-                                   delegate:self 
-                                   cancelButtonTitle:@"确定" 
-                                   otherButtonTitles:nil];
-            [alter show];
-            [alter release];
+//            NSString *adId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+//            NSLog(@" --------------adIdadId =%@",adId);
+//            UIAlertView*  alter = [[UIAlertView alloc]
+//                                   initWithTitle:@"尊敬的用户" 
+//                                   message:@"博雅彩客户端将访问您的设备识别符" 
+//                                   delegate:self 
+//                                   cancelButtonTitle:@"确定" 
+//                                   otherButtonTitles:nil];
+//            [alter show];
+//            [alter release];
         }
         
         //初始化彩种显示数组
