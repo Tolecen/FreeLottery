@@ -35,6 +35,8 @@
     
     hh = [[NSDate date] timeIntervalSince1970];
     [[RuYiCaiNetworkManager sharedManager] checkNewVersion];
+    
+    [self performSelector:@selector(showLoading:) withObject:@"timeout" afterDelay:25];
 //    [self performSelector:@selector(showLoading:) withObject:nil afterDelay:kStartViewShowTime];
     
 }
@@ -56,7 +58,7 @@
     }
     else
         [self showLoading:nil];
-    [self performSelector:@selector(showLoading:) withObject:@"timeout" afterDelay:25];
+    
 }
 - (void)showLoading:(id)sender
 {
