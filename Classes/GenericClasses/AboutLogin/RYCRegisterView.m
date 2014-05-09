@@ -327,6 +327,7 @@
     
 //    [MobClick event:@"registPage_regist_button"];
 
+    NSLog(@"REEEEEEG");
     [[RuYiCaiNetworkManager sharedManager] regWithPhonenum:m_registerPhonenumTextField.text 
                                               withPassword:m_registerPswTextField.text
                                                 withCertid:m_registerCertidTextField.text 

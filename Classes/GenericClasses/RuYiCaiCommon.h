@@ -23,7 +23,7 @@
 
 //#define NNRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
 
-#define ifCeShi   @"0"
+#define ifCeShi   @"1"
 
 #define CeshiRuYiCaiServer   @"http://220.231.48.232:4231/freelot/freelotServlet"
 
@@ -431,4 +431,4 @@ typedef enum
  
 #define kwinMonneyArray_JXdantuo [NSArray arrayWithObjects:@"奖金：6元",@"奖金：19元",@"奖金：78元",@"奖金：540元",@"奖金：90元",@"奖金：26元",@"奖金：9元",@"奖金：65元",@"奖金：195元",nil]
 
-#define checkoutCaptcha  0
+#define checkoutCaptcha  1
