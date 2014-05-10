@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define kNormalLogin  @"NormalLogin"//博雅彩帐号
+#define kNormalLogin  @"NormalLogin"//全民免费彩帐号
 #define kQQLogin      @"QQLogin"//qq登录
 #define kXLWeiBoLogin @"XLLogin"//新浪微博帐号登录
 

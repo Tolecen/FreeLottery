@@ -252,7 +252,7 @@
 //    {
 ////        TextViewController* viewController = [[TextViewController alloc] init];
 ////        //if([RuYiCaiOR91 isEqualToString:@"RuYiCai"])
-////        viewController.m_nsLastText = [NSString stringWithFormat:@"#博雅彩彩票iPhone客户端#，我正在使用@博雅彩 手机客户端，购彩很方便，你也试试吧！下载地址：%@", kAppStoreDownLoad];
+////        viewController.m_nsLastText = [NSString stringWithFormat:@"#全民免费彩彩票iPhone客户端#，我正在使用@全民免费彩 手机客户端，购彩很方便，你也试试吧！下载地址：%@", kAppStoreDownLoad];
 ////        viewController.title = @"微信分享给好友";
 ////        [self.navigationController pushViewController:viewController animated:YES];
 ////        [viewController release];

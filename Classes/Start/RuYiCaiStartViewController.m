@@ -35,6 +35,8 @@
     
     hh = [[NSDate date] timeIntervalSince1970];
     [[RuYiCaiNetworkManager sharedManager] checkNewVersion];
+    
+    [self performSelector:@selector(showLoading:) withObject:@"timeout" afterDelay:25];
 //    [self performSelector:@selector(showLoading:) withObject:nil afterDelay:kStartViewShowTime];
     
 }
@@ -56,7 +58,7 @@
     }
     else
         [self showLoading:nil];
-    [self performSelector:@selector(showLoading:) withObject:@"timeout" afterDelay:25];
+    
 }
 - (void)showLoading:(id)sender
 {
@@ -108,7 +110,7 @@
 //            NSLog(@" --------------adIdadId =%@",adId);
 //            UIAlertView*  alter = [[UIAlertView alloc]
 //                                   initWithTitle:@"尊敬的用户" 
-//                                   message:@"博雅彩客户端将访问您的设备识别符" 
+//                                   message:@"全民免费彩客户端将访问您的设备识别符" 
 //                                   delegate:self 
 //                                   cancelButtonTitle:@"确定" 
 //                                   otherButtonTitles:nil];

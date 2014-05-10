@@ -612,7 +612,7 @@
     {
         if(![[RuYiCaiNetworkManager sharedManager].password isEqualToString:self.passWordField.text])
         {
-            [[RuYiCaiNetworkManager sharedManager] showMessage:@"博雅彩账号登录密码不正确！" withTitle:@"提示" buttonTitle:@"确定"];
+            [[RuYiCaiNetworkManager sharedManager] showMessage:@"登录密码不正确！" withTitle:@"提示" buttonTitle:@"确定"];
             return NO;
         }
     }
@@ -713,7 +713,7 @@
     {
         if(![[RuYiCaiNetworkManager sharedManager].password isEqualToString:self.alipayPassWordField.text])
         {
-            [[RuYiCaiNetworkManager sharedManager] showMessage:@"博雅彩账号登录密码不正确！" withTitle:@"提示" buttonTitle:@"确定"];
+            [[RuYiCaiNetworkManager sharedManager] showMessage:@"登录密码不正确！" withTitle:@"提示" buttonTitle:@"确定"];
             return NO;
         }
     }
