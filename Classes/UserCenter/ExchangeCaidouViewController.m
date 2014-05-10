@@ -160,4 +160,8 @@
     }
     return YES;
 }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_textF resignFirstResponder];
+}
 @end
