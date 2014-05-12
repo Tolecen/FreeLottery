@@ -117,7 +117,7 @@
     [exchangeB setTitle:@"兑换" forState:UIControlStateNormal];
     exchangeB.frame = CGRectMake(30, 200, 260, 40);
     [self.view addSubview:exchangeB];
-    [exchangeB addTarget:self action:@selector(exchange) forControlEvents:UIControlEventTouchUpInside];
+    [exchangeB addTarget:self action:@selector(exchange:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -131,7 +131,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (void)exchange
+- (void)exchange:(UIButton*)button
 {
     if (0.1>[_textF.text floatValue]||[_textF.text floatValue]>[_jiangjinStr floatValue]) {
         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"你造吗,输入的金额应大于0.1小于%.1f", [_jiangjinStr floatValue]] delegate:nil cancelButtonTitle:@"我造了" otherButtonTitles: nil];
@@ -143,6 +143,8 @@
         [alert show];
         return;
     }
+    [_textF resignFirstResponder];
+    button.enabled = NO;
     [[RuYiCaiNetworkManager sharedManager] exchangeLotPeaWithAmount:_textF.text];
 }
 - (void)exchangeLotPeaOK:(NSNotification*)info
@@ -163,14 +165,18 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (self.view.frame.size.height<=480) {
-        self.view.bounds = CGRectMake(0, 100, self.view.bounds.size.width, self.view.bounds.size.height);
+        [UIView animateWithDuration:0.3 animations:^{
+            self.view.bounds = CGRectMake(0, 100, self.view.bounds.size.width, self.view.bounds.size.height);
+        }];
     }
     return YES;
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     if (self.view.frame.size.height<=480) {
-        self.view.bounds = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+        [UIView animateWithDuration:0.3 animations:^{
+            self.view.bounds = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+        }];
     }
     return YES;
 }
