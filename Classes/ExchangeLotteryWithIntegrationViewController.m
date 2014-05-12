@@ -230,7 +230,7 @@
 	{
         NSString * v = [parserDict objectForKey:@"value"];
         int rv = [v intValue];
-        if (rv<=1) {
+        if (rv==1) {
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"系统判定您设备识别符修改次数过多，有作弊刷积分嫌疑，现给予您警告，如果再有此行为，将进行封号处理，如果您确实有这么多设备，可以添加客服QQ为您处理" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
             [alert show];
             [alert release];
@@ -570,8 +570,27 @@
     [[RuYiCaiNetworkManager sharedManager] queryRemainingIDFA];
     [m_delegate.activityView activityViewShow];
     
-    
-    
+//    NSString * theID = [titleArray[theIndex] objectForKey:@"code"];
+//    theAdwallID = theID;
+//    if ([theAdwallID isEqualToString:@"limei"]) {
+//        [self enterLiMeiAdWall];
+//    }
+//    else if ([theAdwallID isEqualToString:@"youmi"]){
+//        [self showYouMiWall];
+//    }
+//    else if ([theAdwallID isEqualToString:@"dianru"]){
+//        [self showDianRuWall];
+//    }
+//    else if ([theAdwallID isEqualToString:@"duomeng"]){
+//        [self showDuoMengAdWall];
+//    }
+//    else if ([theAdwallID isEqualToString:@"midi"]){
+//        [self showMiidiAdWall];
+//    }
+//    else if ([theAdwallID isEqualToString:@"adview"]){
+//        [self showAdviewWall];
+//    }
+
 
     
 /*********
