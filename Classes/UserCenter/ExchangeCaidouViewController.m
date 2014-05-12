@@ -143,6 +143,7 @@
         [alert show];
         return;
     }
+    [_textF resignFirstResponder];
     button.enabled = NO;
     [[RuYiCaiNetworkManager sharedManager] exchangeLotPeaWithAmount:_textF.text];
 }
