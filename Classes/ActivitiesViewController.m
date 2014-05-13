@@ -9,6 +9,7 @@
 #import "ActivitiesViewController.h"
 #import "RuYiCaiAppDelegate.h"
 #import "ActionView.h"
+#import "InterestSignInViewController.h"
 #import "RuYiCaiNetworkManager.h"
 @interface ActivitiesViewController ()
 
@@ -31,10 +32,18 @@
     [self.listTableV release];
     [super dealloc];
 }
+- (void)interesting
+{
+    InterestSignInViewController * intVC = [[InterestSignInViewController alloc]init];
+    [self.navigationController pushViewController:intVC animated:YES];
+    [intVC release];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(interesting)];
     
     
     self.view.backgroundColor = [UIColor whiteColor];

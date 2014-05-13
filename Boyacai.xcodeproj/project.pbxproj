@@ -1119,6 +1119,9 @@
 		724BD67419076C1600A41AC1 /* checkout.png in Resources */ = {isa = PBXBuildFile; fileRef = 724BD67219076C1600A41AC1 /* checkout.png */; };
 		724BD67519076C1600A41AC1 /* uncheckout.png in Resources */ = {isa = PBXBuildFile; fileRef = 724BD67319076C1600A41AC1 /* uncheckout.png */; };
 		725AF442190B670F003C17ED /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 725AF441190B670F003C17ED /* KGStatusBar.m */; };
+		7269C5651920AEBE0018F80B /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 7269C5641920AEBE0018F80B /* recommend.png */; };
+		7269C5681920B24F0018F80B /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7269C5671920B24F0018F80B /* RecommendViewController.m */; };
+		7269C56B1920C2EA0018F80B /* InterestSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7269C56A1920C2EA0018F80B /* InterestSignInViewController.m */; };
 		726ADAF718F788C3007624AD /* exchange-click.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF518F788C3007624AD /* exchange-click.png */; };
 		726ADAF818F788C3007624AD /* exchange-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF618F788C3007624AD /* exchange-normal.png */; };
 		7274570619066E710043A3B8 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274570519066E710043A3B8 /* CheckoutViewController.m */; };
@@ -2926,6 +2929,11 @@
 		724BD67319076C1600A41AC1 /* uncheckout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheckout.png; sourceTree = "<group>"; };
 		725AF440190B670F003C17ED /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
 		725AF441190B670F003C17ED /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
+		7269C5641920AEBE0018F80B /* recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommend.png; sourceTree = "<group>"; };
+		7269C5661920B24F0018F80B /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
+		7269C5671920B24F0018F80B /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
+		7269C5691920C2EA0018F80B /* InterestSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestSignInViewController.h; sourceTree = "<group>"; };
+		7269C56A1920C2EA0018F80B /* InterestSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestSignInViewController.m; sourceTree = "<group>"; };
 		726ADAF518F788C3007624AD /* exchange-click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-click.png"; sourceTree = "<group>"; };
 		726ADAF618F788C3007624AD /* exchange-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-normal.png"; sourceTree = "<group>"; };
 		7274570419066E710043A3B8 /* CheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutViewController.h; sourceTree = "<group>"; };
@@ -5226,6 +5234,7 @@
 		5224963418320393005F7577 /* ThirdPage */ = {
 			isa = PBXGroup;
 			children = (
+				7269C5641920AEBE0018F80B /* recommend.png */,
 				97E2BA22190FC480008D2200 /* rukou1.png */,
 				97E2BA23190FC480008D2200 /* rukou2.png */,
 				973122401904B973006ECD17 /* rukou3.png */,
@@ -5310,8 +5319,12 @@
 			children = (
 				52F0963E1885069C008E90B0 /* ExchangeLotteryWithIntegrationViewController.h */,
 				52F0963F1885069C008E90B0 /* ExchangeLotteryWithIntegrationViewController.m */,
+				7269C5661920B24F0018F80B /* RecommendViewController.h */,
+				7269C5671920B24F0018F80B /* RecommendViewController.m */,
 				97FD04B818E3BDD3008FF2CB /* ActivitiesViewController.h */,
 				97FD04B918E3BDD3008FF2CB /* ActivitiesViewController.m */,
+				7269C5691920C2EA0018F80B /* InterestSignInViewController.h */,
+				7269C56A1920C2EA0018F80B /* InterestSignInViewController.m */,
 				7276665018FCCB98006DB950 /* ActionView.h */,
 				7276665118FCCB98006DB950 /* ActionView.m */,
 				9745AF8B18CEAEF700510E8F /* DiskViewController.h */,
@@ -8440,6 +8453,7 @@
 				2845C97D183BCB6900B2E786 /* action-black-button-selected.png in Resources */,
 				6561351F1798CF5800931372 /* CQSF_PickNumberViewController.xib in Resources */,
 				522496BF18320393005F7577 /* zc_c_jqs_nomal.png in Resources */,
+				7269C5651920AEBE0018F80B /* recommend.png in Resources */,
 				5224986518320393005F7577 /* sxa4.png in Resources */,
 				5224969D18320393005F7577 /* ad_c2_Img_1.png in Resources */,
 				5224983D18320393005F7577 /* tuijian_c7_click.png in Resources */,
@@ -8539,6 +8553,7 @@
 				D5A39AC31578634D005CC3FF /* SetupViewController.m in Sources */,
 				D5A39AC61578AAE3005CC3FF /* CommonRecordStatus.m in Sources */,
 				D5A39AD31578BCC1005CC3FF /* AnimationTabView.m in Sources */,
+				7269C5681920B24F0018F80B /* RecommendViewController.m in Sources */,
 				D5A39AD91578BF48005CC3FF /* GetCashRecordView.m in Sources */,
 				D5C05B04157A0B4900C254A3 /* AlipayPayWapView.m in Sources */,
 				D59723171582064000DF74CA /* PickBallViewController+PickBallViewController_category.m in Sources */,
@@ -8618,6 +8633,7 @@
 				D501D73115AD81D7005733FB /* HMDTGroupByCellView.m in Sources */,
 				D501D73215AD81D7005733FB /* HMDTGroupByViewController.m in Sources */,
 				D501D73415AD81D7005733FB /* HMDTQueryCaseLotViewController.m in Sources */,
+				7269C56B1920C2EA0018F80B /* InterestSignInViewController.m in Sources */,
 				D501D74115AD8295005733FB /* ZC_pickNumberViewController.m in Sources */,
 				D501D74215AD8295005733FB /* ZCCellView.m in Sources */,
 				D501D74315AD8295005733FB /* ZCJinQiuCaiView.m in Sources */,

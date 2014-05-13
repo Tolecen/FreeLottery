@@ -11,6 +11,7 @@
 #import "UINavigationBarCustomBg.h"
 #import "BackBarButtonItemUtils.h"
 #import "ADWallViewController.h"
+#import "RecommendViewController.h"
 #import <objc/runtime.h>
 @interface ExchangeLotteryWithIntegrationViewController ()
 
@@ -420,10 +421,11 @@
     [self.listTableV setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:self.listTableV];
     
-//    bgBTopBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-//    [bgBTopBar setBackgroundColor:[UIColor blackColor]];
-//    [self.view addSubview:bgBTopBar];
-//    bgBTopBar.hidden = YES;
+    UIButton * recommendB = [UIButton buttonWithType:UIButtonTypeCustom];
+    recommendB.frame = CGRectMake(240,  h-126-tabbarH, 62, 62);
+    [recommendB setBackgroundImage:[UIImage imageNamed:@"recommend"] forState:UIControlStateNormal];
+    [self.view addSubview:recommendB];
+    [recommendB addTarget:self action:@selector(goodRecommend) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *buttonLogin = [[UIButton alloc] initWithFrame:CGRectMake(0, 1, 40, 40)];
     [buttonLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -449,6 +451,13 @@
     }
     [[RuYiCaiNetworkManager sharedManager] getAdWallImportantInfo];
 
+}
+- (void)goodRecommend
+{
+    RecommendViewController * recommendVC = [[RecommendViewController alloc]init];
+    [self.navigationController pushViewController:recommendVC animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+    [recommendVC release];
 }
 -(void)toIntroV
 {

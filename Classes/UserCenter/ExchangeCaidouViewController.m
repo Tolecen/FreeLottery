@@ -11,7 +11,10 @@
 #import "AdaptationUtils.h"
 #import "ColorUtils.h"
 #import "RuYiCaiNetworkManager.h"
-@interface ExchangeCaidouViewController ()<UITextFieldDelegate>
+@interface ExchangeCaidouViewController ()<UITextFieldDelegate,UIAlertViewDelegate>
+{
+    UIButton * exchangeB;
+}
 @property (nonatomic,retain)UILabel * caidouNoL;
 @property (nonatomic,retain)UILabel * jiangjinNoL;
 @property (nonatomic,retain)UITextField * textF;
@@ -112,7 +115,7 @@
     tishiL.backgroundColor = [UIColor clearColor];
     [tishiL release];
     
-    UIButton * exchangeB = [UIButton buttonWithType:UIButtonTypeCustom];
+    exchangeB = [UIButton buttonWithType:UIButtonTypeCustom];
     [exchangeB setBackgroundImage:[UIImage imageNamed:@"tasktodo"] forState:UIControlStateNormal];
     [exchangeB setTitle:@"兑换" forState:UIControlStateNormal];
     exchangeB.frame = CGRectMake(30, 200, 260, 40);
@@ -149,8 +152,19 @@
 }
 - (void)exchangeLotPeaOK:(NSNotification*)info
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"兑换彩豆成功" message:@"您已成功兑换彩豆,可在彩豆明细中查询" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"继续兑换", nil];
+    [alert show];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex) {
+        exchangeB.enabled = YES;
+        _textF.text = @"";
+    }else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
