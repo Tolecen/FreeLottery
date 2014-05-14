@@ -10,6 +10,7 @@
 #import "RuYiCaiAppDelegate.h"
 #import "CustomSegmentedControl.h"
 #import "ASettingViewController.h"
+#import "AwardCardViewController.h"
 @interface FourthPageViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate,CustomSegmentedControlDelegate>
 {
     UIBarButtonItem    *m_button_Login;//登录

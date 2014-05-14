@@ -162,7 +162,7 @@
     }
     
     //区内容数组和cell标题数组创建
-     self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"奖金提现|yhzx_zhtx_icon.png",@"奖金明细|yhzx_zhmx_icon.png", @"彩豆明细|yhzx_caidou_icon.png",@"消息中心|yhzx_message_icon.png",nil];
+     self.cellTitlArray= [NSMutableArray arrayWithObjects:@"中奖查询|yhzx_zjcx_icon.png",@"投注记录|yhzx_tzjl_icon.png",@"奖金提现|yhzx_zhtx_icon.png",@"奖金明细|yhzx_zhmx_icon.png", @"彩豆明细|yhzx_caidou_icon.png",@"奖励任务卡|yhzx_awardCard.png",@"消息中心|yhzx_message_icon.png",nil];
    
     if (m_tableView)
     {
@@ -798,7 +798,7 @@
             return 2;
         }else
         {
-            return 6;
+            return m_cellTitlArray.count;
         }
     }
     else
@@ -935,7 +935,16 @@
                 [viewController release];
                 break;
             }
-                case 5://消息中心
+            case 5://消息中心
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+                AwardCardViewController* viewController = [[AwardCardViewController alloc] init];
+                viewController.navigationItem.title =@"奖励任务卡",
+                [self.navigationController pushViewController:viewController animated:YES];
+                [viewController release];
+                break;
+            }
+                case 6://消息中心
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
                 MessageCenterViewController* viewController = [[MessageCenterViewController alloc] init];

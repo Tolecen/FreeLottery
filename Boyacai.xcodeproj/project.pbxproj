@@ -1222,6 +1222,8 @@
 		971653FA18FCDB3E00AA40C3 /* WeiXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971653F318FCDB3E00AA40C3 /* WeiXinViewController.m */; };
 		971653FB18FCDB3E00AA40C3 /* WeiXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 971653F418FCDB3E00AA40C3 /* WeiXinViewController.xib */; };
 		9716547D18FCDBB900AA40C3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716547C18FCDBB900AA40C3 /* CoreText.framework */; };
+		972033DE1923199900AD1767 /* yhzx_awardCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 972033DD1923199900AD1767 /* yhzx_awardCard.png */; };
+		972033E119231A4200AD1767 /* AwardCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 972033E019231A4200AD1767 /* AwardCardViewController.m */; };
 		973122451904B973006ECD17 /* rukou3.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122401904B973006ECD17 /* rukou3.png */; };
 		973122461904B973006ECD17 /* rukou4.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122411904B973006ECD17 /* rukou4.png */; };
 		973122471904B973006ECD17 /* rukou5.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122421904B973006ECD17 /* rukou5.png */; };
@@ -3057,6 +3059,9 @@
 		971653F518FCDB3E00AA40C3 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		971653F618FCDB3E00AA40C3 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		9716547C18FCDBB900AA40C3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		972033DD1923199900AD1767 /* yhzx_awardCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yhzx_awardCard.png; sourceTree = "<group>"; };
+		972033DF19231A4200AD1767 /* AwardCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwardCardViewController.h; sourceTree = "<group>"; };
+		972033E019231A4200AD1767 /* AwardCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwardCardViewController.m; sourceTree = "<group>"; };
 		973122401904B973006ECD17 /* rukou3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou3.png; sourceTree = "<group>"; };
 		973122411904B973006ECD17 /* rukou4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou4.png; sourceTree = "<group>"; };
 		973122421904B973006ECD17 /* rukou5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou5.png; sourceTree = "<group>"; };
@@ -5007,6 +5012,7 @@
 				72CF019418F7908900310F49 /* yhzx_caidou_icon.png */,
 				72CF019518F7908900310F49 /* yhzx_message_icon.png */,
 				72CF019818F794EF00310F49 /* yhzx_zhmx_icon.png */,
+				972033DD1923199900AD1767 /* yhzx_awardCard.png */,
 				72CF019A18F7951D00310F49 /* yhzx_tzjl_icon.png */,
 				72CF019B18F7951D00310F49 /* yhzx_zhtx_icon.png */,
 				72CF019C18F7951D00310F49 /* yhzx_zjcx_icon.png */,
@@ -6268,6 +6274,8 @@
 				72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */,
 				72A2335418F69C3600155684 /* ExchangeCaidouViewController.h */,
 				72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */,
+				972033DF19231A4200AD1767 /* AwardCardViewController.h */,
+				972033E019231A4200AD1767 /* AwardCardViewController.m */,
 				72CF019118F78AB900310F49 /* MessageCenterViewController.h */,
 				72CF019218F78AB900310F49 /* MessageCenterViewController.m */,
 				7228AED0190F5B2600BB912E /* MessageContentViewController.h */,
@@ -8092,6 +8100,7 @@
 				5224998918320393005F7577 /* gray_bg.png in Resources */,
 				5224991618320393005F7577 /* zhmx_cz_normal.png in Resources */,
 				522496C518320393005F7577 /* zc_c_sfc_click.png in Resources */,
+				972033DE1923199900AD1767 /* yhzx_awardCard.png in Resources */,
 				5224977E18320393005F7577 /* random_num_blue_click.png in Resources */,
 				97775E2818C95B5D00F0BEBD /* icon_114.png in Resources */,
 				5224968018320393005F7577 /* diamond.png in Resources */,
@@ -8822,6 +8831,7 @@
 				651FFD2C175733BE002CA9B0 /* DataAnalysis_top_tableCell.m in Sources */,
 				651FFD2D175733BE002CA9B0 /* DataAnalysis_xi_TableCell.m in Sources */,
 				651FFD2E175733BE002CA9B0 /* DataAnalysisViewController.m in Sources */,
+				972033E119231A4200AD1767 /* AwardCardViewController.m in Sources */,
 				977A72C418C06D35007DE71B /* DrUIImageView+WebCache.m in Sources */,
 				651FFD2F175733BE002CA9B0 /* InstantScoreCellDetail_JCLQViewController.m in Sources */,
 				651FFD30175733BE002CA9B0 /* InstantScoreCellDetailViewController.m in Sources */,
