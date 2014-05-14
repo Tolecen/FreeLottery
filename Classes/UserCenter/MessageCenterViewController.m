@@ -31,6 +31,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_tableV release];
+    [_dataArray release];
     [super dealloc];
 }
 - (void)viewDidLoad
