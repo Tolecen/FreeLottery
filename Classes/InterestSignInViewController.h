@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol  InterestSignInViewControllerDelegate<NSObject>
+- (void)interestSignInViewControllerDidCancel;
+@end
 @interface InterestSignInViewController : UIViewController
-
+@property (nonatomic,assign)id<InterestSignInViewControllerDelegate> delegate;
 @end
