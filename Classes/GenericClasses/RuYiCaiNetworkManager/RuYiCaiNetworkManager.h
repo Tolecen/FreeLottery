@@ -325,6 +325,7 @@ typedef enum
 -(void)doShakeCheckInWithActID:(NSString *)actID AndCheckID:(NSString *)checkID;
 -(void)queryShakeActList;
 -(void)queryshakeSigninDescription;
+-(void)queryMyAwardCardListWithPage:(NSString *)thePage;
 - (void)softwareUpdate;
 - (void)updateUserInformation;
 -(void)getAdWallImportantInfo;

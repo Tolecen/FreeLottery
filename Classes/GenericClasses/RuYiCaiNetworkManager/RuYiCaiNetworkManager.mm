@@ -2479,6 +2479,41 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request setDelegate:self];
 	[request startAsynchronous];
 }
+-(void)queryMyAwardCardListWithPage:(NSString *)thePage
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"activiy" forKey:@"command"];
+    [mDict setObject:@"partakeList" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    [mDict setObject:thePage forKey:@"pageindex"];
+    [mDict setObject:@"20" forKey:@"maxresult"];
+    [mDict setObject:@"2" forKey:@"category"];
+    //自动登录
+    //    [m_delegate readAutoLoginPlist];//?????????
+    //    if (m_delegate.autoRememberMystatus && [[m_delegate autoLoginRandomNumber] length] > 0) {
+    //        NSString *str = m_delegate.autoLoginRandomNumber;
+    //        [mDict setObject:str forKey:@"randomNumber"];
+    //    }
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  查询活动列表: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeQueryActList];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
 
 
 -(void)doQianDaoWithID:(NSString *)theID
@@ -3204,6 +3239,10 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     if ([errorCode isEqualToString:@"0000"])
 	{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"queryActListOK" object:arrayG];
+    }
+    else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryActListFail" object:arrayG];
     }
 }
 -(void)queryRemainingIDFAOK:(NSString*)resText

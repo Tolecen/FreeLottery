@@ -20,14 +20,26 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.dataArray = @[@{@"id": @"0",@"name": @"赠送18彩豆",@"description":@"通过签到赠送18彩豆"}];
+        self.dataArray = [[NSArray alloc] init];
     }
     return self;
 }
 -(void)dealloc
 {
+    [self.dataArray release];
     [_tableV release];
     [super dealloc];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryActListOK:) name:@"queryActListOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryActListFail) name:@"queryActListFail" object:nil];
+    
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryActListOK" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryActListFail" object:nil];
 }
 - (void)viewDidLoad
 {
@@ -42,7 +54,20 @@
     _tableV.delegate = self;
     [_tableV release];
 
+    [[RuYiCaiNetworkManager sharedManager] queryMyAwardCardListWithPage:@"0"];
 	// Do any additional setup after loading the view.
+}
+-(void)queryActListOK:(NSNotification *)noti
+{
+    
+}
+-(void)queryActListFail
+{
+    UILabel * sss = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 320, 20)];
+    [sss setBackgroundColor:[UIColor clearColor]];
+    [sss setText:@"暂无记录"];
+    [sss setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:sss];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
