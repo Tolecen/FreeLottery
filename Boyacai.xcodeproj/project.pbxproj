@@ -1239,6 +1239,9 @@
 		971653FA18FCDB3E00AA40C3 /* WeiXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971653F318FCDB3E00AA40C3 /* WeiXinViewController.m */; };
 		971653FB18FCDB3E00AA40C3 /* WeiXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 971653F418FCDB3E00AA40C3 /* WeiXinViewController.xib */; };
 		9716547D18FCDBB900AA40C3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716547C18FCDBB900AA40C3 /* CoreText.framework */; };
+		971E6219192462CA005F0794 /* AwardCardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 971E6218192462CA005F0794 /* AwardCardDetailViewController.m */; };
+		972033DE1923199900AD1767 /* yhzx_awardCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 972033DD1923199900AD1767 /* yhzx_awardCard.png */; };
+		972033E119231A4200AD1767 /* AwardCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 972033E019231A4200AD1767 /* AwardCardViewController.m */; };
 		973122451904B973006ECD17 /* rukou3.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122401904B973006ECD17 /* rukou3.png */; };
 		973122461904B973006ECD17 /* rukou4.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122411904B973006ECD17 /* rukou4.png */; };
 		973122471904B973006ECD17 /* rukou5.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122421904B973006ECD17 /* rukou5.png */; };
@@ -1262,6 +1265,11 @@
 		9769B30B18C424E900ED773F /* delenew.png in Resources */ = {isa = PBXBuildFile; fileRef = 9769B30A18C424E900ED773F /* delenew.png */; };
 		976A53E718F6844B003AC2DE /* heart-null.png in Resources */ = {isa = PBXBuildFile; fileRef = 976A53E518F6844B003AC2DE /* heart-null.png */; };
 		976A53E818F6844B003AC2DE /* heart-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 976A53E618F6844B003AC2DE /* heart-full.png */; };
+		977112C81924BDC2000FAA98 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 977112BC1924BDC2000FAA98 /* EGOCache.m */; };
+		977112C91924BDC2000FAA98 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 977112BF1924BDC2000FAA98 /* EGOImageButton.m */; };
+		977112CA1924BDC2000FAA98 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 977112C21924BDC2000FAA98 /* EGOImageLoadConnection.m */; };
+		977112CB1924BDC2000FAA98 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 977112C41924BDC2000FAA98 /* EGOImageLoader.m */; };
+		977112CC1924BDC2000FAA98 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 977112C71924BDC2000FAA98 /* EGOImageView.m */; };
 		97775E2818C95B5D00F0BEBD /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 97775E2718C95B5D00F0BEBD /* icon_114.png */; };
 		97775E2A18C961C700F0BEBD /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 97775E2918C961C700F0BEBD /* 6.png */; };
 		97775E2D18C9B55400F0BEBD /* AdWallTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97775E2C18C9B55400F0BEBD /* AdWallTopCell.m */; };
@@ -3095,6 +3103,11 @@
 		971653F518FCDB3E00AA40C3 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		971653F618FCDB3E00AA40C3 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		9716547C18FCDBB900AA40C3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		971E6217192462CA005F0794 /* AwardCardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwardCardDetailViewController.h; sourceTree = "<group>"; };
+		971E6218192462CA005F0794 /* AwardCardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwardCardDetailViewController.m; sourceTree = "<group>"; };
+		972033DD1923199900AD1767 /* yhzx_awardCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yhzx_awardCard.png; sourceTree = "<group>"; };
+		972033DF19231A4200AD1767 /* AwardCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwardCardViewController.h; sourceTree = "<group>"; };
+		972033E019231A4200AD1767 /* AwardCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwardCardViewController.m; sourceTree = "<group>"; };
 		973122401904B973006ECD17 /* rukou3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou3.png; sourceTree = "<group>"; };
 		973122411904B973006ECD17 /* rukou4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou4.png; sourceTree = "<group>"; };
 		973122421904B973006ECD17 /* rukou5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou5.png; sourceTree = "<group>"; };
@@ -3132,6 +3145,16 @@
 		9769B30A18C424E900ED773F /* delenew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delenew.png; sourceTree = "<group>"; };
 		976A53E518F6844B003AC2DE /* heart-null.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-null.png"; sourceTree = "<group>"; };
 		976A53E618F6844B003AC2DE /* heart-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-full.png"; sourceTree = "<group>"; };
+		977112BB1924BDC2000FAA98 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
+		977112BC1924BDC2000FAA98 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
+		977112BE1924BDC2000FAA98 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
+		977112BF1924BDC2000FAA98 /* EGOImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageButton.m; sourceTree = "<group>"; };
+		977112C11924BDC2000FAA98 /* EGOImageLoadConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoadConnection.h; sourceTree = "<group>"; };
+		977112C21924BDC2000FAA98 /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
+		977112C31924BDC2000FAA98 /* EGOImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoader.h; sourceTree = "<group>"; };
+		977112C41924BDC2000FAA98 /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
+		977112C61924BDC2000FAA98 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
+		977112C71924BDC2000FAA98 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
 		97775E2718C95B5D00F0BEBD /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114.png; sourceTree = "<group>"; };
 		97775E2918C961C700F0BEBD /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
 		97775E2B18C9B55400F0BEBD /* AdWallTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdWallTopCell.h; sourceTree = "<group>"; };
@@ -3763,6 +3786,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				977112BA1924BDC2000FAA98 /* EGOCache */,
+				977112BD1924BDC2000FAA98 /* EGOImageButton */,
+				977112C01924BDC2000FAA98 /* EGOImageLoader */,
+				977112C51924BDC2000FAA98 /* EGOImageView */,
 				977A71E518C030C1007DE71B /* AdWAll */,
 				28A9A2FA181685BB00CA9C9F /* M */,
 				28A7E80C18153C4400DF8A13 /* PRPDebug */,
@@ -5047,6 +5074,7 @@
 				72CF019418F7908900310F49 /* yhzx_caidou_icon.png */,
 				72CF019518F7908900310F49 /* yhzx_message_icon.png */,
 				72CF019818F794EF00310F49 /* yhzx_zhmx_icon.png */,
+				972033DD1923199900AD1767 /* yhzx_awardCard.png */,
 				72CF019A18F7951D00310F49 /* yhzx_tzjl_icon.png */,
 				72CF019B18F7951D00310F49 /* yhzx_zhtx_icon.png */,
 				72CF019C18F7951D00310F49 /* yhzx_zjcx_icon.png */,
@@ -6019,6 +6047,44 @@
 			name = MidiAdWall;
 			sourceTree = "<group>";
 		};
+		977112BA1924BDC2000FAA98 /* EGOCache */ = {
+			isa = PBXGroup;
+			children = (
+				977112BB1924BDC2000FAA98 /* EGOCache.h */,
+				977112BC1924BDC2000FAA98 /* EGOCache.m */,
+			);
+			path = EGOCache;
+			sourceTree = "<group>";
+		};
+		977112BD1924BDC2000FAA98 /* EGOImageButton */ = {
+			isa = PBXGroup;
+			children = (
+				977112BE1924BDC2000FAA98 /* EGOImageButton.h */,
+				977112BF1924BDC2000FAA98 /* EGOImageButton.m */,
+			);
+			path = EGOImageButton;
+			sourceTree = "<group>";
+		};
+		977112C01924BDC2000FAA98 /* EGOImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				977112C11924BDC2000FAA98 /* EGOImageLoadConnection.h */,
+				977112C21924BDC2000FAA98 /* EGOImageLoadConnection.m */,
+				977112C31924BDC2000FAA98 /* EGOImageLoader.h */,
+				977112C41924BDC2000FAA98 /* EGOImageLoader.m */,
+			);
+			path = EGOImageLoader;
+			sourceTree = "<group>";
+		};
+		977112C51924BDC2000FAA98 /* EGOImageView */ = {
+			isa = PBXGroup;
+			children = (
+				977112C61924BDC2000FAA98 /* EGOImageView.h */,
+				977112C71924BDC2000FAA98 /* EGOImageView.m */,
+			);
+			path = EGOImageView;
+			sourceTree = "<group>";
+		};
 		977A71E518C030C1007DE71B /* AdWAll */ = {
 			isa = PBXGroup;
 			children = (
@@ -6336,6 +6402,10 @@
 				72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */,
 				72A2335418F69C3600155684 /* ExchangeCaidouViewController.h */,
 				72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */,
+				972033DF19231A4200AD1767 /* AwardCardViewController.h */,
+				972033E019231A4200AD1767 /* AwardCardViewController.m */,
+				971E6217192462CA005F0794 /* AwardCardDetailViewController.h */,
+				971E6218192462CA005F0794 /* AwardCardDetailViewController.m */,
 				72CF019118F78AB900310F49 /* MessageCenterViewController.h */,
 				72CF019218F78AB900310F49 /* MessageCenterViewController.m */,
 				7228AED0190F5B2600BB912E /* MessageContentViewController.h */,
@@ -8169,6 +8239,7 @@
 				5224998918320393005F7577 /* gray_bg.png in Resources */,
 				5224991618320393005F7577 /* zhmx_cz_normal.png in Resources */,
 				522496C518320393005F7577 /* zc_c_sfc_click.png in Resources */,
+				972033DE1923199900AD1767 /* yhzx_awardCard.png in Resources */,
 				5224977E18320393005F7577 /* random_num_blue_click.png in Resources */,
 				97775E2818C95B5D00F0BEBD /* icon_114.png in Resources */,
 				5224968018320393005F7577 /* diamond.png in Resources */,
@@ -8538,6 +8609,7 @@
 				C53BFCEC13E3C5F500A0C7DC /* RuYiCaiAppDelegate.m in Sources */,
 				C53BFCED13E3C5F500A0C7DC /* RuYiCaiViewController.m in Sources */,
 				C5F3820313E5A85C00F2971A /* NSData-AES.m in Sources */,
+				977112C91924BDC2000FAA98 /* EGOImageButton.m in Sources */,
 				C5F3820413E5A85C00F2971A /* rijndael.c in Sources */,
 				C5F3820B13E5A85C00F2971A /* FifthPageViewController.m in Sources */,
 				28A7E7F418153A9B00DF8A13 /* KSPlayingStyleSupperViewController.m in Sources */,
@@ -8552,6 +8624,7 @@
 				C5F3822813E5A85C00F2971A /* NSURLHelper.m in Sources */,
 				C5F3823213E5A85C00F2971A /* DrawLotteryPageViewController.m in Sources */,
 				97775E2D18C9B55400F0BEBD /* AdWallTopCell.m in Sources */,
+				977112C81924BDC2000FAA98 /* EGOCache.m in Sources */,
 				C5F3823613E5A85C00F2971A /* ImageIconTableViewCell.m in Sources */,
 				C5F3823713E5A85C00F2971A /* InputTableViewCell.m in Sources */,
 				C5F3823813E5A85C00F2971A /* Line_5_LabelTableViewCell.m in Sources */,
@@ -8659,6 +8732,7 @@
 				28A7E7EF18153A9B00DF8A13 /* KS_PickNumberViewController.m in Sources */,
 				977A72BF18C06D35007DE71B /* _SDWebImageDecoder.m in Sources */,
 				28E02D9A1809855600A2C856 /* mztools.c in Sources */,
+				977112CA1924BDC2000FAA98 /* EGOImageLoadConnection.m in Sources */,
 				D5E0D42115A538610071129C /* QOauth.m in Sources */,
 				D5E0D42215A538610071129C /* QOauthKey.m in Sources */,
 				28A9A30B181685BB00CA9C9F /* KSLotteryModel.m in Sources */,
@@ -8701,6 +8775,7 @@
 				72D730D91925E19800FDF190 /* iCarousel.m in Sources */,
 				D501D73415AD81D7005733FB /* HMDTQueryCaseLotViewController.m in Sources */,
 				7269C56B1920C2EA0018F80B /* InterestSignInViewController.m in Sources */,
+				971E6219192462CA005F0794 /* AwardCardDetailViewController.m in Sources */,
 				D501D74115AD8295005733FB /* ZC_pickNumberViewController.m in Sources */,
 				D501D74215AD8295005733FB /* ZCCellView.m in Sources */,
 				D501D74315AD8295005733FB /* ZCJinQiuCaiView.m in Sources */,
@@ -8865,6 +8940,7 @@
 				28708AD817425423009AC9C6 /* ComboBoxViewUtils.m in Sources */,
 				28708AD917425423009AC9C6 /* FireUIPagedScrollView.m in Sources */,
 				28A1D178182263C7006BBF11 /* JZ_CombineListModel.m in Sources */,
+				977112CB1924BDC2000FAA98 /* EGOImageLoader.m in Sources */,
 				2849AB741742AE2500B2F5A3 /* ImageNewCell.m in Sources */,
 				289FB6B01746489900218DE9 /* BuyRemindCell.m in Sources */,
 				289D61E7174E150E00FBB45A /* LotterySpeciesUtil.m in Sources */,
@@ -8906,6 +8982,8 @@
 				651FFD2C175733BE002CA9B0 /* DataAnalysis_top_tableCell.m in Sources */,
 				651FFD2D175733BE002CA9B0 /* DataAnalysis_xi_TableCell.m in Sources */,
 				651FFD2E175733BE002CA9B0 /* DataAnalysisViewController.m in Sources */,
+				977112CC1924BDC2000FAA98 /* EGOImageView.m in Sources */,
+				972033E119231A4200AD1767 /* AwardCardViewController.m in Sources */,
 				977A72C418C06D35007DE71B /* DrUIImageView+WebCache.m in Sources */,
 				651FFD2F175733BE002CA9B0 /* InstantScoreCellDetail_JCLQViewController.m in Sources */,
 				651FFD30175733BE002CA9B0 /* InstantScoreCellDetailViewController.m in Sources */,

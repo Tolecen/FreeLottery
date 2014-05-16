@@ -581,6 +581,7 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"netFailed" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryRemainingChanceOK" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"sofrWareUpdateOK" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryActListOK" object:nil];
     
     
 
@@ -640,6 +641,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryRemainingChanceOK:) name:@"queryRemainingChanceOK" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sofrWareUpdateOK:) name:@"sofrWareUpdateOK" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryActListOK:) name:@"queryActListOK" object:nil];
 
     self.tableViewType = YES;
     
@@ -676,9 +679,55 @@
         [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_QUERY_BALANCE;
         [[RuYiCaiNetworkManager sharedManager] queryUserBalance];
         [[RuYiCaiNetworkManager sharedManager] queryRemainingChanceForLot];
-        
+        [[RuYiCaiNetworkManager sharedManager] queryActListWithPage:@"0"];
     }
 }
+-(void)queryActListOK:(NSNotification *)noti
+{
+    NSArray * hh = noti.object;
+    //    actsArray = [(NSMutableArray *)hh retain];
+    NSString * sss = @"1398152650";
+//    int mm= -1;
+    for (int i = 0;i<hh.count;i++) {
+        NSDictionary * dict = hh[i];
+        if ([[dict objectForKey:@"type"] isEqualToString:@"2"]) {
+            sss = [dict objectForKey:@"state"];
+            NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+            [formatter setDateFormat:@"MM-dd"];
+            NSString* dateS = [formatter stringFromDate:[NSDate date]];
+            [formatter release];
+            NSString * sd = [[NSUserDefaults standardUserDefaults] objectForKey:@"qiandaoTime"];
+            NSString * ifQiaoDao = [[NSUserDefaults standardUserDefaults] objectForKey:@"ifQiaoDao"];
+            
+            if (!sd) {
+                sd = @"1";
+            }
+            if (!ifQiaoDao) {
+                ifQiaoDao = @"NO";
+            }
+            if ([sd isEqualToString:dateS]) {
+                ifQiaoDao = @"YES";
+            }
+            else
+                ifQiaoDao = @"NO";
+            
+            
+            if ([sss isEqualToString:@"1"]&&![sd isEqualToString:dateS]&&[ifQiaoDao isEqualToString:@"NO"]) {
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您今天还没签到哦，赶紧去活动中心报个到吧" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+                [alert show];
+                [alert release];
+                [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"ifQiaoDao"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [[NSUserDefaults standardUserDefaults] setObject:dateS forKey:@"qiandaoTime"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+
+            }
+        }
+
+    }
+    
+}
+
 -(void)queryRemainingChanceOK:(NSNotification *)noti
 {
     [RuYiCaiNetworkManager sharedManager].remainingChance = noti.object;

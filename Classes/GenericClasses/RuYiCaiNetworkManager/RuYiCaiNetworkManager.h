@@ -321,6 +321,9 @@ typedef enum
 -(void)cancelAutoLoginStatus;
 -(void)checkNewVersion;
 -(void)getExchangeScaleForAdwall;
+-(void)queryRecommandedAppList:(NSString *)theType;
+-(void)queryShakeActList;
+-(void)queryshakeSigninDescription;
 - (void)softwareUpdate;
 - (void)updateUserInformation;
 -(void)getAdWallImportantInfo;

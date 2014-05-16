@@ -57,6 +57,24 @@
     _tableView.dataSource = self;
     _tableView.rowHeight = 70;
     [_tableView release];
+    
+//    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"list"];
+//    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"topone"];
+    [[RuYiCaiNetworkManager sharedManager] queryShakeActList];
+    [[RuYiCaiNetworkManager sharedManager] queryshakeSigninDescription];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryRecommandedAppListOK" object:nil];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryRecommandedAppListOK:) name:@"queryRecommandedAppListOK" object:nil];
+}
+-(void)queryRecommandedAppListOK:(NSNotification *)noti
+{
+    appListArray = (NSArray *)[[(NSDictionary *)noti.object objectForKey:@"value"] retain];
+    [_tableView reloadData];
 }
 - (void)back:(id)sender
 {
@@ -74,7 +92,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 50;
+    return appListArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -85,10 +103,11 @@
         cell = [[[ThirdPageTabelCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    NSLog(@"GGGGGGGGGGGG:%d",indexPath.row);
+    cell.titleName =[appListArray[indexPath.row] objectForKey:@"title"];
+    cell.littleTitleName = @"hhkhkkjkjlk";
+    cell.iconImageName = [appListArray[indexPath.row] objectForKey:@"icon"]?[appListArray[indexPath.row] objectForKey:@"icon"]:@"qqq";
     
-    cell.titleName = @"宠物圈";
-    cell.littleTitleName = @"史上最牛的宠物论坛";
-    cell.iconImageName = @"importantinfo";
     
     [cell refresh];
     return  cell;
