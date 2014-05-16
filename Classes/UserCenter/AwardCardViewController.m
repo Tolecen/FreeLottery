@@ -65,6 +65,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+    AwardCardDetailViewController * awV = [[AwardCardDetailViewController alloc] init];
+    awV.navigationItem.title = @"任务卡详情";
+    [self.navigationController pushViewController:awV animated:YES];
+    
+    [awV release];
 
 }
 

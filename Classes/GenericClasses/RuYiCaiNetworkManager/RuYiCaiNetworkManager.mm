@@ -2275,6 +2275,37 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request startAsynchronous];
 }
 
+-(void)queryRecommandedAppList
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"market" forKey:@"command"];
+    [mDict setObject:@"appList" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    [mDict setObject:@"0" forKey:@"pageindex"];
+    [mDict setObject:@"20" forKey:@"maxresult"];
+    [mDict setObject:@"0" forKey:@"type"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  查询精品推荐列表: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeQueryRecommandAppList];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
+
 -(void)queryRemainingIDFA
 {
     NSTrace();
@@ -2592,6 +2623,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
             break;
         case ASINetworkRequestTypeQueryADWallList:
             [self queryADWallListOK:resText];
+            break;
+        case ASINetworkRequestTypeQueryRecommandAppList:
+            [self queryRecommandAppListOK:resText];
             break;
         case ASINetworkRequestTyPeQueryRemainingIDFA:
             [self queryRemainingIDFAOK:resText];
@@ -3070,6 +3104,18 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 //	{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRemainingIDFAOK" object:parserDict];
 //    }
+
+}
+-(void)queryRecommandAppListOK:(NSString *)resText
+{
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    if ([errorCode isEqualToString:@"0000"])
+	{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRecommandedAppListOK" object:parserDict];
+    }
 
 }
 -(void)queryADWallListOK:(NSString*)resText

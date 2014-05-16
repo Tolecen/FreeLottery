@@ -31,7 +31,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) 
     {
-        m_icoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 8, 50, 50)];
+        m_icoImageView = [[EGOImageView alloc] initWithFrame:CGRectMake(10, 8, 50, 50)];
         [self addSubview:m_icoImageView];
         
         m_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 0, 140, 48)];
@@ -65,7 +65,11 @@
 
 - (void)refresh
 {
-    m_icoImageView.image = RYCImageNamed(self.iconImageName);
+    if ([self.iconImageName hasPrefix:@"http"]) {
+        [m_icoImageView setImageURL:[NSURL URLWithString:self.iconImageName]];
+    }
+    else
+        m_icoImageView.image = RYCImageNamed(self.iconImageName);
     NSArray* titleArr = [self.titleName componentsSeparatedByString:@"("];
     if([titleArr count] > 1)
     {

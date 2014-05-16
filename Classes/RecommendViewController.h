@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RecommendViewController : UIViewController
-
+{
+    NSArray * appListArray;
+}
 @end

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "EGOImageView.h"
 @interface ThirdPageTabelCellView : UITableViewCell {
-    UIImageView*  m_icoImageView;
+    EGOImageView*  m_icoImageView;
     UILabel*      m_titleLabel;
     UILabel*      m_littleTitleLabel;
     UILabel*      m_oneLabel;

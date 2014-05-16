@@ -11,6 +11,7 @@
 #import "AdaptationUtils.h"
 #import "RuYiCaiNetworkManager.h"
 #import "ActivityTypeOneCell.h"
+#import "AwardCardDetailViewController.h"
 @interface AwardCardViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     
