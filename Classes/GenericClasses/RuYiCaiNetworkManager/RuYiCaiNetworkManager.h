@@ -322,6 +322,7 @@ typedef enum
 -(void)checkNewVersion;
 -(void)getExchangeScaleForAdwall;
 -(void)queryRecommandedAppList:(NSString *)theType;
+-(void)doShakeCheckInWithActID:(NSString *)actID AndCheckID:(NSString *)checkID;
 -(void)queryShakeActList;
 -(void)queryshakeSigninDescription;
 - (void)softwareUpdate;

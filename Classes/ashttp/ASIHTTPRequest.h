@@ -90,6 +90,7 @@ typedef enum _ASINetworkReqestType
     ASINetworkRequestTypeQueryADWallList,
     ASINetworkRequestTypeQueryRecommandAppList,
     ASINetworkRequestTypeQueryShakeActList,
+    ASINetworkRequestTypeDoShakeCheck,
     ASINetworkRequestTypeQueryShakeSignInDescription,
     ASINetworkRequestTyPeQueryRemainingIDFA,
     ASINetworkRequestTypeDoQianDao,

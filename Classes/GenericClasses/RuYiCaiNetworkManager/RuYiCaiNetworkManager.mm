@@ -2346,6 +2346,37 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request startAsynchronous];
 }
 
+-(void)doShakeCheckInWithActID:(NSString *)actID AndCheckID:(NSString *)checkID
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"activiy" forKey:@"command"];
+    [mDict setObject:@"shakeCheck" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    [mDict setObject:actID forKey:@"activityId"];
+    [mDict setObject:checkID forKey:@"id"];
+    
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  执行摇一摇签到: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeDoShakeCheck];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
+
 
 -(void)queryshakeSigninDescription
 {
@@ -2702,6 +2733,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
             break;
         case ASINetworkRequestTypeQueryShakeActList:
             [self queryShakeActListListOK:resText];
+            break;
+        case ASINetworkRequestTypeDoShakeCheck:
+            [self doShakeCheckOK:resText];
             break;
         case ASINetworkRequestTypeQueryShakeSignInDescription:
             [self queryShakeSignInDescriptionOK:resText];
@@ -3184,6 +3218,17 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRemainingIDFAOK" object:parserDict];
 //    }
 
+}
+-(void)doShakeCheckOK:(NSString *)resText
+{
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    if ([errorCode isEqualToString:@"0000"])
+	{
+        
+    }
 }
 -(void)queryShakeActListListOK:(NSString *)resText
 {
