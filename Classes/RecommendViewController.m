@@ -59,10 +59,6 @@
     [_tableView release];
     
 //    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"list"];
-//    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"topone"];
-    [[RuYiCaiNetworkManager sharedManager] queryShakeActList];
-    [[RuYiCaiNetworkManager sharedManager] queryshakeSigninDescription];
-    [[RuYiCaiNetworkManager sharedManager] doShakeCheckInWithActID:@"4" AndCheckID:@"158"];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {

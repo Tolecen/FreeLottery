@@ -13,4 +13,5 @@
 @property (nonatomic,readonly)BOOL animation;
 - (void)starAnimation;
 - (void)stopAnimationWithSubviewsLocation:(NSInteger)location completion:(void (^)(void))completion;
+- (void)showCardWithTitle:(NSString*)title content:(NSString*)content Target:(id)target action:(SEL)action;
 @end

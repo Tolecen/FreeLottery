@@ -11,9 +11,18 @@
 #import "AdaptationUtils.h"
 #import "ColorUtils.h"
 #import "AnimationView.h"
-@interface InterestSignInViewController ()<UIImagePickerControllerDelegate>
+#import "RuYiCaiNetworkManager.h"
+#import "EGOImageButton.h"
+@interface InterestSignInViewController ()
+{
+    BOOL canShake;
+    int location;
+}
+@property (nonatomic,retain)NSString* openURL;
 @property (nonatomic,retain)UILabel * descriptionsL;
 @property (nonatomic,retain)UILabel * promptL;
+@property (nonatomic,retain)NSString* selectedID;
+@property (nonatomic,retain)NSString* selectedName;
 @property (nonatomic,retain)AnimationView * animationV;
 @end
 
@@ -24,11 +33,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        canShake = NO;
     }
     return self;
 }
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_descriptionsL release];
     [_promptL release];
     [_animationV release];
@@ -37,9 +48,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:NO];
 	// Do any additional setup after loading the view.
-    [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
-    [self becomeFirstResponder];
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
     [AdaptationUtils adaptation:self];
     self.navigationItem.title = @"摇一摇,签到有惊喜";
@@ -86,11 +96,65 @@
     self.animationV = [[AnimationView alloc]initWithFrame:backgroundView.frame];
     [self.view addSubview:_animationV];
     [_animationV release];
+    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"topone"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryRecommandedAppTopOneOK:) name:@"queryRecommandedAppListOK" object:nil];
+    if (_ActID) {
+        [[RuYiCaiNetworkManager sharedManager] queryShakeActList];
+        [[RuYiCaiNetworkManager sharedManager] queryshakeSigninDescription];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShakeActListOK:) name:@"WXRQueryShakeActListOK" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShakeSigninDescriptionOK:) name:@"WXRQueryShakeSigninDescriptionOK" object:nil];
+        _promptL.text = @"您就可劲的摇吧，摇到啥就送啥\n要的频率很重要啊";
+    }else
+    {
+        _promptL.text = @"今日已签到";
+        textImageV.frame = CGRectMake(0, backgroundView.frame.size.height-100, 320, 200);
+    }
     
-    _animationV.subviewsArray = @[@"土豪金",@"土豪银",@"土豪铜",@"土豪铁",@"土豪吕"];
-    _promptL.text = @"您就可劲的摇吧，摇到啥就送啥\n要的频率很重要啊";
-    _descriptionsL.text = @"今日特将:土豪金一部\n每日总有那么几十个,超值赚豆卡赠送\n每日1000个1元话费卡赠送\n每日1500个任务卡赠送\n每日15-500彩豆随机赠送";
-    
+}
+- (void)openMyURL
+{
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:_openURL]])
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: _openURL]];
+    }
+}
+-(void)queryRecommandedAppTopOneOK:(NSNotification *)noti
+{
+    NSString* str = [noti.object[@"value"] objectForKey:@"background"];
+    self.openURL = [noti.object[@"value"] objectForKey:@"downloadUrl"];
+    EGOImageButton* button = [[EGOImageButton alloc]initWithFrame:CGRectMake(0, 0, 320, 80)];
+    button.imageURL = [NSURL URLWithString:str];
+    [button addTarget:self action:@selector(openMyURL) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    [self.view bringSubviewToFront:button];
+}
+-(void)queryShakeActListOK:(NSNotification *)noti
+{
+    canShake = YES;
+    NSArray * arr = noti.object[@"result"];
+    if (arr&&arr.count>0) {
+        NSMutableArray * mutableArr = [NSMutableArray array];
+        for (int i = 0; i < arr.count; i++) {
+            NSDictionary * dic = arr[i];
+            [mutableArr addObject:dic[@"name"]];
+            if ([dic[@"selected"] intValue] == 1) {
+                location = i;
+                self.selectedID = dic[@"id"];
+                self.selectedName = dic[@"name"];
+            }
+        }
+        _animationV.subviewsArray = mutableArr;
+    }
+}
+-(void)queryShakeSigninDescriptionOK:(NSNotification *)noti
+{
+    NSString* str = noti.object[@"value"];
+    _descriptionsL.text = str;
+}
+- (void)doShakeCheckOK:(NSNotification *)noti
+{
+    NSString* str = [noti.object[@"result"] objectForKey:@"retMsg"];
+    [_animationV showCardWithTitle:_selectedName content:str Target:self action:@selector(back:)];
 }
 - (void)back:(id)sender
 {
@@ -115,15 +179,18 @@
 }
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
-    if (event.subtype == UIEventSubtypeMotionShake&&!_animationV.animation) {
+    if (event.subtype == UIEventSubtypeMotionShake&&!_animationV.animation&&canShake) {
         [_animationV starAnimation];
         [self performSelector:@selector(stopAnimation) withObject:nil afterDelay:10];
     }
 }
 - (void)stopAnimation
 {
-    [_animationV stopAnimationWithSubviewsLocation:1 completion:^{
+    [_animationV stopAnimationWithSubviewsLocation:location completion:^{
         NSLog(@"stop");
+        canShake = NO;
+        [[RuYiCaiNetworkManager sharedManager] doShakeCheckInWithActID:_selectedID AndCheckID:_ActID];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckOK:) name:@"WXRDoShakeCheckOK" object:nil];
     }];
 }
 @end

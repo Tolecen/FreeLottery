@@ -31,6 +31,7 @@
         needStop = NO;
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
         UIImageView * imageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 152)];
+        imageV.tag = 100;
         imageV.image = [UIImage imageNamed:@"animationBG"];
         imageV.center = CGPointMake(160, frame.size.height/3+20);
         [self addSubview:imageV];
@@ -41,10 +42,47 @@
         _carousel.dataSource = self;
         _carousel.type = iCarouselTypeRotary;
         [self addSubview:_carousel];
+        _carousel.userInteractionEnabled = NO;
         self.hidden = YES;
         _animation = NO;
     }
     return self;
+}
+- (void)showCardWithTitle:(NSString*)title content:(NSString*)content Target:(id)target action:(SEL)action
+{
+    self.carousel.hidden = YES;
+    [self viewWithTag:100].hidden = YES;
+    UIImageView* tishiIV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 284, 236)];
+    tishiIV.image = [UIImage imageNamed:@"get_backGround"];
+    tishiIV.center = _carousel.center;
+    [self addSubview:tishiIV];
+    tishiIV.userInteractionEnabled = YES;
+    [tishiIV release];
+    
+    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, 284, 40)];
+    label.text = title;
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    [tishiIV addSubview:label];
+    [label release];
+    
+    UITextView * textV = [[UITextView alloc]initWithFrame:CGRectMake(10, 40, 300, 120)];
+    textV.editable = NO;
+    textV.text = content;
+    textV.font = [UIFont systemFontOfSize:14];
+    textV.backgroundColor = [UIColor clearColor];
+    [tishiIV addSubview:textV];
+    [textV release];
+    
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundImage:[UIImage imageNamed:@"get_normal"] forState:UIControlStateNormal];
+    [button setTitle:@"领取" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    button.frame = CGRectMake(68, 180, 143, 35.5);
+    [tishiIV addSubview:button];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
 }
 - (void)starAnimation
 {
@@ -61,6 +99,7 @@
     }
     [_carousel scrollToItemAtIndex:i duration:0.07 completion:^{
         if (needStop&&i==integer) {
+            _animation = NO;
             _completion();
         }else{
             [self pickAutoScroll:i+1];
@@ -96,6 +135,8 @@
     view.frame = CGRectMake(0, 0, 93.5, 63);
     UILabel*label = [[[UILabel alloc]initWithFrame:view.frame] autorelease];
     label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    label.font = [UIFont systemFontOfSize:14];
     label.backgroundColor = [UIColor clearColor];
     [view addSubview:label];
     label.text = _subviewsArray[index%_subviewsArray.count];

@@ -11,5 +11,6 @@
 - (void)interestSignInViewControllerDidCancel;
 @end
 @interface InterestSignInViewController : UIViewController
+@property (nonatomic,retain)NSString* ActID;
 @property (nonatomic,assign)id<InterestSignInViewControllerDelegate> delegate;
 @end

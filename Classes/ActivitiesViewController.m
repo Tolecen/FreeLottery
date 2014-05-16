@@ -32,19 +32,9 @@
     [self.listTableV release];
     [super dealloc];
 }
-- (void)interesting
-{
-    InterestSignInViewController * intVC = [[InterestSignInViewController alloc]init];
-    [self.navigationController pushViewController:intVC animated:YES];
-    [intVC release];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(interesting)];
-    
     
     self.view.backgroundColor = [UIColor whiteColor];
     [AdaptationUtils adaptation:self];
@@ -450,6 +440,18 @@
         [RuYiCaiNetworkManager sharedManager].goBackType = GO_GDSZ_TYPE;
         [[RuYiCaiNetworkManager sharedManager] showLoginAlertViewAndAddAnimation:YES];
         return;
+    }else
+    {
+       NSDictionary * actV = actsArray[indexPath.row];
+        if ([[actV objectForKey:@"type"] isEqualToString:@"2"]){
+            InterestSignInViewController * intVC = [[InterestSignInViewController alloc]init];
+            if ([[actV objectForKey:@"state"] isEqualToString:@"1"]) {
+                intVC.ActID = qiandaoID;
+            }
+            [self.navigationController pushViewController:intVC animated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+            [intVC release];
+        }
     }
 }
 - (void)didReceiveMemoryWarning
