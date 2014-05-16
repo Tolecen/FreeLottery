@@ -3266,7 +3266,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     [jsonParser release];
     if ([errorCode isEqualToString:@"0000"])
 	{
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRDoShakeCheckOK" object:parserDict];
     }
 }
 -(void)queryShakeActListListOK:(NSString *)resText
@@ -3277,7 +3277,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     [jsonParser release];
     if ([errorCode isEqualToString:@"0000"])
 	{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRecommandedAppListOK" object:parserDict];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRQueryShakeActListOK" object:parserDict];
     }
 
 }
@@ -3301,7 +3301,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     [jsonParser release];
     if ([errorCode isEqualToString:@"0000"])
 	{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryShakeSignInDescriptionOK" object:parserDict];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRQueryShakeSigninDescriptionOK" object:parserDict];
     }
 }
 -(void)queryADWallListOK:(NSString*)resText
