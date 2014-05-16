@@ -2275,7 +2275,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request startAsynchronous];
 }
 
--(void)queryRecommandedAppList
+
+//获取自营推荐应用列表，theType=list表示列表，theType=topone表示获取摇一摇最上面广告条
+-(void)queryRecommandedAppList:(NSString *)theType
 {
     NSTrace();
     NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
@@ -2284,11 +2286,20 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     
     NSMutableDictionary* mDict = [self getCommonCookieDictionary];
     [mDict setObject:@"market" forKey:@"command"];
-    [mDict setObject:@"appList" forKey:@"requestType"];
+    if ([theType isEqualToString:@"list"]) {
+        [mDict setObject:@"appList" forKey:@"requestType"];
+        [mDict setObject:@"0" forKey:@"type"];
+    }
+    else if([theType isEqualToString:@"topone"])
+    {
+        [mDict setObject:@"appTop1" forKey:@"requestType"];
+        [mDict setObject:@"1" forKey:@"type"];
+    }
+    
     [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
     [mDict setObject:@"0" forKey:@"pageindex"];
     [mDict setObject:@"20" forKey:@"maxresult"];
-    [mDict setObject:@"0" forKey:@"type"];
+    
     
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
@@ -2304,6 +2315,68 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request setDelegate:self];
 	[request startAsynchronous];
 }
+
+-(void)queryShakeActList
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"activiy" forKey:@"command"];
+    [mDict setObject:@"taskList" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+//    [mDict setObject:@"0" forKey:@"pageindex"];
+//    [mDict setObject:@"20" forKey:@"maxresult"];
+    
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  查询摇一摇活动列表: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeQueryShakeActList];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
+
+-(void)queryshakeSigninDescription
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"info" forKey:@"command"];
+    [mDict setObject:@"valueById" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    [mDict setObject:@"shakeSigninDesc" forKey:@"keyStr"];
+//    [mDict setObject:@"20" forKey:@"maxresult"];
+//    [mDict setObject:@"0" forKey:@"type"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSLog(@"  查询摇一摇总描述: \nsendData:%@" , cookieStr);
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeQueryShakeSignInDescription];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
 
 
 -(void)queryRemainingIDFA
@@ -2626,6 +2699,12 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
             break;
         case ASINetworkRequestTypeQueryRecommandAppList:
             [self queryRecommandAppListOK:resText];
+            break;
+        case ASINetworkRequestTypeQueryShakeActList:
+            [self queryShakeActListListOK:resText];
+            break;
+        case ASINetworkRequestTypeQueryShakeSignInDescription:
+            [self queryShakeSignInDescriptionOK:resText];
             break;
         case ASINetworkRequestTyPeQueryRemainingIDFA:
             [self queryRemainingIDFAOK:resText];
@@ -3106,6 +3185,18 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 //    }
 
 }
+-(void)queryShakeActListListOK:(NSString *)resText
+{
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    if ([errorCode isEqualToString:@"0000"])
+	{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRecommandedAppListOK" object:parserDict];
+    }
+
+}
 -(void)queryRecommandAppListOK:(NSString *)resText
 {
     SBJsonParser *jsonParser = [SBJsonParser new];
@@ -3117,6 +3208,17 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"queryRecommandedAppListOK" object:parserDict];
     }
 
+}
+-(void)queryShakeSignInDescriptionOK:(NSString *)resText
+{
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    if ([errorCode isEqualToString:@"0000"])
+	{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryShakeSignInDescriptionOK" object:parserDict];
+    }
 }
 -(void)queryADWallListOK:(NSString*)resText
 {

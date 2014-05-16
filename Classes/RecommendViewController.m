@@ -58,7 +58,10 @@
     _tableView.rowHeight = 70;
     [_tableView release];
     
-    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList];
+//    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"list"];
+//    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"topone"];
+    [[RuYiCaiNetworkManager sharedManager] queryShakeActList];
+    [[RuYiCaiNetworkManager sharedManager] queryshakeSigninDescription];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -104,6 +107,7 @@
     cell.titleName =[appListArray[indexPath.row] objectForKey:@"title"];
     cell.littleTitleName = @"hhkhkkjkjlk";
     cell.iconImageName = [appListArray[indexPath.row] objectForKey:@"icon"]?[appListArray[indexPath.row] objectForKey:@"icon"]:@"qqq";
+    
     
     [cell refresh];
     return  cell;
