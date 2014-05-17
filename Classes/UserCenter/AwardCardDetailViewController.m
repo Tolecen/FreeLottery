@@ -13,7 +13,7 @@
 @end
 
 @implementation AwardCardDetailViewController
-
+@synthesize nameStr,timeStr,awardStr,desStr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,19 +42,43 @@
     [nameL setTextAlignment:NSTextAlignmentCenter];
     [nameL setFont:[UIFont systemFontOfSize:20]];
     [self.view addSubview:nameL];
-    [nameL setText:@"摇一摇获得18彩豆"];
+    [nameL setText:self.nameStr];
     
     UIView * lineV = [[UIView alloc] initWithFrame:CGRectMake(10, 60, 300, 1)];
     [lineV setBackgroundColor:[UIColor lightGrayColor]];
     [self.view addSubview:lineV];
     [lineV release];
     
-    timeL = [[UILabel alloc] initWithFrame:CGRectMake(40, 71, 240, 20)];
+    timeL = [[UILabel alloc] initWithFrame:CGRectMake(20, 71, 240, 20)];
     [timeL setBackgroundColor:[UIColor clearColor]];
     [timeL setFont:[UIFont systemFontOfSize:15]];
     [timeL setTextColor:[UIColor grayColor]];
     [self.view addSubview:timeL];
-    [timeL setText:@"2014-5-17 摇一摇签到获得"];
+    [timeL setText:self.timeStr];
+    
+    UILabel * awardL = [[UILabel alloc] initWithFrame:CGRectMake(20, 96, 280, 20)];
+    [awardL setBackgroundColor:[UIColor clearColor]];
+    [awardL setFont:[UIFont systemFontOfSize:16]];
+    [awardL setTextColor:[UIColor redColor]];
+    [self.view addSubview:awardL];
+    [awardL setText:self.awardStr];
+    
+    float h = 44;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        h = 64;
+    }
+    NSLog(@"sreenH:%f",[UIScreen mainScreen].bounds.size.height);
+    UITextView * dsTV = [[UITextView alloc] initWithFrame:CGRectMake(10, 126, 300, [UIScreen mainScreen].bounds.size.height-136-64)];
+    dsTV.editable = NO;
+    dsTV.scrollEnabled = YES;
+    dsTV.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    dsTV.showsVerticalScrollIndicator = NO;
+    dsTV.text = self.desStr;
+    [dsTV setFont:[UIFont boldSystemFontOfSize:15]];
+    [dsTV setTextColor:[UIColor blackColor]];
+    [self.view addSubview:dsTV];
+
+    
     
 	// Do any additional setup after loading the view.
 }

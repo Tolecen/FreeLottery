@@ -534,6 +534,23 @@
      else if (alertView.tag==1011){
          netFailedAlertShown = NO;
      }
+     else if(alertView.tag==77){
+         if (buttonIndex==1) {
+             InterestSignInViewController * iv = [[InterestSignInViewController alloc] init];
+             iv.delegate = self;
+             
+             iv.ActID = qiaodaoID;
+           
+             UINavigationController * qdn = [[UINavigationController alloc] initWithRootViewController:iv];
+             [self presentModalViewController:qdn animated:YES];
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+         }
+     }
+}
+-(void)interestSignInViewControllerDidCancel:(InterestSignInViewController *)viewC
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+    [viewC dismissModalViewControllerAnimated:YES];
 }
 -(void)gotoUpgrade
 {
@@ -684,7 +701,7 @@
 }
 -(void)queryActListOK:(NSNotification *)noti
 {
-    NSArray * hh = noti.object;
+    NSArray * hh = (NSArray *)[(NSDictionary *)noti.object objectForKey:@"result"];
     //    actsArray = [(NSMutableArray *)hh retain];
     NSString * sss = @"1398152650";
 //    int mm= -1;
@@ -692,6 +709,7 @@
         NSDictionary * dict = hh[i];
         if ([[dict objectForKey:@"type"] isEqualToString:@"2"]) {
             sss = [dict objectForKey:@"state"];
+            qiaodaoID = [[dict objectForKey:@"id"] retain];
             NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
             [formatter setDateFormat:@"MM-dd"];
             NSString* dateS = [formatter stringFromDate:[NSDate date]];
@@ -713,7 +731,8 @@
             
             
             if ([sss isEqualToString:@"1"]&&![sd isEqualToString:dateS]&&[ifQiaoDao isEqualToString:@"NO"]) {
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您今天还没签到哦，赶紧去活动中心报个到吧" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您今天还没签到哦，赶紧去摇一摇报个到吧，还有各种奖品等着你哦" delegate:self cancelButtonTitle:@"先不了" otherButtonTitles:@"摇一摇签到", nil];
+                alert.tag = 77;
                 [alert show];
                 [alert release];
                 [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"ifQiaoDao"];

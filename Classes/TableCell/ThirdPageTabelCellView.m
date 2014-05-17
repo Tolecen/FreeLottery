@@ -33,6 +33,9 @@
     {
         m_icoImageView = [[EGOImageView alloc] initWithFrame:CGRectMake(10, 8, 50, 50)];
         [self addSubview:m_icoImageView];
+        [m_icoImageView setBackgroundColor:[UIColor lightGrayColor]];
+        m_icoImageView.layer.cornerRadius = 10;
+        m_icoImageView.layer.masksToBounds = YES;
         
         m_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 0, 140, 48)];
         m_titleLabel.textAlignment = UITextAlignmentLeft;
@@ -65,11 +68,13 @@
 
 - (void)refresh
 {
+    
     if ([self.iconImageName hasPrefix:@"http"]) {
         [m_icoImageView setImageURL:[NSURL URLWithString:self.iconImageName]];
     }
     else
         m_icoImageView.image = RYCImageNamed(self.iconImageName);
+    
     NSArray* titleArr = [self.titleName componentsSeparatedByString:@"("];
     if([titleArr count] > 1)
     {
