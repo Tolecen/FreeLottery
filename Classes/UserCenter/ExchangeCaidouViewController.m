@@ -101,10 +101,6 @@
     _textF.keyboardType = UIKeyboardTypeDecimalPad;
     [self.view addSubview:_textF];
     [_textF release];
-    if ([_jiangjinStr intValue]==0) {
-        _textF.enabled = NO;
-        _textF.placeholder = @"暂无可提现金额";
-    }
     
     UILabel * tishiL = [[UILabel alloc]initWithFrame:CGRectMake(0, 160, 320, 20)];
     tishiL.font = [UIFont systemFontOfSize:10];
@@ -121,6 +117,12 @@
     exchangeB.frame = CGRectMake(30, 200, 260, 40);
     [self.view addSubview:exchangeB];
     [exchangeB addTarget:self action:@selector(exchange:) forControlEvents:UIControlEventTouchUpInside];
+    
+    if ([_jiangjinStr intValue]==0) {
+        _textF.enabled = NO;
+        _textF.placeholder = @"暂无可提现金额";
+        exchangeB.enabled = NO;
+    }
     
 }
 
