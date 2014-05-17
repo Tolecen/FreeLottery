@@ -534,6 +534,18 @@
      else if (alertView.tag==1011){
          netFailedAlertShown = NO;
      }
+     else if(alertView.tag==77){
+         if (buttonIndex==1) {
+             InterestSignInViewController * iv = [[InterestSignInViewController alloc] init];
+             iv.delegate = self;
+             UINavigationController * qdn = [[UINavigationController alloc] initWithRootViewController:iv];
+             [self presentModalViewController:qdn animated:YES];
+         }
+     }
+}
+-(void)interestSignInViewControllerDidCancel
+{
+    
 }
 -(void)gotoUpgrade
 {
@@ -713,7 +725,8 @@
             
             
             if ([sss isEqualToString:@"1"]&&![sd isEqualToString:dateS]&&[ifQiaoDao isEqualToString:@"NO"]) {
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您今天还没签到哦，赶紧去活动中心报个到吧" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您今天还没签到哦，赶紧去摇一摇报个到吧，还有各种奖品等着你哦" delegate:self cancelButtonTitle:@"先不了" otherButtonTitles:@"摇一摇签到", nil];
+                alert.tag = 77;
                 [alert show];
                 [alert release];
                 [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"ifQiaoDao"];

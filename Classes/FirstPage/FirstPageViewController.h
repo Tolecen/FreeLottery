@@ -21,6 +21,7 @@
 #import "InstantScoreViewController.h"
 #import "AnimationTabView.h"
 #import "FirstPageTopCell.h"
+#import "InterestSignInViewController.h"
 typedef enum{
     LOTTERY_SHUANG_SE_QIU = 0,
     LOTTERY_DA_LE_TOU,
@@ -50,7 +51,7 @@ typedef enum {
     JC_BD_TYPE2,
     
 } JCType2;
-@interface FirstPageViewController : UIViewController <UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,ValueClickDelegate,UIAlertViewDelegate>
+@interface FirstPageViewController : UIViewController <UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,ValueClickDelegate,UIAlertViewDelegate,InterestSignInViewControllerDelegate>
 {
     BOOL canShowM;
     CAKeyframeAnimation * animation;
