@@ -161,8 +161,8 @@
     if (_animationV.animation) {
         return;
     }
-    if (_delegate&&[_delegate respondsToSelector:@selector(interestSignInViewControllerDidCancel)]) {
-        [_delegate interestSignInViewControllerDidCancel];
+    if (_delegate&&[_delegate respondsToSelector:@selector(interestSignInViewControllerDidCancel:)]) {
+        [_delegate interestSignInViewControllerDidCancel:self];
         return;
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
@@ -189,8 +189,8 @@
     [_animationV stopAnimationWithSubviewsLocation:location completion:^{
         NSLog(@"stop");
         canShake = NO;
-        [[RuYiCaiNetworkManager sharedManager] doShakeCheckInWithActID:_selectedID AndCheckID:_ActID];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckOK:) name:@"WXRDoShakeCheckOK" object:nil];
+//        [[RuYiCaiNetworkManager sharedManager] doShakeCheckInWithActID:_selectedID AndCheckID:_ActID];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckOK:) name:@"WXRDoShakeCheckOK" object:nil];
     }];
 }
 @end

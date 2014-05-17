@@ -16,6 +16,8 @@
 }
 @property (nonatomic, copy) void (^completion)(void);
 @property (nonatomic, retain)iCarousel *carousel;
+@property (nonatomic, retain)UIImageView * shakeTop;
+@property (nonatomic, retain)UIImageView * shakeBottom;
 @end
 @implementation AnimationView
 - (void)dealloc
@@ -42,7 +44,11 @@
         _carousel.dataSource = self;
         _carousel.type = iCarouselTypeRotary;
         [self addSubview:_carousel];
+        _carousel.hidden = YES;
         _carousel.userInteractionEnabled = NO;
+        
+        
+        
         self.hidden = YES;
         _animation = NO;
     }
