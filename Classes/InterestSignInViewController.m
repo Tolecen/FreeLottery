@@ -118,12 +118,20 @@
         textImageV.frame = CGRectMake(0, backgroundView.frame.size.height-100, 320, 200);
     }
     NSString* sound = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXRHaveSound"];
-    if ([sound boolValue]) {
+    if (!sound) {
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"1" forKey:@"WXRHaveSound"];
+        [defaults synchronize];
         _animationV.sound = YES;
-        [buton setBackgroundImage:[UIImage imageNamed:@"shengyin_kai"] forState:UIControlStateNormal];
+        [buton setBackgroundImage:[UIImage imageNamed:@"shengyin_kai"] forState:UIControlStateNormal];[buton setBackgroundImage:[UIImage imageNamed:@"shengyin_kai"] forState:UIControlStateNormal];
     }else{
-        _animationV.sound = NO;
-        [buton setBackgroundImage:[UIImage imageNamed:@"shengyin_guan"] forState:UIControlStateNormal];
+        if ([sound boolValue]) {
+            _animationV.sound = YES;
+            [buton setBackgroundImage:[UIImage imageNamed:@"shengyin_kai"] forState:UIControlStateNormal];
+        }else{
+            _animationV.sound = NO;
+            [buton setBackgroundImage:[UIImage imageNamed:@"shengyin_guan"] forState:UIControlStateNormal];
+        }
     }
     
 }
