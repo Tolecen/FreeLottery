@@ -2706,6 +2706,14 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         case ASINetworkRequestType22X5:
             showMessageType = NO;
             break;
+        case ASINetworkRequestTypeDoShakeCheck:
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRDoShakeCheckFail" object:nil];
+            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"签到失败" message:@"签到失败，请重新签到" delegate:nil cancelButtonTitle:@"知道啦" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+        }
+            break;
         default:
             break;
     }
@@ -3267,6 +3275,12 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     if ([errorCode isEqualToString:@"0000"])
 	{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRDoShakeCheckOK" object:parserDict];
+    }else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRDoShakeCheckFail" object:nil];
+        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"签到失败" message:@"签到失败，请重新签到" delegate:nil cancelButtonTitle:@"知道啦" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
     }
 }
 -(void)queryShakeActListListOK:(NSString *)resText

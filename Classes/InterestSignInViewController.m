@@ -17,6 +17,7 @@
 {
     BOOL canShake;
     int location;
+    RuYiCaiAppDelegate*m_delegate;
 }
 @property (nonatomic,retain)NSString* openURL;
 @property (nonatomic,retain)UILabel * descriptionsL;
@@ -48,9 +49,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:NO];
+    m_delegate = (RuYiCaiAppDelegate*)[[UIApplication sharedApplication] delegate];
 	// Do any additional setup after loading the view.
-    [AdaptationUtils adaptation:self];
+    [AdaptationUtils adaptation:self]; 
     [self.navigationController.navigationBar setBackground];
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
     [AdaptationUtils adaptation:self];
@@ -96,6 +97,7 @@
     [yaoImageView release];
     
     self.animationV = [[AnimationView alloc]initWithFrame:backgroundView.frame];
+    _animationV.sound = YES;
     [self.view addSubview:_animationV];
     [_animationV release];
     [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"topone"];
@@ -128,7 +130,6 @@
     button.imageURL = [NSURL URLWithString:str];
     [button addTarget:self action:@selector(openMyURL) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
-    [self.view bringSubviewToFront:button];
 }
 -(void)queryShakeActListOK:(NSNotification *)noti
 {
@@ -155,8 +156,15 @@
 }
 - (void)doShakeCheckOK:(NSNotification *)noti
 {
+    [m_delegate.activityView disActivityView];
     NSString* str = [noti.object[@"result"] objectForKey:@"retMsg"];
     [_animationV showCardWithTitle:_selectedName content:str Target:self action:@selector(back:)];
+}
+- (void)doShakeCheckFail:(NSNotification *)noti
+{
+    [m_delegate.activityView disActivityView];
+    canShake = YES;
+    [_animationV setNeedStop:NO];
 }
 - (void)back:(id)sender
 {
@@ -183,7 +191,7 @@
 {
     if (event.subtype == UIEventSubtypeMotionShake&&!_animationV.animation&&canShake) {
         [_animationV starAnimation];
-        [self performSelector:@selector(stopAnimation) withObject:nil afterDelay:10];
+        [self performSelector:@selector(stopAnimation) withObject:nil afterDelay:6];
     }
 }
 - (void)stopAnimation
@@ -191,8 +199,12 @@
     [_animationV stopAnimationWithSubviewsLocation:location completion:^{
         NSLog(@"stop");
         canShake = NO;
+        
         [[RuYiCaiNetworkManager sharedManager] doShakeCheckInWithActID:_selectedID AndCheckID:_ActID];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckOK:) name:@"WXRDoShakeCheckOK" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckFail:) name:@"WXRDoShakeCheckFail" object:nil];
+        [m_delegate.activityView activityViewShow];
+        [m_delegate.activityView.titleLabel setText:@"签到中..."];
     }];
 }
 @end

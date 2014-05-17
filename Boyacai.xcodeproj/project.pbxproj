@@ -1159,6 +1159,9 @@
 		72C52F3018FBB5E400AC2763 /* prize_zhongjiang_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C52F2818FBB5E400AC2763 /* prize_zhongjiang_highlight.png */; };
 		72C52F3118FBB5E400AC2763 /* prize_zhongjiang_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C52F2918FBB5E400AC2763 /* prize_zhongjiang_normal.png */; };
 		72C52F3318FBCEE000AC2763 /* caishen_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C52F3218FBCEE000AC2763 /* caishen_icon.png */; };
+		72C5BF721927130700E7263C /* shake_match.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72C5BF701927130700E7263C /* shake_match.wav */; };
+		72C5BF731927130700E7263C /* shake_sound_male.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72C5BF711927130700E7263C /* shake_sound_male.wav */; };
+		72C5BF751927135D00E7263C /* shake_playing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72C5BF741927135D00E7263C /* shake_playing.wav */; };
 		72CF019318F78AB900310F49 /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CF019218F78AB900310F49 /* MessageCenterViewController.m */; };
 		72CF019618F7908900310F49 /* yhzx_caidou_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF019418F7908900310F49 /* yhzx_caidou_icon.png */; };
 		72CF019718F7908900310F49 /* yhzx_message_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF019518F7908900310F49 /* yhzx_message_icon.png */; };
@@ -3005,6 +3008,9 @@
 		72C52F2818FBB5E400AC2763 /* prize_zhongjiang_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prize_zhongjiang_highlight.png; sourceTree = "<group>"; };
 		72C52F2918FBB5E400AC2763 /* prize_zhongjiang_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prize_zhongjiang_normal.png; sourceTree = "<group>"; };
 		72C52F3218FBCEE000AC2763 /* caishen_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caishen_icon.png; sourceTree = "<group>"; };
+		72C5BF701927130700E7263C /* shake_match.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake_match.wav; sourceTree = "<group>"; };
+		72C5BF711927130700E7263C /* shake_sound_male.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake_sound_male.wav; sourceTree = "<group>"; };
+		72C5BF741927135D00E7263C /* shake_playing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake_playing.wav; sourceTree = "<group>"; };
 		72CF019118F78AB900310F49 /* MessageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterViewController.h; sourceTree = "<group>"; };
 		72CF019218F78AB900310F49 /* MessageCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenterViewController.m; sourceTree = "<group>"; };
 		72CF019418F7908900310F49 /* yhzx_caidou_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yhzx_caidou_icon.png; sourceTree = "<group>"; };
@@ -3738,6 +3744,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5DBCD101592C3E600213B4B /* AVFoundation.framework in Frameworks */,
 				724F5CED1921F650006B8142 /* CoreMotion.framework in Frameworks */,
 				970DA66E1910881700D817AE /* libRTBWall.a in Frameworks */,
 				9716547D18FCDBB900AA40C3 /* CoreText.framework in Frameworks */,
@@ -3750,7 +3757,6 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				971653E918FCDAD900AA40C3 /* libDomobOfferWallSDK.a in Frameworks */,
 				D5F0BE5A14A31E0C0070B79B /* QuartzCore.framework in Frameworks */,
-				D5DBCD101592C3E600213B4B /* AVFoundation.framework in Frameworks */,
 				977A72D918C0760C007DE71B /* CoreMedia.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				977A72CB18C06F18007DE71B /* ImageIO.framework in Frameworks */,
@@ -5298,6 +5304,9 @@
 		5224963418320393005F7577 /* ThirdPage */ = {
 			isa = PBXGroup;
 			children = (
+				72C5BF741927135D00E7263C /* shake_playing.wav */,
+				72C5BF701927130700E7263C /* shake_match.wav */,
+				72C5BF711927130700E7263C /* shake_sound_male.wav */,
 				72D730DA19260F2000FDF190 /* get_backGround.png */,
 				72D730DB19260F2000FDF190 /* get_normal.png */,
 				7206DC5E1924764300C97C8A /* card_0.png */,
@@ -8356,6 +8365,7 @@
 				522497EE18320393005F7577 /* jc_menu_button.png in Resources */,
 				522497DE18320393005F7577 /* analysis_c_7click.png in Resources */,
 				522498FA18320393005F7577 /* user_c_setting.png in Resources */,
+				72C5BF731927130700E7263C /* shake_sound_male.wav in Resources */,
 				970DA6A21910881700D817AE /* RTBWall_right.png in Resources */,
 				522496C118320393005F7577 /* zc_c_lcb_nomal.png in Resources */,
 				522498C518320393005F7577 /* menu_gd.png in Resources */,
@@ -8382,6 +8392,7 @@
 				5224984318320393005F7577 /* yapan_c_7_btn.png in Resources */,
 				A06819F617F7E8650033FF80 /* CustomTabBarViewController.xib in Resources */,
 				522497EC18320393005F7577 /* jc_instantscore_click.png in Resources */,
+				72C5BF751927135D00E7263C /* shake_playing.wav in Resources */,
 				977A726418C06AF6007DE71B /* dianru_blue_left_view.png in Resources */,
 				5224991E18320393005F7577 /* zhmx_zf_normal.png in Resources */,
 				5224982C18320393005F7577 /* jc_listbackground2.png in Resources */,
@@ -8494,6 +8505,7 @@
 				522496C718320393005F7577 /* zc_hm_click.png in Resources */,
 				5224997018320393005F7577 /* yellow_bg.png in Resources */,
 				5224967818320393005F7577 /* buy_image.png in Resources */,
+				72C5BF721927130700E7263C /* shake_match.wav in Resources */,
 				7206DC541924657000C97C8A /* yao_bottom.png in Resources */,
 				522497E418320393005F7577 /* instantscore_huangpai.png in Resources */,
 				5224970318320393005F7577 /* lottery_btn_normal.png in Resources */,

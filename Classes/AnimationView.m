@@ -9,27 +9,49 @@
 #import "AnimationView.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "iCarousel.h"
-@interface AnimationView ()<iCarouselDataSource,iCarouselDelegate>
+#import <AVFoundation/AVFoundation.h>
+@interface AnimationView ()<iCarouselDataSource,iCarouselDelegate,AVAudioPlayerDelegate>
 {
     BOOL needStop;
     int integer;
 }
+@property (nonatomic,retain)AVAudioPlayer*getcoinAudio;
 @property (nonatomic, copy) void (^completion)(void);
 @property (nonatomic, retain)iCarousel *carousel;
 @property (nonatomic, retain)UIImageView * shakeTop;
 @property (nonatomic, retain)UIImageView * shakeBottom;
 @end
 @implementation AnimationView
+static SystemSoundID shake_sound_male_id = 0;
+static SystemSoundID shake_match_id = 1;
 - (void)dealloc
 {
+    [_getcoinAudio release];
+    [_shakeTop release];
+    [_shakeBottom release];
+    [_carousel release];
     [_subviewsArray release];
     [super dealloc];
+}
+- (void)initSound
+{
+    NSString *path_shake_sound_male = [[NSBundle mainBundle] pathForResource:@"shake_sound_male" ofType:@"wav"];
+    if (path_shake_sound_male) {
+        //注册声音到系统
+        AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path_shake_sound_male],&shake_sound_male_id);
+    }
+    NSString *path_shake_match_id = [[NSBundle mainBundle] pathForResource:@"shake_match" ofType:@"wav"];
+    if (path_shake_match_id) {
+        //注册声音到系统
+        AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path_shake_match_id],&shake_match_id);
+    }
 }
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [self initSound];
         needStop = NO;
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
         UIImageView * imageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 152)];
@@ -96,38 +118,54 @@
     [tishiIV addSubview:button];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     
+    if (_sound) {
+        AudioServicesPlaySystemSound(shake_match_id);
+    }
+    
 }
 - (void)starAnimation
 {
     _animation = YES;
     self.hidden = NO;
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    if (_sound) {
+         AudioServicesPlaySystemSound(shake_sound_male_id);
+    }
     [_carousel reloadData];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         _carousel.hidden = NO;
-        CGPoint top = _shakeTop.center ;
-        CGPoint bottom = _shakeBottom.center;
-        _shakeTop.center = CGPointMake(160, top.y-70);
-        _shakeBottom.center = CGPointMake(160, bottom.y+70);
+        if (_shakeTop.center.y == self.frame.size.height/3-2) {
+            CGPoint top = _shakeTop.center ;
+            CGPoint bottom = _shakeBottom.center;
+            _shakeTop.center = CGPointMake(160, top.y-70);
+            _shakeBottom.center = CGPointMake(160, bottom.y+70);
+        }
     } completion:^(BOOL finished) {
+        if (_sound) {
+            [self soundPlay];
+        }
         [self pickAutoScroll:0];
     }];
 }
 - (void)pickAutoScroll:(int)i
 {
+    NSLog(@"%d",i);
     if (i>_subviewsArray.count*2) {
         i = 0;
     }
     [_carousel scrollToItemAtIndex:i duration:0.07 completion:^{
         if (needStop&&i==integer) {
             _animation = NO;
+            [_getcoinAudio stop];
             _completion();
         }else{
             [self pickAutoScroll:i+1];
         }
     }];
 }
-
+- (void)setNeedStop: (BOOL)stop
+{
+    needStop = stop;
+}
 - (void)stopAnimationWithSubviewsLocation:(NSInteger)location completion:(void (^)(void))completion
 {
     needStop = YES;
@@ -170,5 +208,19 @@
 - (BOOL)carouselShouldWrap:(iCarousel *)carousel
 {
     return YES;
+}
+- (void)soundPlay
+{
+    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"shake_playing" ofType:@"wav"];
+    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
+    self.getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
+    _getcoinAudio.delegate = self;
+    [_getcoinAudio prepareToPlay];
+    [_getcoinAudio play];
+    [_getcoinAudio release];
+}
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    [_getcoinAudio play];
 }
 @end
