@@ -282,7 +282,7 @@
             cell.timeLabel.text = @" ";
             
         }
-        else
+        else if ([[actV objectForKey:@"state"] isEqualToString:@"1"])
         {
             cell.tLabel.textColor = [UIColor redColor];
             cell.nameLabel.textColor = [UIColor blackColor];
@@ -332,6 +332,7 @@
             cell.qianDaoTimeLabel.text = dateS;
             [cell.doitBtn setTitle:@"立刻签到" forState:UIControlStateNormal];
             cell.doitBtn.tag=101;
+            cell.doitBtn.userInteractionEnabled = NO;
             [cell.doitBtn addTarget:self action:@selector(doQianDao:) forControlEvents:UIControlEventTouchUpInside];
         }
         else
@@ -341,6 +342,7 @@
             cell.imageV.image = [UIImage imageNamed:@"act-caidou"];
             [cell.doitBtn setTitle:@"立刻好评" forState:UIControlStateNormal];
             cell.doitBtn.tag = 102;
+            cell.doitBtn.userInteractionEnabled = YES;
             [cell.doitBtn addTarget:self action:@selector(toCommentInAppStore:) forControlEvents:UIControlEventTouchUpInside];
         }
         if ([[actV objectForKey:@"state"] isEqualToString:@"2"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
@@ -359,8 +361,9 @@
             [cell.doitBtn setBackgroundColor:[UIColor lightGrayColor]];
             [cell.doitBtn setEnabled:NO];
             cell.doitBtn.hidden = NO;
+            [cell.statusImgV setImage:nil];
         }
-        else
+        else if ([[actV objectForKey:@"state"] isEqualToString:@"1"]&&[RuYiCaiNetworkManager sharedManager].hasLogin)
         {
             cell.nameLabel.textColor = [UIColor blackColor];
             cell.doitBtn.hidden = NO;

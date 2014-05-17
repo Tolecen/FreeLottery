@@ -4111,9 +4111,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         if (reviewValue) {
             if ([reviewValue isEqualToString:@"1"]) {
                 
-                if (![RuYiCaiNetworkManager sharedManager].shouldCheat) {
-                    [RuYiCaiNetworkManager sharedManager].realServerURL = CeshiRuYiCaiServer;
-                }
+//                if (![RuYiCaiNetworkManager sharedManager].shouldCheat) {
+//                    [RuYiCaiNetworkManager sharedManager].realServerURL = CeshiRuYiCaiServer;
+//                }
                 [RuYiCaiNetworkManager sharedManager].shouldCheat = YES;
                 
             }
