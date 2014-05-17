@@ -86,7 +86,7 @@
     [tishiIV addSubview:label];
     [label release];
     
-    UITextView * textV = [[UITextView alloc]initWithFrame:CGRectMake(10, 40, 300, 120)];
+    UITextView * textV = [[UITextView alloc]initWithFrame:CGRectMake(10, 47, 300, 120)];
     textV.editable = NO;
     textV.text = content;
     textV.font = [UIFont systemFontOfSize:14];
@@ -128,7 +128,7 @@
         if (_shakeTop.center.y == self.frame.size.height/3-2) {
             CGPoint top = _shakeTop.center ;
             CGPoint bottom = _shakeBottom.center;
-            _shakeTop.center = CGPointMake(160, top.y-70);
+            _shakeTop.center = CGPointMake(160, top.y-75);
             _shakeBottom.center = CGPointMake(160, bottom.y+70);
         }
     } completion:^(BOOL finished) {

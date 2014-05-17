@@ -40,11 +40,15 @@
 }
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_descriptionsL release];
     [_promptL release];
     [_animationV release];
     [super dealloc];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)viewDidLoad
 {
@@ -111,7 +115,7 @@
         [[RuYiCaiNetworkManager sharedManager] queryshakeSigninDescription];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShakeActListOK:) name:@"WXRQueryShakeActListOK" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShakeSigninDescriptionOK:) name:@"WXRQueryShakeSigninDescriptionOK" object:nil];
-        _promptL.text = @"您就可劲的摇吧，摇到啥就送啥\n要的频率很重要啊";
+        _promptL.text = @"您就可劲的摇吧，摇到啥就送啥\n摇的频率很重要啊";
     }else
     {
         _promptL.text = @"今日已签到";
@@ -224,12 +228,17 @@
     [_animationV stopAnimationWithSubviewsLocation:location completion:^{
         NSLog(@"stop");
         canShake = NO;
-        
-        [[RuYiCaiNetworkManager sharedManager] doShakeCheckInWithActID:_selectedID AndCheckID:_ActID];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckOK:) name:@"WXRDoShakeCheckOK" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckFail:) name:@"WXRDoShakeCheckFail" object:nil];
-        [m_delegate.activityView activityViewShow];
-        [m_delegate.activityView.titleLabel setText:@"签到中..."];
+        [self performSelector:@selector(docheck) withObject:nil afterDelay:1];
+
     }];
+}
+
+-(void)docheck
+{
+    [[RuYiCaiNetworkManager sharedManager] doShakeCheckInWithActID:_selectedID AndCheckID:_ActID];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckOK:) name:@"WXRDoShakeCheckOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckFail:) name:@"WXRDoShakeCheckFail" object:nil];
+    [m_delegate.activityView activityViewShow];
+    [m_delegate.activityView.titleLabel setText:@"努力找奖品..."];
 }
 @end
