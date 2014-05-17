@@ -96,8 +96,12 @@
     [backgroundView addSubview:yaoImageView];
     [yaoImageView release];
     
+    UIButton *buton = [UIButton buttonWithType:UIButtonTypeCustom];
+    buton.frame = CGRectMake(240, 100, 59, 23);
+    [buton addTarget:self action:@selector(setAnimitionVSound:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buton];
+    
     self.animationV = [[AnimationView alloc]initWithFrame:backgroundView.frame];
-    _animationV.sound = YES;
     [self.view addSubview:_animationV];
     [_animationV release];
     [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"topone"];
@@ -113,7 +117,27 @@
         _promptL.text = @"今日已签到";
         textImageV.frame = CGRectMake(0, backgroundView.frame.size.height-100, 320, 200);
     }
+    NSString* sound = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXRHaveSound"];
+    if ([sound boolValue]) {
+        _animationV.sound = YES;
+        [buton setBackgroundImage:[UIImage imageNamed:@"shengyin_kai"] forState:UIControlStateNormal];
+    }else{
+        _animationV.sound = NO;
+        [buton setBackgroundImage:[UIImage imageNamed:@"shengyin_guan"] forState:UIControlStateNormal];
+    }
     
+}
+- (void)setAnimitionVSound:(UIButton*)button
+{
+    if (_animationV.sound) {
+        [button setBackgroundImage:[UIImage imageNamed:@"shengyin_guan"] forState:UIControlStateNormal];
+    }else{
+        [button setBackgroundImage:[UIImage imageNamed:@"shengyin_kai"] forState:UIControlStateNormal];
+    }
+    _animationV.sound = !_animationV.sound;
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSString stringWithFormat:@"%d",_animationV.sound] forKey:@"WXRHaveSound"];
+    [defaults synchronize];
 }
 - (void)openMyURL
 {
@@ -130,6 +154,7 @@
     button.imageURL = [NSURL URLWithString:str];
     [button addTarget:self action:@selector(openMyURL) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
+    [self.view insertSubview:button belowSubview:_animationV];
 }
 -(void)queryShakeActListOK:(NSNotification *)noti
 {

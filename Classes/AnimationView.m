@@ -7,7 +7,6 @@
 //
 
 #import "AnimationView.h"
-#import <AudioToolbox/AudioToolbox.h>
 #import "iCarousel.h"
 #import <AVFoundation/AVFoundation.h>
 @interface AnimationView ()<iCarouselDataSource,iCarouselDelegate,AVAudioPlayerDelegate>
@@ -22,8 +21,7 @@
 @property (nonatomic, retain)UIImageView * shakeBottom;
 @end
 @implementation AnimationView
-static SystemSoundID shake_sound_male_id = 0;
-static SystemSoundID shake_match_id = 1;
+
 - (void)dealloc
 {
     [_getcoinAudio release];
@@ -33,25 +31,11 @@ static SystemSoundID shake_match_id = 1;
     [_subviewsArray release];
     [super dealloc];
 }
-- (void)initSound
-{
-    NSString *path_shake_sound_male = [[NSBundle mainBundle] pathForResource:@"shake_sound_male" ofType:@"wav"];
-    if (path_shake_sound_male) {
-        //注册声音到系统
-        AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path_shake_sound_male],&shake_sound_male_id);
-    }
-    NSString *path_shake_match_id = [[NSBundle mainBundle] pathForResource:@"shake_match" ofType:@"wav"];
-    if (path_shake_match_id) {
-        //注册声音到系统
-        AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path_shake_match_id],&shake_match_id);
-    }
-}
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self initSound];
         needStop = NO;
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
         UIImageView * imageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 152)];
@@ -119,7 +103,11 @@ static SystemSoundID shake_match_id = 1;
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     
     if (_sound) {
-        AudioServicesPlaySystemSound(shake_match_id);
+        NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"shake_match" ofType:@"wav"];
+        NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
+        AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
+        [getcoinAudio prepareToPlay];
+        [getcoinAudio play];
     }
     
 }
@@ -128,7 +116,11 @@ static SystemSoundID shake_match_id = 1;
     _animation = YES;
     self.hidden = NO;
     if (_sound) {
-         AudioServicesPlaySystemSound(shake_sound_male_id);
+        NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"shake_sound_male" ofType:@"wav"];
+        NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
+        AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
+        [getcoinAudio prepareToPlay];
+        [getcoinAudio play];
     }
     [_carousel reloadData];
     [UIView animateWithDuration:1 animations:^{
