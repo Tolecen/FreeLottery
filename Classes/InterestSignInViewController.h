@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class InterestSignInViewController;
 @protocol  InterestSignInViewControllerDelegate<NSObject>
-- (void)interestSignInViewControllerDidCancel;
+- (void)interestSignInViewControllerDidCancel:(InterestSignInViewController*)viewC;
 @end
 @interface InterestSignInViewController : UIViewController
 @property (nonatomic,retain)NSString* ActID;
