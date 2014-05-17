@@ -50,6 +50,8 @@
     [super viewDidLoad];
     [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:NO];
 	// Do any additional setup after loading the view.
+    [AdaptationUtils adaptation:self];
+    [self.navigationController.navigationBar setBackground];
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
     [AdaptationUtils adaptation:self];
     self.navigationItem.title = @"摇一摇,签到有惊喜";
@@ -189,8 +191,8 @@
     [_animationV stopAnimationWithSubviewsLocation:location completion:^{
         NSLog(@"stop");
         canShake = NO;
-//        [[RuYiCaiNetworkManager sharedManager] doShakeCheckInWithActID:_selectedID AndCheckID:_ActID];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckOK:) name:@"WXRDoShakeCheckOK" object:nil];
+        [[RuYiCaiNetworkManager sharedManager] doShakeCheckInWithActID:_selectedID AndCheckID:_ActID];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doShakeCheckOK:) name:@"WXRDoShakeCheckOK" object:nil];
     }];
 }
 @end
