@@ -47,7 +47,14 @@
         _carousel.hidden = YES;
         _carousel.userInteractionEnabled = NO;
         
-        
+        self.shakeTop = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 80, 45)];
+        _shakeTop.center = CGPointMake(160, frame.size.height/3-2);
+        _shakeTop.image = [UIImage imageNamed:@"yao-top"];
+        [self addSubview: _shakeTop];
+        self.shakeBottom = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 104, 47)];
+        _shakeBottom.center = CGPointMake(160, frame.size.height/3+43);
+        _shakeBottom.image = [UIImage imageNamed:@"yao_bottom"];
+        [self addSubview: _shakeBottom];
         
         self.hidden = YES;
         _animation = NO;
@@ -96,7 +103,15 @@
     self.hidden = NO;
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     [_carousel reloadData];
-    [self pickAutoScroll:0];
+    [UIView animateWithDuration:0.3 animations:^{
+        _carousel.hidden = NO;
+        CGPoint top = _shakeTop.center ;
+        CGPoint bottom = _shakeBottom.center;
+        _shakeTop.center = CGPointMake(160, top.y-70);
+        _shakeBottom.center = CGPointMake(160, bottom.y+70);
+    } completion:^(BOOL finished) {
+        [self pickAutoScroll:0];
+    }];
 }
 - (void)pickAutoScroll:(int)i
 {
