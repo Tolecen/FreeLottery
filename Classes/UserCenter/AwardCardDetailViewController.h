@@ -15,4 +15,8 @@
     UILabel * nameL;
     UILabel * timeL;
 }
+@property (retain,nonatomic) NSString * nameStr;
+@property (retain,nonatomic) NSString * timeStr;
+@property (retain,nonatomic) NSString * awardStr;
+@property (retain,nonatomic) NSString * desStr;
 @end

@@ -3233,16 +3233,16 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 {
     SBJsonParser *jsonParser = [SBJsonParser new];
     NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
-    NSArray * arrayG = [parserDict objectForKey:@"result"];
+//    NSArray * arrayG = [parserDict objectForKey:@"result"];
     NSString* errorCode = [parserDict objectForKey:@"error_code"];
     [jsonParser release];
     if ([errorCode isEqualToString:@"0000"])
 	{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryActListOK" object:arrayG];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryActListOK" object:parserDict];
     }
     else
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryActListFail" object:arrayG];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"queryActListFail" object:parserDict];
     }
 }
 -(void)queryRemainingIDFAOK:(NSString*)resText

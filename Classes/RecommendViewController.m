@@ -58,7 +58,7 @@
     _tableView.rowHeight = 70;
     [_tableView release];
     
-//    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"list"];
+    [[RuYiCaiNetworkManager sharedManager] queryRecommandedAppList:@"list"];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -102,7 +102,7 @@
     }
     NSLog(@"GGGGGGGGGGGG:%d",indexPath.row);
     cell.titleName =[appListArray[indexPath.row] objectForKey:@"title"];
-    cell.littleTitleName = @"hhkhkkjkjlk";
+    cell.littleTitleName = [appListArray[indexPath.row] objectForKey:@"description"];
     cell.iconImageName = [appListArray[indexPath.row] objectForKey:@"icon"]?[appListArray[indexPath.row] objectForKey:@"icon"]:@"qqq";
     
     
@@ -112,5 +112,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString * _openURL = [appListArray[indexPath.row] objectForKey:@"downloadUrl"]?[appListArray[indexPath.row] objectForKey:@"downloadUrl"]:@"s";
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:_openURL]])
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: _openURL]];
+    }
+
 }
 @end

@@ -701,7 +701,7 @@
 }
 -(void)queryActListOK:(NSNotification *)noti
 {
-    NSArray * hh = noti.object;
+    NSArray * hh = (NSArray *)[(NSDictionary *)noti.object objectForKey:@"result"];
     //    actsArray = [(NSMutableArray *)hh retain];
     NSString * sss = @"1398152650";
 //    int mm= -1;

@@ -10,11 +10,12 @@
 #import "BackBarButtonItemUtils.h"
 #import "AdaptationUtils.h"
 #import "RuYiCaiNetworkManager.h"
-#import "ActivityTypeOneCell.h"
+#import "ThirdPageTabelCellView.h"
 #import "AwardCardDetailViewController.h"
 @interface AwardCardViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    
+    int curPageIndex;
+    int totalPageCount;
 }
 @property (nonatomic,retain)UITableView * tableV;
 @property (nonatomic,retain)NSArray * dataArray;
