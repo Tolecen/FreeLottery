@@ -538,14 +538,19 @@
          if (buttonIndex==1) {
              InterestSignInViewController * iv = [[InterestSignInViewController alloc] init];
              iv.delegate = self;
+             
+             iv.ActID = qiaodaoID;
+           
              UINavigationController * qdn = [[UINavigationController alloc] initWithRootViewController:iv];
              [self presentModalViewController:qdn animated:YES];
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
          }
      }
 }
--(void)interestSignInViewControllerDidCancel
+-(void)interestSignInViewControllerDidCancel:(InterestSignInViewController *)viewC
 {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+    [viewC dismissModalViewControllerAnimated:YES];
 }
 -(void)gotoUpgrade
 {
@@ -704,6 +709,7 @@
         NSDictionary * dict = hh[i];
         if ([[dict objectForKey:@"type"] isEqualToString:@"2"]) {
             sss = [dict objectForKey:@"state"];
+            qiaodaoID = [[dict objectForKey:@"id"] retain];
             NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
             [formatter setDateFormat:@"MM-dd"];
             NSString* dateS = [formatter stringFromDate:[NSDate date]];

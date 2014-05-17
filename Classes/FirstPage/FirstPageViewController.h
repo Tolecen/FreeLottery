@@ -139,6 +139,8 @@ typedef enum {
     
     BOOL topmsgShowed;
     
+    NSString * qiaodaoID;
+    
 #ifndef isBOYA
     UIImageView        *m_imagePageFour;
     
