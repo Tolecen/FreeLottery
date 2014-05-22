@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AgreementViewController : UIViewController<UIWebViewDelegate>
-
+{
+    UIWebView *agreeWebView;
+}
 @end

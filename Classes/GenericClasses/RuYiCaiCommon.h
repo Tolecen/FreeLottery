@@ -32,7 +32,7 @@
 
 #define CaiJinDuiHuanTiShi   @"尊敬的用户，您的彩豆余额不足，赶紧免费兑换吧！"
 
-#define TestUNum    @"00001135"
+#define TestUNum    @"00157098"
 #define CheatApple  @"0"
 
 #define BuyAndInfoSeparated   @"0"

@@ -53,7 +53,7 @@
         registerButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [registerButton addTarget:self action: @selector(cancelLoginClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:registerButton];
-        UIWebView *agreeWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, [UIScreen mainScreen].bounds.size.height - 64)];
+        agreeWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, [UIScreen mainScreen].bounds.size.height - 64)];
         agreeWebView.delegate = self;
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:kRuYiCaiUserProtocol]];
@@ -85,7 +85,7 @@
         registerButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [registerButton addTarget:self action: @selector(cancelLoginClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:registerButton];
-        UIWebView *agreeWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, [UIScreen mainScreen].bounds.size.height - 64)];
+        agreeWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, [UIScreen mainScreen].bounds.size.height - 64)];
         agreeWebView.delegate = self;
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:kRuYiCaiUserProtocol]];
@@ -96,10 +96,15 @@
    
 }
 
-
+-(void)dealloc
+{
+    [agreeWebView release];
+    [super dealloc];
+}
 - (void)cancelLoginClick:(id)sender
 {
-        [self dismissModalViewControllerAnimated:YES];
+    [agreeWebView stopLoading];
+    [self dismissModalViewControllerAnimated:YES];
     
 }
 
