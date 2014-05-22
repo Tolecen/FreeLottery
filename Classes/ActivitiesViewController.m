@@ -11,6 +11,7 @@
 #import "ActionView.h"
 #import "InterestSignInViewController.h"
 #import "RuYiCaiNetworkManager.h"
+#import "DiceViewController.h"
 @interface ActivitiesViewController ()
 
 @end
@@ -32,6 +33,12 @@
     [self.listTableV release];
     [super dealloc];
 }
+- (void)shaizi
+{
+    DiceViewController * dicVC = [[DiceViewController alloc]init];
+    [self.navigationController pushViewController:dicVC animated:YES];
+    [dicVC release];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -40,7 +47,13 @@
     [AdaptationUtils adaptation:self];
     //    [AdaptationUtils adaptation:self];
     [self.navigationController.navigationBar setBackground];
-    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithCustomView:({
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(0, 0, 40, 30);
+        [button addTarget:self action:@selector(shaizi) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitle:@"骰子" forState:UIControlStateNormal];
+        button;
+    }) ];
 //    if (self.isShowBackButton) {
 //        [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(backAction:) andAutoPopView:NO];
 //        

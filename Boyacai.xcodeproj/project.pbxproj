@@ -1137,6 +1137,13 @@
 		7269C56B1920C2EA0018F80B /* InterestSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7269C56A1920C2EA0018F80B /* InterestSignInViewController.m */; };
 		726ADAF718F788C3007624AD /* exchange-click.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF518F788C3007624AD /* exchange-click.png */; };
 		726ADAF818F788C3007624AD /* exchange-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 726ADAF618F788C3007624AD /* exchange-normal.png */; };
+		72735675192D95760083F80A /* ting1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7273566F192D95760083F80A /* ting1.png */; };
+		72735676192D95760083F80A /* ting2.png in Resources */ = {isa = PBXBuildFile; fileRef = 72735670192D95760083F80A /* ting2.png */; };
+		72735677192D95760083F80A /* ting3.png in Resources */ = {isa = PBXBuildFile; fileRef = 72735671192D95760083F80A /* ting3.png */; };
+		72735678192D95760083F80A /* ting4.png in Resources */ = {isa = PBXBuildFile; fileRef = 72735672192D95760083F80A /* ting4.png */; };
+		72735679192D95760083F80A /* ting5.png in Resources */ = {isa = PBXBuildFile; fileRef = 72735673192D95760083F80A /* ting5.png */; };
+		7273567A192D95760083F80A /* ting6.png in Resources */ = {isa = PBXBuildFile; fileRef = 72735674192D95760083F80A /* ting6.png */; };
+		72735689192DA0F20083F80A /* DiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72735688192DA0F20083F80A /* DiceViewController.m */; };
 		7274570619066E710043A3B8 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274570519066E710043A3B8 /* CheckoutViewController.m */; };
 		7276665218FCCB98006DB950 /* ActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7276665118FCCB98006DB950 /* ActionView.m */; };
 		72A2335618F69C3600155684 /* ExchangeCaidouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */; };
@@ -2979,6 +2986,14 @@
 		7269C56A1920C2EA0018F80B /* InterestSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestSignInViewController.m; sourceTree = "<group>"; };
 		726ADAF518F788C3007624AD /* exchange-click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-click.png"; sourceTree = "<group>"; };
 		726ADAF618F788C3007624AD /* exchange-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange-normal.png"; sourceTree = "<group>"; };
+		7273566F192D95760083F80A /* ting1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ting1.png; sourceTree = "<group>"; };
+		72735670192D95760083F80A /* ting2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ting2.png; sourceTree = "<group>"; };
+		72735671192D95760083F80A /* ting3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ting3.png; sourceTree = "<group>"; };
+		72735672192D95760083F80A /* ting4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ting4.png; sourceTree = "<group>"; };
+		72735673192D95760083F80A /* ting5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ting5.png; sourceTree = "<group>"; };
+		72735674192D95760083F80A /* ting6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ting6.png; sourceTree = "<group>"; };
+		72735687192DA0F20083F80A /* DiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiceViewController.h; sourceTree = "<group>"; };
+		72735688192DA0F20083F80A /* DiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiceViewController.m; sourceTree = "<group>"; };
 		7274570419066E710043A3B8 /* CheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutViewController.h; sourceTree = "<group>"; };
 		7274570519066E710043A3B8 /* CheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutViewController.m; sourceTree = "<group>"; };
 		7276665018FCCB98006DB950 /* ActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionView.h; sourceTree = "<group>"; };
@@ -3010,9 +3025,9 @@
 		72C52F2818FBB5E400AC2763 /* prize_zhongjiang_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prize_zhongjiang_highlight.png; sourceTree = "<group>"; };
 		72C52F2918FBB5E400AC2763 /* prize_zhongjiang_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prize_zhongjiang_normal.png; sourceTree = "<group>"; };
 		72C52F3218FBCEE000AC2763 /* caishen_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caishen_icon.png; sourceTree = "<group>"; };
-		72C5BF701927130700E7263C /* shake_match.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake_match.wav; sourceTree = "<group>"; };
-		72C5BF711927130700E7263C /* shake_sound_male.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake_sound_male.wav; sourceTree = "<group>"; };
-		72C5BF741927135D00E7263C /* shake_playing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake_playing.wav; sourceTree = "<group>"; };
+		72C5BF701927130700E7263C /* shake_match.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shake_match.wav; path = ../../images/ThirdPage/shake_match.wav; sourceTree = "<group>"; };
+		72C5BF711927130700E7263C /* shake_sound_male.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shake_sound_male.wav; path = ../../images/ThirdPage/shake_sound_male.wav; sourceTree = "<group>"; };
+		72C5BF741927135D00E7263C /* shake_playing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shake_playing.wav; path = ../../images/ThirdPage/shake_playing.wav; sourceTree = "<group>"; };
 		72C5BF7619273FD800E7263C /* shengyin_guan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shengyin_guan.png; sourceTree = "<group>"; };
 		72C5BF7719273FD800E7263C /* shengyin_kai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shengyin_kai.png; sourceTree = "<group>"; };
 		72CF019118F78AB900310F49 /* MessageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterViewController.h; sourceTree = "<group>"; };
@@ -4203,6 +4218,7 @@
 		522492B518320391005F7577 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				7273566E192D94A60083F80A /* shaizi */,
 				522492B618320391005F7577 /* FifthPage */,
 				522492E418320391005F7577 /* FirstPage */,
 				5224943D18320392005F7577 /* FirstPageMain */,
@@ -5310,9 +5326,6 @@
 			children = (
 				72C5BF7619273FD800E7263C /* shengyin_guan.png */,
 				72C5BF7719273FD800E7263C /* shengyin_kai.png */,
-				72C5BF741927135D00E7263C /* shake_playing.wav */,
-				72C5BF701927130700E7263C /* shake_match.wav */,
-				72C5BF711927130700E7263C /* shake_sound_male.wav */,
 				72D730DA19260F2000FDF190 /* get_backGround.png */,
 				72D730DB19260F2000FDF190 /* get_normal.png */,
 				7206DC5E1924764300C97C8A /* card_0.png */,
@@ -5416,6 +5429,8 @@
 				7269C5671920B24F0018F80B /* RecommendViewController.m */,
 				97FD04B818E3BDD3008FF2CB /* ActivitiesViewController.h */,
 				97FD04B918E3BDD3008FF2CB /* ActivitiesViewController.m */,
+				72735687192DA0F20083F80A /* DiceViewController.h */,
+				72735688192DA0F20083F80A /* DiceViewController.m */,
 				7269C5691920C2EA0018F80B /* InterestSignInViewController.h */,
 				7269C56A1920C2EA0018F80B /* InterestSignInViewController.m */,
 				724F5CEE1922121D006B8142 /* AnimationView.h */,
@@ -5862,6 +5877,19 @@
 				725AF441190B670F003C17ED /* KGStatusBar.m */,
 			);
 			path = KGStatusBar;
+			sourceTree = "<group>";
+		};
+		7273566E192D94A60083F80A /* shaizi */ = {
+			isa = PBXGroup;
+			children = (
+				7273566F192D95760083F80A /* ting1.png */,
+				72735670192D95760083F80A /* ting2.png */,
+				72735671192D95760083F80A /* ting3.png */,
+				72735672192D95760083F80A /* ting4.png */,
+				72735673192D95760083F80A /* ting5.png */,
+				72735674192D95760083F80A /* ting6.png */,
+			);
+			name = shaizi;
 			sourceTree = "<group>";
 		};
 		72BC605C18F53E390002B217 /* DMOfferWallSDK */ = {
@@ -7067,6 +7095,9 @@
 		D5DBCCE51592C11500213B4B /* music */ = {
 			isa = PBXGroup;
 			children = (
+				72C5BF741927135D00E7263C /* shake_playing.wav */,
+				72C5BF701927130700E7263C /* shake_match.wav */,
+				72C5BF711927130700E7263C /* shake_sound_male.wav */,
 				D5DBCCE61592C12200213B4B /* okClickMusic.mp3 */,
 				D5DBCCE71592C12200213B4B /* selectMusic.mp3 */,
 			);
@@ -7796,6 +7827,7 @@
 				97545E2F1910CC3C003304DD /* Defaul2x.png in Resources */,
 				522496BD18320393005F7577 /* zc_c_click.png in Resources */,
 				522496F218320393005F7577 /* Item_2bt_button_selected_image.png in Resources */,
+				72735678192D95760083F80A /* ting4.png in Resources */,
 				5224995C18320393005F7577 /* select2_normal.png in Resources */,
 				522498A718320393005F7577 /* xzb_c_2.png in Resources */,
 				522496A618320393005F7577 /* gd11x5_c_main.png in Resources */,
@@ -8095,11 +8127,13 @@
 				977A727D18C06AF6007DE71B /* dianru_green_dianru_download.png in Resources */,
 				977A72A118C06AF6007DE71B /* dianru_red_dianru_iphone_download.png in Resources */,
 				97FB874B18DBCA6A00F03DDA /* icon-144.png in Resources */,
+				7273567A192D95760083F80A /* ting6.png in Resources */,
 				522496AB18320393005F7577 /* jctx_touzhu_btn.png in Resources */,
 				970DA67F1910881700D817AE /* RTBWall_buy_notice.png in Resources */,
 				970DA6951910881700D817AE /* RTBWall_yyy_red.png in Resources */,
 				5224975818320393005F7577 /* jsbf_c_btnnomal.png in Resources */,
 				D5D1B50D15CA1664006F5A92 /* LaunchHMViewController.xib in Resources */,
+				72735676192D95760083F80A /* ting2.png in Resources */,
 				522498B118320393005F7577 /* ph_btnnormal.png in Resources */,
 				5224984618320393005F7577 /* yapan_c_nomal.png in Resources */,
 				970DA6841910881700D817AE /* RTBWall_face_happy_white.png in Resources */,
@@ -8386,6 +8420,7 @@
 				5224998818320393005F7577 /* gp_kjzs_hover_btn.png in Resources */,
 				977A728518C06AF6007DE71B /* dianru_green_right_view.png in Resources */,
 				522497E818320393005F7577 /* instantscore_shoucangnormal.png in Resources */,
+				72735679192D95760083F80A /* ting5.png in Resources */,
 				977A725D18C06AF6007DE71B /* dianru_blue_dianru_bottom.png in Resources */,
 				5224995F18320393005F7577 /* select3_click.png in Resources */,
 				7243F98E190600A50072AF6B /* fc3d_c_main.png in Resources */,
@@ -8506,6 +8541,7 @@
 				524623F21887ABF1003CDA0D /* ico_c_bank.png in Resources */,
 				522497C218320393005F7577 /* zygg_c_nomal.png in Resources */,
 				5224971618320393005F7577 /* register_hov_btn.png in Resources */,
+				72735675192D95760083F80A /* ting1.png in Resources */,
 				977A726818C06AF6007DE71B /* dianru_back_btn.png in Resources */,
 				5224972118320393005F7577 /* all_slecet_nomal.png in Resources */,
 				522496E918320393005F7577 /* dice_four.png in Resources */,
@@ -8553,6 +8589,7 @@
 				28A39502184CE5F2003802BC /* xz_zs_click.png in Resources */,
 				72C52F2C18FBB5E400AC2763 /* prize_duihuan_highlight.png in Resources */,
 				5224965C18320393005F7577 /* ranking_num_3.png in Resources */,
+				72735677192D95760083F80A /* ting3.png in Resources */,
 				522496BC18320393005F7577 /* tzy_twoxlmenu_bg.png in Resources */,
 				5224992218320393005F7577 /* back_triangle_c_click.png in Resources */,
 				5224983918320393005F7577 /* ouzhi_c_click.png in Resources */,
@@ -8787,6 +8824,7 @@
 				D501D70115AD7FEC005733FB /* FC3D_PickNumberViewController.m in Sources */,
 				971653F818FCDB3E00AA40C3 /* RespForWeChatViewController.mm in Sources */,
 				52F096401885069C008E90B0 /* ExchangeLotteryWithIntegrationViewController.m in Sources */,
+				72735689192DA0F20083F80A /* DiceViewController.m in Sources */,
 				D501D70215AD7FEC005733FB /* SSQ_PickNumberViewController.m in Sources */,
 				970DA6701910881700D817AE /* CFilteringJSONSerializer.m in Sources */,
 				D501D70715AD805A005733FB /* QLC_PickNumberViewController.m in Sources */,
