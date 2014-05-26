@@ -129,7 +129,7 @@
     if (arc4random()%5<4) {
         return (arc4random()%5+1)*[array[arc4random()%7] integerValue];
     }
-    return (arc4random()%5+1)*[array[arc4random()%array.count] integerValue];
+    return [array[arc4random()%array.count] integerValue];
 }
 - (NSString*)randomPhoneNo
 {
