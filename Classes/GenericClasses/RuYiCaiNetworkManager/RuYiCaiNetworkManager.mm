@@ -377,7 +377,8 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         NSString *str = m_delegate.autoLoginRandomNumber;
         [mDict setObject:str forKey:@"randomNumber"];
     }
-    
+    if([CommonRecordStatus commonRecordStatusManager].deviceToken)
+        [mDict setObject:[CommonRecordStatus commonRecordStatusManager].deviceToken forKey:@"token"];
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
     [jsonWriter release];
@@ -540,7 +541,8 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         NSString *str = m_delegate.autoLoginRandomNumber;
         [mDict setObject:str forKey:@"randomNumber"];
     }
-    
+    if([CommonRecordStatus commonRecordStatusManager].deviceToken)
+        [mDict setObject:[CommonRecordStatus commonRecordStatusManager].deviceToken forKey:@"token"];
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
     [jsonWriter release];

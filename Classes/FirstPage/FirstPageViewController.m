@@ -731,10 +731,20 @@
             
             
             if ([sss isEqualToString:@"1"]&&![sd isEqualToString:dateS]&&[ifQiaoDao isEqualToString:@"NO"]) {
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您今天还没签到哦，赶紧去摇一摇报个到吧，还有各种奖品等着你哦" delegate:self cancelButtonTitle:@"先不了" otherButtonTitles:@"摇一摇签到", nil];
-                alert.tag = 77;
-                [alert show];
-                [alert release];
+//                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您今天还没签到哦，赶紧去摇一摇报个到吧，还有各种奖品等着你哦" delegate:self cancelButtonTitle:@"先不了" otherButtonTitles:@"摇一摇签到", nil];
+//                alert.tag = 77;
+//                [alert show];
+//                [alert release];
+                
+                InterestSignInViewController * iv = [[InterestSignInViewController alloc] init];
+                iv.delegate = self;
+                
+                iv.ActID = qiaodaoID;
+                
+                UINavigationController * qdn = [[UINavigationController alloc] initWithRootViewController:iv];
+                [self presentModalViewController:qdn animated:YES];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+                
                 [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"ifQiaoDao"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [[NSUserDefaults standardUserDefaults] setObject:dateS forKey:@"qiandaoTime"];
