@@ -38,6 +38,7 @@
 #import "MiidiAdWallRequestToggleDelegate.h"
 #import "MiidiAdDesc.h"
 #import "MiidiAdWall.h"
+#import "AdwoOfferWall.h"
 #import "SFHFKeychainUtils.h"
 
 
@@ -53,6 +54,7 @@
 #define MiidiPublisher       @"17140"
 #define MiidiAppSecret       @"37spm32qxkrsxn90"
 #define AdViewKey      @"RTB20140915090425fqfoawfedeh48n9"
+#define ADWO_OFFERWALL_BASIC_PID  @"8b95917cd4114ae6819e6241759ea474"
 
 #define MaxAllowIDFACount   5
 #define CurrentIDFA   @"currentIDFA"

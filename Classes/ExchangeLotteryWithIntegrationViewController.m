@@ -90,11 +90,25 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryADWallListOK" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"queryRemainingIDFAOK" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"getAdwallImportantInfoOK" object:nil];
+ 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 //        [bgv removeFromSuperview];
     }
     [super viewWillDisappear:animated];
     
+}
+-(void)regAnwoNoti
+{
+    // 注册登录事件消息
+    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_PRESENT, self, @selector(loginSelector));
+    // 注册积分墙被关闭事件消息
+    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_DISMISS, self, @selector(dismissSelector));
+    // 注册积分消费响应事件消息
+    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_CONSUMEPOINTS_POINT, self, @selector(adwoOWConsumepoint));
+    // 注册积分墙刷新最新积分响应事件消息，使用分数的时候，开发者应该先刷新积分接口获得服务器的最新积分，再利用此分数进行相关操作
+    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_REFRESH_POINT, self, @selector(adwoOWRefreshPoint));
+    // 注册积分墙刷新最新服务器响应事件消息
+    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_SUMMARY_MESSAGE, self, @selector(adwoOWSummary));
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -106,7 +120,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUserBalanceOK:) name:@"queryUserBalanceOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryRemainingIDFAOK:) name:@"queryRemainingIDFAOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toGetAdwallImportantInfoOK:) name:@"getAdwallImportantInfoOK" object:nil];
-//    self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
+    
+    //    self.theUserID = [RuYiCaiNetworkManager sharedManager].userno;
 //    if([RuYiCaiNetworkManager sharedManager].hasLogin)
 //    {
         if([RuYiCaiNetworkManager sharedManager].hasLogin)
@@ -265,6 +280,9 @@
             else if ([theAdwallID isEqualToString:@"adview"]){
                 [self showAdviewWall];
             }
+            else if ([theAdwallID isEqualToString:@"anwo"]){
+                [self showAnWoAdwall];
+            }
 
         }
     }
@@ -378,6 +396,7 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [bgv release];
     }
+   AdwoOWUnregisterResponseEvents(ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_PRESENT | ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_DISMISS|ADWO_OFFER_WALL_REFRESH_POINT|ADWO_OFFER_WALL_CONSUMEPOINTS_POINT|ADWO_OFFER_WALL_SUMMARY_MESSAGE);
     [self.rtbAdWall release];
     _offerWallController.delegate = nil;
     [_offerWallController release];
@@ -451,6 +470,7 @@
         }
 
     }
+    [self regAnwoNoti];
     if (![RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess) {
         [[RuYiCaiNetworkManager sharedManager] queryADWallList];
     }
@@ -906,6 +926,143 @@
 {
     [self getMyBalance];
 }
+
+static NSString* const errCodeList[] = {
+    @"successful",
+    @"offer wall is disabled",
+    @"login connection failed",
+    @"offer wall has not been loginned",
+    @"offer wall is not initialized",
+    @"offer wall has been loginned",
+    @"unknown error",
+    @"invalid event flag",
+    @"app list request failed",
+    @"app list response failed",
+    @"app list parameter malformatted",
+    @"app list is being requested",
+    @"offer wall is not ready for show",
+    @"keywords malformatted",
+    @"current device has not enough space to save resource",
+    @"resource malformatted",
+    @"resource load failed",
+    @"you are have already loginned",
+    @"exceed max show count",
+    @"exceed max login count",
+    @"you have not enough points",
+    @"points consumption is not available",
+    @"point is negative number",
+    @"receive point is error",
+    @"network request error"
+};
+-(void)showAnWoAdwall
+{
+    bgv.hidden = YES;
+    //开发者如需要后台对接，才需要设置这个字段。
+    NSArray *arr = [NSArray arrayWithObjects:self.theUserID, nil];
+    AdwoOWSetKeywords(arr);
+    
+    // 初始化并登录积分墙
+    BOOL result = AdwoOWPresentOfferWall(ADWO_OFFERWALL_BASIC_PID, self);
+    if(!result)
+    {
+        enum ADWO_OFFER_WALL_ERRORCODE errCode = AdwoOWFetchLatestErrorCode();
+        NSLog(@"Initialization error, because %@", errCodeList[errCode]);
+    }
+    else
+        NSLog(@"Initialization successfully!");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+}
+//点击更新积分
+- (void)checkPointsTouched:(id)sender
+{
+    AdwoOWRefreshPoint();
+}
+
+//点击消费积分
+- (void)consumePointsTouched:(id)sender
+{
+    UITextField *text = (UITextField*)[self.view viewWithTag:111];
+    NSInteger value = (text.text == nil || [text.text length] == 0)? 0 : [text.text intValue];
+    // 消费value个虚拟货币
+    if(!AdwoOWConsumePoints(value))
+    {
+        NSLog(@"Consume points failed, because %@", errCodeList[AdwoOWFetchLatestErrorCode()]);
+    }
+    text.text = @"";
+}
+
+//点击获取积分墙最新信息
+-(void)getSummaryMessageTouched:(id)sender{
+    AdwoOWRefreshSummeryMessage();
+}
+
+
+
+#pragma mark - adwo offerwall delegates
+//登陆积分墙的代理方法
+- (void)loginSelector
+{
+    enum ADWO_OFFER_WALL_ERRORCODE errCode = AdwoOWFetchLatestErrorCode();
+    if(errCode == ADWO_OFFER_WALL_ERRORCODE_SUCCESS)
+        NSLog(@"Login successfully!");
+    else
+        NSLog(@"Login failed, because %@", errCodeList[errCode]);
+}
+//退出积分墙的代理方法
+- (void)dismissSelector
+{
+    if (self.shouldShowTabbar) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+    }
+    bgv.hidden = NO;
+    NSLog(@"I know, the wall is dismissed!");
+}
+
+//消费积分响应的代理方法，开发者每次消费积分之后，需要在收到此响应之后才表示完成一次消费
+-(void)adwoOWConsumepoint{
+    enum ADWO_OFFER_WALL_ERRORCODE errCode = AdwoOWFetchLatestErrorCode();
+    if(errCode == ADWO_OFFER_WALL_ERRORCODE_SUCCESS)
+    {
+        UITextView *text = (UITextView*)[self.view viewWithTag:121];
+        NSInteger pRemainPoints;
+        AdwoOWGetCurrentPoints(&pRemainPoints);//当收到消费积分回调后，利用此函数获得当前积分。
+        text.text = [NSString stringWithFormat:@"%d",pRemainPoints];
+    }
+    else
+        NSLog(@"Login failed, because %@", errCodeList[errCode]);
+}
+
+//刷新积分响应的代理方法
+-(void)adwoOWRefreshPoint{
+    enum ADWO_OFFER_WALL_ERRORCODE errCode = AdwoOWFetchLatestErrorCode();
+    if(errCode == ADWO_OFFER_WALL_ERRORCODE_SUCCESS)
+    {
+        NSLog(@"adwoOWRefreshPoint successfully!");
+        UITextView *text = (UITextView*)[self.view viewWithTag:121];
+        int pRemainPoints;
+        //当刷新到最新积分之后，利用此函数获得当前积分。
+        AdwoOWGetCurrentPoints(&pRemainPoints);
+        text.text = [NSString stringWithFormat:@"%d",pRemainPoints];
+    }
+    else
+        NSLog(@"Login failed, because %@", errCodeList[errCode]);
+}
+
+//获得积分墙最新信息的代理方法
+-(void)adwoOWSummary{
+    enum ADWO_OFFER_WALL_ERRORCODE errCode = AdwoOWFetchLatestErrorCode();
+    if(errCode == ADWO_OFFER_WALL_ERRORCODE_SUCCESS)
+    {
+        UITextView *text = (UITextView*)[self.view viewWithTag:121];
+        NSDictionary *dic =  AdwoOWGetSummaryMessage();
+        if (dic !=nil) {
+            text.text = [NSString stringWithFormat:@"%@",dic];
+        }
+        
+    }else
+        NSLog(@"Login failed, because %@", errCodeList[errCode]);
+}
+
 
 //-(void)EScoreWallInit
 //{
