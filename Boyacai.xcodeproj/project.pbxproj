@@ -1278,7 +1278,6 @@
 		97545E3D1910D9EB003304DD /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 97545E381910D9EB003304DD /* 5.jpg */; };
 		975767451934447D005A9BBC /* libAdwoOfferWallLib2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 975767411934447D005A9BBC /* libAdwoOfferWallLib2.1.a */; };
 		975767461934447D005A9BBC /* minizip64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 975767431934447D005A9BBC /* minizip64.a */; };
-		975767471934447D005A9BBC /* wall_template.zip in Resources */ = {isa = PBXBuildFile; fileRef = 975767441934447D005A9BBC /* wall_template.zip */; };
 		9769B30B18C424E900ED773F /* delenew.png in Resources */ = {isa = PBXBuildFile; fileRef = 9769B30A18C424E900ED773F /* delenew.png */; };
 		976A53E718F6844B003AC2DE /* heart-null.png in Resources */ = {isa = PBXBuildFile; fileRef = 976A53E518F6844B003AC2DE /* heart-null.png */; };
 		976A53E818F6844B003AC2DE /* heart-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 976A53E618F6844B003AC2DE /* heart-full.png */; };
@@ -3205,7 +3204,6 @@
 		975767401934447D005A9BBC /* AdwoOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdwoOfferWall.h; sourceTree = "<group>"; };
 		975767411934447D005A9BBC /* libAdwoOfferWallLib2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdwoOfferWallLib2.1.a; sourceTree = "<group>"; };
 		975767431934447D005A9BBC /* minizip64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = minizip64.a; sourceTree = "<group>"; };
-		975767441934447D005A9BBC /* wall_template.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = wall_template.zip; sourceTree = "<group>"; };
 		9769B30A18C424E900ED773F /* delenew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delenew.png; sourceTree = "<group>"; };
 		976A53E518F6844B003AC2DE /* heart-null.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-null.png"; sourceTree = "<group>"; };
 		976A53E618F6844B003AC2DE /* heart-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-full.png"; sourceTree = "<group>"; };
@@ -6203,7 +6201,6 @@
 			isa = PBXGroup;
 			children = (
 				975767431934447D005A9BBC /* minizip64.a */,
-				975767441934447D005A9BBC /* wall_template.zip */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -7731,7 +7728,6 @@
 				5224966318320393005F7577 /* reply_bottom.png in Resources */,
 				5224980118320393005F7577 /* jcinstantscore_huanru.png in Resources */,
 				5224968218320393005F7577 /* goldStar.png in Resources */,
-				975767471934447D005A9BBC /* wall_template.zip in Resources */,
 				977A727E18C06AF6007DE71B /* dianru_green_dianru_info.png in Resources */,
 				5224984518320393005F7577 /* yapan_c_click.png in Resources */,
 				72CF01A518F7992D00310F49 /* user_nphone.png in Resources */,
