@@ -18,6 +18,7 @@
 @implementation DiceViewController
 - (void)dealloc
 {
+    [_currentRemainingTLabel release];
     [_diceImgV release];
     [super dealloc];
 }
@@ -39,6 +40,32 @@
     [self.navigationController.navigationBar setBackground];
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
+    UIView * topb = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 45)];
+    [topb setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:topb];
+    [self.view release];
+    
+    UILabel * uL = [[UILabel alloc] initWithFrame:CGRectMake(-10, 5, 120, 20)];
+    [uL setBackgroundColor:[UIColor clearColor]];
+    [uL setText:@"本期倒计时"];
+    [uL setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:uL];
+    [uL release];
+    
+    self.currentRemainingTLabel = [[UILabel alloc] initWithFrame:CGRectMake(-10, 24, 120, 20)];
+    [_currentRemainingTLabel setBackgroundColor:[UIColor clearColor]];
+    [_currentRemainingTLabel setText:@"20140521123期"];
+    [_currentRemainingTLabel setFont:[UIFont systemFontOfSize:12]];
+    [_currentRemainingTLabel setTextAlignment:NSTextAlignmentCenter];
+    [_currentRemainingTLabel setTextColor:[UIColor grayColor]];
+    [self.view addSubview:_currentRemainingTLabel];
+    [_currentRemainingTLabel release];
+    
+    UIImageView * rBGV = [[UIImageView alloc] initWithFrame:CGRectMake(125, 4.5, 94, 36.5)];
+    [rBGV setImage:[UIImage imageNamed:@"topTimeBG"]];
+    [self.view addSubview:rBGV];
+    [rBGV release];
+    
     self.diceImgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 105)];
     _diceImgV.center = StartingPoint;
     _diceImgV.image = [UIImage imageNamed:@"ting1"];
