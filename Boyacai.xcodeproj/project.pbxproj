@@ -1182,6 +1182,9 @@
 		72CF01A518F7992D00310F49 /* user_nphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF01A118F7992D00310F49 /* user_nphone.png */; };
 		72CF01A618F7992D00310F49 /* user_ycert.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF01A218F7992D00310F49 /* user_ycert.png */; };
 		72CF01A718F7992D00310F49 /* user_yphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CF01A318F7992D00310F49 /* user_yphone.png */; };
+		72D0A1F41934930500F36135 /* libAdwoOfferWallLib2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D0A1F11934930500F36135 /* libAdwoOfferWallLib2.1.a */; };
+		72D0A1F51934930500F36135 /* minizip64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D0A1F31934930500F36135 /* minizip64.a */; };
+		72D0A1F71934942500F36135 /* wall_template.zip in Resources */ = {isa = PBXBuildFile; fileRef = 72D0A1F61934942500F36135 /* wall_template.zip */; };
 		72D730D91925E19800FDF190 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D730D81925E19800FDF190 /* iCarousel.m */; };
 		72D730DC19260F2000FDF190 /* get_backGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D730DA19260F2000FDF190 /* get_backGround.png */; };
 		72D730DD19260F2000FDF190 /* get_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D730DB19260F2000FDF190 /* get_normal.png */; };
@@ -3072,6 +3075,10 @@
 		72CF01A118F7992D00310F49 /* user_nphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_nphone.png; sourceTree = "<group>"; };
 		72CF01A218F7992D00310F49 /* user_ycert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_ycert.png; sourceTree = "<group>"; };
 		72CF01A318F7992D00310F49 /* user_yphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_yphone.png; sourceTree = "<group>"; };
+		72D0A1F01934930500F36135 /* AdwoOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdwoOfferWall.h; sourceTree = "<group>"; };
+		72D0A1F11934930500F36135 /* libAdwoOfferWallLib2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdwoOfferWallLib2.1.a; sourceTree = "<group>"; };
+		72D0A1F31934930500F36135 /* minizip64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = minizip64.a; sourceTree = "<group>"; };
+		72D0A1F61934942500F36135 /* wall_template.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = wall_template.zip; sourceTree = "<group>"; };
 		72D730D71925E19800FDF190 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		72D730D81925E19800FDF190 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		72D730DA19260F2000FDF190 /* get_backGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_backGround.png; sourceTree = "<group>"; };
@@ -3841,7 +3848,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				977A72CB18C06F18007DE71B /* ImageIO.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				975767461934447D005A9BBC /* minizip64.a in Frameworks */,
+				72D0A1F51934930500F36135 /* minizip64.a in Frameworks */,
 				2825F2C017F71F5C00AE612E /* libsqlite3.dylib in Frameworks */,
 				D5100D8A157C57BC0092BDDA /* libz.1.2.5.dylib in Frameworks */,
 				72BC605B18F53DD60002B217 /* immobSDK.framework in Frameworks */,
@@ -3860,7 +3867,7 @@
 				2825F2C417F71FAB00AE612E /* libstdc++.dylib in Frameworks */,
 				28ABC795173CFCCE00C6D109 /* libiconv.2.dylib in Frameworks */,
 				971653EB18FCDAF700AA40C3 /* libMobClickLibrary.a in Frameworks */,
-				975767451934447D005A9BBC /* libAdwoOfferWallLib2.1.a in Frameworks */,
+				72D0A1F41934930500F36135 /* libAdwoOfferWallLib2.1.a in Frameworks */,
 				D551BB3E1616D98F0033EACC /* libxml2.2.dylib in Frameworks */,
 				D5DD0054148F03C400BD32A3 /* AddressBook.framework in Frameworks */,
 				977A72A818C06AF6007DE71B /* libDianRuAdWall.a in Frameworks */,
@@ -6013,6 +6020,25 @@
 			path = UMENGPlug;
 			sourceTree = "<group>";
 		};
+		72D0A1EF1934930500F36135 /* AnwoSDK */ = {
+			isa = PBXGroup;
+			children = (
+				72D0A1F01934930500F36135 /* AdwoOfferWall.h */,
+				72D0A1F11934930500F36135 /* libAdwoOfferWallLib2.1.a */,
+				72D0A1F21934930500F36135 /* res */,
+			);
+			path = AnwoSDK;
+			sourceTree = "<group>";
+		};
+		72D0A1F21934930500F36135 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				72D0A1F61934942500F36135 /* wall_template.zip */,
+				72D0A1F31934930500F36135 /* minizip64.a */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
 		9702D2BB19089FB9007CA4B1 /* SFHFKeychainUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -6246,7 +6272,7 @@
 		977A71E518C030C1007DE71B /* AdWAll */ = {
 			isa = PBXGroup;
 			children = (
-				9757673F1934447D005A9BBC /* AnwoSDK */,
+				72D0A1EF1934930500F36135 /* AnwoSDK */,
 				970DA6241910881700D817AE /* RTBWallSDK */,
 				72BC605C18F53E390002B217 /* DMOfferWallSDK */,
 				973E5E9918D7E27700935BFE /* MidiAdWall */,
@@ -9284,6 +9310,8 @@
 					/Users/wangxr/Desktop/FreeLottery/Classes/RTBWallSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/AnwoSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/AnwoSDK/res,
+					/Users/wangxr/Desktop/FreeLottery/Classes/AnwoSDK,
+					/Users/wangxr/Desktop/FreeLottery/Classes/AnwoSDK/res,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
@@ -9328,6 +9356,8 @@
 					/Users/wangxr/Desktop/FreeLottery/Classes/RTBWallSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/AnwoSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/AnwoSDK/res,
+					/Users/wangxr/Desktop/FreeLottery/Classes/AnwoSDK,
+					/Users/wangxr/Desktop/FreeLottery/Classes/AnwoSDK/res,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
@@ -9393,6 +9423,8 @@
 					/Users/wangxr/Desktop/FreeLottery/Classes/RTBWallSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/AnwoSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/AnwoSDK/res,
+					/Users/wangxr/Desktop/FreeLottery/Classes/AnwoSDK,
+					/Users/wangxr/Desktop/FreeLottery/Classes/AnwoSDK/res,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
