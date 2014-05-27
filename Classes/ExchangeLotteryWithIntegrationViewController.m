@@ -148,7 +148,12 @@
     if (![RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess) {
         [[RuYiCaiNetworkManager sharedManager] queryADWallList];
     }
-    
+    if (([appStoreORnormal isEqualToString:@"appStore"] &&
+         [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
+        recommendB.hidden = YES;
+    }
+    else
+        recommendB.hidden = NO;
     
 //        [[RuYiCaiNetworkManager sharedManager] UpdateUserInfo];
 //        self.loginTopView.hidden = NO;
@@ -421,7 +426,7 @@
     [self.listTableV setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:self.listTableV];
     
-    UIButton * recommendB = [UIButton buttonWithType:UIButtonTypeCustom];
+    recommendB = [UIButton buttonWithType:UIButtonTypeCustom];
     recommendB.frame = CGRectMake(240,  h-126-tabbarH, 62, 62);
     [recommendB setBackgroundImage:[UIImage imageNamed:@"recommend"] forState:UIControlStateNormal];
     [self.view addSubview:recommendB];

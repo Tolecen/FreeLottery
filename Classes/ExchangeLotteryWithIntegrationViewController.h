@@ -90,6 +90,8 @@
     
     NSDictionary * importInfoDict;
     NSString * adwallInfoTitle;
+    
+    UIButton * recommendB;
 }
 
 @property(nonatomic, assign)BOOL isShowTabBar;
