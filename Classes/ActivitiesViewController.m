@@ -37,6 +37,7 @@
 {
     DiceViewController * dicVC = [[DiceViewController alloc]init];
     [self.navigationController pushViewController:dicVC animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
     [dicVC release];
 }
 - (void)viewDidLoad
