@@ -10,7 +10,7 @@
 #import "ActivitiesViewController.h"
 #import "ColorUtils.h"
 #define CAduration 3
-#define StartingPoint CGPointMake(160.0, 160.0)
+#define StartingPoint CGPointMake(160.0, 120.0)
 @interface DiceViewController ()
 @property (nonatomic,retain)UIImageView * diceImgV;
 @end
@@ -43,28 +43,30 @@
     _diceImgV.center = StartingPoint;
     _diceImgV.image = [UIImage imageNamed:@"ting1"];
     _diceImgV.animationImages = @[[UIImage imageNamed:@"ting1"],[UIImage imageNamed:@"ting2"],[UIImage imageNamed:@"ting3"],[UIImage imageNamed:@"ting4"],[UIImage imageNamed:@"ting6"],[UIImage imageNamed:@"ting6"]];
-    _diceImgV.animationDuration = 0.1;
+    _diceImgV.animationDuration = 0.3;
     [self.view addSubview:_diceImgV];
     [_diceImgV release];
     
 }
 - (void)diceStarAnimation
 {
-    _diceImgV.animationDuration = 0.1;
     [_diceImgV startAnimating];
     
     CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     [spin setToValue:[NSNumber numberWithFloat:M_PI * 16.0]];
-    
+    [spin setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+    spin.duration = CAduration + 1;
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [animation setValues:[self randomKeyPointArray]];
+    animation.duration = CAduration;
     
     CAAnimationGroup *animGroup = [CAAnimationGroup animation];
     animGroup.animations = [NSArray arrayWithObjects: animation, spin,nil];
-    animGroup.duration = CAduration;
-    [animGroup setDelegate:self];
-    [[_diceImgV layer] addAnimation:animGroup forKey:@"position"];
+    animGroup.duration = CAduration+1;
+    animGroup.delegate = self;
+    [[_diceImgV layer] addAnimation:animGroup forKey:nil];
+    
 }
 - (NSArray*)randomKeyPointArray
 {
@@ -153,6 +155,7 @@
 {
     [_diceImgV stopAnimating];
     _diceImgV.image = [UIImage imageNamed:@"ting3"];
+    
 }
 - (void)back:(id)sender
 {
