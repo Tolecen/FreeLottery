@@ -575,7 +575,11 @@ typedef enum
 //头部新闻
 - (void)getTopNewsContent;
 - (void)getTopNewsContentComplete:(NSString*)resText;
-
+//猜大小游戏
+- (void)queryCurrIssueMessage;
+- (void)queryAwardState;
+- (void)betWithIssueNo:(NSString*)issueNo beanNoWithBig:(NSString*)Bbean beanNoWithSmall:(NSString*)Sbean;
+- (void)queryGameOrdersWithPage:(NSString*)page count:(NSString*)count;
 @end
 
 /* 
