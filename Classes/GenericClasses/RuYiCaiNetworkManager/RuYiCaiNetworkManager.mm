@@ -2409,7 +2409,117 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request setDelegate:self];
 	[request startAsynchronous];
 }
-
+- (void)queryCurrIssueMessage
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"game" forKey:@"command"];
+    [mDict setObject:@"issueCurr" forKey:@"requestType"];
+    [mDict setObject:@"S0001" forKey:@"gameNo"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeGetissueCurr];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+- (void)queryAwardState
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"game" forKey:@"command"];
+    [mDict setObject:@"issueHis" forKey:@"requestType"];
+    [mDict setObject:@"S0001" forKey:@"gameNo"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeGetAwardState];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+- (void)betWithIssueNo:(NSString*)issueNo beanNoWithBig:(NSString*)Bbean beanNoWithSmall:(NSString*)Sbean
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    int add = [Bbean intValue]+[Sbean intValue];
+    NSMutableString* betStr = [[NSMutableString alloc]init];
+    if (Bbean) {
+        [betStr appendString:[NSString stringWithFormat:@"S0001|%@|1|%@^",issueNo,Bbean]];
+    }if (Sbean) {
+        [betStr appendString:[NSString stringWithFormat:@"S0001|%@|0|%@^",issueNo,Sbean]];
+    }
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"game" forKey:@"command"];
+    [mDict setObject:@"bet" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    [mDict setObject:[NSString stringWithFormat:@"%d",add] forKey:@"amount"];
+    [mDict setObject:betStr forKey:@"bet_code"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeBetPea];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+- (void)queryGameOrdersWithPage:(NSString*)page count:(NSString*)count
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"game" forKey:@"command"];
+    [mDict setObject:@"orders" forKey:@"requestType"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    [mDict setObject:page forKey:@"pageindex"];
+    [mDict setObject:count forKey:@"maxresult"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeQueryGameOrders];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
 
 
 -(void)queryRemainingIDFA
@@ -3209,6 +3319,18 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
             break;
         case ASINetworkRequestTypeGetNotification:
             [self getNotification:resText];
+            break;
+        case ASINetworkRequestTypeGetissueCurr:
+            [self getIssueCurr:resText];
+            break;
+        case ASINetworkRequestTypeGetAwardState:
+            [self getAwardState:resText];
+            break;
+        case ASINetworkRequestTypeBetPea:
+            [self betPeaSucceed:resText];
+            break;
+        case ASINetworkRequestTypeQueryGameOrders:
+            [self queryGameOrdersSucceed:resText];
             break;
 		default:
 			break;
@@ -4618,6 +4740,70 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     self.lotteryInformation = resText;
 	
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateLottery" object:nil];
+}
+- (void)getIssueCurr:(NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetIssueCurrOK" object:nil userInfo:parserDict];
+    }
+}
+- (void)getAwardState:(NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetAwardStateOK" object:nil userInfo:parserDict];
+    }
+}
+- (void)betPeaSucceed:(NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRBetPeaOK" object:nil userInfo:parserDict];
+    }
+}
+- (void)queryGameOrdersSucceed:(NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRqueryGameOrdersOK" object:nil userInfo:parserDict];
+    }
 }
 - (void)getNotification: (NSString*)resText
 {
