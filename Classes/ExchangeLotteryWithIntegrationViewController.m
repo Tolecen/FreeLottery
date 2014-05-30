@@ -99,16 +99,16 @@
 }
 -(void)regAnwoNoti
 {
-    // 注册登录事件消息
-    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_PRESENT, self, @selector(loginSelector));
+//    // 注册登录事件消息
+//    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_PRESENT, self, @selector(loginSelector));
     // 注册积分墙被关闭事件消息
     AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_DISMISS, self, @selector(dismissSelector));
     // 注册积分消费响应事件消息
-    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_CONSUMEPOINTS_POINT, self, @selector(adwoOWConsumepoint));
-    // 注册积分墙刷新最新积分响应事件消息，使用分数的时候，开发者应该先刷新积分接口获得服务器的最新积分，再利用此分数进行相关操作
-    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_REFRESH_POINT, self, @selector(adwoOWRefreshPoint));
-    // 注册积分墙刷新最新服务器响应事件消息
-    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_SUMMARY_MESSAGE, self, @selector(adwoOWSummary));
+//    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_CONSUMEPOINTS_POINT, self, @selector(adwoOWConsumepoint));
+//    // 注册积分墙刷新最新积分响应事件消息，使用分数的时候，开发者应该先刷新积分接口获得服务器的最新积分，再利用此分数进行相关操作
+//    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_REFRESH_POINT, self, @selector(adwoOWRefreshPoint));
+//    // 注册积分墙刷新最新服务器响应事件消息
+//    AdwoOWRegisterResponseEvent(ADWO_OFFER_WALL_SUMMARY_MESSAGE, self, @selector(adwoOWSummary));
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -396,7 +396,7 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [bgv release];
     }
-   AdwoOWUnregisterResponseEvents(ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_PRESENT | ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_DISMISS|ADWO_OFFER_WALL_REFRESH_POINT|ADWO_OFFER_WALL_CONSUMEPOINTS_POINT|ADWO_OFFER_WALL_SUMMARY_MESSAGE);
+   AdwoOWUnregisterResponseEvents(ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_DISMISS);
     [self.rtbAdWall release];
     _offerWallController.delegate = nil;
     [_offerWallController release];
@@ -412,6 +412,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self regAnwoNoti];
     self.view.backgroundColor = [UIColor whiteColor];
     [AdaptationUtils adaptation:self];
     //    [AdaptationUtils adaptation:self];
@@ -470,7 +471,7 @@
         }
 
     }
-    [self regAnwoNoti];
+    
     if (![RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess) {
         [[RuYiCaiNetworkManager sharedManager] queryADWallList];
     }

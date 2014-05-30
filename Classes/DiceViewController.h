@@ -8,13 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "RuYiCaiNetworkManager.h"
+#import "BDKNotifyHUD.h"
+#import "IssueHistoryViewController.h"
+@class RuYiCaiAppDelegate;
 @interface DiceViewController : UIViewController<UIScrollViewDelegate,UITextFieldDelegate>
 {
     float gh;
     
     int selectedResult;
     
+    BDKNotifyHUD * bdkHUD;
+    
     NSString * currentLotNum;
+    
+    RuYiCaiAppDelegate  *m_delegate;
 }
 @property (nonatomic,retain)UILabel * currentRoundNameLabel;
 @property (nonatomic,retain)UILabel * currentRemainingTLabel;
@@ -35,4 +42,6 @@
 
 @property (nonatomic,retain)UITextField * inputTF;
 @property (nonatomic,retain)UIScrollView * m_scrollView;
+@property (nonatomic,retain)NSString * currentRemainingTime;
+@property (nonatomic,retain)NSTimer * remainingTimer;
 @end
