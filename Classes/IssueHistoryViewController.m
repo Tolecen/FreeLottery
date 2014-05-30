@@ -84,7 +84,7 @@
 {
     [super layoutSubviews];
     _issueNoL.text = [NSString stringWithFormat:@"第 %@ 期",_dataDic[@"issueNo"]];
-    _winCodeIV.image = [UIImage imageNamed:[NSString stringWithFormat:@"little%d",[_dataDic[@"issueState"] intValue]]];
+    _winCodeIV.image = [UIImage imageNamed:[NSString stringWithFormat:@"little%d",[_dataDic[@"winCodeDetail"] intValue]]];
     if ([_dataDic[@"winCode"] intValue]) {
         _awardL.text = @"猜小赢";
     }else{
@@ -229,7 +229,7 @@
 }
 - (void)back:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
