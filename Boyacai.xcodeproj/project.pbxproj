@@ -1131,6 +1131,7 @@
 		724F5CED1921F650006B8142 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724F5CEC1921F650006B8142 /* CoreMotion.framework */; };
 		724F5CF01922121D006B8142 /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 724F5CEF1922121D006B8142 /* AnimationView.m */; };
 		724F5CF219231B3D006B8142 /* animationBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 724F5CF119231B3D006B8142 /* animationBG.png */; };
+		724FDBE519382CE600679587 /* IssueHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724FDBE419382CE600679587 /* IssueHistoryViewController.m */; };
 		725AF442190B670F003C17ED /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 725AF441190B670F003C17ED /* KGStatusBar.m */; };
 		7269C5651920AEBE0018F80B /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 7269C5641920AEBE0018F80B /* recommend.png */; };
 		7269C5681920B24F0018F80B /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7269C5671920B24F0018F80B /* RecommendViewController.m */; };
@@ -3008,6 +3009,8 @@
 		724F5CEE1922121D006B8142 /* AnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationView.h; sourceTree = "<group>"; };
 		724F5CEF1922121D006B8142 /* AnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationView.m; sourceTree = "<group>"; };
 		724F5CF119231B3D006B8142 /* animationBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animationBG.png; sourceTree = "<group>"; };
+		724FDBE319382CE600679587 /* IssueHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueHistoryViewController.h; sourceTree = "<group>"; };
+		724FDBE419382CE600679587 /* IssueHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueHistoryViewController.m; sourceTree = "<group>"; };
 		725AF440190B670F003C17ED /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
 		725AF441190B670F003C17ED /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
 		7269C5641920AEBE0018F80B /* recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommend.png; sourceTree = "<group>"; };
@@ -5500,6 +5503,8 @@
 				973A6B401935C2A600BC8FA3 /* MyScrollView.m */,
 				72735687192DA0F20083F80A /* DiceViewController.h */,
 				72735688192DA0F20083F80A /* DiceViewController.m */,
+				724FDBE319382CE600679587 /* IssueHistoryViewController.h */,
+				724FDBE419382CE600679587 /* IssueHistoryViewController.m */,
 				7269C5691920C2EA0018F80B /* InterestSignInViewController.h */,
 				7269C56A1920C2EA0018F80B /* InterestSignInViewController.m */,
 				724F5CEE1922121D006B8142 /* AnimationView.h */,
@@ -9199,6 +9204,7 @@
 				977A72C418C06D35007DE71B /* DrUIImageView+WebCache.m in Sources */,
 				651FFD2F175733BE002CA9B0 /* InstantScoreCellDetail_JCLQViewController.m in Sources */,
 				651FFD30175733BE002CA9B0 /* InstantScoreCellDetailViewController.m in Sources */,
+				724FDBE519382CE600679587 /* IssueHistoryViewController.m in Sources */,
 				651FFD31175733BE002CA9B0 /* InstantScoreTableCell.m in Sources */,
 				651FFD32175733BE002CA9B0 /* InstantScoreViewController.m in Sources */,
 				651FFD33175733BE002CA9B0 /* JC_BetView.m in Sources */,

@@ -2434,7 +2434,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request setDelegate:self];
 	[request startAsynchronous];
 }
-- (void)queryAwardState
+- (void)queryIssueHistoryWithPage:(NSString*)page count:(NSString*)count
 {
     NSTrace();
     NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
@@ -2445,6 +2445,8 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     [mDict setObject:@"game" forKey:@"command"];
     [mDict setObject:@"issueHis" forKey:@"requestType"];
     [mDict setObject:@"S0001" forKey:@"gameNo"];
+    [mDict setObject:page forKey:@"pageindex"];
+    [mDict setObject:count forKey:@"maxresult"];
     
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString* cookieStr = [jsonWriter stringWithObject:mDict];
