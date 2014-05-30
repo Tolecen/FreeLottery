@@ -577,7 +577,7 @@ typedef enum
 - (void)getTopNewsContentComplete:(NSString*)resText;
 //猜大小游戏
 - (void)queryCurrIssueMessage;
-- (void)queryAwardState;
+- (void)queryIssueHistoryWithPage:(NSString*)page count:(NSString*)count;
 - (void)betWithIssueNo:(NSString*)issueNo beanNoWithBig:(NSString*)Bbean beanNoWithSmall:(NSString*)Sbean;
 - (void)queryGameOrdersWithPage:(NSString*)page count:(NSString*)count;
 @end
