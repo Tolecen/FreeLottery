@@ -9,6 +9,7 @@
 #import "DiceViewController.h"
 #import "ActivitiesViewController.h"
 #import "ColorUtils.h"
+#import "RuYiCaiAppDelegate.h"
 #define CAduration 3
 #define StartingPoint CGPointMake(160.0, 130.0)
 @interface DiceViewController ()
@@ -50,6 +51,7 @@
     self.navigationItem.title = @"猜大小,赢双倍彩豆";
     [self.navigationController.navigationBar setBackground];
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
+    m_delegate = (RuYiCaiAppDelegate*)[[UIApplication sharedApplication] delegate];
     
     selectedResult = 0;
     
@@ -333,10 +335,31 @@
     [_diceImgV release];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrentOK:) name:@"WXRGetIssueCurrOK" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrentOK:) name:@"WXRGetIssueCurrOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getcurlotDetailOK:) name:@"WXRGetcurlotDetailOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(betPeaOK:) name:@"WXRBetPeaOK" object:nil];
     self.remainingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime) userInfo:nil repeats:YES];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     
+    
+}
+-(void)betPeaOK:(NSNotification *)noti
+{
+    bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"投注成功！\n您还可以继续投注"];
+    
+    bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
+    [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
+    [bdkHUD presentWithDuration:3.0f speed:0.5f inView:nil completion:^{
+        [bdkHUD removeFromSuperview];
+    }];
+    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+}
+-(void)getcurlotDetailOK:(NSNotification *)noti
+{
+    NSDictionary * sd = (NSDictionary *)noti.object;
+    self.leftrenshuL.text = [[[sd objectForKey:@"result"] objectAtIndex:0] objectForKey:@"cnt"];
+    self.leftcaidouL.text = [[[sd objectForKey:@"result"] objectAtIndex:0] objectForKey:@"amt"];
+    self.rightrenshuL.text = [[[sd objectForKey:@"result"] objectAtIndex:1] objectForKey:@"cnt"];
+    self.rightcaidouL.text = [[[sd objectForKey:@"result"] objectAtIndex:1] objectForKey:@"amt"];
 }
 -(void)showRemainTime
 {
@@ -363,6 +386,7 @@
 {
     NSDictionary * sd = (NSDictionary *)noti.object;
     currentLotNum = [[[sd objectForKey:@"currIssue"] objectForKey:@"issueNo"] retain];
+    [[RuYiCaiNetworkManager sharedManager] queryCurrentLotDetailWithgameNo:nil AndissueNo:currentLotNum];
     self.currentRoundNameLabel.text = [NSString stringWithFormat:@"%@期",currentLotNum];
     double a = [[[sd objectForKey:@"currIssue"] objectForKey:@"endBetTime"] doubleValue]/1000-[[sd objectForKey:@"systemTime"] doubleValue]/1000;
     self.currentRemainingTime = [NSString stringWithFormat:@"%.0f",a];
@@ -398,13 +422,15 @@
         return;
     }
     NSLog(@"sure clicked");
-    if (selectedResult==1) {
+    if (selectedResult==2) {
         [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:self.inputTF.text beanNoWithSmall:@"0"];
     }
     else
     {
         [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:@"0" beanNoWithSmall:self.inputTF.text];
     }
+    [m_delegate.activityView activityViewShow];
+    [m_delegate.activityView.titleLabel setText:@"投注中..."];
     
 }
 
@@ -549,11 +575,17 @@
 }
 -(void)historyBtnClicked:(UIButton *)sender
 {
+    IssueHistoryViewController * isV = [[IssueHistoryViewController alloc] init];
+    [self.navigationController pushViewController:isV animated:YES];
+    [isV release];
     
 }
 -(void)recordBtnClicked:(UIButton *)sender
 {
-    
+    IssueHistoryViewController * isV = [[IssueHistoryViewController alloc] init];
+    isV.type = QueryTypeGameOrder;
+    [self.navigationController pushViewController:isV animated:YES];
+    [isV release];
 }
 -(void)ruleBtnClicked:(UIButton *)sender
 {

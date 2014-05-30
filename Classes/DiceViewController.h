@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "RuYiCaiNetworkManager.h"
+#import "BDKNotifyHUD.h"
+#import "IssueHistoryViewController.h"
+@class RuYiCaiAppDelegate;
 @interface DiceViewController : UIViewController<UIScrollViewDelegate,UITextFieldDelegate>
 {
     float gh;
     
     int selectedResult;
     
+    BDKNotifyHUD * bdkHUD;
+    
     NSString * currentLotNum;
     
-    
+    RuYiCaiAppDelegate  *m_delegate;
 }
 @property (nonatomic,retain)UILabel * currentRoundNameLabel;
 @property (nonatomic,retain)UILabel * currentRemainingTLabel;

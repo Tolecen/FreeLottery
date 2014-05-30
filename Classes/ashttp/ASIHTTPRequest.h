@@ -219,6 +219,7 @@ typedef enum _ASINetworkReqestType
     ASINetworkRequestTypeGetNotification,
     
     ASINetworkRequestTypeGetissueCurr,
+    ASINetworkRequestTypeGetcurrentLotDetail,
     ASINetworkRequestTypeGetAwardState,
     ASINetworkRequestTypeBetPea,
     ASINetworkRequestTypeQueryGameOrders

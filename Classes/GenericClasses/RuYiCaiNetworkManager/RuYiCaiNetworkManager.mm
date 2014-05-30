@@ -2409,6 +2409,32 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request setDelegate:self];
 	[request startAsynchronous];
 }
+- (void)queryCurrentLotDetailWithgameNo:(NSString *)gameNum AndissueNo:(NSString *)issueNo
+{
+    NSTrace();
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"game" forKey:@"command"];
+    [mDict setObject:@"betDetail" forKey:@"requestType"];
+    [mDict setObject:@"S0001" forKey:@"gameNo"];
+    [mDict setObject:issueNo forKey:@"issueNo"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeGetcurrentLotDetail];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
 - (void)queryCurrIssueMessage
 {
     NSTrace();
@@ -2471,7 +2497,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     NSMutableString* betStr = [[NSMutableString alloc]init];
     if ([Bbean intValue]>0) {
         [betStr appendString:[NSString stringWithFormat:@"S0001|%@|1|%@^",issueNo,Bbean]];
-    }if ([Bbean intValue]>0) {
+    }if ([Sbean intValue]>0) {
         [betStr appendString:[NSString stringWithFormat:@"S0001|%@|0|%@^",issueNo,Sbean]];
     }
     
@@ -3324,6 +3350,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
             break;
         case ASINetworkRequestTypeGetissueCurr:
             [self getIssueCurr:resText];
+            break;
+        case ASINetworkRequestTypeGetcurrentLotDetail:
+            [self getGetcurrentLotDetail:resText];
             break;
         case ASINetworkRequestTypeGetAwardState:
             [self getAwardState:resText];
@@ -4743,6 +4772,23 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateLottery" object:nil];
 }
+-(void)getGetcurrentLotDetail:(NSString *)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetcurlotDetailOK" object:parserDict userInfo:nil];
+    }
+
+}
 - (void)getIssueCurr:(NSString*)resText
 {
     NSTrace();
@@ -4783,7 +4829,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
     NSString* errorCode = [parserDict objectForKey:@"error_code"];
     [jsonParser release];
-    
+    [m_delegate.activityView disActivityView];
     if ([errorCode isEqualToString:@"0000"])
     {
         self.responseText = resText;
