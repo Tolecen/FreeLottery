@@ -2469,9 +2469,9 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     request.allowCompressedResponse = NO;
     int add = [Bbean intValue]+[Sbean intValue];
     NSMutableString* betStr = [[NSMutableString alloc]init];
-    if (Bbean) {
+    if ([Bbean intValue]>0) {
         [betStr appendString:[NSString stringWithFormat:@"S0001|%@|1|%@^",issueNo,Bbean]];
-    }if (Sbean) {
+    }if ([Bbean intValue]>0) {
         [betStr appendString:[NSString stringWithFormat:@"S0001|%@|0|%@^",issueNo,Sbean]];
     }
     
