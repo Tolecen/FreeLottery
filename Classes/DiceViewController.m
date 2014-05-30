@@ -18,6 +18,7 @@
 @implementation DiceViewController
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_m_scrollView release];
     [_inputTF release];
     [_rightrenshuL release];
@@ -288,7 +289,7 @@
     self.inputTF.delegate = self;
     [_inputTF setBorderStyle:UITextBorderStyleNone];
     [_inputTF setTextAlignment:NSTextAlignmentCenter];
-    [_inputTF setText:@"200"];
+    [_inputTF setText:@"50"];
     _inputTF.keyboardType = UIKeyboardTypeNumberPad;
     _inputTF.returnKeyType = UIReturnKeyDone;
     [self.m_scrollView addSubview:_inputTF];
@@ -298,7 +299,7 @@
     [addCaidouBtn setFrame:CGRectMake(265, 380, 41, 41)];
     [addCaidouBtn setBackgroundImage:[UIImage imageNamed:@"addcaidou"] forState:UIControlStateNormal];
     [self.m_scrollView addSubview:addCaidouBtn];
-    [minusCaidouBtn addTarget:self action:@selector(addCaidouBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [addCaidouBtn addTarget:self action:@selector(addCaidouBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton * sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [sureBtn setFrame:CGRectMake(10, 440, 300, 34)];
@@ -331,10 +332,30 @@
     [self.m_scrollView addSubview:_diceImgV];
     [_diceImgV release];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrentOK:) name:@"WXRGetIssueCurrOK" object:nil];
+    
+    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+    
+}
+-(void)getCurrentOK:(NSNotification *)noti
+{
+    NSDictionary * sd = (NSDictionary *)noti.object;
+    currentLotNum = [[[sd objectForKey:@"currIssue"] objectForKey:@"issueNo"] retain];
+    self.currentRoundNameLabel.text = [NSString stringWithFormat:@"%@期",currentLotNum];
+    NSLog(@"current No:%@",currentLotNum);
+    
 }
 -(void)sureBtnBtnClicked:(UIButton *)sender
 {
     NSLog(@"sure clicked");
+    if (selectedResult==1) {
+        [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:self.inputTF.text beanNoWithSmall:@"0"];
+    }
+    else
+    {
+        [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:@"0" beanNoWithSmall:self.inputTF.text];
+    }
+    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -411,11 +432,15 @@
 }
 -(void)minusCaidouBtnClicked:(UIButton *)sender
 {
+    if ([self.inputTF.text intValue]>=50) {
+        self.inputTF.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]-50];
+    }
+
     
 }
 -(void)addCaidouBtnClicked:(UIButton *)sender
 {
-    
+    self.inputTF.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+50];
 }
 -(void)leftSelectBtnClicked:(UIButton *)sender
 {
@@ -568,8 +593,79 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     [_diceImgV stopAnimating];
-    _diceImgV.image = [UIImage imageNamed:@"ting3"];
+    int d = arc4random()%6+1;
+    NSLog(@"%d",d);
+    _diceImgV.image = [UIImage imageNamed:[NSString stringWithFormat:@"ting%d",d]];
     
+    [self performSelector:@selector(shaiZiMakeLittle:) withObject:[NSNumber numberWithInt:d] afterDelay:0.7];
+    
+}
+-(void)shaiZiMakeLittle:(NSNumber *)num
+{
+    int s = [num intValue];
+    if (s==1||s==2||s==3) {
+        [self.leftSelectBtn setBackgroundImage:[UIImage imageNamed:@"left_selected"] forState:UIControlStateNormal];
+        [self.rightSelectBtn setBackgroundImage:[UIImage imageNamed:@"right"] forState:UIControlStateNormal];
+        self.leftSelectBtn.tag=2;
+        NSLog(@"left selected");
+        selectedResult = 1;
+    }
+    else
+    {
+        [self.rightSelectBtn setBackgroundImage:[UIImage imageNamed:@"right_selected"] forState:UIControlStateNormal];
+        [self.leftSelectBtn setBackgroundImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
+        self.rightSelectBtn.tag=2;
+        NSLog(@"right selected");
+        selectedResult = 2;
+    }
+    [UIView animateWithDuration:0.4 animations:^{
+        switch (s) {
+            case 1:
+            {
+                [_diceImgV setFrame:CGRectMake(69, 270, 25, 25)];
+            }
+                break;
+            case 2:
+            {
+                [_diceImgV setFrame:CGRectMake(104, 270, 25, 25)];
+            }
+                break;
+            case 3:
+            {
+                [_diceImgV setFrame:CGRectMake(139, 270, 25, 25)];
+            }
+                break;
+            case 4:
+            {
+                [_diceImgV setFrame:CGRectMake(205, 270, 25, 25)];
+            }
+                break;
+            case 5:
+            {
+                [_diceImgV setFrame:CGRectMake(240, 270, 25, 25)];
+            }
+                break;
+            case 6:
+            {
+                [_diceImgV setFrame:CGRectMake(275, 270, 25, 25)];
+            }
+                break;
+            default:
+                break;
+    
+            
+        }
+        
+    } completion:^(BOOL finished) {
+        _diceImgV.hidden = YES;
+        [self performSelector:@selector(resetShaiZi) withObject:nil afterDelay:1];
+    }];
+}
+-(void)resetShaiZi
+{
+    _diceImgV.hidden = NO;
+    [_diceImgV setFrame:CGRectMake(139, 270, 100, 105)];
+    _diceImgV.center = StartingPoint;
 }
 - (void)back:(id)sender
 {

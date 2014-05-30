@@ -4754,7 +4754,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     {
         self.responseText = resText;
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetIssueCurrOK" object:nil userInfo:parserDict];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetIssueCurrOK" object:parserDict userInfo:nil];
     }
 }
 - (void)getAwardState:(NSString*)resText
@@ -4770,7 +4770,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     {
         self.responseText = resText;
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetAwardStateOK" object:nil userInfo:parserDict];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRGetAwardStateOK" object:parserDict userInfo:nil];
     }
 }
 - (void)betPeaSucceed:(NSString*)resText
@@ -4786,7 +4786,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     {
         self.responseText = resText;
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRBetPeaOK" object:nil userInfo:parserDict];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRBetPeaOK" object:parserDict userInfo:nil];
     }
 }
 - (void)queryGameOrdersSucceed:(NSString*)resText
@@ -4802,7 +4802,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     {
         self.responseText = resText;
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRqueryGameOrdersOK" object:nil userInfo:parserDict];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRqueryGameOrdersOK" object:parserDict userInfo:nil];
     }
 }
 - (void)getNotification: (NSString*)resText

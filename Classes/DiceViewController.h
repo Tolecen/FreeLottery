@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RuYiCaiNetworkManager.h"
 @interface DiceViewController : UIViewController<UIScrollViewDelegate,UITextFieldDelegate>
 {
     float gh;
     
     int selectedResult;
+    
+    NSString * currentLotNum;
 }
 @property (nonatomic,retain)UILabel * currentRoundNameLabel;
 @property (nonatomic,retain)UILabel * currentRemainingTLabel;
