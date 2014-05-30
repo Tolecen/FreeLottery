@@ -333,20 +333,70 @@
     [_diceImgV release];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrentOK:) name:@"WXRGetIssueCurrOK" object:nil];
-    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrentOK:) name:@"WXRGetIssueCurrOK" object:nil];
+    self.remainingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime) userInfo:nil repeats:YES];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     
+}
+-(void)showRemainTime
+{
+    int leftTime = [self.currentRemainingTime intValue]-1;
+    self.currentRemainingTime = [NSString stringWithFormat:@"%d",leftTime];
+	if (leftTime > 0)
+	{
+	    int numMinute = (int)(leftTime / 60);
+		leftTime -= numMinute * 60;
+		int numSecond = (int)(leftTime);
+        NSString * timeStr = [NSString stringWithFormat:@"%d:%d",
+                              numMinute, numSecond];
+        NSLog(@"left :%@",timeStr);
+        self.currentRemainingTLabel.text = timeStr;
+    }
+    else
+    {
+        self.currentRemainingTLabel.text = @"请稍等";
+        [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+    }
+
 }
 -(void)getCurrentOK:(NSNotification *)noti
 {
     NSDictionary * sd = (NSDictionary *)noti.object;
     currentLotNum = [[[sd objectForKey:@"currIssue"] objectForKey:@"issueNo"] retain];
     self.currentRoundNameLabel.text = [NSString stringWithFormat:@"%@期",currentLotNum];
+    double a = [[[sd objectForKey:@"currIssue"] objectForKey:@"endBetTime"] doubleValue]/1000-[[sd objectForKey:@"systemTime"] doubleValue]/1000;
+    self.currentRemainingTime = [NSString stringWithFormat:@"%.0f",a];
+//    currentRemainingTime = 
+//    timeStr = @"0分0秒";
+	int leftTime = [self.currentRemainingTime intValue];
+	if (leftTime > 0)
+	{
+	    int numMinute = (int)(leftTime / 60);
+		leftTime -= numMinute * 60;
+		int numSecond = (int)(leftTime);
+        NSString * timeStr = [NSString stringWithFormat:@"%d:%d",
+                   numMinute, numSecond];
+        NSLog(@"left :%@",timeStr);
+        self.currentRemainingTLabel.text = timeStr;
+    }
+    
     NSLog(@"current No:%@",currentLotNum);
     
 }
 -(void)sureBtnBtnClicked:(UIButton *)sender
 {
+    if (selectedResult==0) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"亲，还没选择押大还是押小呢，快去选一个吧，可以手动点大还是小，也可以摇一摇机选哦" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    if ([self.inputTF.text intValue]>1000) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"亲，理性投注，最大只能押1000彩豆哦" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+        return;
+    }
     NSLog(@"sure clicked");
     if (selectedResult==1) {
         [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:self.inputTF.text beanNoWithSmall:@"0"];
@@ -375,6 +425,7 @@
         }];
     }
     [self.inputTF resignFirstResponder];
+    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
 //    self.m_scrollView.delegate = self;
 
 }
@@ -385,6 +436,7 @@
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     [self.inputTF resignFirstResponder];
     [UIView animateWithDuration:0.3 animations:^{
         if ([UIScreen mainScreen].bounds.size.height<500) {
@@ -414,6 +466,16 @@
 
     return YES;
 }
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+//{
+//    if ([[self.inputTF.text stringByAppendingString:string] intValue]>=1001) {
+//        return NO;
+////        self.inputTF.text = [self.inputTF.text substringToIndex:3];
+//        
+//    }
+//    return YES;
+//}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.inputTF resignFirstResponder];
@@ -440,7 +502,17 @@
 }
 -(void)addCaidouBtnClicked:(UIButton *)sender
 {
-    self.inputTF.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+50];
+    if ([self.inputTF.text intValue]<1000) {
+        self.inputTF.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+50];
+    }
+    else
+    {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"亲，理性投注，最大只能压1000彩豆哦" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    
 }
 -(void)leftSelectBtnClicked:(UIButton *)sender
 {

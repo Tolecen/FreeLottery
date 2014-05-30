@@ -15,6 +15,8 @@
     int selectedResult;
     
     NSString * currentLotNum;
+    
+    
 }
 @property (nonatomic,retain)UILabel * currentRoundNameLabel;
 @property (nonatomic,retain)UILabel * currentRemainingTLabel;
@@ -35,4 +37,6 @@
 
 @property (nonatomic,retain)UITextField * inputTF;
 @property (nonatomic,retain)UIScrollView * m_scrollView;
+@property (nonatomic,retain)NSString * currentRemainingTime;
+@property (nonatomic,retain)NSTimer * remainingTimer;
 @end
