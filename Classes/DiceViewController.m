@@ -344,11 +344,11 @@
 }
 -(void)betPeaOK:(NSNotification *)noti
 {
-    bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"投注成功！\n您还可以继续投注"];
+    bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"投注成功!"];
     
     bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
     [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
-    [bdkHUD presentWithDuration:3.0f speed:0.5f inView:nil completion:^{
+    [bdkHUD presentWithDuration:2.0f speed:0.5f inView:nil completion:^{
         [bdkHUD removeFromSuperview];
     }];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
