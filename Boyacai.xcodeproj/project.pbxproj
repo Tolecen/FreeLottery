@@ -1187,8 +1187,6 @@
 		72D730D91925E19800FDF190 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D730D81925E19800FDF190 /* iCarousel.m */; };
 		72D730DC19260F2000FDF190 /* get_backGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D730DA19260F2000FDF190 /* get_backGround.png */; };
 		72D730DD19260F2000FDF190 /* get_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D730DB19260F2000FDF190 /* get_normal.png */; };
-		9700CB8319387F1300D9B707 /* wall_template.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9700CB8119387F1300D9B707 /* wall_template.zip */; };
-		9700CB8419387F1300D9B707 /* minizip64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9700CB8219387F1300D9B707 /* minizip64.a */; };
 		9700CB8719387FFB00D9B707 /* BDKNotifyHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9700CB8619387FFB00D9B707 /* BDKNotifyHUD.m */; };
 		9700CB891938808300D9B707 /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9700CB881938808300D9B707 /* Checkmark.png */; };
 		9702D2BE19089FB9007CA4B1 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9702D2BD19089FB9007CA4B1 /* SFHFKeychainUtils.m */; };
@@ -3085,8 +3083,6 @@
 		72D730D81925E19800FDF190 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		72D730DA19260F2000FDF190 /* get_backGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_backGround.png; sourceTree = "<group>"; };
 		72D730DB19260F2000FDF190 /* get_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_normal.png; sourceTree = "<group>"; };
-		9700CB8119387F1300D9B707 /* wall_template.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = wall_template.zip; sourceTree = "<group>"; };
-		9700CB8219387F1300D9B707 /* minizip64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = minizip64.a; sourceTree = "<group>"; };
 		9700CB8519387FFB00D9B707 /* BDKNotifyHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDKNotifyHUD.h; sourceTree = "<group>"; };
 		9700CB8619387FFB00D9B707 /* BDKNotifyHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDKNotifyHUD.m; sourceTree = "<group>"; };
 		9700CB881938808300D9B707 /* Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkmark.png; sourceTree = "<group>"; };
@@ -3854,7 +3850,6 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				977A72CB18C06F18007DE71B /* ImageIO.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				9700CB8419387F1300D9B707 /* minizip64.a in Frameworks */,
 				2825F2C017F71F5C00AE612E /* libsqlite3.dylib in Frameworks */,
 				D5100D8A157C57BC0092BDDA /* libz.1.2.5.dylib in Frameworks */,
 				72BC605B18F53DD60002B217 /* immobSDK.framework in Frameworks */,
@@ -6044,8 +6039,6 @@
 		72D0A1F21934930500F36135 /* res */ = {
 			isa = PBXGroup;
 			children = (
-				9700CB8119387F1300D9B707 /* wall_template.zip */,
-				9700CB8219387F1300D9B707 /* minizip64.a */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -7893,7 +7886,6 @@
 				973122491904B973006ECD17 /* rukou7.png in Resources */,
 				9EDAF4A5143F5E430071FC7D /* preinst in Resources */,
 				5224985C18320393005F7577 /* input_year.png in Resources */,
-				9700CB8319387F1300D9B707 /* wall_template.zip in Resources */,
 				5224973118320393005F7577 /* clean_list_click.png in Resources */,
 				5224994B18320393005F7577 /* redbg.png in Resources */,
 				522498DB18320393005F7577 /* bankTxBtn_normal.png in Resources */,
