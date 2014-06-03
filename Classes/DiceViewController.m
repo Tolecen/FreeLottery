@@ -20,6 +20,13 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if ([self.remainingTimer isValid]) {
+        [self.remainingTimer invalidate];
+        if (self.remainingTimer!=nil) {
+            self.remainingTimer = nil;
+        }
+        
+    }
     [_m_scrollView release];
     [_inputTF release];
     [_rightrenshuL release];
