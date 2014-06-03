@@ -15,7 +15,9 @@
 
 @property (nonatomic,retain)UILabel * issueNoL;//期号
 @property (nonatomic,retain)UIImageView * winCodeIV;//点数
-@property (nonatomic,retain)UILabel * awardL;//结果
+@property (nonatomic,retain)UILabel * awardL;//开奖结果
+@property (nonatomic,retain)UILabel * betDetailL;//投注详情
+@property (nonatomic,retain)UILabel * issueL;//中奖结果
 @end
 @implementation GameOrderCell
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -28,17 +30,54 @@
         [self.contentView addSubview:_issueNoL];
         self.winCodeIV = [[UIImageView alloc]initWithFrame:CGRectMake(180, 10, 30, 30)];
         [self.contentView addSubview:_winCodeIV];
-        self.awardL = [[UILabel alloc]initWithFrame:CGRectMake(210, 10, 90, 30)];
+        self.awardL = [[UILabel alloc]initWithFrame:CGRectMake(250, 10, 60, 30)];
         _awardL.font = [UIFont systemFontOfSize:18];
-        _awardL.textAlignment = NSTextAlignmentRight;
+        _awardL.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:_awardL];
+        self.betDetailL = [[UILabel alloc]initWithFrame:CGRectMake(10, 50, 200, 30)];
+        _betDetailL.font = [UIFont systemFontOfSize:16];
+        _betDetailL.textColor = [UIColor lightGrayColor];
+        _betDetailL.textAlignment = NSTextAlignmentLeft;
+        [self.contentView addSubview:_betDetailL];
+        
+        self.issueL = [[UILabel alloc]initWithFrame:CGRectMake(250, 50, 60, 30)];
+        _issueL.font = [UIFont systemFontOfSize:16];
+        _issueL.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:_issueL];
     }
     return self;
 }
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    
+    _issueNoL.text = [NSString stringWithFormat:@"第 %@ 期",_dataDic[@"issueNo"]];
+    _winCodeIV.image = [UIImage imageNamed:[NSString stringWithFormat:@"little%d",[_dataDic[@"winCodeDetail"] intValue]]];
+    if ([_dataDic[@"winCode"] intValue]) {
+        _awardL.text = @"猜大赢";
+    }else{
+        _awardL.text = @"猜小赢";
+    }
+    if (![_dataDic[@"betCode"] isKindOfClass:[NSNull class]]) {
+        NSArray*issueArr = [_dataDic[@"betCode"] componentsSeparatedByString:@"^"];
+        for (NSString * issueStr in issueArr) {
+            if (![issueStr isKindOfClass:[NSNull class]]&&![issueStr isEqualToString:@""]) {
+                NSArray*arr = [issueStr componentsSeparatedByString:@"|"];
+                if ([arr[2] intValue] == 0) {
+                    _betDetailL.text = [_betDetailL.text stringByAppendingString: [NSString stringWithFormat:@"压小:%d",[arr[3] intValue]]];
+                }else
+                {
+                     _betDetailL.text = [_betDetailL.text stringByAppendingString:[NSString stringWithFormat:@"压大:%d",[arr[3] intValue]]];
+                }
+                _issueL.textColor = [UIColor lightGrayColor];
+                _issueL.text = @"未中奖";
+                if ([arr[2] intValue] == [_dataDic[@"winCode"] intValue]) {
+                    _issueL.textColor = [UIColor redColor];
+                    _issueL.text = @"中奖";
+                }
+                
+            }
+        }
+    }
 }
 - (void)dealloc
 {
@@ -86,9 +125,9 @@
     _issueNoL.text = [NSString stringWithFormat:@"第 %@ 期",_dataDic[@"issueNo"]];
     _winCodeIV.image = [UIImage imageNamed:[NSString stringWithFormat:@"little%d",[_dataDic[@"winCodeDetail"] intValue]]];
     if ([_dataDic[@"winCode"] intValue]) {
-        _awardL.text = @"猜小赢";
-    }else{
         _awardL.text = @"猜大赢";
+    }else{
+        _awardL.text = @"猜小赢";
     }
     
 }
