@@ -12,6 +12,7 @@
 #import "InterestSignInViewController.h"
 #import "RuYiCaiNetworkManager.h"
 #import "DiceViewController.h"
+#import "InviteViewController.h"
 @interface ActivitiesViewController ()
 
 @end
@@ -40,6 +41,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
     [dicVC release];
 }
+- (void)yaoqing
+{
+    InviteViewController * dicVC = [[InviteViewController alloc]init];
+    [self.navigationController pushViewController:dicVC animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+    [dicVC release];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -53,6 +61,13 @@
         button.frame = CGRectMake(0, 0, 40, 30);
         [button addTarget:self action:@selector(shaizi) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:@"骰子" forState:UIControlStateNormal];
+        button;
+    }) ];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithCustomView:({
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(0, 0, 40, 30);
+        [button addTarget:self action:@selector(yaoqing) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitle:@"邀请" forState:UIControlStateNormal];
         button;
     }) ];
 //    if (self.isShowBackButton) {

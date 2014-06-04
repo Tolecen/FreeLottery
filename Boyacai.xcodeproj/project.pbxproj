@@ -1132,6 +1132,7 @@
 		724F5CF01922121D006B8142 /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 724F5CEF1922121D006B8142 /* AnimationView.m */; };
 		724F5CF219231B3D006B8142 /* animationBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 724F5CF119231B3D006B8142 /* animationBG.png */; };
 		724FDBE519382CE600679587 /* IssueHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724FDBE419382CE600679587 /* IssueHistoryViewController.m */; };
+		7250EC61193DC3BB005D3D07 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7250EC60193DC3BB005D3D07 /* InviteViewController.m */; };
 		725AF442190B670F003C17ED /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 725AF441190B670F003C17ED /* KGStatusBar.m */; };
 		7269C5651920AEBE0018F80B /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 7269C5641920AEBE0018F80B /* recommend.png */; };
 		7269C5681920B24F0018F80B /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7269C5671920B24F0018F80B /* RecommendViewController.m */; };
@@ -3014,6 +3015,8 @@
 		724F5CF119231B3D006B8142 /* animationBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animationBG.png; sourceTree = "<group>"; };
 		724FDBE319382CE600679587 /* IssueHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueHistoryViewController.h; sourceTree = "<group>"; };
 		724FDBE419382CE600679587 /* IssueHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueHistoryViewController.m; sourceTree = "<group>"; };
+		7250EC5F193DC3BB005D3D07 /* InviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteViewController.h; sourceTree = "<group>"; };
+		7250EC60193DC3BB005D3D07 /* InviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteViewController.m; sourceTree = "<group>"; };
 		725AF440190B670F003C17ED /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
 		725AF441190B670F003C17ED /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
 		7269C5641920AEBE0018F80B /* recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommend.png; sourceTree = "<group>"; };
@@ -5510,6 +5513,8 @@
 				973A6B401935C2A600BC8FA3 /* MyScrollView.m */,
 				72735687192DA0F20083F80A /* DiceViewController.h */,
 				72735688192DA0F20083F80A /* DiceViewController.m */,
+				7250EC5F193DC3BB005D3D07 /* InviteViewController.h */,
+				7250EC60193DC3BB005D3D07 /* InviteViewController.m */,
 				724FDBE319382CE600679587 /* IssueHistoryViewController.h */,
 				724FDBE419382CE600679587 /* IssueHistoryViewController.m */,
 				7269C5691920C2EA0018F80B /* InterestSignInViewController.h */,
@@ -8935,6 +8940,7 @@
 				D5CCC5CF15859262008F7B55 /* RuYiCaiNetworkManager+RuYiCaiLotNet_ReqComplete.m in Sources */,
 				28A1D172182263C7006BBF11 /* JC_MyButton.m in Sources */,
 				D51E3DAF15871AC500BF8369 /* RuYiCaiNetworkManager+RuYiCaiNetCharge_ReqComplete.m in Sources */,
+				7250EC61193DC3BB005D3D07 /* InviteViewController.m in Sources */,
 				28A1D173182263C7006BBF11 /* JZHeighTableViewCell.m in Sources */,
 				7228AED2190F5B2600BB912E /* MessageContentViewController.m in Sources */,
 				D51E3DB015871AC500BF8369 /* RuYiCaiNetworkManager+RuYiCaiNetCharge_Request.m in Sources */,
