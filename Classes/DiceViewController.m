@@ -40,6 +40,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        lastResultGeted = NO;
     }
     return self;
 }
@@ -335,6 +336,8 @@
     [self.m_scrollView addSubview:_diceImgV];
     [_diceImgV release];
     
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrentOK:) name:@"WXRGetIssueCurrOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getcurlotDetailOK:) name:@"WXRGetcurlotDetailOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(betPeaOK:) name:@"WXRBetPeaOK" object:nil];
@@ -379,6 +382,8 @@
     else
     {
         self.currentRemainingTLabel.text = @"请稍等";
+        self.lastResultImageV.hidden = YES;
+        self.lastStatusLabel.hidden = NO;
         [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     }
 
@@ -386,12 +391,13 @@
 -(void)getCurrentOK:(NSNotification *)noti
 {
     NSDictionary * sd = (NSDictionary *)noti.object;
+
     currentLotNum = [[[sd objectForKey:@"currIssue"] objectForKey:@"issueNo"] retain];
     [[RuYiCaiNetworkManager sharedManager] queryCurrentLotDetailWithgameNo:nil AndissueNo:currentLotNum];
     self.currentRoundNameLabel.text = [NSString stringWithFormat:@"%@期",currentLotNum];
     double a = [[[sd objectForKey:@"currIssue"] objectForKey:@"endBetTime"] doubleValue]/1000-[[sd objectForKey:@"systemTime"] doubleValue]/1000;
     self.currentRemainingTime = [NSString stringWithFormat:@"%.0f",a];
-    NSTimeInterval nowT = [[NSDate date] timeIntervalSince1970];
+    double nowT = [[sd objectForKey:@"systemTime"] doubleValue]/1000;
 //    currentRemainingTime = 
 //    timeStr = @"0分0秒";
 	int leftTime = [self.currentRemainingTime intValue];
@@ -405,28 +411,38 @@
         NSLog(@"left :%@",timeStr);
         self.currentRemainingTLabel.text = timeStr;
     }
-    
-    if ([[[sd objectForKey:@"prevIssue"] objectForKey:@"awardState"] intValue] == 3) {
+    double kj = [[[sd objectForKey:@"prevIssue"] objectForKey:@"endAwardTime"] doubleValue]/1000-nowT;
+    if (kj>0) {
+        lastResultGeted = NO;
+    }
+    if ([[[sd objectForKey:@"prevIssue"] objectForKey:@"awardState"] intValue] == 3&&kj<=0&&!lastResultGeted) {
+        
         self.lastStatusLabel.hidden = YES;
         NSString * sdf = [NSString stringWithFormat:@"%@",[[sd objectForKey:@"prevIssue"] objectForKey:@"winCodeDetail"]];
-        [self.lastResultImageV setImage:[UIImage imageNamed:[NSString stringWithFormat:@"little%@",sdf]]];
+//        [self.lastResultImageV setImage:[UIImage imageNamed:[NSString stringWithFormat:@"little%@",sdf]]];
+        [self littleShaiziArray:[sdf intValue]];
         self.lastResultImageV.hidden = NO;
+        lastResultGeted = YES;
         
     }
-    else{
-        double kj = [[[sd objectForKey:@"currIssue"] objectForKey:@"endBetTime"] doubleValue]/1000-nowT;
-        NSLog(@"time remianing to kaijiang:%f",kj);
-        if ([self.checkLastResultTimer isValid]) {
-            [self.checkLastResultTimer invalidate];
-            if (self.checkLastResultTimer!=nil) {
-                self.checkLastResultTimer = nil;
-            }
-        }
-        self.checkLastResultTimer = [NSTimer scheduledTimerWithTimeInterval:kj target:self selector:@selector(checkLastResult) userInfo:nil repeats:YES];
+    else if(!lastResultGeted){
         self.lastStatusLabel.hidden = NO;
         self.lastStatusLabel.text = @"等待开奖";
         self.lastResultImageV.hidden = YES;
     }
+
+    if ([self.checkLastResultTimer isValid]) {
+        [self.checkLastResultTimer invalidate];
+        if (self.checkLastResultTimer!=nil) {
+            self.checkLastResultTimer = nil;
+        }
+    }
+    if (kj>0) {
+        NSLog(@"time remianing to kaijiang:%f",kj);
+
+        self.checkLastResultTimer = [NSTimer scheduledTimerWithTimeInterval:kj target:self selector:@selector(checkLastResult) userInfo:nil repeats:NO];
+    }
+
     
     NSLog(@"current No:%@",currentLotNum);
     
@@ -642,6 +658,27 @@
     animGroup.delegate = self;
     [[_diceImgV layer] addAnimation:animGroup forKey:nil];
     
+}
+-(void)littleShaiziArray:(int)result
+{
+    NSMutableArray * gg = [NSMutableArray array];
+    NSLog(@"hhhhhhhh1:%d",result);
+    [self.lastResultImageV setImage:[UIImage imageNamed:[NSString stringWithFormat:@"little%d",result]]];
+//    NSString *imgPath=[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"little%d",result] ofType:@"png"];
+//    UIImage *img=[UIImage imageWithContentsOfFile:imgPath];
+//    [gg addObject:img];
+    for (int i = 0; i<12; i++) {
+        int k = arc4random()%6+1;
+        NSString *imgPath=[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"little%d",k] ofType:@"png"];
+        UIImage *img=[UIImage imageWithContentsOfFile:imgPath];
+        [gg addObject:img];
+        NSLog(@"hhhhhhhh:%d",k);
+    }
+
+    self.lastResultImageV.animationImages=gg;
+    self.lastResultImageV.animationDuration=2;
+    self.lastResultImageV.animationRepeatCount=1;
+    [self.lastResultImageV startAnimating];
 }
 - (NSArray*)randomKeyPointArray
 {

@@ -22,6 +22,9 @@
     NSString * currentLotNum;
     
     RuYiCaiAppDelegate  *m_delegate;
+    
+    BOOL lastResultGeted;
+    
 }
 @property (nonatomic,retain)UILabel * currentRoundNameLabel;
 @property (nonatomic,retain)UILabel * currentRemainingTLabel;
