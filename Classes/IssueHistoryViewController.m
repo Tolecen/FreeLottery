@@ -51,16 +51,25 @@
 {
     [super layoutSubviews];
     _issueNoL.text = [NSString stringWithFormat:@"第 %@ 期",_dataDic[@"issueNo"]];
-    _winCodeIV.image = [UIImage imageNamed:[NSString stringWithFormat:@"little%d",[_dataDic[@"winCodeDetail"] intValue]]];
-    if ([_dataDic[@"winCode"] intValue]) {
-        _awardL.text = @"猜大赢";
-    }else{
-        _awardL.text = @"猜小赢";
+    if (![_dataDic[@"winCodeDetail"] isKindOfClass:[NSNull class]]) {
+        _winCodeIV.image = [UIImage imageNamed:[NSString stringWithFormat:@"little%d",[_dataDic[@"winCodeDetail"] intValue]]];
     }
+    if (![_dataDic[@"winCode"] isKindOfClass:[NSNull class]]) {
+        if ([_dataDic[@"winCode"] intValue]) {
+            _awardL.text = @"猜大赢";
+        }else{
+            _awardL.text = @"猜小赢";
+        }
+    }else
+    {
+        _awardL.text = @"未开奖";
+    }
+    
     if (![_dataDic[@"betCode"] isKindOfClass:[NSNull class]]) {
         NSArray*issueArr = [_dataDic[@"betCode"] componentsSeparatedByString:@"^"];
         for (NSString * issueStr in issueArr) {
             if (![issueStr isKindOfClass:[NSNull class]]&&![issueStr isEqualToString:@""]) {
+                _betDetailL.text = @" ";
                 NSArray*arr = [issueStr componentsSeparatedByString:@"|"];
                 if ([arr[2] intValue] == 0) {
                     _betDetailL.text = [_betDetailL.text stringByAppendingString: [NSString stringWithFormat:@"压小:%d",[arr[3] intValue]]];
@@ -70,7 +79,7 @@
                 }
                 _issueL.textColor = [UIColor lightGrayColor];
                 _issueL.text = @"未中奖";
-                if ([arr[2] intValue] == [_dataDic[@"winCode"] intValue]) {
+                if (![_dataDic[@"winCode"] isKindOfClass:[NSNull class]]&&[arr[2] intValue] == [_dataDic[@"winCode"] intValue]) {
                     _issueL.textColor = [UIColor redColor];
                     _issueL.text = @"中奖";
                 }
@@ -85,6 +94,8 @@
     [_issueNoL release];
     [_winCodeIV release];
     [_awardL release];
+    [_betDetailL release];
+    [_issueL release];
     [super dealloc];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -174,6 +185,7 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     [_tableView release];
     [_dataArray release];
+    [_jiluL release];
     [super dealloc];
 }
 - (void)viewDidLoad
