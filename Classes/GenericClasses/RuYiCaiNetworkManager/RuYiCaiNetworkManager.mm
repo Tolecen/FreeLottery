@@ -294,6 +294,8 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     [mDict setObject:kRuYiCaiCoopid forKey:@"channel"];
     [mDict setObject:@"1" forKey:@"isCompress"];
     
+    NSLog(@"MACVV:%@",[[UIDevice currentDevice] macaddress]);
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0){
         NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
         [mDict setObject:idfa forKey:@"mac"];
