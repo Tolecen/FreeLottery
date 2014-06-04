@@ -65,7 +65,7 @@
         _awardL.text = @"未开奖";
     }
     
-    if (![_dataDic[@"betCode"] isKindOfClass:[NSNull class]]&&![_dataDic[@"winCode"] isKindOfClass:[NSNull class]]) {
+    if (![_dataDic[@"betCode"] isKindOfClass:[NSNull class]]) {
         NSArray*issueArr = [_dataDic[@"betCode"] componentsSeparatedByString:@"^"];
         for (NSString * issueStr in issueArr) {
             if (![issueStr isKindOfClass:[NSNull class]]&&![issueStr isEqualToString:@""]) {
@@ -79,7 +79,7 @@
                 }
                 _issueL.textColor = [UIColor lightGrayColor];
                 _issueL.text = @"未中奖";
-                if ([arr[2] intValue] == [_dataDic[@"winCode"] intValue]) {
+                if (![_dataDic[@"winCode"] isKindOfClass:[NSNull class]]&&[arr[2] intValue] == [_dataDic[@"winCode"] intValue]) {
                     _issueL.textColor = [UIColor redColor];
                     _issueL.text = @"中奖";
                 }
