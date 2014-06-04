@@ -20,13 +20,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if ([self.remainingTimer isValid]) {
-        [self.remainingTimer invalidate];
-        if (self.remainingTimer!=nil) {
-            self.remainingTimer = nil;
-        }
-        
-    }
+
     [_m_scrollView release];
     [_inputTF release];
     [_rightrenshuL release];
@@ -397,6 +391,7 @@
     self.currentRoundNameLabel.text = [NSString stringWithFormat:@"%@期",currentLotNum];
     double a = [[[sd objectForKey:@"currIssue"] objectForKey:@"endBetTime"] doubleValue]/1000-[[sd objectForKey:@"systemTime"] doubleValue]/1000;
     self.currentRemainingTime = [NSString stringWithFormat:@"%.0f",a];
+    NSTimeInterval nowT = [[NSDate date] timeIntervalSince1970];
 //    currentRemainingTime = 
 //    timeStr = @"0分0秒";
 	int leftTime = [self.currentRemainingTime intValue];
@@ -411,8 +406,34 @@
         self.currentRemainingTLabel.text = timeStr;
     }
     
+    if ([[[sd objectForKey:@"prevIssue"] objectForKey:@"awardState"] intValue] == 3) {
+        self.lastStatusLabel.hidden = YES;
+        NSString * sdf = [NSString stringWithFormat:@"%@",[[sd objectForKey:@"prevIssue"] objectForKey:@"winCodeDetail"]];
+        [self.lastResultImageV setImage:[UIImage imageNamed:[NSString stringWithFormat:@"little%@",sdf]]];
+        self.lastResultImageV.hidden = NO;
+        
+    }
+    else{
+        double kj = [[[sd objectForKey:@"currIssue"] objectForKey:@"endBetTime"] doubleValue]/1000-nowT;
+        NSLog(@"time remianing to kaijiang:%f",kj);
+        if ([self.checkLastResultTimer isValid]) {
+            [self.checkLastResultTimer invalidate];
+            if (self.checkLastResultTimer!=nil) {
+                self.checkLastResultTimer = nil;
+            }
+        }
+        self.checkLastResultTimer = [NSTimer scheduledTimerWithTimeInterval:kj target:self selector:@selector(checkLastResult) userInfo:nil repeats:YES];
+        self.lastStatusLabel.hidden = NO;
+        self.lastStatusLabel.text = @"等待开奖";
+        self.lastResultImageV.hidden = YES;
+    }
+    
     NSLog(@"current No:%@",currentLotNum);
     
+}
+-(void)checkLastResult
+{
+    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
 }
 -(void)sureBtnBtnClicked:(UIButton *)sender
 {
@@ -444,6 +465,12 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
+ 
+//    self.m_scrollView.delegate = self;
+
+}
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
     if ([self.inputTF isFirstResponder]) {
         [UIView animateWithDuration:0.3 animations:^{
             if ([UIScreen mainScreen].bounds.size.height<500) {
@@ -459,8 +486,6 @@
     }
     [self.inputTF resignFirstResponder];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
-//    self.m_scrollView.delegate = self;
-
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -469,7 +494,7 @@
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+//    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     [self.inputTF resignFirstResponder];
     [UIView animateWithDuration:0.3 animations:^{
         if ([UIScreen mainScreen].bounds.size.height<500) {
@@ -780,6 +805,19 @@
 }
 - (void)back:(id)sender
 {
+    if ([self.remainingTimer isValid]) {
+        [self.remainingTimer invalidate];
+        if (self.remainingTimer!=nil) {
+            self.remainingTimer = nil;
+        }
+        
+    }
+    if ([self.checkLastResultTimer isValid]) {
+        [self.checkLastResultTimer invalidate];
+        if (self.checkLastResultTimer!=nil) {
+            self.checkLastResultTimer = nil;
+        }
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }

@@ -44,4 +44,5 @@
 @property (nonatomic,retain)UIScrollView * m_scrollView;
 @property (nonatomic,retain)NSString * currentRemainingTime;
 @property (nonatomic,retain)NSTimer * remainingTimer;
+@property (nonatomic,retain)NSTimer * checkLastResultTimer;
 @end
