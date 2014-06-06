@@ -26,12 +26,15 @@
 
 #import "ActivityView.h"
 #import "KGStatusBar.h"
+//shareSDK
+#import <ShareSDK/ShareSDK.h>
+#import "WeiBoApi.h"
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApi.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <RennSDK/RennSDK.h>
 
-//腾讯微博
-#define AppKey			@"appKey"
-#define AppSecret		@"appSecret"
-#define AppTokenKey		@"tokenKey"
-#define AppTokenSecret	@"tokenSecret"
 
 @interface RuYiCaiAppDelegate (internal)
 - (NSString*)getPath;
@@ -130,11 +133,83 @@
 	
     [self.window makeKeyAndVisible];
 }
+- (void)initializePlat
+{
+    /**
+     连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
+     http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectSinaWeiboWithAppKey:@"2455646689"
+                               appSecret:@"8285248b5dcc0690df9d747a71754073"
+                             redirectUri:@"https://api.weibo.com/oauth2/default.html"];
+    /**
+     连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
+     http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
+     
+     如果需要实现SSO，需要导入libWeiboSDK.a，并引入WBApi.h，将WBApi类型传入接口
+     **/
+    [ShareSDK connectTencentWeiboWithAppKey:@"801460737"
+                                  appSecret:@"79c7a0dfc43683d3f5f6b637004bfccd"
+                                redirectUri:@"http://www.52pet.net"
+                                   wbApiCls:[WeiboApi class]];
+    
+    /**
+     连接人人网应用以使用相关功能，此应用需要引用RenRenConnection.framework
+     http://dev.renren.com上注册人人网开放平台应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectRenRenWithAppId:@"226427"
+                              appKey:@"fc5b8aed373c4c27a05b712acba0f8c3"
+                           appSecret:@"f29df781abdd4f49beca5a2194676ca4"
+                   renrenClientClass:[RennClient class]];
+    
+    /**
+     连接QQ空间应用以使用相关功能，此应用需要引用QZoneConnection.framework
+     http://connect.qq.com/intro/login/上申请加入QQ登录，并将相关信息填写到以下字段
+     
+     如果需要实现SSO，需要导入TencentOpenAPI.framework,并引入QQApiInterface.h和TencentOAuth.h，将QQApiInterface和TencentOAuth的类型传入接口
+     **/
+    [ShareSDK connectQZoneWithAppKey:@"100584356"
+                           appSecret:@"	2fb71cb3592fd340adfd2257d1bc16fe"
+                   qqApiInterfaceCls:[QQApiInterface class]
+                     tencentOAuthCls:[TencentOAuth class]];
+    /**
+     连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
+     http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段
+     **/
+    //旧版中申请的AppId（如：QQxxxxxx类型），可以通过下面方法进行初始化
+    //    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
+    
+    [ShareSDK connectQQWithQZoneAppKey:@"100584356"
+                     qqApiInterfaceCls:[QQApiInterface class]
+                       tencentOAuthCls:[TencentOAuth class]];
+    /**
+     连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
+     http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
+     **/
+    [ShareSDK connectWeChatWithAppId:@"wxa45ff01dc73e9109" wechatCls:[WXApi class]];
+}
+- (BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+}
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
+}
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSTrace();
     
+    [ShareSDK registerApp:@"eefa7b0ec35"];
+    [self initializePlat];
 
     [[RuYiCaiNetworkManager sharedManager] readUserPlist];
     
@@ -482,33 +557,6 @@
 		return NO;
 	}
 }
-
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    NSLog(@"url-------%@",url);
-//    [WXApi handleOpenURL:url delegate:self];
-     if (!url)
-     {
-         return NO;
-     }
-    
-    return YES;
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-//    [WXApi handleOpenURL:url delegate:self];
-    NSLog(@"url-------%@",url);
-    if (!url)
-    {
-        return NO;
-    }
-    [self parseURL:url application:application];
-
-    return YES;
-}
-
 //- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 //{
 //    return [WXApi handleOpenURL:url delegate:self];

@@ -10,13 +10,12 @@
 #import "ActivitiesViewController.h"
 #import "ColorUtils.h"
 #import "RuYiCaiAppDelegate.h"
-
-@interface InviteViewController ()
+#import "sharePlatformView.h"
+@interface InviteViewController ()<sharePlatformViewDelegate>
 @property (nonatomic,retain)UILabel * inviteCodeL;
 @property (nonatomic,retain)UILabel * inviteRecordL;
 @property (nonatomic,retain)UILabel * inviteAwardL;
 @property (nonatomic,retain)UILabel * invitedAwardL;
-
 @end
 
 @implementation InviteViewController
@@ -39,18 +38,19 @@
 	// Do any additional setup after loading the view.
     self.navigationItem.title = @"邀请好友";
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
-    self.view = [[UIScrollView alloc]initWithFrame:self.view.frame];
-    self.view.backgroundColor =  [UIColor whiteColor];//[ColorUtils parseColorFromRGB:@"#efede9"];
-    ((UIScrollView*)self.view).contentSize = CGSizeMake(self.view.frame.size.width, 700);
+    UIScrollView * scrollView = [[UIScrollView alloc]initWithFrame:self.view.frame];
+    scrollView.backgroundColor =  [UIColor whiteColor];//[ColorUtils parseColorFromRGB:@"#efede9"];
+    [self.view addSubview:scrollView];
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 700);
     UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, 100, 30)];
     label1.font = [UIFont systemFontOfSize:18];
     label1.text = @"你的邀请码:";
-    [self.view addSubview:label1];
+    [scrollView addSubview:label1];
     self.inviteCodeL = [[UILabel alloc]initWithFrame:CGRectMake(150, 10, 100, 30)];
     _inviteCodeL.font = [UIFont systemFontOfSize:18];
     _inviteCodeL.textColor = [UIColor colorWithRed:48.0/255 green:135.0/255 blue:0 alpha:1];
     _inviteCodeL.text = @"74823";
-    [self.view addSubview:_inviteCodeL];
+    [scrollView addSubview:_inviteCodeL];
     
     UIButton * copyB = [UIButton buttonWithType:UIButtonTypeCustom];
     copyB.frame = CGRectMake(220, 10, 66, 27.5);
@@ -58,16 +58,16 @@
     [copyB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [copyB setBackgroundImage:[UIImage imageNamed:@"fuzhi"] forState:UIControlStateNormal];
     [copyB addTarget:self action:@selector(copyInviteCode) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:copyB];
+    [scrollView addSubview:copyB];
     
     UIView * view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 50)];
     view1.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
-    [self.view addSubview:view1];
+    [scrollView addSubview:view1];
     
     UIButton * inviteRecordB = [UIButton buttonWithType:UIButtonTypeCustom];
     [inviteRecordB setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     inviteRecordB.frame = CGRectMake(230, 60, 80, 30);
-    [self.view addSubview:inviteRecordB];
+    [scrollView addSubview:inviteRecordB];
     inviteRecordB.titleLabel.font = [UIFont systemFontOfSize:16];
     [inviteRecordB setTitle:@"邀请记录" forState:UIButtonTypeCustom];
     
@@ -76,96 +76,96 @@
     _inviteRecordL.textColor = [UIColor grayColor];
     _inviteRecordL.font = [UIFont systemFontOfSize:14];
     _inviteRecordL.text = @"邀请好友:5\t\t奖励彩豆:500";
-    [self.view addSubview:_inviteRecordL];
+    [scrollView addSubview:_inviteRecordL];
     
     UIImageView * image1 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 110, 18, 18)];
     image1.image = [UIImage imageNamed:@"yaoqingren"];
-    [self.view addSubview:image1];
+    [scrollView addSubview:image1];
     
     UILabel * label2 = [[UILabel alloc]initWithFrame:CGRectMake(40, 110, 100, 20)];
-    [self.view addSubview:label2];
+    [scrollView addSubview:label2];
     label2.text = @"邀请人奖励";
     
     UILabel * label3 = [[UILabel alloc]initWithFrame:CGRectMake(10, 140, 310,20)];
-    [self.view addSubview:label3];
+    [scrollView addSubview:label3];
     label3.textColor = [UIColor grayColor];
     label3.font = [UIFont systemFontOfSize:12];
     label3.text = @"首次任务奖励:受邀人初测并完成下载任务获赠\t\t彩豆";
     
     self.inviteAwardL = [[UILabel alloc]initWithFrame:CGRectMake(260, 140, 40, 20)];
-    [self.view addSubview:_inviteAwardL];
+    [scrollView addSubview:_inviteAwardL];
     _inviteAwardL.textColor = [UIColor redColor];
     _inviteAwardL.font = [UIFont systemFontOfSize:12];
     _inviteAwardL.text = @"200";
     
     UILabel * label4 = [[UILabel alloc]initWithFrame:CGRectMake(10, 170, 310,20)];
-    [self.view addSubview:label4];
+    [scrollView addSubview:label4];
     label4.textColor = [UIColor grayColor];
     label4.font = [UIFont systemFontOfSize:15];
     label4.text = @"Boss模式奖励";
     
     UIImageView * image2 = [[UIImageView alloc]initWithFrame:CGRectMake(110, 172, 18, 18)];
     image2.image = [UIImage imageNamed:@"BOSS"];
-    [self.view addSubview:image2];
+    [scrollView addSubview:image2];
     
     UIImageView * image3 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 200, 293.5, 31)];
     image3.image = [UIImage imageNamed:@"jindudi"];
-    [self.view addSubview:image3];
+    [scrollView addSubview:image3];
     
     UILabel * label5 = [[UILabel alloc]initWithFrame:CGRectMake(10, 240, 300, 20)];
-    [self.view addSubview:label5];
+    [scrollView addSubview:label5];
     label5.textColor = [UIColor grayColor];
     label5.font = [UIFont systemFontOfSize:15];
     label5.text = @"0  \t\t\t  4  \t\t\t  10";
     
     UIImageView * image4 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 270, 18, 18)];
     image4.image = [UIImage imageNamed:@"shouyaoqing"];
-    [self.view addSubview:image4];
+    [scrollView addSubview:image4];
     
     UILabel * label6 = [[UILabel alloc]initWithFrame:CGRectMake(40, 270, 100, 20)];
-    [self.view addSubview:label6];
+    [scrollView addSubview:label6];
     label6.text = @"受邀人奖励";
     
     UILabel * label7 = [[UILabel alloc]initWithFrame:CGRectMake(10, 300, 310,20)];
-    [self.view addSubview:label7];
+    [scrollView addSubview:label7];
     label7.textColor = [UIColor grayColor];
     label7.font = [UIFont systemFontOfSize:12];
     label7.text = @"填写邀请码注册并完成下载任务获得\t\t彩豆奖励";
     
     self.invitedAwardL = [[UILabel alloc]initWithFrame:CGRectMake(210, 300, 40, 20)];
-    [self.view addSubview:_invitedAwardL];
+    [scrollView addSubview:_invitedAwardL];
     _invitedAwardL.textColor = [UIColor grayColor];
     _invitedAwardL.font = [UIFont systemFontOfSize:12];
     _invitedAwardL.text = @"200";
     
     UIView * view2 = [[UIView alloc]initWithFrame:CGRectMake(0, 330, self.view.frame.size.width, 170)];
     view2.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
-    [self.view addSubview:view2];
+    [scrollView addSubview:view2];
     
     UIImageView * image5 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 340, 18, 18)];
     image5.image = [UIImage imageNamed:@"liucheng"];
-    [self.view addSubview:image5];
+    [scrollView addSubview:image5];
     
     UILabel * label8 = [[UILabel alloc]initWithFrame:CGRectMake(40, 340, 100, 20)];
-    [self.view addSubview:label8];
+    [scrollView addSubview:label8];
     label8.text = @"推广流程";
     
     UIImageView * image6 = [[UIImageView alloc]initWithFrame:CGRectMake(15, 370, 288, 89)];
     image6.image = [UIImage imageNamed:@"liuchengtu"];
-    [self.view addSubview:image6];
+    [scrollView addSubview:image6];
     
     UILabel * label9 = [[UILabel alloc]initWithFrame:CGRectMake(10, 470, 310,20)];
-    [self.view addSubview:label9];
+    [scrollView addSubview:label9];
     label9.textColor = [UIColor redColor];
     label9.font = [UIFont systemFontOfSize:12];
     label9.text = @"温馨提示:一定让好友在注册时填入你的邀请码";
     
     UIImageView * image7 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 510, 18, 18)];
     image7.image = [UIImage imageNamed:@"tuguang"];
-    [self.view addSubview:image7];
+    [scrollView addSubview:image7];
     
     UILabel * label10 = [[UILabel alloc]initWithFrame:CGRectMake(40, 510, 100, 20)];
-    [self.view addSubview:label10];
+    [scrollView addSubview:label10];
     label10.text = @"推广方式";
     
     UIButton * shareB = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -173,23 +173,45 @@
     [shareB setBackgroundImage:[UIImage imageNamed:@"huisebtn"] forState:UIControlStateNormal];
     [shareB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [shareB setTitle:@"分享" forState:UIControlStateNormal];
-    [self.view addSubview:shareB];
+    [scrollView addSubview:shareB];
+    [shareB addTarget:self action:@selector(shareInviteCode) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton * addressB = [UIButton buttonWithType:UIButtonTypeCustom];
     addressB.frame = CGRectMake(15, 590, 291, 38);
     [addressB setBackgroundImage:[UIImage imageNamed:@"huisebtn"] forState:UIControlStateNormal];
     [addressB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [addressB setTitle:@"一键安装地址获取" forState:UIControlStateNormal];
-    [self.view addSubview:addressB];
+    [scrollView addSubview:addressB];
+    [addressB addTarget:self action:@selector(copyDownLoadAddress) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton * twoDimensionB = [UIButton buttonWithType:UIButtonTypeCustom];
     twoDimensionB.frame = CGRectMake(15, 640, 291, 38);
     [twoDimensionB setBackgroundImage:[UIImage imageNamed:@"huisebtn"] forState:UIControlStateNormal];
     [twoDimensionB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [twoDimensionB setTitle:@"二维码扫描安装" forState:UIControlStateNormal];
-    [self.view addSubview:twoDimensionB];
+    [scrollView addSubview:twoDimensionB];
+    [twoDimensionB addTarget:self action:@selector(twoDimensionCode) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)inviteRecord
+{
+    
+}
+- (void)shareInviteCode
+{
+    sharePlatformView * shareV = [[sharePlatformView alloc]initWithView:self];
+    shareV.delegate = self;
+    [shareV showSharePlatformView];
+    [shareV release];
+}
+-(void)sharePlatformViewPressButtonWithIntage:(NSInteger)integer
+{
+    
+}
+- (void)copyDownLoadAddress
+{
+    [UIPasteboard generalPasteboard].string = @"https://itunes.apple.com/cn/app/quan-min-mian-fei-cai-piao/id830055983?mt=8";
+}
+- (void)twoDimensionCode
 {
     
 }
