@@ -9,18 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "JC_BetView.h"
 #import "CustomSegmentedControl.h"
-#import "ShareViewController.h"
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
+
 
 @class BJDC_LaunchHMViewController;
 
-@interface BJDC_Bet_viewController : UIViewController<CustomSegmentedControlDelegate, UITextFieldDelegate,sendMsgToWeChatViewDelegate,RespForWeChatViewDelegate,WXApiDelegate>
+@interface BJDC_Bet_viewController : UIViewController<CustomSegmentedControlDelegate, UITextFieldDelegate>
 {
     CustomSegmentedControl*           m_customSegmentView;
     double                         m_allCount;//所有花费
     int                         m_betNumber;//注数
-    enum WXScene _scene;
+//    enum WXScene _scene;
     
     BJDC_LaunchHMViewController*       m_LaunchHMView;
     

@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-#import "TextViewController.h"
-#import "WXApi.h"
 
-@interface HistoryLotDetailViewController : UIViewController <TextViewControllerDelegate,WXApiDelegate,MFMessageComposeViewControllerDelegate>
+@interface HistoryLotDetailViewController : UIViewController <MFMessageComposeViewControllerDelegate>
 {
     NSString*         m_lotTitle;
     NSString*         m_lotNo;

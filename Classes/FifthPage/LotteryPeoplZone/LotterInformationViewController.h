@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "RuYiCaiAppDelegate.h"
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
 
 typedef enum _SegmentType{
     caiMinQuWen = 0,
@@ -18,14 +16,14 @@ typedef enum _SegmentType{
     zhanNeiGongGao
 }SegmentType;
 
-@interface LotterInformationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,RespForWeChatViewDelegate,WXApiDelegate> {
+@interface LotterInformationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
     RuYiCaiAppDelegate *m_delegate;
     
     UITableView       *m_tableView;
     
     NSMutableDictionary           *m_typeIdDicArray;
     SegmentType _segmentType;
-    enum WXScene _scene;
+//    enum WXScene _scene;
     
 }
 

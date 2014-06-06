@@ -15,8 +15,6 @@
 
 #import "SeeDetailTableViewCell.h"
 #import "HMDTJoinPeopleTableCell.h"
-#import "ShareSendViewController.h"
-#import "TengXunSendViewController.h"
 #import "OnlyHaveTextViewTableCell.h"
 #import "NSLog.h"
 #import "JC_SeeDetailTableViewCell.h"
@@ -450,51 +448,6 @@
     [self.topView addSubview:minBuyLabel];
     [minBuyLabel release];
 }
-
-#pragma mark 分享
-
-- (void)shareButtonClick:(id)sender
-{
-    //163 + 270
-    [UIView beginAnimations:@"movement" context:nil];
-	[UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-	[UIView setAnimationDuration:0.5f];
-	[UIView setAnimationRepeatCount:1];
-	[UIView setAnimationRepeatAutoreverses:NO];
-    CGPoint buttonCenter = m_shareButton.center;
-    if(buttonCenter.x != 163)
-    {
-        buttonCenter.x -= 270;
-    }
-    else
-    {
-        buttonCenter.x += 270;
-    }
-    m_shareButton.center = buttonCenter;
-    [UIView commitAnimations];
-}
-
-- (void)sinaButtonClick:(id)sender
-{
-    ShareSendViewController* viewController = [[ShareSendViewController alloc] init];
-    viewController.shareContent = [NSString stringWithFormat:@"#如意彩# 我在@如意彩 发现了“%@”发起的%@合买，花钱不多，中奖几率更大，快来跟单吧！详情：%@", [self.dataDic objectForKey:@"starter"], [self.dataDic objectForKey:@"lotName"], [self.dataDic objectForKey:@"url"]];
-    viewController.title = @"新浪微博分享";
-    viewController.XinLang_shareType = XL_SHARE_HM_CASE;
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
-    
-}
-
-- (void)tengXunButtonClick:(id)sender
-{
-    TengXunSendViewController* viewController = [[TengXunSendViewController alloc] init];
-    viewController.shareContent = [NSString stringWithFormat:@"#如意彩# 我在@如意彩 发现了“%@”发起的%@合买，花钱不多，中奖几率更大，快来跟单吧！详情：%@", [self.dataDic objectForKey:@"starter"], [self.dataDic objectForKey:@"lotName"], [self.dataDic objectForKey:@"url"]];
-    viewController.title = @"腾讯微博分享";
-    viewController.TengXun_shareType = TX_SHARE_HM_CASE;
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
-}
-
 #pragma mark 撤单
 - (void)CheDanNotification:(NSNotification*)notification
 {

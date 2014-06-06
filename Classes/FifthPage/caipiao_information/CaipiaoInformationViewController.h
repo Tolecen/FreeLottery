@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "RuYiCaiAppDelegate.h"
 #import "CustomSegmentedControl.h"
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
 
-@interface CaipiaoInformationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,CustomSegmentedControlDelegate,WXApiDelegate,RespForWeChatViewDelegate> {
+@interface CaipiaoInformationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,CustomSegmentedControlDelegate> {
     UISegmentedControl *m_segmented;
     CustomSegmentedControl *_cusSegmented;
     UILabel            *m_loginStatus; //登录状态
@@ -22,7 +20,7 @@
     UITableView       *m_tableView;
        
     NSMutableDictionary           *m_typeIdDicArray;
-    enum WXScene _scene;
+//    enum WXScene _scene;
     
 }
 

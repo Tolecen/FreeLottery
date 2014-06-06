@@ -29,7 +29,7 @@
 
 - (id)init{
     if(self = [super init]){
-        _scene = WXSceneSession;
+//        _scene = WXSceneSession;
     }
     return self;
 }
@@ -95,20 +95,6 @@
     //[newsContent refreshView];
     [newsContent release];
 }
-
-
-- (void)doAuth
-{
-    SendAuthReq* req = [[[SendAuthReq alloc] init] autorelease];
-    req.scope = @"post_timeline";
-    req.state = @"xxx";
-    
-    [WXApi sendReq:req];
-}
-
--(void) changeScene:(NSInteger)scene{
-    _scene = scene;
-}
 -(void) onSentTextMessage:(BOOL) bSent
 {
     // 通过微信发送消息后， 返回本App
@@ -128,16 +114,6 @@
     }
     
     
-}
-
-- (void) sendTextContent:(NSString*)nsText
-{
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-    req.bText = YES;
-    req.text = nsText;
-    req.scene = _scene;
-    
-    [WXApi sendReq:req];
 }
 #pragma mark - Table view data source
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

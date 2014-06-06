@@ -9,7 +9,7 @@
 #import "SetViewController.h"
 #import "SetupViewController.h"
 #import "FuWuSetViewController.h"
-#import "SetWeiBoViewController.h"
+//#import "SetWeiBoViewController.h"
 #import "SetLotShowViewController.h"
 #import "SetYaoYiYaoViewController.h"
 #import "RYCImageNamed.h"
@@ -234,11 +234,11 @@
             }
             else if(3 == indexPath.row)
             {
-                [self setHidesBottomBarWhenPushed:YES];
-                SetWeiBoViewController* viewController = [[SetWeiBoViewController alloc] init];
-                viewController.title = @"微博绑定";
-                [self.navigationController pushViewController:viewController animated:YES];
-                [viewController release];
+//                [self setHidesBottomBarWhenPushed:YES];
+//                SetWeiBoViewController* viewController = [[SetWeiBoViewController alloc] init];
+//                viewController.title = @"微博绑定";
+//                [self.navigationController pushViewController:viewController animated:YES];
+//                [viewController release];
             }
         }else
         {
@@ -276,11 +276,11 @@
             }
             else if(2 == indexPath.row)
             {
-                [self setHidesBottomBarWhenPushed:YES];
-                SetWeiBoViewController* viewController = [[SetWeiBoViewController alloc] init];
-                viewController.title = @"微博绑定";
-                [self.navigationController pushViewController:viewController animated:YES];
-                [viewController release];
+//                [self setHidesBottomBarWhenPushed:YES];
+//                SetWeiBoViewController* viewController = [[SetWeiBoViewController alloc] init];
+//                viewController.title = @"微博绑定";
+//                [self.navigationController pushViewController:viewController animated:YES];
+//                [viewController release];
             }
 
         }
@@ -338,11 +338,11 @@
         }
         else if(3 == indexPath.row)
         {
-            [self setHidesBottomBarWhenPushed:YES];
-            SetWeiBoViewController* viewController = [[SetWeiBoViewController alloc] init];
-            viewController.title = @"微博绑定";
-            [self.navigationController pushViewController:viewController animated:YES];
-            [viewController release];
+//            [self setHidesBottomBarWhenPushed:YES];
+//            SetWeiBoViewController* viewController = [[SetWeiBoViewController alloc] init];
+//            viewController.title = @"微博绑定";
+//            [self.navigationController pushViewController:viewController animated:YES];
+//            [viewController release];
         }
     }
 

@@ -11,20 +11,17 @@
 #import <AddressBookUI/AddressBookUI.h>
 //#import <MessageUI/MessageUI.h>
 #import "CustomSegmentedControl.h"
-#import "ShareViewController.h"
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
 
 @class AnimationTabView;
 @class ZhuiHaoBetViewController;
 @class LaunchHMViewController;
 @class GiftViewController;
 
-@interface RYCNormalBetView : UIViewController<UITextFieldDelegate, ABPeoplePickerNavigationControllerDelegate, UIAlertViewDelegate, CustomSegmentedControlDelegate,sendMsgToWeChatViewDelegate,RespForWeChatViewDelegate,WXApiDelegate>
+@interface RYCNormalBetView : UIViewController<UITextFieldDelegate, ABPeoplePickerNavigationControllerDelegate, UIAlertViewDelegate, CustomSegmentedControlDelegate>
 {
     BOOL             isNormalBet;//是否为普通投注  或  追加投注
     int              allCount;
-    enum WXScene _scene;
+//    enum WXScene _scene;
     
     AnimationTabView*   m_animationTabView;
     ZhuiHaoBetViewController*  m_zhuiHaoViewController;

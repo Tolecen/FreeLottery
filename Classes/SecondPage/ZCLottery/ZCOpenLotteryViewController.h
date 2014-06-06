@@ -8,16 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomSegmentedControl.h"
-#import "ShareViewController.h"
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
 
 @class AnimationTabView;
 @class PullUpRefreshView;
 
-@interface ZCOpenLotteryViewController : UIViewController<UITableViewDelegate, UITableViewDataSource,CustomSegmentedControlDelegate,sendMsgToWeChatViewDelegate,RespForWeChatViewDelegate,WXApiDelegate>
+@interface ZCOpenLotteryViewController : UIViewController<UITableViewDelegate, UITableViewDataSource,CustomSegmentedControlDelegate>
 {
-    enum WXScene _scene;
+//    enum WXScene _scene;
     AnimationTabView*   m_animationTabView;
     UITableView      *m_myTableView;
     CustomSegmentedControl *_segmentedView;

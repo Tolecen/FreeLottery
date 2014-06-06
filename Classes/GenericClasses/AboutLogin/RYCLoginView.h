@@ -8,13 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import <TencentOpenAPI/TencentOAuth.h>//qq登录
-#import "SinaWeibo.h"
-#import "SinaWeiboRequest.h"//新浪登录
-
 @class RuYiCaiAppDelegate;
 
-@interface RYCLoginView : UINavigationController< TencentSessionDelegate, SinaWeiboDelegate, SinaWeiboRequestDelegate,UITextFieldDelegate>
+@interface RYCLoginView : UINavigationController<UITextFieldDelegate>
 {
     UITextField*    m_loginPhonenumTextField;
     UITextField*    m_loginPswTextField;
@@ -32,10 +28,10 @@
     UIView*         m_registerView;
     
     UITableView     *m_myTableView;
-    TencentOAuth*   _tencentOAuth;
+//    TencentOAuth*   _tencentOAuth;
     NSMutableArray* _permissions;
     
-    SinaWeibo      *sinaweibo;
+//    SinaWeibo      *sinaweibo;
     
     NSDictionary    *userInfo;
     //支付宝联合登陆属性
