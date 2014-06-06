@@ -49,26 +49,21 @@
 @implementation FifthPageViewController
 
 @synthesize myTableView = m_myTableView;
-@synthesize shareviewController = _shareviewController;
+//@synthesize shareviewController = _shareviewController;
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"userLoginOK2" object:nil];
     
     [m_myTableView release], m_myTableView = nil;
-    [_shareviewController release];
+//    [_shareviewController release];
     
     [super dealloc];
-}
--(void) onShowMediaMessage:(WXMediaMessage *) message
-{
-    // 微信启动， 有消息内容。
-    [self viewContent:message];
 }
 
 - (id)init{
     if(self = [super init]){
-        _scene = WXSceneSession;
+//        _scene = WXSceneSession;
     }
     return self;
 }
@@ -447,14 +442,7 @@
     }
     else if([indexPath row] == 8)
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
-        self.shareviewController = [[[ShareViewController alloc] init] autorelease];
-        _shareviewController.delegate=self;
-        _shareviewController.title = @"分享";
-        _shareviewController.sinShareContent = [NSString stringWithFormat:@"@全民免费彩，我刚使用了全民免费彩票客户端买彩票，很方便呢！你也试试吧，彩票随身投，大奖时时有！中奖了记的要请客啊！下载地址为：%@", kAppStoreDownLoad];
-        _shareviewController.txShareContent = [NSString stringWithFormat:@"@全民免费彩，我刚使用了全民免费彩票客户端买彩票，很方便呢！你也试试吧，彩票随身投，大奖时时有！中奖了记的要请客啊！下载地址为：%@", kAppStoreDownLoad];
-        _shareviewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，我刚使用了全民免费彩买彩票，很方便呢！你也试试吧，彩票随身投，大奖时时有！中奖了记的要请客啊！下载地址为：%@", kAppStoreDownLoad];
-        [self.navigationController pushViewController:_shareviewController animated:YES];
+        
     }
     else if([indexPath row] == 9)
     {
@@ -480,64 +468,6 @@
     //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
-
-- (void) viewContent:(WXMediaMessage *) msg
-{
-    //显示微信传过来的内容
-    WXAppExtendObject *obj = msg.mediaObject;
-    
-    NSString *strTitle = [NSString stringWithFormat:@"消息来自微信"];
-    NSString *strMsg = [NSString stringWithFormat:@"标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%u bytes\n\n", msg.title, msg.description, obj.extInfo, msg.thumbData.length];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-    [alert release];
-}
-
-- (void)doAuth
-{
-    SendAuthReq* req = [[[SendAuthReq alloc] init] autorelease];
-    req.scope = @"post_timeline";
-    req.state = @"xxx";
-    
-    [WXApi sendReq:req];
-}
-
--(void) changeScene:(NSInteger)scene{
-    _scene = scene;
-}
-
--(void) onResp:(BaseResp*)resp
-{
-    if([resp isKindOfClass:[SendMessageToWXResp class]])
-    {
-        NSString *strTitle = [NSString stringWithFormat:@"发送结果"];
-        if (resp.errCode==0)
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:@"微信分享成功" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-        }else
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:@"微信分享失败" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-        }
-        
-        
-    }
-    else if([resp isKindOfClass:[SendAuthResp class]])
-    {
-        NSString *strTitle = [NSString stringWithFormat:@"Auth结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"Auth结果:%d", resp.errCode];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        [alert release];
-    }
-}
-
 -(void) onSentTextMessage:(BOOL) bSent
 {
     // 通过微信发送消息后， 返回本App
@@ -558,17 +488,6 @@
     
     
 }
-
-- (void) sendTextContent:(NSString*)nsText
-{
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-    req.bText = YES;
-    req.text = nsText;
-    req.scene = _scene;
-    
-    [WXApi sendReq:req];
-}
-
 
 @end
 

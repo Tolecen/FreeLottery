@@ -114,24 +114,10 @@
 #pragma mark---微信分享
 - (id)init{
     if(self = [super init]){
-        _scene = WXSceneSession;
+//        _scene = WXSceneSession;
     }
     return self;
 }
-
-- (void)doAuth
-{
-    SendAuthReq* req = [[[SendAuthReq alloc] init] autorelease];
-    req.scope = @"post_timeline";
-    req.state = @"xxx";
-    
-    [WXApi sendReq:req];
-}
-
--(void) changeScene:(NSInteger)scene{
-    _scene = scene;
-}
-
 -(void) onSentTextMessage:(BOOL) bSent
 {
     // 通过微信发送消息后， 返回本App
@@ -152,16 +138,6 @@
     
     
 }
-- (void) sendTextContent:(NSString*)nsText
-{
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-    req.bText = YES;
-    req.text = nsText;
-    req.scene = _scene;
-    
-    [WXApi sendReq:req];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -868,16 +844,7 @@
     {
         if (buttonIndex==1)
         {
-            ShareViewController *shareViewController = [[ShareViewController alloc] init];
-            shareViewController.delegate = self;
-            shareViewController.navigationItem.title=@"合买分享";
-            shareViewController.sinShareContent = [NSString stringWithFormat:@"@全民免费彩，我刚发起了一个%@的合买,合买中奖率更大!%@", [[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"lotName"],[[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"url"]];
-            shareViewController.txShareContent = [NSString stringWithFormat:@"@全民免费彩，我刚发起了一个%@的合买,合买中奖率更大!%@", [[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"lotName"],[[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"url"]];
-            shareViewController.shareContent =[NSString stringWithFormat:@"@全民免费彩，我刚发起了一个%@的合买,合买中奖率更大!%@", [[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"lotName"],[[self.getShareDetileDic objectForKey:@"result"] objectForKey:@"url"]];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
-            shareViewController.pushType = @"PUSHHIDE";
-            [self.navigationController pushViewController:shareViewController animated:YES];
-            [shareViewController release];
+           
         }else if(buttonIndex==0)
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];

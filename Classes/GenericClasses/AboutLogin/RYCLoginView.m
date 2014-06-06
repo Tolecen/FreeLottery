@@ -63,11 +63,11 @@
     [m_registerView release];
     
     [m_myTableView release], m_myTableView = nil;
-    [_tencentOAuth release];
+//    [_tencentOAuth release];
     [_permissions release];
     
-    sinaweibo.delegate = nil;
-    [sinaweibo release], sinaweibo = nil;
+//    sinaweibo.delegate = nil;
+//    [sinaweibo release], sinaweibo = nil;
     [userInfo release], userInfo = nil;
     
     
@@ -113,18 +113,18 @@
     _permissions =  [[NSArray arrayWithObjects:
 					  @"get_user_info",@"add_share", @"add_topic",@"add_one_blog", @"list_album",
 					  @"upload_pic",@"list_photo", @"add_album", @"check_page_fans",nil] retain];
-    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"100392744"
-											andDelegate:self];
-	_tencentOAuth.redirectURI = @"www.qq.com";
-    
-    sinaweibo = [[SinaWeibo alloc] initWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:kAppRedirectURI andDelegate:self];
+//    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"100392744"
+//											andDelegate:self];
+//	_tencentOAuth.redirectURI = @"www.qq.com";
+//    
+//    sinaweibo = [[SinaWeibo alloc] initWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:kAppRedirectURI andDelegate:self];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *sinaweiboInfo = [defaults objectForKey:@"SinaWeiboAuthData"];
     if ([sinaweiboInfo objectForKey:@"AccessTokenKey"] && [sinaweiboInfo objectForKey:@"ExpirationDateKey"] && [sinaweiboInfo objectForKey:@"UserIDKey"])
     {
-        sinaweibo.accessToken = [sinaweiboInfo objectForKey:@"AccessTokenKey"];
-        sinaweibo.expirationDate = [sinaweiboInfo objectForKey:@"ExpirationDateKey"];
-        sinaweibo.userID = [sinaweiboInfo objectForKey:@"UserIDKey"];
+//        sinaweibo.accessToken = [sinaweiboInfo objectForKey:@"AccessTokenKey"];
+//        sinaweibo.expirationDate = [sinaweiboInfo objectForKey:@"ExpirationDateKey"];
+//        sinaweibo.userID = [sinaweiboInfo objectForKey:@"UserIDKey"];
     }
     
     isRemberMyLoginStatus = m_delegate.autoRememberMystatus;
@@ -367,25 +367,6 @@
         
     }
 }
-
-- (void)sinaCoopLoginClick
-{
-    BOOL authValid = sinaweibo.isAuthValid;
-    
-    if (authValid)//已授权//已登陆
-    {
-        [sinaweibo logOut];
-        [sinaweibo logIn];
-    }
-    else
-    {
-        [sinaweibo logIn];
-    }
-}
-- (void)tencentCoopLoginClick
-{
-    [_tencentOAuth authorize:_permissions inSafari:NO];
-}
 //电话按钮事件
 - (void)serviceBtnClick
 {
@@ -626,153 +607,4 @@
     [self presentModalViewController:bindUserAccountView animated:YES];
     [bindUserAccountView release];
 }
-
-#pragma mark  QQ登录
-// 登录成功{"client_id":"100305073","openid":"1DE3EAA7F2BEF85F6C18BC3BDEF16F9C"}
-- (void)tencentDidLogin
-{
-    [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
-    NSLog(@"QQ登录成功 %@", _tencentOAuth.openId);
-    
-    //    [_tencentOAuth getUserInfo];//获取用户基本信息
-    if ([_tencentOAuth getUserInfo]) {
-        NSLog(@"YES表示API调用成功");
-    }else{
-        NSLog(@"NO表示API调用失败");
-    }
-    
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"jointLogin" object:nil];
-    
-}
-
-- (void)tencentDidNotLogin:(BOOL)cancelled
-{
-	if (cancelled){
-		[[RuYiCaiNetworkManager sharedManager] showMessage:@"取消使用QQ登录！" withTitle:@"提示" buttonTitle:@"确定"];
-	}
-	else {
-		[[RuYiCaiNetworkManager sharedManager] showMessage:@"登录失败！" withTitle:@"提示" buttonTitle:@"确定"];
-	}
-}
-
--(void)tencentDidNotNetWork
-{
-    [[RuYiCaiNetworkManager sharedManager] showMessage:@"无网络连接，请设置网络" withTitle:@"提示" buttonTitle:@"确定"];
-}
-
-- (void)getUserInfoResponse:(APIResponse*) response
-{
-    [CommonRecordStatus commonRecordStatusManager].loginWay = kQQLogin;
-	if (response.retCode == URLREQUEST_SUCCEED)
-	{
-        [[RuYiCaiNetworkManager sharedManager] loginWithSource:@"qq" withOpenId:_tencentOAuth.openId withNickName:[response.jsonResponse objectForKey:@"nickname"]];
-	}
-	else {
-        [[RuYiCaiNetworkManager sharedManager] loginWithSource:@"qq" withOpenId:_tencentOAuth.openId withNickName:@""];
-	}
-}
-
-#pragma mark-
-#pragma mark 新浪登录
-- (void)removeAuthData
-{
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SinaWeiboAuthData"];
-}
-
-- (void)storeAuthData
-{
-    NSDictionary *authData = [NSDictionary dictionaryWithObjectsAndKeys:
-                              sinaweibo.accessToken, @"AccessTokenKey",
-                              sinaweibo.expirationDate, @"ExpirationDateKey",
-                              sinaweibo.userID, @"UserIDKey",
-                              sinaweibo.refreshToken, @"refresh_token", nil];
-    [[NSUserDefaults standardUserDefaults] setObject:authData forKey:@"SinaWeiboAuthData"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-#pragma mark   sins客户端回调消息
-- (void)SinaHandleOpenURL:(NSNotification*)notification
-{
-    
-    NSObject *obj = [notification object];
-    if ([obj isKindOfClass:[NSDictionary class]])
-    {
-        NSDictionary *dict = (NSDictionary*)obj;
-        NSURL* url = [dict objectForKey:@"sinaURL"];
-        
-        [sinaweibo handleOpenURL:url];
-    }
-}
-
-- (void)SinaBecomeActive:(NSNotification*)notification
-{
-    [sinaweibo applicationDidBecomeActive];
-}
-
-#pragma mark   sina协议方法
-- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibos
-{
-    //    NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"jointLogin" object:nil];
-    
-    [self storeAuthData];
-    
-    [sinaweibo requestWithURL:@"users/show.json"
-                       params:[NSMutableDictionary dictionaryWithObject:sinaweibo.userID forKey:@"uid"]
-                   httpMethod:@"GET"
-                     delegate:self];
-}
-
-- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
-{
-    NSLog(@"sinaweiboDidLogOut");
-    [self removeAuthData];
-}
-
-- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
-{
-    NSLog(@"sinaweiboLogInDidCancel");
-}
-
-
-- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
-{
-    NSLog(@"sinaweibo logInDidFailWithError %@", error);
-    [[RuYiCaiNetworkManager sharedManager] showMessage:@"登录失败!" withTitle:@"提示" buttonTitle:@"确定"];
-}
-
-- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
-{
-    NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
-    [self removeAuthData];
-}
-
-#pragma mark - SinaWeiboRequest Delegate
-- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
-{
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-        [userInfo release], userInfo = nil;
-        [CommonRecordStatus commonRecordStatusManager].loginWay = kXLWeiBoLogin;
-        [[RuYiCaiNetworkManager sharedManager] loginWithSource:@"sina" withOpenId:sinaweibo.userID withNickName:@""];
-    }
-}
-
-- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
-{
-    [RuYiCaiNetworkManager sharedManager].netAppType = NET_APP_LOGIN;
-    NSLog(@"%@",request.params);
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-        [userInfo release];
-        userInfo = [result retain];
-        NSLog(@"%@  %@",userInfo, sinaweibo.userID);
-        
-        [CommonRecordStatus commonRecordStatusManager].loginWay = kXLWeiBoLogin;
-        [[RuYiCaiNetworkManager sharedManager] loginWithSource:@"sina" withOpenId:sinaweibo.userID withNickName:[userInfo objectForKey:@"screen_name"]];
-    }
-}
-
-
 @end

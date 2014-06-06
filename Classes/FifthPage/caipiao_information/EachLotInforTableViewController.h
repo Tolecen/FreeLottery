@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
+//#import "WXApi.h"
+//#import "RespForWeChatViewController.h"
 
-@interface EachLotInforTableViewController : UITableViewController <RespForWeChatViewDelegate,WXApiDelegate>
+@interface EachLotInforTableViewController : UITableViewController
 {
     NSMutableArray           *m_typeIdArray;
-    enum WXScene _scene;
+//    enum WXScene _scene;
 }
 @property (nonatomic, retain) NSString*  lotNo;
 @property (nonatomic, retain) NSMutableArray     *typeIdArray;

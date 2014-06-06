@@ -99,7 +99,7 @@
 
 - (id)init{
     if(self = [super init]){
-        _scene = WXSceneSession;
+//        _scene = WXSceneSession;
     }
     return self;
 }
@@ -567,18 +567,6 @@
 
 #pragma mark -
 #pragma mark 显示微博界面的代理方法
-- (void)doAuth
-{
-    SendAuthReq* req = [[[SendAuthReq alloc] init] autorelease];
-    req.scope = @"post_timeline";
-    req.state = @"xxx";
-    
-    [WXApi sendReq:req];
-}
-
--(void) changeScene:(NSInteger)scene{
-    _scene = scene;
-}
 
 -(void) onSentTextMessage:(BOOL) bSent
 {
@@ -599,16 +587,6 @@
     }
     
     
-}
-
-- (void) sendTextContent:(NSString*)nsText
-{
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-    req.bText = YES;
-    req.text = nsText;
-    req.scene = _scene;
-    
-    [WXApi sendReq:req];
 }
 
 #pragma mark - CustomerSegmented delegate

@@ -7,17 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TextViewController.h"
-#import "WXApi.h"
 #import <MessageUI/MessageUI.h>
-#import "ShareViewController.h"
-#import "RespForWeChatViewController.h"
-
 
 @class TrendView;
 @class PullUpRefreshView;
 
-@interface LotteryAwardInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate,TextViewControllerDelegate,WXApiDelegate,MFMessageComposeViewControllerDelegate,sendMsgToWeChatViewDelegate,RespForWeChatViewDelegate>
+@interface LotteryAwardInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>
 {
 //    UIButton         *m_backButton;
     
@@ -61,7 +56,7 @@
     UIButton*        m_goLotteryButton;
     BOOL             m_isGoLottery;//从选号页进入时，返回功能
     NSString        *m_nsLastText;
-    enum WXScene _scene;
+//    enum WXScene _scene;
     BOOL            *m_isPushShow;
 
 }

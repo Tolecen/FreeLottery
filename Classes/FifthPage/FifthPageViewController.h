@@ -8,13 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RuYiCaiAppDelegate.h"
-#import "ShareViewController.h"
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
 
-
-@interface FifthPageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,sendMsgToWeChatViewDelegate,RespForWeChatViewDelegate,WXApiDelegate> {
-    enum WXScene _scene;
+@interface FifthPageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+//    enum WXScene _scene;
     UITableView        *m_myTableView;
     
 //    UILabel            *m_loginStatus; //登录状态
@@ -23,7 +19,7 @@
 }
 
 @property (nonatomic, retain)UITableView        *myTableView;
-@property (retain, nonatomic) ShareViewController *shareviewController;
+//@property (retain, nonatomic) ShareViewController *shareviewController;
 - (void)userLoginOK2:(NSNotification*)notification;
 
 @end

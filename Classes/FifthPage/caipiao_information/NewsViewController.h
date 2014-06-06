@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TextViewController.h"
 #import <MessageUI/MessageUI.h>
 
-@interface NewsViewController : UIViewController <TextViewControllerDelegate,MFMessageComposeViewControllerDelegate>
+@interface NewsViewController : UIViewController <MFMessageComposeViewControllerDelegate>
 {
     UIButton*        m_shareButton;
     NSString         *m_nsLastText;

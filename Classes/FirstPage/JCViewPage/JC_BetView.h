@@ -11,7 +11,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomSegmentedControl.h"
-#import "ShareViewController.h"
 
 @class CombineList;
 @class CombineBase;
@@ -33,7 +32,7 @@ typedef enum confusionType
     JCZQ_ZJQ = 4,  //竞彩足球半全场
 }type;
 
-@interface JC_BetView : UIViewController<UIScrollViewDelegate, UITextFieldDelegate,CustomSegmentedControlDelegate,sendMsgToWeChatViewDelegate> {
+@interface JC_BetView : UIViewController<UIScrollViewDelegate, UITextFieldDelegate,CustomSegmentedControlDelegate> {
     double                      m_allCount;
     int                         m_gameCount;
     int                         m_twoCount;//胜负都选的比赛个数

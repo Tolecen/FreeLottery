@@ -21,8 +21,8 @@
 #import "LotteryDetailView.h"
 #import "LotteryDetailBigView.h"
 #import "HistoryLotDetailViewController.h"
-#import "ShareSendViewController.h"
-#import "TengXunSendViewController.h"
+//#import "ShareSendViewController.h"
+//#import "TengXunSendViewController.h"
 #import "BlockActionSheet.h"
 
 #import "SSQ_PickNumberViewController.h"
@@ -134,7 +134,7 @@
 
 - (id)init{
     if(self = [super init]){
-        _scene = WXSceneSession;
+//        _scene = WXSceneSession;
     }
     return self;
 }
@@ -864,24 +864,24 @@
     
     [self setHidesBottomBarWhenPushed:YES];
     
-    ShareSendViewController* viewController = [[ShareSendViewController alloc] init];
-    
-    SBJsonParser *jsonParser = [SBJsonParser new];
-    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
-                                               [RuYiCaiNetworkManager sharedManager].responseText];
-    if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
-    {
-        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
-    }
-    else
-    {
-        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
-    }
-    viewController.title = @"新浪微博分享";
-    viewController.XinLang_shareType = XL_LOTTERY_OPEN;
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
-    [jsonParser release];
+//    ShareSendViewController* viewController = [[ShareSendViewController alloc] init];
+//    
+//    SBJsonParser *jsonParser = [SBJsonParser new];
+//    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
+//                                               [RuYiCaiNetworkManager sharedManager].responseText];
+//    if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
+//    {
+//        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+//    }
+//    else
+//    {
+//        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+//    }
+//    viewController.title = @"新浪微博分享";
+//    viewController.XinLang_shareType = XL_LOTTERY_OPEN;
+//    [self.navigationController pushViewController:viewController animated:YES];
+//    [viewController release];
+//    [jsonParser release];
 }
 
 - (void)tengXunButtonClick:(id)sender
@@ -897,24 +897,24 @@
     
     [self setHidesBottomBarWhenPushed:YES];
     
-    TengXunSendViewController* viewController = [[TengXunSendViewController alloc] init];
-    SBJsonParser *jsonParser = [SBJsonParser new];
-    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
-                                               [RuYiCaiNetworkManager sharedManager].responseText];
-    
-    if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
-    {
-        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
-    }
-    else
-    {
-        viewController.shareContent =[NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
-    }
-    viewController.title = @"腾讯微博分享";
-    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
-    [jsonParser release];
+//    TengXunSendViewController* viewController = [[TengXunSendViewController alloc] init];
+//    SBJsonParser *jsonParser = [SBJsonParser new];
+//    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
+//                                               [RuYiCaiNetworkManager sharedManager].responseText];
+//    
+//    if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
+//    {
+//        viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+//    }
+//    else
+//    {
+//        viewController.shareContent =[NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+//    }
+//    viewController.title = @"腾讯微博分享";
+//    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
+//    [self.navigationController pushViewController:viewController animated:YES];
+//    [viewController release];
+//    [jsonParser release];
 }
 
 - (void)weiXinButtonFirendClick:(id)sender
@@ -927,30 +927,30 @@
     //        [m_backButton release];
     //    }
     //    [MobClick event:@"openPage_share_tengxun"];
-    [_delegate changeScene:WXSceneTimeline];
-    [self setHidesBottomBarWhenPushed:YES];
-    
-    TextViewController* viewController = [[TextViewController alloc] init];
-    viewController.m_delegate = self;
-    SBJsonParser *jsonParser = [SBJsonParser new];
-    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
-                                               [RuYiCaiNetworkManager sharedManager].responseText];
-    
-    if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
-    {
-        viewController.m_nsLastText =[NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
-    }
-    else
-    {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
-    }
-    viewController.titleStr = @"分享到朋友圈";
-    //    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
-    //    [self.navigationController pushViewController:viewController animated:YES];
-    viewController.m_delegate = self;
-    [self  presentModalViewController:viewController animated:YES];
-    [viewController release];
-    [jsonParser release];
+//    [_delegate changeScene:WXSceneTimeline];
+//    [self setHidesBottomBarWhenPushed:YES];
+//    
+//    TextViewController* viewController = [[TextViewController alloc] init];
+//    viewController.m_delegate = self;
+//    SBJsonParser *jsonParser = [SBJsonParser new];
+//    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
+//                                               [RuYiCaiNetworkManager sharedManager].responseText];
+//    
+//    if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
+//    {
+//        viewController.m_nsLastText =[NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+//    }
+//    else
+//    {
+//        viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+//    }
+//    viewController.titleStr = @"分享到朋友圈";
+//    //    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
+//    //    [self.navigationController pushViewController:viewController animated:YES];
+//    viewController.m_delegate = self;
+//    [self  presentModalViewController:viewController animated:YES];
+//    [viewController release];
+//    [jsonParser release];
 }
 
 
@@ -958,32 +958,32 @@
 - (void)weiXinButtonClick:(id)sender
 {
     [self forceShuPing];
-    [_delegate changeScene:WXSceneSession];
+//    [_delegate changeScene:WXSceneSession];
     
     
     [self setHidesBottomBarWhenPushed:YES];
     
-    TextViewController* viewController = [[TextViewController alloc] init];
-    viewController.m_delegate = self;
-    SBJsonParser *jsonParser = [SBJsonParser new];
-    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
-                                               [RuYiCaiNetworkManager sharedManager].responseText];
-    
-    if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
-    {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
-    }
-    else
-    {
-        viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
-    }
-    viewController.titleStr = @"分享到微信";
-    //    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
-    //    [self.navigationController pushViewController:viewController animated:YES];
-    viewController.m_delegate = self;
-    [self  presentModalViewController:viewController animated:YES];
-    [viewController release];
-    [jsonParser release];
+//    TextViewController* viewController = [[TextViewController alloc] init];
+//    viewController.m_delegate = self;
+//    SBJsonParser *jsonParser = [SBJsonParser new];
+//    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:
+//                                               [RuYiCaiNetworkManager sharedManager].responseText];
+//    
+//    if(kLotTitleSSQ == self.lotTitle || kLotTitleDLT == self.lotTitle || kLotTitleFC3D == self.lotTitle || kLotTitleQLC == self.lotTitle || kLotTitleQXC == self.lotTitle || kLotTitle22_5 == self.lotTitle)
+//    {
+//        viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+//    }
+//    else
+//    {
+//        viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，%@第%@期的开奖号码为：%@。下载地址：%@", [[CommonRecordStatus commonRecordStatusManager] lotNameWithLotNo:self.lotNo], [parserDict objectForKey:@"batchCode"],[parserDict objectForKey:@"winNo"],KAppWapDoload];
+//    }
+//    viewController.titleStr = @"分享到微信";
+//    //    viewController.TengXun_shareType = TX_LOTTERY_OPEN;
+//    //    [self.navigationController pushViewController:viewController animated:YES];
+//    viewController.m_delegate = self;
+//    [self  presentModalViewController:viewController animated:YES];
+//    [viewController release];
+//    [jsonParser release];
 }
 #pragma mark 微信分享
 -(void) onCancelText
@@ -1004,19 +1004,6 @@
 
 #pragma mark -
 #pragma mark 显示微博界面的代理方法
-- (void)doAuth
-{
-    SendAuthReq* req = [[[SendAuthReq alloc] init] autorelease];
-    req.scope = @"post_timeline";
-    req.state = @"xxx";
-    
-    [WXApi sendReq:req];
-}
-
--(void) changeScene:(NSInteger)scene{
-    _scene = scene;
-}
-
 -(void) onSentTextMessage:(BOOL) bSent
 {
     // 通过微信发送消息后， 返回本App
@@ -1037,17 +1024,6 @@
     
     
 }
-
-- (void) sendTextContent:(NSString*)nsText
-{
-    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-    req.bText = YES;
-    req.text = nsText;
-    req.scene = _scene;
-    
-    [WXApi sendReq:req];
-}
-
 
 #pragma mark 短信分享
 

@@ -15,7 +15,7 @@
 #import "NSLog.h"
 
 #import <sys/utsname.h>//腾讯微博
-#import "NSURL+QAdditions.h"
+//#import "NSURL+QAdditions.h"
 #import "Custom_tabbar.h"
 #import "CustomTabBarViewController.h"
 
@@ -487,7 +487,7 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     NSLog(@"url-------%@",url);
-    [WXApi handleOpenURL:url delegate:self];
+//    [WXApi handleOpenURL:url delegate:self];
      if (!url)
      {
          return NO;
@@ -498,7 +498,7 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    [WXApi handleOpenURL:url delegate:self];
+//    [WXApi handleOpenURL:url delegate:self];
     NSLog(@"url-------%@",url);
     if (!url)
     {
@@ -599,7 +599,7 @@
         
         NSLog(@"KAppScheme_Tencent");
         
-        [TencentOAuth HandleOpenURL:url];
+//        [TencentOAuth HandleOpenURL:url];
 //        NSString *urlString = [url absoluteString];
 //        NSLog(@"urlString ----> %@",urlString);
 //        NSArray *array = [urlString componentsSeparatedByString:@"://"];
@@ -615,7 +615,7 @@
         
         NSLog(@"KAppScheme_Tencent");
         
-        [WXApi handleOpenURL:url delegate:self];
+//        [WXApi handleOpenURL:url delegate:self];
     }
     
     if (![resultStr isEqualToString:@""]) {
@@ -655,84 +655,6 @@
 	[[NSUserDefaults standardUserDefaults] setValue:self.tokenSecret forKey:AppTokenSecret];
 	[[NSUserDefaults standardUserDefaults] synchronize];//同步
 }
-
-
-
-#pragma mark -
-#pragma mark wixdelegate
--(void) onReq:(BaseReq*)req
-{
-    if([req isKindOfClass:[GetMessageFromWXReq class]])
-    {
-        [self onRequestAppMessage];
-    }
-    else if([req isKindOfClass:[ShowMessageFromWXReq class]])
-    {
-        ShowMessageFromWXReq* temp = (ShowMessageFromWXReq*)req;
-        [self onShowMediaMessage:temp.message];
-    }
-    
-}
--(void) onShowMediaMessage:(WXMediaMessage *) message
-{
-    // 微信启动， 有消息内容。
-    [self viewContent:message];
-}
-
-- (void) viewContent:(WXMediaMessage *) msg
-{
-    //显示微信传过来的内容
-    WXAppExtendObject *obj = msg.mediaObject;
-    
-    NSString *strTitle = [NSString stringWithFormat:@"消息来自微信"];
-    NSString *strMsg = [NSString stringWithFormat:@"标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%u bytes\n\n", msg.title, msg.description, obj.extInfo, msg.thumbData.length];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-    [alert release];
-}
-
-
--(void) onRequestAppMessage
-{
-    // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
-    
-    RespForWeChatViewController* controller = [[RespForWeChatViewController alloc]autorelease];
-    controller.delegate = self;
-    [self.viewController presentModalViewController:controller animated:YES];
-    
-}
-
--(void) onResp:(BaseResp*)resp
-{
-    if([resp isKindOfClass:[SendMessageToWXResp class]])
-    {
-        NSString *strTitle = [NSString stringWithFormat:@"发送结果"];
-        if (resp.errCode==0)
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:@"微信分享成功" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-        }else
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:@"微信分享失败" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-        }
-        
-        
-    }
-    else if([resp isKindOfClass:[SendAuthResp class]])
-    {
-        NSString *strTitle = [NSString stringWithFormat:@"Auth结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"Auth结果:%d", resp.errCode];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        [alert release];
-    }
-}
-
 #pragma mark -
 #pragma mark Memory management
 

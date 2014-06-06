@@ -10,8 +10,6 @@
 #import <AdSupport/AdSupport.h>
 #import "RandomPickerViewController.h"
 #import "RYCLoginView.h"
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
 #import "MobClick.h"
 
 
@@ -27,7 +25,7 @@
 @class RuYiCaiStartViewController;
 @class ActivityView;
 
-@interface RuYiCaiAppDelegate : NSObject <UIApplicationDelegate,UIAlertViewDelegate, WXApiDelegate,RespForWeChatViewDelegate> {
+@interface RuYiCaiAppDelegate : NSObject <UIApplicationDelegate,UIAlertViewDelegate> {
     UIWindow                   *m_window;
     RuYiCaiViewController      *m_viewController;
 	

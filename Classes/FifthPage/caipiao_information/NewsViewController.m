@@ -9,8 +9,6 @@
 #import "NewsViewController.h"
 #import "SBJsonParser.h"
 #import "RuYiCaiNetworkManager.h"
-#import "ShareSendViewController.h"
-#import "TengXunSendViewController.h"
 #import "NSLog.h"
 #import "BackBarButtonItemUtils.h"
 #import "ShareRightBarButtonItemUtils.h"
@@ -217,74 +215,6 @@
 //    [UIView commitAnimations];
     
 }
-
-- (void)weiXinFriendButtonClick:(id)sender
-{
-    [self setHidesBottomBarWhenPushed:YES];
-    [_delegate changeScene:WXSceneTimeline];
-    TextViewController* viewController = [[TextViewController alloc] init];
-    viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，我在全民免费彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];
-    viewController.titleStr  = @"分享到朋友圈";
-    //    viewController.XinLang_shareType = XL_SHARE_NEWS;
-    viewController.m_delegate = self;
-    [self  presentModalViewController:viewController animated:YES];
-    [viewController release];
-}
-
-
-- (void)weiXinButtonClick:(id)sender
-{
-    [self setHidesBottomBarWhenPushed:YES];
-    [_delegate changeScene:WXSceneSession];
-    TextViewController* viewController = [[TextViewController alloc] init];
-    viewController.m_nsLastText = [NSString stringWithFormat:@"@全民免费彩，我在全民免费彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];
-    viewController.titleStr = @"分享到微信";
-//    viewController.XinLang_shareType = XL_SHARE_NEWS;
-    viewController.m_delegate = self;
-    [self  presentModalViewController:viewController animated:YES];
-    [viewController release];
-}
-- (void)sinaButtonClick:(id)sender
-{
-    [self setHidesBottomBarWhenPushed:YES];
-
-    ShareSendViewController* viewController = [[ShareSendViewController alloc] init];
-    viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，我在全民免费彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];       
-    viewController.title = @"新浪微博分享";
-    viewController.XinLang_shareType = XL_SHARE_NEWS;
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
-}
-
-- (void)tengXunButtonClick:(id)sender
-{
-    [self setHidesBottomBarWhenPushed:YES];
-
-    TengXunSendViewController* viewController = [[TengXunSendViewController alloc] init];
-    viewController.shareContent = [NSString stringWithFormat:@"@全民免费彩，我在全民免费彩发现了一条比较有趣的新闻。%@。%@", self.newsTitle,self.shareURL];
-    viewController.title = @"腾讯微博分享";
-    viewController.TengXun_shareType = TX_SHARE_NEWS;
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
-}
-
-
-#pragma mark 微信分享
--(void) onCancelText
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
--(void) onCompleteText:(NSString*)nsText
-{
-    [self dismissModalViewControllerAnimated:YES];
-    m_nsLastText = nsText;
-    if (_delegate)
-    {
-        [_delegate sendTextContent:m_nsLastText] ;
-    }
-}
-
 #pragma mark 短信分享
 
 - (void)phoneMessage:(id)sender

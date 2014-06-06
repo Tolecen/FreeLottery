@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomSegmentedControl.h"
-#import "ShareViewController.h"
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
 
 #define kPerPageMaxSize  (10)
 
@@ -23,8 +20,8 @@ typedef enum{
     renqiOrder
 }TypeOrder;
 
-@interface HMDTGroupByViewController : UIViewController<UIScrollViewDelegate,CustomSegmentedControlDelegate, sendMsgToWeChatViewDelegate,RespForWeChatViewDelegate,WXApiDelegate> {
-    enum WXScene _scene;
+@interface HMDTGroupByViewController : UIViewController<UIScrollViewDelegate,CustomSegmentedControlDelegate> {
+//    enum WXScene _scene;
     NSUInteger           m_curPageIndex;
     NSUInteger           m_totalPageCount;
     NSUInteger           m_curPageSize;

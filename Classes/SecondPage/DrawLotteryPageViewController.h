@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "RuYiCaiAppDelegate.h"
 #import "PullRefreshTableViewController.h"
-#import "ShareViewController.h"
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
 
 typedef enum {
     
@@ -22,8 +19,8 @@ typedef enum {
 } JCType;
 
 //@interface SecondPageViewController : PullRefreshTableViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
-@interface DrawLotteryPageViewController : PullRefreshTableViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate,sendMsgToWeChatViewDelegate,RespForWeChatViewDelegate,WXApiDelegate> {
-    enum WXScene _scene;
+@interface DrawLotteryPageViewController : PullRefreshTableViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
+//    enum WXScene _scene;
     RuYiCaiAppDelegate *m_delegate;
     NSUInteger          m_cellCount;
     

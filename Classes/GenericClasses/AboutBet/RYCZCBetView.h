@@ -10,18 +10,18 @@
 //#import <QuartzCore/QuartzCore.h>
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
-#import "WXApi.h"
-#import "RespForWeChatViewController.h"
+//#import "WXApi.h"
+//#import "RespForWeChatViewController.h"
 
 @class AnimationTabView;
 @class LaunchHMViewController;
 @class GiftViewController;
 #import "CustomSegmentedControl.h"
-#import "ShareViewController.h"
+//#import "ShareViewController.h"
 
-@interface RYCZCBetView : UIViewController<UITextFieldDelegate, ABPeoplePickerNavigationControllerDelegate,CustomSegmentedControlDelegate,sendMsgToWeChatViewDelegate,RespForWeChatViewDelegate,WXApiDelegate>
+@interface RYCZCBetView : UIViewController<UITextFieldDelegate, ABPeoplePickerNavigationControllerDelegate,CustomSegmentedControlDelegate>
 {
-    enum WXScene                _scene;
+//    enum WXScene                _scene;
     BOOL                          isNormalBet;
     int                           allCount;
     
