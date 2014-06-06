@@ -353,6 +353,11 @@
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
     }
+
+    [self performSelector:@selector(addbb) withObject:nil afterDelay:1];
+}
+-(void)addbb
+{
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         if (!_bgv) {
             self.bgv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
