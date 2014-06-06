@@ -160,6 +160,7 @@
                     {
                         actionV.frame = CGRectMake(0, h - 154, 0, 0);
                     }
+                    [self.listTableV setFrame:CGRectMake(0, 0, 320, h-44-50-actionV.frame.size.height-20)];
                     [weekSelf.view addSubview:actionV];
                     [actionV release];
                 });
@@ -365,7 +366,31 @@
             cell.doitBtn.userInteractionEnabled = NO;
             [cell.doitBtn addTarget:self action:@selector(doQianDao:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else
+        else if([[actV objectForKey:@"type"] isEqualToString:@"10"])
+        {
+            cell.imageV.backgroundColor = [UIColor clearColor];
+            cell.qianDaoTimeLabel.text = @"";
+            cell.imageV.image = [UIImage imageNamed:@"invitePico"];
+            [cell.doitBtn setTitle:@"立刻邀请" forState:UIControlStateNormal];
+            cell.doitBtn.hidden = YES;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            cell.doitBtn.tag = 110;
+//            cell.doitBtn.userInteractionEnabled = YES;
+//            [cell.doitBtn addTarget:self action:@selector(yaoqing) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if([[actV objectForKey:@"type"] isEqualToString:@"9"])
+        {
+            cell.imageV.backgroundColor = [UIColor clearColor];
+            cell.qianDaoTimeLabel.text = @"";
+            cell.imageV.image = [UIImage imageNamed:@"caidaxiao_ico"];
+            [cell.doitBtn setTitle:@"立刻去猜" forState:UIControlStateNormal];
+            cell.doitBtn.hidden = YES;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            cell.doitBtn.tag = 109;
+//            cell.doitBtn.userInteractionEnabled = YES;
+//            [cell.doitBtn addTarget:self action:@selector(shaizi) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if([[actV objectForKey:@"type"] isEqualToString:@"3"])
         {
             cell.imageV.backgroundColor = [UIColor clearColor];
             cell.qianDaoTimeLabel.text = @"";
@@ -396,7 +421,10 @@
         else if ([[actV objectForKey:@"state"] isEqualToString:@"1"]&&[RuYiCaiNetworkManager sharedManager].hasLogin)
         {
             cell.nameLabel.textColor = [UIColor blackColor];
-            cell.doitBtn.hidden = NO;
+            if([[actV objectForKey:@"type"] isEqualToString:@"3"]||[[actV objectForKey:@"type"] isEqualToString:@"2"])
+                cell.doitBtn.hidden = NO;
+            else
+                cell.doitBtn.hidden = YES;
             [cell.doitBtn setEnabled:YES];
             [cell.statusImgV setImage:nil];
             [cell.doitBtn setBackgroundImage:[UIImage imageNamed:@"tasktodo"] forState:UIControlStateNormal];
@@ -484,6 +512,13 @@
             [self.navigationController pushViewController:intVC animated:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
             [intVC release];
+        }
+        else if ([[actV objectForKey:@"type"] isEqualToString:@"9"]){
+            [self shaizi];
+        }
+        else if ([[actV objectForKey:@"type"] isEqualToString:@"10"])
+        {
+            [self yaoqing];
         }
     }
 }
