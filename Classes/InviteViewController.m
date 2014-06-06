@@ -10,9 +10,12 @@
 #import "ActivitiesViewController.h"
 #import "ColorUtils.h"
 #import "RuYiCaiAppDelegate.h"
-//#import <>
+
 @interface InviteViewController ()
-@property (nonatomic,retain)UILabel *inviteCodeL;
+@property (nonatomic,retain)UILabel * inviteCodeL;
+@property (nonatomic,retain)UILabel * inviteRecordL;
+@property (nonatomic,retain)UILabel * inviteAwardL;
+@property (nonatomic,retain)UILabel * invitedAwardL;
 
 @end
 
@@ -38,7 +41,7 @@
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
     self.view = [[UIScrollView alloc]initWithFrame:self.view.frame];
     self.view.backgroundColor =  [UIColor whiteColor];//[ColorUtils parseColorFromRGB:@"#efede9"];
-    ((UIScrollView*)self.view).contentSize = CGSizeMake(self.view.frame.size.width, 1000);
+    ((UIScrollView*)self.view).contentSize = CGSizeMake(self.view.frame.size.width, 700);
     UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, 100, 30)];
     label1.font = [UIFont systemFontOfSize:18];
     label1.text = @"你的邀请码:";
@@ -50,13 +53,13 @@
     [self.view addSubview:_inviteCodeL];
     
     UIButton * copyB = [UIButton buttonWithType:UIButtonTypeCustom];
-    copyB.frame = CGRectMake(220, 10, 50, 30);
+    copyB.frame = CGRectMake(220, 10, 66, 27.5);
     [copyB setTitle:@"复制" forState:UIControlStateNormal];
     [copyB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [copyB setBackgroundColor:[ColorUtils parseColorFromRGB:@"#efede9"]];
-    copyB.layer.cornerRadius = 5;
-    [self.view addSubview:copyB];
+    [copyB setBackgroundImage:[UIImage imageNamed:@"fuzhi"] forState:UIControlStateNormal];
     [copyB addTarget:self action:@selector(copyInviteCode) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:copyB];
+    
     UIView * view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 50)];
     view1.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
     [self.view addSubview:view1];
@@ -68,6 +71,123 @@
     inviteRecordB.titleLabel.font = [UIFont systemFontOfSize:16];
     [inviteRecordB setTitle:@"邀请记录" forState:UIButtonTypeCustom];
     
+    self.inviteRecordL = [[UILabel alloc]initWithFrame:CGRectMake(10, 65, 200, 20)];
+    _inviteRecordL.backgroundColor = [UIColor clearColor];
+    _inviteRecordL.textColor = [UIColor grayColor];
+    _inviteRecordL.font = [UIFont systemFontOfSize:14];
+    _inviteRecordL.text = @"邀请好友:5\t\t奖励彩豆:500";
+    [self.view addSubview:_inviteRecordL];
+    
+    UIImageView * image1 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 110, 18, 18)];
+    image1.image = [UIImage imageNamed:@"yaoqingren"];
+    [self.view addSubview:image1];
+    
+    UILabel * label2 = [[UILabel alloc]initWithFrame:CGRectMake(40, 110, 100, 20)];
+    [self.view addSubview:label2];
+    label2.text = @"邀请人奖励";
+    
+    UILabel * label3 = [[UILabel alloc]initWithFrame:CGRectMake(10, 140, 310,20)];
+    [self.view addSubview:label3];
+    label3.textColor = [UIColor grayColor];
+    label3.font = [UIFont systemFontOfSize:12];
+    label3.text = @"首次任务奖励:受邀人初测并完成下载任务获赠\t\t彩豆";
+    
+    self.inviteAwardL = [[UILabel alloc]initWithFrame:CGRectMake(260, 140, 40, 20)];
+    [self.view addSubview:_inviteAwardL];
+    _inviteAwardL.textColor = [UIColor redColor];
+    _inviteAwardL.font = [UIFont systemFontOfSize:12];
+    _inviteAwardL.text = @"200";
+    
+    UILabel * label4 = [[UILabel alloc]initWithFrame:CGRectMake(10, 170, 310,20)];
+    [self.view addSubview:label4];
+    label4.textColor = [UIColor grayColor];
+    label4.font = [UIFont systemFontOfSize:15];
+    label4.text = @"Boss模式奖励";
+    
+    UIImageView * image2 = [[UIImageView alloc]initWithFrame:CGRectMake(110, 172, 18, 18)];
+    image2.image = [UIImage imageNamed:@"BOSS"];
+    [self.view addSubview:image2];
+    
+    UIImageView * image3 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 200, 293.5, 31)];
+    image3.image = [UIImage imageNamed:@"jindudi"];
+    [self.view addSubview:image3];
+    
+    UILabel * label5 = [[UILabel alloc]initWithFrame:CGRectMake(10, 240, 300, 20)];
+    [self.view addSubview:label5];
+    label5.textColor = [UIColor grayColor];
+    label5.font = [UIFont systemFontOfSize:15];
+    label5.text = @"0  \t\t\t  4  \t\t\t  10";
+    
+    UIImageView * image4 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 270, 18, 18)];
+    image4.image = [UIImage imageNamed:@"shouyaoqing"];
+    [self.view addSubview:image4];
+    
+    UILabel * label6 = [[UILabel alloc]initWithFrame:CGRectMake(40, 270, 100, 20)];
+    [self.view addSubview:label6];
+    label6.text = @"受邀人奖励";
+    
+    UILabel * label7 = [[UILabel alloc]initWithFrame:CGRectMake(10, 300, 310,20)];
+    [self.view addSubview:label7];
+    label7.textColor = [UIColor grayColor];
+    label7.font = [UIFont systemFontOfSize:12];
+    label7.text = @"填写邀请码注册并完成下载任务获得\t\t彩豆奖励";
+    
+    self.invitedAwardL = [[UILabel alloc]initWithFrame:CGRectMake(210, 300, 40, 20)];
+    [self.view addSubview:_invitedAwardL];
+    _invitedAwardL.textColor = [UIColor grayColor];
+    _invitedAwardL.font = [UIFont systemFontOfSize:12];
+    _invitedAwardL.text = @"200";
+    
+    UIView * view2 = [[UIView alloc]initWithFrame:CGRectMake(0, 330, self.view.frame.size.width, 170)];
+    view2.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
+    [self.view addSubview:view2];
+    
+    UIImageView * image5 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 340, 18, 18)];
+    image5.image = [UIImage imageNamed:@"liucheng"];
+    [self.view addSubview:image5];
+    
+    UILabel * label8 = [[UILabel alloc]initWithFrame:CGRectMake(40, 340, 100, 20)];
+    [self.view addSubview:label8];
+    label8.text = @"推广流程";
+    
+    UIImageView * image6 = [[UIImageView alloc]initWithFrame:CGRectMake(15, 370, 288, 89)];
+    image6.image = [UIImage imageNamed:@"liuchengtu"];
+    [self.view addSubview:image6];
+    
+    UILabel * label9 = [[UILabel alloc]initWithFrame:CGRectMake(10, 470, 310,20)];
+    [self.view addSubview:label9];
+    label9.textColor = [UIColor redColor];
+    label9.font = [UIFont systemFontOfSize:12];
+    label9.text = @"温馨提示:一定让好友在注册时填入你的邀请码";
+    
+    UIImageView * image7 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 510, 18, 18)];
+    image7.image = [UIImage imageNamed:@"tuguang"];
+    [self.view addSubview:image7];
+    
+    UILabel * label10 = [[UILabel alloc]initWithFrame:CGRectMake(40, 510, 100, 20)];
+    [self.view addSubview:label10];
+    label10.text = @"推广方式";
+    
+    UIButton * shareB = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareB.frame = CGRectMake(15, 540, 291, 38);
+    [shareB setBackgroundImage:[UIImage imageNamed:@"huisebtn"] forState:UIControlStateNormal];
+    [shareB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [shareB setTitle:@"分享" forState:UIControlStateNormal];
+    [self.view addSubview:shareB];
+    
+    UIButton * addressB = [UIButton buttonWithType:UIButtonTypeCustom];
+    addressB.frame = CGRectMake(15, 590, 291, 38);
+    [addressB setBackgroundImage:[UIImage imageNamed:@"huisebtn"] forState:UIControlStateNormal];
+    [addressB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [addressB setTitle:@"一键安装地址获取" forState:UIControlStateNormal];
+    [self.view addSubview:addressB];
+    
+    UIButton * twoDimensionB = [UIButton buttonWithType:UIButtonTypeCustom];
+    twoDimensionB.frame = CGRectMake(15, 640, 291, 38);
+    [twoDimensionB setBackgroundImage:[UIImage imageNamed:@"huisebtn"] forState:UIControlStateNormal];
+    [twoDimensionB setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [twoDimensionB setTitle:@"二维码扫描安装" forState:UIControlStateNormal];
+    [self.view addSubview:twoDimensionB];
 }
 - (void)inviteRecord
 {
