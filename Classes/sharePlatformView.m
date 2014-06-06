@@ -42,6 +42,7 @@
         UILabel* weiboL = [[UILabel alloc]initWithFrame:CGRectMake(20, 75, 80, 20)];
         weiboL.font = [UIFont systemFontOfSize:14];
         weiboL.text = @"新浪微博";
+        weiboL.backgroundColor = [UIColor clearColor];
         weiboL.textAlignment = NSTextAlignmentCenter;
         weiboL.textColor = [UIColor grayColor];
         [whiteView addSubview:weiboL];
@@ -58,6 +59,7 @@
         UILabel* tWeiboL = [[UILabel alloc]initWithFrame:CGRectMake(120, 75, 80, 20)];
         tWeiboL.font = [UIFont systemFontOfSize:14];
         tWeiboL.text = @"腾讯微博";
+        tWeiboL.backgroundColor = [UIColor clearColor];
         tWeiboL.textAlignment = NSTextAlignmentCenter;
         tWeiboL.textColor = [UIColor grayColor];
         [whiteView addSubview:tWeiboL];
@@ -74,6 +76,7 @@
         UILabel* weiChatFriendL = [[UILabel alloc]initWithFrame:CGRectMake(220, 75, 80, 20)];
         weiChatFriendL.font = [UIFont systemFontOfSize:14];
         weiChatFriendL.text = @"微信好友";
+        weiChatFriendL.backgroundColor = [UIColor clearColor];
         weiChatFriendL.textColor = [UIColor grayColor];
         weiChatFriendL.textAlignment = NSTextAlignmentCenter;
         [whiteView addSubview:weiChatFriendL];
@@ -90,6 +93,7 @@
         UILabel* weiChatL = [[UILabel alloc]initWithFrame:CGRectMake(20, 165, 80, 20)];
         weiChatL.font = [UIFont systemFontOfSize:14];
         weiChatL.text = @"朋友圈";
+        weiChatL.backgroundColor = [UIColor clearColor];
         weiChatL.textAlignment = NSTextAlignmentCenter;
         weiChatL.textColor = [UIColor grayColor];
         [whiteView addSubview:weiChatL];
@@ -106,6 +110,7 @@
         UILabel* qqL = [[UILabel alloc]initWithFrame:CGRectMake(120, 165, 80, 20)];
         qqL.font = [UIFont systemFontOfSize:14];
         qqL.text = @"QQ";
+        qqL.backgroundColor = [UIColor clearColor];
         qqL.textAlignment = NSTextAlignmentCenter;
         qqL.textColor = [UIColor grayColor];
         [whiteView addSubview:qqL];
@@ -121,7 +126,8 @@
         
         UILabel* smsL = [[UILabel alloc]initWithFrame:CGRectMake(220, 165, 80, 20)];
         smsL.font = [UIFont systemFontOfSize:14];
-        smsL.text = @"短信";
+        smsL.text = @"人人网";
+        smsL.backgroundColor = [UIColor clearColor];
         smsL.textAlignment = NSTextAlignmentCenter;
         smsL.textColor = [UIColor grayColor];
         [whiteView addSubview:smsL];
@@ -170,7 +176,7 @@
 -(void)shareArticle:(UIButton*)button
 {
     if (self.delegate) {
-        [self.delegate sharePlatformViewPressButtonWithIntage:button.tag];
+        [self.delegate sharePlatformView:self PressButtonWithIntage:button.tag];
     }
 }
 -(void)shareContentSuccess

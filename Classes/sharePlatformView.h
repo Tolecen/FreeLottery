@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class sharePlatformView;
 @protocol sharePlatformViewDelegate <NSObject>
--(void)sharePlatformViewPressButtonWithIntage:(NSInteger)integer;
+-(void)sharePlatformView:(sharePlatformView*)shareView PressButtonWithIntage:(NSInteger)integer;
 @end
 @interface sharePlatformView : UIView
 @property (nonatomic,assign)id<sharePlatformViewDelegate>delegate;
