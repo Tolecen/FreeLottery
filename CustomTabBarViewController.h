@@ -15,6 +15,9 @@
 #import "ExchangeLotteryViewController.h"
 #import "ActivitiesViewController.h"
 @interface CustomTabBarViewController : UIViewController
+{
+    NSArray * btnArray;
+}
 
 @property (retain, nonatomic) UINavigationController *firstNavController;
 @property (retain, nonatomic) UINavigationController *secondNavController;
@@ -34,6 +37,6 @@
 
 - (IBAction)customTabTapped:(id)sender;
 - (void)selectTabTapped;
-
+- (void)customTabSelected:(int)currentTag;
 
 @end

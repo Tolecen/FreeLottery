@@ -85,6 +85,9 @@
 @synthesize jzRecentEventInfo = m_jzRecentEventInfo;
 @synthesize bdRecentEventInfo = m_bdRecentEventInfo;
 @synthesize bindNewPhoneNum      = m_bindNewPhoneNum;
+@synthesize choumaDa;
+@synthesize choumaXiao;
+@synthesize shouldTurnToAdWall;
 static RuYiCaiNetworkManager *s_networkManager = NULL;
 
 - (void)dealloc 
@@ -173,6 +176,11 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         
         self.shouldCheat = NO;
         self.requestedAdwallSuccess = NO;
+        
+        self.shouldTurnToAdWall = NO;
+        
+        self.choumaXiao = 0;
+        self.choumaDa = 0;
         
         self.beginCalOutComment = 0;
         

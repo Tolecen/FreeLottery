@@ -21,7 +21,7 @@
         // Custom initialization
         titleArrayOne = [[NSArray alloc] initWithObjects:@"关于我们",@"常见问题",@"新手指南", nil];
         titleArrayTwo = [[NSArray alloc] initWithObjects:@"评分支持",@"留言反馈", nil];
-        titleArrayThree = [[NSArray alloc] initWithObjects:@"注销账号", nil];
+        titleArrayThree = [[NSArray alloc] initWithObjects:@"修改密码",@"注销账号", nil];
     }
     return self;
 }
@@ -170,14 +170,22 @@
     }
     else
     {
-        UIAlertView* alterView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您确定注销登录吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
-        
-        [alterView addButtonWithTitle:@"确定"];
-        alterView.delegate = self;
-        alterView.tag = 321;
-        [alterView show];
-        
-        [alterView release];
+        if (indexPath.row==0) {
+            ChangePassViewController * changeV = [[ChangePassViewController alloc] init];
+            [self.navigationController pushViewController:changeV animated:YES];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+            [changeV release];
+        }
+        else{
+            UIAlertView* alterView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您确定注销登录吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+            
+            [alterView addButtonWithTitle:@"确定"];
+            alterView.delegate = self;
+            alterView.tag = 321;
+            [alterView show];
+            
+            [alterView release];
+        }
     }
 
     

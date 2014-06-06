@@ -6,18 +6,18 @@
 //
 //
 
-#import "ExchangeLotteryWithIntegrationViewController.h"
+#import "Exchange2LotteryWithIntegrationViewController.h"
 #import "AdaptationUtils.h"
 #import "UINavigationBarCustomBg.h"
 #import "BackBarButtonItemUtils.h"
 #import "ADWallViewController.h"
 #import "RecommendViewController.h"
 #import <objc/runtime.h>
-@interface ExchangeLotteryWithIntegrationViewController ()
+@interface Exchange2LotteryWithIntegrationViewController ()
 
 @end
 
-@implementation ExchangeLotteryWithIntegrationViewController
+@implementation Exchange2LotteryWithIntegrationViewController
 @synthesize listTableV;
 @synthesize adView_adWall;
 @synthesize theUserID;
@@ -229,7 +229,6 @@
 //    if (self.shouldShowTabbar) {
 //        [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
 //    }
- 
 
 }
 -(void)toGetAdwallImportantInfoOK:(NSNotification *)noti
@@ -353,17 +352,6 @@
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
     }
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        if (!_bgv) {
-            self.bgv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-            [_bgv setImage:[UIImage imageNamed:@"title_bg"]];
-            _bgv.tag=1111;
-            [[UIApplication sharedApplication].keyWindow addSubview:_bgv];
-            [_bgv release];
-            
-        }
-        
-    }
 }
 -(void)queryUserBalanceOK:(NSNotification *)notification
 {
@@ -408,9 +396,10 @@
 }
 -(void)dealloc
 {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [_bgv release];
-    }
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+//        [bgv2 removeFromSuperview];
+//        [bgv2 release];
+//    }
    AdwoOWUnregisterResponseEvents(ADWO_OFFER_WALL_RESPONSE_EVENTS_WALL_DISMISS);
     [self.rtbAdWall release];
     _offerWallController.delegate = nil;
@@ -478,7 +467,15 @@
     self.navigationItem.rightBarButtonItem = m_button_Login;
     [m_button_Login release];
 
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+//        if (![[UIApplication sharedApplication].keyWindow.subviews containsObject:bgv2]) {
+//            bgv2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+//            [bgv2 setImage:[UIImage imageNamed:@"title_bg"]];
+//            [[UIApplication sharedApplication].keyWindow addSubview:bgv2];
+//        }
+        bgv2 = (UIImageView *)[[UIApplication sharedApplication].keyWindow viewWithTag:1111];
 
+    }
     
     if (![RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess) {
         [[RuYiCaiNetworkManager sharedManager] queryADWallList];
@@ -965,7 +962,7 @@ static NSString* const errCodeList[] = {
 };
 -(void)showAnWoAdwall
 {
-    _bgv.hidden = YES;
+    bgv2.hidden = YES;
     //开发者如需要后台对接，才需要设置这个字段。
     NSArray *arr = [NSArray arrayWithObjects:self.theUserID, nil];
     AdwoOWSetKeywords(arr);
@@ -1023,7 +1020,7 @@ static NSString* const errCodeList[] = {
     if (self.shouldShowTabbar) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     }
-    _bgv.hidden = NO;
+    bgv2.hidden = NO;
     NSLog(@"I know, the wall is dismissed!");
 }
 

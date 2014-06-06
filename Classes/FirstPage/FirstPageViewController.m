@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "FirstPageViewController.h"
+#import "CustomTabBarViewController.h"
 #import "RYCImageNamed.h"
 #import "HMDTGroupByViewController.h"
 
@@ -229,7 +230,7 @@
 @synthesize tableViewType = _tableViewType;
 @synthesize activityIdArray = m_activityIdArray;
 @synthesize ticketPropagandaDic = m_ticketPropagandaDic;
-
+@synthesize customTabbar;
 #ifndef isBOYA
 //@synthesize topWinArray = m_topWinArray;
 //@synthesize winTableView = m_winTableView;
@@ -685,9 +686,13 @@
         
     }
     
-    
-    
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+    
+    if ([RuYiCaiNetworkManager sharedManager].shouldTurnToAdWall) {
+        [RuYiCaiNetworkManager sharedManager].shouldTurnToAdWall = NO;
+        [self.customTabbar customTabSelected:1];
+    }
 }
 -(void)sofrWareUpdateOK:(NSNotification *)noti
 {

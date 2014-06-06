@@ -21,7 +21,7 @@
 #import "DirectPaymentViewController.h"
 #import "BackBarButtonItemUtils.h"
 #import "AdaptationUtils.h"
-#import "ExchangeLotteryWithIntegrationViewController.h"
+#import "Exchange2LotteryWithIntegrationViewController.h"
 
 #define kSegmentNormal    (0)
 #define kSegmentZhuiHao   (1)
@@ -429,12 +429,14 @@
     else if(112 == alertView.tag)
     {
         if(1 == buttonIndex)//去充值
-        {            
-            ExchangeLotteryWithIntegrationViewController* viewController = [[ExchangeLotteryWithIntegrationViewController alloc] init];
-            viewController.isShowBackButton = YES;
-
-            [self.navigationController pushViewController:viewController animated:YES];
-            [viewController release];
+        {
+            [RuYiCaiNetworkManager sharedManager].shouldTurnToAdWall = YES;
+            [self.navigationController popToRootViewControllerAnimated:NO];
+//            Exchange2LotteryWithIntegrationViewController* viewController = [[Exchange2LotteryWithIntegrationViewController alloc] init];
+//            viewController.isShowBackButton = YES;
+//
+//            [self.navigationController pushViewController:viewController animated:YES];
+//            [viewController release];
         }
         //        if(1 == buttonIndex)//直接支付
         //        {

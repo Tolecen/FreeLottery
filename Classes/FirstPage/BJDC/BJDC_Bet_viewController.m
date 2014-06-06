@@ -15,7 +15,7 @@
 #import "RuYiCaiNetworkManager.h"
 #import "BackBarButtonItemUtils.h"
 #import "AdaptationUtils.h"
-#import "ExchangeLotteryWithIntegrationViewController.h"
+#import "Exchange2LotteryWithIntegrationViewController.h"
 
 #define kLaunchHMMaxScrollContentHeight 900
 #define kSegIndexNormal (0)
@@ -1487,10 +1487,12 @@
         if(1 == buttonIndex)//去充值
         {
             
-            ExchangeLotteryWithIntegrationViewController * viewController = [[ExchangeLotteryWithIntegrationViewController alloc] init];
-            viewController.isShowBackButton = YES;
-            [self.navigationController pushViewController:viewController animated:YES];
-            [viewController release];
+//            Exchange2LotteryWithIntegrationViewController * viewController = [[Exchange2LotteryWithIntegrationViewController alloc] init];
+//            viewController.isShowBackButton = YES;
+//            [self.navigationController pushViewController:viewController animated:YES];
+//            [viewController release];
+            [RuYiCaiNetworkManager sharedManager].shouldTurnToAdWall = YES;
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
     }
     else if(113 == alertView.tag)//返回是否加入号码篮

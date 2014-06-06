@@ -62,7 +62,7 @@
 #define IDFACount   @"idfaCount"
 
 @class ADWallViewController;
-@interface ExchangeLotteryWithIntegrationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,immobViewDelegate,DianRuAdWallDelegate,DMOfferWallDelegate,MiidiAdWallShowAppOffersDelegate,UIAlertViewDelegate,RTBWallDelegate,ADBannerViewDelegate>
+@interface Exchange2LotteryWithIntegrationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,immobViewDelegate,DianRuAdWallDelegate,DMOfferWallDelegate,MiidiAdWallShowAppOffersDelegate,UIAlertViewDelegate,RTBWallDelegate,ADBannerViewDelegate>
 {
     RuYiCaiAppDelegate  *m_delegate;
     NSArray * titleArray;
@@ -81,7 +81,7 @@
 //    BOOL shouldShowTabbar;
     ADBannerView * bannerView;
     UIButton * imgV;
-    UIImageView * bgv;
+    UIImageView * bgv2;
     BOOL adAdded;
     
     NSArray * jifenImgArray;
@@ -98,7 +98,6 @@
 
 @property(nonatomic, assign)BOOL isShowTabBar;
 @property(nonatomic, retain)UITableView * listTableV;
-@property(nonatomic, retain)UIImageView * bgv;
 @property(nonatomic, retain)NSString * theUserID;
 
 @property(nonatomic, retain)RTBWall * rtbAdWall; //Adview

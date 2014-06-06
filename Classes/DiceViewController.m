@@ -21,6 +21,8 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+    [_choumaImageV1 release];
+    [_choumaImageV2 release];
     [_m_scrollView release];
     [_inputTF release];
     [_rightrenshuL release];
@@ -40,6 +42,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        lastResultGeted = NO;
+        xiaoZhu = 0;
+        daZhu = 0;
     }
     return self;
 }
@@ -250,6 +255,19 @@
     [self.m_scrollView addSubview:_leftcaidouL];
     [_leftcaidouL release];
     
+    self.choumaImageV1 = [[UIImageView alloc] initWithFrame:CGRectMake(130, 310, 45.5, 44.5)];
+    [_choumaImageV1 setImage:[UIImage imageNamed:@"chouma_1"]];
+    [self.m_scrollView addSubview:_choumaImageV1];
+    [_choumaImageV1 release];
+    self.choumaImageV1.hidden = YES;
+    self.choumaL1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 45.5, 44.5)];
+    self.choumaL1.backgroundColor = [UIColor clearColor];
+    self.choumaL1.textAlignment = NSTextAlignmentCenter;
+    self.choumaL1.adjustsFontSizeToFitWidth = YES;
+    [self.choumaImageV1 addSubview:self.choumaL1];
+//    [self.choumaL1 setTextColor:[UIColor whiteColor]];
+    [self.choumaL1 release];
+    
     self.rightrenshuL = [[UILabel alloc] initWithFrame:CGRectMake(49+135.5, 310, 135.3, 20)];
     [_rightrenshuL setBackgroundColor:[UIColor clearColor]];
     [_rightrenshuL setText:@"23622"];
@@ -267,6 +285,19 @@
     [_rightcaidouL setTextAlignment:NSTextAlignmentCenter];
     [self.m_scrollView addSubview:_rightcaidouL];
     [_rightcaidouL release];
+    
+    self.choumaImageV2 = [[UIImageView alloc] initWithFrame:CGRectMake(49+135.5+81, 310, 45.5, 44.5)];
+    [_choumaImageV2 setImage:[UIImage imageNamed:@"chouma_2"]];
+    [self.m_scrollView addSubview:_choumaImageV2];
+    [_choumaImageV2 release];
+    self.choumaImageV2.hidden = YES;
+    self.choumaL2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 45.5, 44.5)];
+    self.choumaL2.backgroundColor = [UIColor clearColor];
+    self.choumaL2.textAlignment = NSTextAlignmentCenter;
+    self.choumaL2.adjustsFontSizeToFitWidth = YES;
+    [self.choumaImageV2 addSubview:self.choumaL2];
+//    [self.choumaL2 setTextColor:[UIColor whiteColor]];
+    [self.choumaL2 release];
     
     UILabel * tL = [[UILabel alloc] initWithFrame:CGRectMake(0, 390, 80, 20)];
     [tL setBackgroundColor:[UIColor clearColor]];
@@ -335,6 +366,24 @@
     [self.m_scrollView addSubview:_diceImgV];
     [_diceImgV release];
     
+    self.xiuxiView = [[UIView alloc] initWithFrame:CGRectMake(0, 260, 320, self.view.frame.size.height-260)];
+    [_xiuxiView setBackgroundColor:[UIColor whiteColor]];
+    [self.m_scrollView addSubview:_xiuxiView];
+    [_xiuxiView release];
+    self.xiuxiView.hidden = YES;
+    
+    UILabel * uu = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 300, 60)];
+    [uu setBackgroundColor:[UIColor clearColor]];
+    [uu setTextColor:[UIColor orangeColor]];
+    [uu setTextAlignment:NSTextAlignmentCenter];
+    [uu setNumberOfLines:0];
+    [uu setLineBreakMode:NSLineBreakByCharWrapping];
+    [_xiuxiView addSubview:uu];
+    [uu setText:@"客官，现在是休息时间，请您过段时间再来吧"];
+    [uu release];
+    
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrentOK:) name:@"WXRGetIssueCurrOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getcurlotDetailOK:) name:@"WXRGetcurlotDetailOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(betPeaOK:) name:@"WXRBetPeaOK" object:nil];
@@ -343,13 +392,25 @@
     
     
 }
+-(void)choumaDonghua
+{
+
+
+}
 -(void)betPeaOK:(NSNotification *)noti
 {
+    xiaoZhu = [self.choumaL1.text intValue];
+    daZhu = [self.choumaL2.text intValue];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",xiaoZhu] forKey:@"shaizicurrentxiao"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",daZhu] forKey:@"shaizicurrentda"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"投注成功!"];
     
     bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
     [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
-    [bdkHUD presentWithDuration:2.0f speed:0.5f inView:nil completion:^{
+    [bdkHUD presentWithDuration:1.5f speed:0.5f inView:nil completion:^{
         [bdkHUD removeFromSuperview];
     }];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
@@ -379,6 +440,8 @@
     else
     {
         self.currentRemainingTLabel.text = @"请稍等";
+        self.lastResultImageV.hidden = YES;
+        self.lastStatusLabel.hidden = NO;
         [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     }
 
@@ -386,12 +449,43 @@
 -(void)getCurrentOK:(NSNotification *)noti
 {
     NSDictionary * sd = (NSDictionary *)noti.object;
+    NSDictionary * currD = [sd objectForKey:@"currIssue"];
+    NSDictionary * preD = [sd objectForKey:@"prevIssue"];
+    if (!currD||!preD) {
+        self.xiuxiView.hidden = NO;
+        return;
+    }
+
+    self.xiuxiView.hidden = YES;
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"shaizicurrentda"]) {
+        daZhu = 0;
+    }
+    else
+        daZhu = [[[NSUserDefaults standardUserDefaults] objectForKey:@"shaizicurrentda"] intValue];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"shaizicurrentxiao"]) {
+        xiaoZhu = 0;
+    }
+    else
+        xiaoZhu = [[[NSUserDefaults standardUserDefaults] objectForKey:@"shaizicurrentxiao"] intValue];
+    
+    NSString * tempCurrent = [[NSUserDefaults standardUserDefaults] objectForKey:@"shaizicurrentlotnum"];
+    if (!tempCurrent) {
+        tempCurrent = @"11";
+    }
+    if (![tempCurrent isEqualToString:[[sd objectForKey:@"currIssue"] objectForKey:@"issueNo"]]) {
+        xiaoZhu = 0;
+        daZhu = 0;
+    }
+
     currentLotNum = [[[sd objectForKey:@"currIssue"] objectForKey:@"issueNo"] retain];
+    [[NSUserDefaults standardUserDefaults] setObject:currentLotNum forKey:@"shaizicurrentlotnum"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [[RuYiCaiNetworkManager sharedManager] queryCurrentLotDetailWithgameNo:nil AndissueNo:currentLotNum];
     self.currentRoundNameLabel.text = [NSString stringWithFormat:@"%@期",currentLotNum];
     double a = [[[sd objectForKey:@"currIssue"] objectForKey:@"endBetTime"] doubleValue]/1000-[[sd objectForKey:@"systemTime"] doubleValue]/1000;
     self.currentRemainingTime = [NSString stringWithFormat:@"%.0f",a];
-    NSTimeInterval nowT = [[NSDate date] timeIntervalSince1970];
+    double nowT = [[sd objectForKey:@"systemTime"] doubleValue]/1000;
 //    currentRemainingTime = 
 //    timeStr = @"0分0秒";
 	int leftTime = [self.currentRemainingTime intValue];
@@ -405,28 +499,38 @@
         NSLog(@"left :%@",timeStr);
         self.currentRemainingTLabel.text = timeStr;
     }
-    
-    if ([[[sd objectForKey:@"prevIssue"] objectForKey:@"awardState"] intValue] == 3) {
+    double kj = [[[sd objectForKey:@"prevIssue"] objectForKey:@"endAwardTime"] doubleValue]/1000-nowT;
+    if (kj>0) {
+        lastResultGeted = NO;
+    }
+    if ([[[sd objectForKey:@"prevIssue"] objectForKey:@"awardState"] intValue] == 3&&kj<=0&&!lastResultGeted) {
+        
         self.lastStatusLabel.hidden = YES;
         NSString * sdf = [NSString stringWithFormat:@"%@",[[sd objectForKey:@"prevIssue"] objectForKey:@"winCodeDetail"]];
-        [self.lastResultImageV setImage:[UIImage imageNamed:[NSString stringWithFormat:@"little%@",sdf]]];
+//        [self.lastResultImageV setImage:[UIImage imageNamed:[NSString stringWithFormat:@"little%@",sdf]]];
+        [self littleShaiziArray:[sdf intValue]];
         self.lastResultImageV.hidden = NO;
+        lastResultGeted = YES;
         
     }
-    else{
-        double kj = [[[sd objectForKey:@"currIssue"] objectForKey:@"endBetTime"] doubleValue]/1000-nowT;
-        NSLog(@"time remianing to kaijiang:%f",kj);
-        if ([self.checkLastResultTimer isValid]) {
-            [self.checkLastResultTimer invalidate];
-            if (self.checkLastResultTimer!=nil) {
-                self.checkLastResultTimer = nil;
-            }
-        }
-        self.checkLastResultTimer = [NSTimer scheduledTimerWithTimeInterval:kj target:self selector:@selector(checkLastResult) userInfo:nil repeats:YES];
+    else if(!lastResultGeted){
         self.lastStatusLabel.hidden = NO;
         self.lastStatusLabel.text = @"等待开奖";
         self.lastResultImageV.hidden = YES;
     }
+
+    if ([self.checkLastResultTimer isValid]) {
+        [self.checkLastResultTimer invalidate];
+        if (self.checkLastResultTimer!=nil) {
+            self.checkLastResultTimer = nil;
+        }
+    }
+    if (kj>0) {
+        NSLog(@"time remianing to kaijiang:%f",kj);
+
+        self.checkLastResultTimer = [NSTimer scheduledTimerWithTimeInterval:kj target:self selector:@selector(checkLastResult) userInfo:nil repeats:NO];
+    }
+
     
     NSLog(@"current No:%@",currentLotNum);
     
@@ -580,6 +684,9 @@
     sender.tag=2;
     NSLog(@"left selected");
     selectedResult = 1;
+    self.choumaImageV1.hidden = NO;
+    self.choumaImageV2.hidden = YES;
+    self.choumaL1.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+xiaoZhu];
 //    }
 //    else
 //    {
@@ -597,6 +704,9 @@
     sender.tag=2;
     NSLog(@"right selected");
     selectedResult = 2;
+    self.choumaImageV1.hidden = YES;
+    self.choumaImageV2.hidden = NO;
+    self.choumaL2.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+daZhu];
 //    }
 //    else
 //    {
@@ -642,6 +752,27 @@
     animGroup.delegate = self;
     [[_diceImgV layer] addAnimation:animGroup forKey:nil];
     
+}
+-(void)littleShaiziArray:(int)result
+{
+    NSMutableArray * gg = [NSMutableArray array];
+    NSLog(@"hhhhhhhh1:%d",result);
+    [self.lastResultImageV setImage:[UIImage imageNamed:[NSString stringWithFormat:@"little%d",result]]];
+//    NSString *imgPath=[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"little%d",result] ofType:@"png"];
+//    UIImage *img=[UIImage imageWithContentsOfFile:imgPath];
+//    [gg addObject:img];
+    for (int i = 0; i<12; i++) {
+        int k = arc4random()%6+1;
+        NSString *imgPath=[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"little%d",k] ofType:@"png"];
+        UIImage *img=[UIImage imageWithContentsOfFile:imgPath];
+        [gg addObject:img];
+        NSLog(@"hhhhhhhh:%d",k);
+    }
+
+    self.lastResultImageV.animationImages=gg;
+    self.lastResultImageV.animationDuration=2;
+    self.lastResultImageV.animationRepeatCount=1;
+    [self.lastResultImageV startAnimating];
 }
 - (NSArray*)randomKeyPointArray
 {
@@ -729,6 +860,8 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     [_diceImgV stopAnimating];
+    [self.choumaImageV1 stopAnimating];
+    [self.choumaImageV2 stopAnimating];
     int d = arc4random()%6+1;
     NSLog(@"%d",d);
     _diceImgV.image = [UIImage imageNamed:[NSString stringWithFormat:@"ting%d",d]];
@@ -745,6 +878,9 @@
         self.leftSelectBtn.tag=2;
         NSLog(@"left selected");
         selectedResult = 1;
+        self.choumaImageV1.hidden = NO;
+        self.choumaImageV2.hidden = YES;
+        self.choumaL1.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+xiaoZhu];
     }
     else
     {
@@ -753,7 +889,13 @@
         self.rightSelectBtn.tag=2;
         NSLog(@"right selected");
         selectedResult = 2;
+        self.choumaImageV1.hidden = YES;
+        self.choumaImageV2.hidden = NO;
+        self.choumaL2.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+daZhu];
     }
+
+    
+
     [UIView animateWithDuration:0.4 animations:^{
         switch (s) {
             case 1:
@@ -792,7 +934,11 @@
             
         }
         
+//        [self.choumaImageV1.layer addAnimation:animation forKey:nil];
+  
+        
     } completion:^(BOOL finished) {
+//        [self choumaDonghua];
         _diceImgV.hidden = YES;
         [self performSelector:@selector(resetShaiZi) withObject:nil afterDelay:1];
     }];
