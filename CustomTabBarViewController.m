@@ -61,6 +61,7 @@
     if (self) {
         FirstPageViewController *firstViewController=[[[FirstPageViewController alloc]init] autorelease];
 //        DrawLotteryPageViewController *secondViewController=[[[DrawLotteryPageViewController alloc]init] autorelease];
+        firstViewController.customTabbar = self;
          ActivitiesViewController *secondViewController=[[[ActivitiesViewController alloc]init] autorelease];
         ExchangeLotteryWithIntegrationViewController *thirdViewController=[[[ExchangeLotteryWithIntegrationViewController alloc]init]autorelease];
         thirdViewController.shouldShowTabbar = YES;
@@ -96,6 +97,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    btnArray = [[NSArray alloc] initWithObjects:self.homeButton,self.secondButton,self.thirdButton,self.forthbutton, nil];
+    
     [AdaptationUtils adaptation:self];
     [self customTabTapped:_homeButton];
 }
@@ -155,6 +158,7 @@
     
     preSelectedButton.selected=NO;
     currentSelectButton.selected=YES;
+
     CGRect viewFrame=CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height-tabViewHeight);
     
     switch (currentTag) {
@@ -184,6 +188,65 @@
     }
     
     preSelectedButton=currentSelectButton;
+    
+    for (UIButton * btn in btnArray) {
+        if (btn.tag!=currentTag) {
+            btn.selected = NO;
+        }
+        else
+            btn.selected = YES;
+    }
+    
+}
+
+- (void)customTabSelected:(int)currentTagq {
+    int currentTag = currentTagq;
+//    if (currentTagq==1) {
+        UIButton *currentSelectButton=_thirdButton;
+        currentTag=currentSelectButton.tag;
+        
+        preSelectedButton.selected=NO;
+        currentSelectButton.selected=YES;
+//    }
+
+    
+    CGRect viewFrame=CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height-tabViewHeight);
+    
+    switch (currentTag) {
+        case 0:
+            _firstNavController.view.frame=viewFrame;
+            [self setCurrentViewController:_firstNavController];
+            break;
+        case 1:
+            _secondNavController.view.frame=viewFrame;
+            [self setCurrentViewController:_secondNavController];
+            break;
+        case 2:
+            _thirdNavController.view.frame=viewFrame;
+            [self setCurrentViewController:_thirdNavController];
+            break;
+        case 3:
+            _fourthNavController.view.frame=viewFrame;
+            [self setCurrentViewController:_fourthNavController];
+            break;
+        case 4:
+            _fifthNavController.view.frame=viewFrame;
+            [self setCurrentViewController:_fifthNavController];
+            break;
+            
+        default:
+            break;
+    }
+    
+    preSelectedButton=currentSelectButton;
+    
+    for (UIButton * btn in btnArray) {
+        if (btn.tag!=currentTag) {
+            btn.selected = NO;
+        }
+        else
+            btn.selected = YES;
+    }
     
 }
 

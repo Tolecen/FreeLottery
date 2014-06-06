@@ -25,6 +25,9 @@
     
     BOOL lastResultGeted;
     
+    int xiaoZhu;
+    int daZhu;
+    
 }
 @property (nonatomic,retain)UILabel * currentRoundNameLabel;
 @property (nonatomic,retain)UILabel * currentRemainingTLabel;
@@ -42,6 +45,12 @@
 @property (nonatomic,retain)UILabel * leftcaidouL;
 @property (nonatomic,retain)UILabel * rightrenshuL;
 @property (nonatomic,retain)UILabel * rightcaidouL;
+@property (nonatomic,retain)UIImageView * choumaImageV1;
+@property (nonatomic,retain)UIImageView * choumaImageV2;
+@property (nonatomic,retain)UILabel * choumaL1;
+@property (nonatomic,retain)UILabel * choumaL2;
+
+@property (nonatomic,retain)UIView * xiuxiView;
 
 @property (nonatomic,retain)UITextField * inputTF;
 @property (nonatomic,retain)UIScrollView * m_scrollView;

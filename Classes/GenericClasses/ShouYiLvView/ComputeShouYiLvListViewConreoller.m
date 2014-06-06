@@ -15,7 +15,7 @@
 #import "NSLog.h"
 #import "BackBarButtonItemUtils.h"
 #import "AdaptationUtils.h"
-#import "ExchangeLotteryWithIntegrationViewController.h"
+#import "Exchange2LotteryWithIntegrationViewController.h"
 
 @implementation ComputeShouYiLvListViewConreoller
 
@@ -248,10 +248,12 @@
         if(1 == buttonIndex)//去充值
         {
             
-            ExchangeLotteryWithIntegrationViewController* viewController = [[ExchangeLotteryWithIntegrationViewController alloc] init];
-            viewController.isShowBackButton = YES;
-            [self.navigationController pushViewController:viewController animated:YES];
-            [viewController release];
+//            Exchange2LotteryWithIntegrationViewController* viewController = [[Exchange2LotteryWithIntegrationViewController alloc] init];
+//            viewController.isShowBackButton = YES;
+//            [self.navigationController pushViewController:viewController animated:YES];
+//            [viewController release];
+            [RuYiCaiNetworkManager sharedManager].shouldTurnToAdWall = YES;
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }
 }

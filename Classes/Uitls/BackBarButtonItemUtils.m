@@ -129,6 +129,9 @@
 
 +(void)addBackButtonForController:(UIViewController *)controller addTarget:(id)target action:(SEL)action andAutoPopView:(BOOL)type{
     if (controller) {
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+            controller.navigationController.interactivePopGestureRecognizer.delegate = controller;
+        }
         BackBarButtonItemUtils *btn = [[BackBarButtonItemUtils alloc] initWithDelfaultBackButtonForUIViewController:controller addTarget:target action:action andAutoPopView:type];
         controller.navigationItem.leftBarButtonItem = btn;
         [btn release];

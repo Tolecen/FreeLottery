@@ -22,6 +22,7 @@
 #import "AnimationTabView.h"
 #import "FirstPageTopCell.h"
 #import "InterestSignInViewController.h"
+@class CustomTabBarViewController;
 typedef enum{
     LOTTERY_SHUANG_SE_QIU = 0,
     LOTTERY_DA_LE_TOU,
@@ -234,6 +235,7 @@ typedef enum {
 @property (nonatomic, retain) NSMutableDictionary *prizeInfomationDictionary;
 @property (nonatomic, retain) UITextView *theInfoTextView;
 @property (nonatomic, retain) UIView * metionVBG;
+@property (nonatomic, retain) CustomTabBarViewController * customTabbar;
 
 @property (nonatomic, assign) BOOL tableViewType;
 

@@ -264,6 +264,9 @@ typedef enum
 @property (nonatomic, retain) NSString* bdRecentEventInfo;
 @property (nonatomic, retain) NSString* realServerURL;
 @property (nonatomic, assign) BOOL shouldCheat;
+@property (nonatomic, assign) BOOL shouldTurnToAdWall;
+@property (nonatomic, assign) int choumaXiao;
+@property (nonatomic, assign) int choumaDa;
 
 @property (nonatomic, assign) BOOL requestedAdwallSuccess;
 @property (nonatomic, assign) double beginCalOutComment;

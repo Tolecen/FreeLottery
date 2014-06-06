@@ -170,7 +170,7 @@
     }
     [[Custom_tabbar showTabBar] hideTabBar:NO];
 
-
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
 }
 
 - (void)viewDidLoad

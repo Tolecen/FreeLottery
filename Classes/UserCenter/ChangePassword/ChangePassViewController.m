@@ -50,6 +50,8 @@
     [AdaptationUtils adaptation:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ChangePassOK:) name:@"ChangePassOK" object:nil];
     
+    self.navigationItem.title = @"修改密码";
+    
     //返回按钮
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
 
@@ -108,8 +110,8 @@
     [cancelButton setTitle:@"取 消" forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [cancelButton setBackgroundImage:RYCImageNamed(@"log_zhmm_btn.png") forState:UIControlStateNormal];
-    [cancelButton setBackgroundImage:RYCImageNamed(@"log_zhmm_hov_btn.png") forState:UIControlStateHighlighted];
+    [cancelButton setBackgroundImage:RYCImageNamed(@"tanchuangbtn_normal") forState:UIControlStateNormal];
+//    [cancelButton setBackgroundImage:RYCImageNamed(@"tanchuangbtn_normal") forState:UIControlStateHighlighted];
     cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
     [cancelButton addTarget:self action: @selector(cancelChangeClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.myTableView addSubview:cancelButton];
@@ -119,8 +121,8 @@
     [submitButton setTitle:@"提 交" forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [submitButton setBackgroundImage:RYCImageNamed(@"log_zhmm_btn.png") forState:UIControlStateNormal];
-    [submitButton setBackgroundImage:RYCImageNamed(@"log_zhmm_hov_btn.png") forState:UIControlStateHighlighted];
+    [submitButton setBackgroundImage:RYCImageNamed(@"tanchuangbtn_normal") forState:UIControlStateNormal];
+//    [submitButton setBackgroundImage:RYCImageNamed(@"tanchuangbtn_normal") forState:UIControlStateHighlighted];
     submitButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
     [submitButton addTarget:self action: @selector(submitChangeClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.myTableView addSubview:submitButton];
@@ -133,7 +135,7 @@
 
 - (void)cancelChangeClick:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -230,7 +232,7 @@
 
 - (void)back:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

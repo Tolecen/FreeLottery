@@ -15,6 +15,7 @@
 #import "ADIntroduceViewController.h"
 #import "NewFuctionIntroductionView.h"
 #import "FeedBackViewController.h"
+#import "ChangePassViewController.h"
 @interface ASettingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     NSArray * titleArrayOne;

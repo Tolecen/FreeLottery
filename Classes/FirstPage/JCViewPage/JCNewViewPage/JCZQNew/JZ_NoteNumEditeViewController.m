@@ -13,7 +13,7 @@
 #import "RuYiCaiCommon.h"
 #import "RuYiCaiNetworkManager.h"
 #import "SingleMutiMixButton.h"
-#import "ExchangeLotteryWithIntegrationViewController.h"
+#import "Exchange2LotteryWithIntegrationViewController.h"
 #import "AdaptationUtils.h"
 
 @interface JZ_NoteNumEditeViewController () <UITextFieldDelegate>
@@ -2614,11 +2614,13 @@ void jzcombine_SP_confusion(NSMutableArray* result,NSArray* data,int curr,int co
         {
             [self setHidesBottomBarWhenPushed:YES];
             
-            ExchangeLotteryWithIntegrationViewController* viewController = [[ExchangeLotteryWithIntegrationViewController alloc] init];
-            viewController.isShowBackButton = YES;
-
-            [self.navigationController pushViewController:viewController animated:YES];
-            [viewController release];
+//            Exchange2LotteryWithIntegrationViewController* viewController = [[Exchange2LotteryWithIntegrationViewController alloc] init];
+//            viewController.isShowBackButton = YES;
+//
+//            [self.navigationController pushViewController:viewController animated:YES];
+//            [viewController release];
+            [RuYiCaiNetworkManager sharedManager].shouldTurnToAdWall = YES;
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
 }
 

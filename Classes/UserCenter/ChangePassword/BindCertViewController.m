@@ -93,8 +93,8 @@
     [cancelButton setTitle:@"取 消" forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [cancelButton setBackgroundImage:RYCImageNamed(@"log_zhmm_btn.png") forState:UIControlStateNormal];
-    [cancelButton setBackgroundImage:RYCImageNamed(@"log_zhmm_hov_btn.png") forState:UIControlStateHighlighted];
+    [cancelButton setBackgroundImage:RYCImageNamed(@"tanchuangbtn_normal") forState:UIControlStateNormal];
+//    [cancelButton setBackgroundImage:RYCImageNamed(@"log_zhmm_hov_btn.png") forState:UIControlStateHighlighted];
     cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
     [cancelButton addTarget:self action: @selector(cancelCertidClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.myTableView addSubview:cancelButton];
@@ -104,8 +104,8 @@
     [submitButton setTitle:@"提 交" forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [submitButton setBackgroundImage:RYCImageNamed(@"log_zhmm_btn.png") forState:UIControlStateNormal];
-    [submitButton setBackgroundImage:RYCImageNamed(@"log_zhmm_hov_btn.png") forState:UIControlStateHighlighted];
+    [submitButton setBackgroundImage:RYCImageNamed(@"tanchuangbtn_normal") forState:UIControlStateNormal];
+//    [submitButton setBackgroundImage:RYCImageNamed(@"log_zhmm_hov_btn.png") forState:UIControlStateHighlighted];
     submitButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
     [submitButton addTarget:self action: @selector(submitCertidClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.myTableView addSubview:submitButton];
