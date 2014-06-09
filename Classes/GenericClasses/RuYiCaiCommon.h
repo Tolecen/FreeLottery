@@ -106,6 +106,7 @@
 
 //用户服务协议
 #define kRuYiCaiUserProtocol  @"http://3g.boyacai.com/w3g/html/protocol.html"
+#define GetBeanURL  @"http://www.baidu.com"
 
 //appStore上ruyicai的评分地址
 #define kAppStorPingFen @"itms-apps://itunes.apple.com/app/id830055983"

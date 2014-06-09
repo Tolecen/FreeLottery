@@ -19,22 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/ExchangeLotteryWithIntegrationViewController.m"
-            timestampString = "423729331.30305"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
-            landmarkName = "-dealloc"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Classes/Exchange2LotteryWithIntegrationViewController.m"
             timestampString = "423722167.782716"
             startingColumnNumber = "9223372036854775807"
@@ -89,22 +73,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1020"
             endingLineNumber = "1020"
-            landmarkName = "-dismissSelector"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/ExchangeLotteryWithIntegrationViewController.m"
-            timestampString = "423729331.30305"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1028"
-            endingLineNumber = "1028"
             landmarkName = "-dismissSelector"
             landmarkType = "5">
          </BreakpointContent>
