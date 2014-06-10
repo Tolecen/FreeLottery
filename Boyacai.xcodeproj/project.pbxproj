@@ -1152,6 +1152,8 @@
 		729734851946ADA500C1D4B9 /* MetionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 729734841946ADA500C1D4B9 /* MetionView.m */; };
 		72A2335618F69C3600155684 /* ExchangeCaidouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */; };
 		72BC607E18F5402B0002B217 /* QueryCaidouBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */; };
+		72BF4A7119470E5100D2999C /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BF4A6819470E5100D2999C /* libPunchBoxAd.a */; };
+		72BF4A7219470E5100D2999C /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72BF4A7019470E5100D2999C /* PunchBoxAdRes.bundle */; };
 		72C52F1C18FB813400AC2763 /* pea_all_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C52F1618FB813400AC2763 /* pea_all_highlight.png */; };
 		72C52F1D18FB813400AC2763 /* pea_all_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C52F1718FB813400AC2763 /* pea_all_normal.png */; };
 		72C52F1E18FB813400AC2763 /* pea_consume_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C52F1818FB813400AC2763 /* pea_consume_highlight.png */; };
@@ -1296,8 +1298,6 @@
 		973122471904B973006ECD17 /* rukou5.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122421904B973006ECD17 /* rukou5.png */; };
 		973122481904B973006ECD17 /* rukou6.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122431904B973006ECD17 /* rukou6.png */; };
 		973122491904B973006ECD17 /* rukou7.png in Resources */ = {isa = PBXBuildFile; fileRef = 973122441904B973006ECD17 /* rukou7.png */; };
-		973832D819459420006718C1 /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 973832CF19459420006718C1 /* libPunchBoxAd.a */; };
-		973832D919459420006718C1 /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 973832D719459420006718C1 /* PunchBoxAdRes.bundle */; };
 		973832DB194597C7006718C1 /* rukou8.png in Resources */ = {isa = PBXBuildFile; fileRef = 973832DA194597C7006718C1 /* rukou8.png */; };
 		973A6B411935C2A600BC8FA3 /* MyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 973A6B401935C2A600BC8FA3 /* MyScrollView.m */; };
 		973A8C3418CD92A800E8D36F /* OtherActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 973A8C3318CD92A800E8D36F /* OtherActivityViewController.m */; };
@@ -3082,6 +3082,15 @@
 		72A2335518F69C3600155684 /* ExchangeCaidouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeCaidouViewController.m; sourceTree = "<group>"; };
 		72BC607C18F5402B0002B217 /* QueryCaidouBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryCaidouBalanceViewController.h; sourceTree = "<group>"; };
 		72BC607D18F5402B0002B217 /* QueryCaidouBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryCaidouBalanceViewController.m; sourceTree = "<group>"; };
+		72BF4A6819470E5100D2999C /* libPunchBoxAd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPunchBoxAd.a; sourceTree = "<group>"; };
+		72BF4A6919470E5100D2999C /* PBADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBADRequest.h; sourceTree = "<group>"; };
+		72BF4A6A19470E5100D2999C /* PBBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBannerView.h; sourceTree = "<group>"; };
+		72BF4A6B19470E5100D2999C /* PBInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBInterstitial.h; sourceTree = "<group>"; };
+		72BF4A6C19470E5100D2999C /* PBMoreGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMoreGame.h; sourceTree = "<group>"; };
+		72BF4A6D19470E5100D2999C /* PBOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBOfferWall.h; sourceTree = "<group>"; };
+		72BF4A6E19470E5100D2999C /* PBRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRequestError.h; sourceTree = "<group>"; };
+		72BF4A6F19470E5100D2999C /* PunchBoxAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchBoxAd.h; sourceTree = "<group>"; };
+		72BF4A7019470E5100D2999C /* PunchBoxAdRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PunchBoxAdRes.bundle; sourceTree = "<group>"; };
 		72C52F1618FB813400AC2763 /* pea_all_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea_all_highlight.png; sourceTree = "<group>"; };
 		72C52F1718FB813400AC2763 /* pea_all_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea_all_normal.png; sourceTree = "<group>"; };
 		72C52F1818FB813400AC2763 /* pea_consume_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea_consume_highlight.png; sourceTree = "<group>"; };
@@ -3252,15 +3261,6 @@
 		973122421904B973006ECD17 /* rukou5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou5.png; sourceTree = "<group>"; };
 		973122431904B973006ECD17 /* rukou6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou6.png; sourceTree = "<group>"; };
 		973122441904B973006ECD17 /* rukou7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou7.png; sourceTree = "<group>"; };
-		973832CF19459420006718C1 /* libPunchBoxAd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPunchBoxAd.a; sourceTree = "<group>"; };
-		973832D019459420006718C1 /* PBADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBADRequest.h; sourceTree = "<group>"; };
-		973832D119459420006718C1 /* PBBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBannerView.h; sourceTree = "<group>"; };
-		973832D219459420006718C1 /* PBInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBInterstitial.h; sourceTree = "<group>"; };
-		973832D319459420006718C1 /* PBMoreGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMoreGame.h; sourceTree = "<group>"; };
-		973832D419459420006718C1 /* PBOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBOfferWall.h; sourceTree = "<group>"; };
-		973832D519459420006718C1 /* PBRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRequestError.h; sourceTree = "<group>"; };
-		973832D619459420006718C1 /* PunchBoxAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchBoxAd.h; sourceTree = "<group>"; };
-		973832D719459420006718C1 /* PunchBoxAdRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PunchBoxAdRes.bundle; sourceTree = "<group>"; };
 		973832DA194597C7006718C1 /* rukou8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou8.png; sourceTree = "<group>"; };
 		973A6B3F1935C2A600BC8FA3 /* MyScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyScrollView.h; sourceTree = "<group>"; };
 		973A6B401935C2A600BC8FA3 /* MyScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyScrollView.m; sourceTree = "<group>"; };
@@ -3940,7 +3940,7 @@
 				977A71F018C03192007DE71B /* MapKit.framework in Frameworks */,
 				72DC41BF1941D0A80055616B /* libWeChatSDK.a in Frameworks */,
 				977A71EE18C0318A007DE71B /* EventKitUI.framework in Frameworks */,
-				973832D819459420006718C1 /* libPunchBoxAd.a in Frameworks */,
+				72BF4A7119470E5100D2999C /* libPunchBoxAd.a in Frameworks */,
 				977A71EC18C0315B007DE71B /* EventKit.framework in Frameworks */,
 				72DC41B41941D0A80055616B /* AGCommon.framework in Frameworks */,
 				723C5E8F19405AFF00669509 /* libAdwoOfferWallLib2.1.a in Frameworks */,
@@ -6132,6 +6132,22 @@
 			name = shaizi;
 			sourceTree = "<group>";
 		};
+		72BF4A6719470E5100D2999C /* libPunchBoxAd */ = {
+			isa = PBXGroup;
+			children = (
+				72BF4A6819470E5100D2999C /* libPunchBoxAd.a */,
+				72BF4A6919470E5100D2999C /* PBADRequest.h */,
+				72BF4A6A19470E5100D2999C /* PBBannerView.h */,
+				72BF4A6B19470E5100D2999C /* PBInterstitial.h */,
+				72BF4A6C19470E5100D2999C /* PBMoreGame.h */,
+				72BF4A6D19470E5100D2999C /* PBOfferWall.h */,
+				72BF4A6E19470E5100D2999C /* PBRequestError.h */,
+				72BF4A6F19470E5100D2999C /* PunchBoxAd.h */,
+				72BF4A7019470E5100D2999C /* PunchBoxAdRes.bundle */,
+			);
+			path = libPunchBoxAd;
+			sourceTree = "<group>";
+		};
 		72DC40A71941555C0055616B /* Invite */ = {
 			isa = PBXGroup;
 			children = (
@@ -6401,22 +6417,6 @@
 			path = SFHFKeychainUtils;
 			sourceTree = "<group>";
 		};
-		973832CE19459420006718C1 /* libPunchBoxAd */ = {
-			isa = PBXGroup;
-			children = (
-				973832CF19459420006718C1 /* libPunchBoxAd.a */,
-				973832D019459420006718C1 /* PBADRequest.h */,
-				973832D119459420006718C1 /* PBBannerView.h */,
-				973832D219459420006718C1 /* PBInterstitial.h */,
-				973832D319459420006718C1 /* PBMoreGame.h */,
-				973832D419459420006718C1 /* PBOfferWall.h */,
-				973832D519459420006718C1 /* PBRequestError.h */,
-				973832D619459420006718C1 /* PunchBoxAd.h */,
-				973832D719459420006718C1 /* PunchBoxAdRes.bundle */,
-			);
-			path = libPunchBoxAd;
-			sourceTree = "<group>";
-		};
 		973E5E9918D7E27700935BFE /* MidiAdWall */ = {
 			isa = PBXGroup;
 			children = (
@@ -6477,7 +6477,7 @@
 		977A71E518C030C1007DE71B /* AdWAll */ = {
 			isa = PBXGroup;
 			children = (
-				973832CE19459420006718C1 /* libPunchBoxAd */,
+				72BF4A6719470E5100D2999C /* libPunchBoxAd */,
 				72DC4104194197390055616B /* RTBWallSDK */,
 				723C5E3519405AFF00669509 /* AnwoSDK */,
 				723C5E3B19405AFF00669509 /* DMOfferWallSDK */,
@@ -8450,6 +8450,7 @@
 				522497B918320393005F7577 /* tzy_jxxlk.png in Resources */,
 				72DC415E194197390055616B /* RTBWall_boll.png in Resources */,
 				522496F018320393005F7577 /* HXBX_right_flag.png in Resources */,
+				72BF4A7219470E5100D2999C /* PunchBoxAdRes.bundle in Resources */,
 				522496B418320393005F7577 /* pds_c_main.png in Resources */,
 				522497D918320393005F7577 /* back_button_normal.png in Resources */,
 				72DC415F194197390055616B /* RTBWall_buy_notice.png in Resources */,
@@ -8677,7 +8678,6 @@
 				522497C818320393005F7577 /* click.png in Resources */,
 				5224964E18320393005F7577 /* contact_button_normal.png in Resources */,
 				5224964718320393005F7577 /* active_jinxing_log.png in Resources */,
-				973832D919459420006718C1 /* PunchBoxAdRes.bundle in Resources */,
 				977A726918C06AF6007DE71B /* dianru_background.png in Resources */,
 				5224989518320393005F7577 /* xza9.png in Resources */,
 				97F036D518E5193100A94AED /* taskexpired.png in Resources */,
@@ -9472,6 +9472,7 @@
 					/Projects/Boyacai_iphone_quanmin/Classes/ShareSDK/Extend/TencentWeiboSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/ShareSDK/Extend/WeChatSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/libPunchBoxAd,
+					/Users/wangxr/Desktop/FreeLottery/Classes/libPunchBoxAd,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
@@ -9544,6 +9545,7 @@
 					/Projects/Boyacai_iphone_quanmin/Classes/ShareSDK/Extend/TencentWeiboSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/ShareSDK/Extend/WeChatSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/libPunchBoxAd,
+					/Users/wangxr/Desktop/FreeLottery/Classes/libPunchBoxAd,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
@@ -9637,6 +9639,7 @@
 					/Projects/Boyacai_iphone_quanmin/Classes/ShareSDK/Extend/TencentWeiboSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/ShareSDK/Extend/WeChatSDK,
 					/Projects/Boyacai_iphone_quanmin/Classes/libPunchBoxAd,
+					/Users/wangxr/Desktop/FreeLottery/Classes/libPunchBoxAd,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-fobjc-arc";
