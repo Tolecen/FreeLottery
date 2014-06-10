@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditShareContentViewController.h"
 @class sharePlatformView;
 @protocol sharePlatformViewDelegate <NSObject>
 -(void)sharePlatformView:(sharePlatformView*)shareView PressButtonWithIntage:(NSInteger)integer;
 @end
-@interface sharePlatformView : UIView
+@interface sharePlatformView : UIView<EditShareContentViewControllerDelegate>
 @property (nonatomic,assign)id<sharePlatformViewDelegate>delegate;
 - (id)initWithView:(UIViewController*)viewC;
 -(void)showSharePlatformView;
