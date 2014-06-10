@@ -39,7 +39,9 @@
 #import "MiidiAdDesc.h"
 #import "MiidiAdWall.h"
 #import "AdwoOfferWall.h"
+#import "PunchBoxAd.h"
 #import "SFHFKeychainUtils.h"
+#import "WebContentViewController.h"
 
 
 #define LiMeiAdID     @"2ccba7d7614fbdc10c1c532c822205ca"
@@ -55,6 +57,7 @@
 #define MiidiAppSecret       @"37spm32qxkrsxn90"
 #define AdViewKey      @"RTB20140915090425fqfoawfedeh48n9"
 #define ADWO_OFFERWALL_BASIC_PID  @"8b95917cd4114ae6819e6241759ea474"
+#define PunchPublisherID  @"822868172-F40D52-14CD-57FC-3AAA80067"
 
 #define MaxAllowIDFACount   5
 #define CurrentIDFA   @"currentIDFA"

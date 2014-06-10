@@ -150,6 +150,7 @@
                 [self LiMeiAdWallInit];
                 [self midiInit];
                 [self AdviewAdWallInit];
+                [self punchBoxAdWallInit];
             }
 //            AdWallHaveInit = YES;
             previousUserno = [self.theUserID mutableCopy];
@@ -287,6 +288,9 @@
             else if ([theAdwallID isEqualToString:@"anwo"]){
                 [self showAnWoAdwall];
             }
+            else if ([theAdwallID isEqualToString:@"punchbox"]){
+                [self showPunchBoxAdWall];
+            }
 
         }
     }
@@ -321,7 +325,10 @@
     else
     {
         realAdwall = YES;
-        titleArray = [(NSArray *)noti.object retain];
+        NSMutableArray * tempA = [NSMutableArray arrayWithArray:(NSArray *)noti.object];
+        NSDictionary * uu = [NSDictionary dictionaryWithObjectsAndKeys:@"100",@"id",@"howtoearn",@"code",@"赚豆秘籍",@"name",@"赚豆技能轻松GET",@"description", nil];
+        [tempA addObject:uu];
+        titleArray = [tempA retain];
 
     }
     [RuYiCaiNetworkManager sharedManager].requestedAdwallSuccess = YES;
@@ -406,6 +413,7 @@
         [self LiMeiAdWallInit];
         [self midiInit];
         [self AdviewAdWallInit];
+        [self punchBoxAdWallInit];
     }
     [[RuYiCaiNetworkManager sharedManager] queryADWallList];
     previousUserno = [self.theUserID mutableCopy];
@@ -573,7 +581,11 @@
             
             cell.titleName = [titleArray[indexPath.row-1] objectForKey:@"name"];
             cell.littleTitleName = [titleArray[indexPath.row-1] objectForKey:@"description"];
-            cell.iconImageName = [NSString stringWithFormat:@"rukou%d",indexPath.row];
+            if ([[titleArray[indexPath.row-1] objectForKey:@"code"] isEqualToString:@"howtoearn"]) {
+                cell.iconImageName = @"getbean.png";
+            }
+            else
+                cell.iconImageName = [NSString stringWithFormat:@"rukou%d",indexPath.row];
             
             if (!realAdwall) {
                 if (indexPath.row==1) {
@@ -614,6 +626,15 @@
 -(void)enterADWALLWithID:(int)theIndex
 {
     NSString * theID = [titleArray[theIndex] objectForKey:@"code"];
+    if ([theID isEqualToString:@"howtoearn"])
+    {
+        WebContentViewController * agV = [[WebContentViewController alloc] init];
+        agV.webType = 1;
+        [self.navigationController pushViewController:agV animated:YES];
+        [agV release];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
+        
+    }
     theAdwallID = theID;
     [[RuYiCaiNetworkManager sharedManager] queryRemainingIDFA];
     [m_delegate.activityView activityViewShow];
@@ -1283,7 +1304,27 @@ static NSString* const errCodeList[] = {
     }
 }
 
+-(void)punchBoxAdWallInit
+{
+    [PunchBoxAd startSession:PunchPublisherID];
+    [[PBOfferWall sharedOfferWall] loadOfferWall:[PBADRequest request]];
+}
 
+-(void)showPunchBoxAdWall
+{
+    [PunchBoxAd setUserInfo:self.theUserID];
+    [[PBOfferWall sharedOfferWall] showOfferWallWithScale:0.9f];
+}
+- (void)pbOfferWallDidLoadAd:(PBOfferWall *)pbOfferWall
+{
+    
+}
+
+- (void)pbOfferWall:(PBOfferWall *)pbOfferWall
+loadAdFailureWithError:(PBRequestError *)requestError
+{
+    
+}
 -(void)backAction:(UIButton * )button{
 //    if (self.isShowTabBar)
 //    {
