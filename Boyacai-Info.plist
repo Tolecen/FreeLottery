@@ -36,16 +36,24 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
+			<string>com.freelottery.quanmin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>freelottery</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
 			<string></string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wxa45ff01dc73e9109</string>
-				<string>QQ05FECBA4</string>
-				<string>wb2455646689</string>
-				<string>wb801460737</string>
-				<string>rm226427cn.appgo.sharebyone</string>
+				<string>wx61a7e3cdad8e201c</string>
+				<string>QQ0606DE8B</string>
+				<string>wb4029149914</string>
+				<string>wb801513226</string>
+				<string>rm268956com.freelottery.quanmin</string>
 			</array>
 		</dict>
 	</array>

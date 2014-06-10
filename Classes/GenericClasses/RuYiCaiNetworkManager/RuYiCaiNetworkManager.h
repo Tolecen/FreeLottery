@@ -584,6 +584,9 @@ typedef enum
 - (void)queryIssueHistoryWithPage:(NSString*)page count:(NSString*)count;
 - (void)betWithIssueNo:(NSString*)issueNo beanNoWithBig:(NSString*)Bbean beanNoWithSmall:(NSString*)Sbean;
 - (void)queryGameOrdersWithPage:(NSString*)page count:(NSString*)count;
+// 邀请好友
+- (void)promotionInviter;
+- (void)queryInviteRecordWithPage:(NSString*)page count:(NSString*)count;
 @end
 
 /* 

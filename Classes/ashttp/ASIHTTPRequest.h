@@ -222,7 +222,11 @@ typedef enum _ASINetworkReqestType
     ASINetworkRequestTypeGetcurrentLotDetail,
     ASINetworkRequestTypeGetAwardState,
     ASINetworkRequestTypeBetPea,
-    ASINetworkRequestTypeQueryGameOrders
+    ASINetworkRequestTypeQueryGameOrders,
+    ASINetworkRequestTypePromotionInviter,
+    ASINetworkRequestTypeQueryInviteRecord,
+    ASINetworkRequestTypeQueryInviteDescribe
+    
 } ASINetworkReqestType;
 
 

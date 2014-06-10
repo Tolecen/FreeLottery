@@ -2558,8 +2558,56 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 	[request setDelegate:self];
 	[request startAsynchronous];
 }
-
-
+- (void)promotionInviter
+{
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"userCenter" forKey:@"command"];
+    [mDict setObject:@"promotionInviter" forKey:@"type"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypePromotionInviter];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+- (void)queryInviteRecordWithPage:(NSString*)page count:(NSString*)count
+{
+    NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
+    request.allowCompressedResponse = NO;
+    
+    NSMutableDictionary* mDict = [self getCommonCookieDictionary];
+    [mDict setObject:@"userCenter" forKey:@"command"];
+    [mDict setObject:@"findInvitee" forKey:@"type"];
+    [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
+    [mDict setObject:page forKey:@"pageindex"];
+    [mDict setObject:count forKey:@"maxresult"];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString* cookieStr = [jsonWriter stringWithObject:mDict];
+    [jsonWriter release];
+    
+    NSData* cookieData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* sendData = [cookieData newAESEncryptWithPassphrase:kRuYiCaiAesKey];
+    [request appendPostData:sendData];
+    [request buildPostBody];
+    
+	[request setRequestType:ASINetworkRequestTypeQueryInviteRecord];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
 -(void)queryRemainingIDFA
 {
     NSTrace();
@@ -3372,6 +3420,12 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
             break;
         case ASINetworkRequestTypeQueryGameOrders:
             [self queryGameOrdersSucceed:resText];
+            break;
+        case ASINetworkRequestTypePromotionInviter:
+            [self promotionInviter:resText];
+            break;
+        case ASINetworkRequestTypeQueryInviteRecord:
+            [self queryInviteRecord:resText];
             break;
 		default:
 			break;
@@ -4861,6 +4915,46 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         self.responseText = resText;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRqueryGameOrdersOK" object:parserDict userInfo:nil];
+    }
+}
+- (void)promotionInviter:(NSString*)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXPromotionInviterOK" object:parserDict userInfo:nil];
+    }else
+    {
+        NSString* message = [parserDict objectForKey:@"message"];
+        [self showMessage:message withTitle:nil buttonTitle:@"确定"];
+    }
+}
+- (void)queryInviteRecord: (NSString *)resText
+{
+    NSTrace();
+    m_netAppType = NET_APP_BASE;
+    SBJsonParser *jsonParser = [SBJsonParser new];
+    NSDictionary* parserDict = (NSDictionary*)[jsonParser objectWithString:resText];
+    NSString* errorCode = [parserDict objectForKey:@"error_code"];
+    [jsonParser release];
+    
+    if ([errorCode isEqualToString:@"0000"])
+    {
+        self.responseText = resText;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRQueryInviteRecord" object:parserDict userInfo:nil];
+    }else
+    {
+        NSString* message = [parserDict objectForKey:@"message"];
+        [self showMessage:message withTitle:nil buttonTitle:@"确定"];
     }
 }
 - (void)getNotification: (NSString*)resText
