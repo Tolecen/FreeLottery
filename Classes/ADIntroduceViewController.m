@@ -46,6 +46,10 @@
         self.navigationItem.title = @"积分墙重要通知";
         
     }
+    else if (theTextType==TextTypeShaiZiRule){
+        self.navigationItem.title = @"规则说明";
+        path=[[NSString alloc]initWithString:[[NSBundle mainBundle]pathForResource:@"shaizirule"ofType:@"txt"]];
+    }
     
 
     

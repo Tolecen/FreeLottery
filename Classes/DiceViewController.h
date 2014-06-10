@@ -10,6 +10,8 @@
 #import "RuYiCaiNetworkManager.h"
 #import "BDKNotifyHUD.h"
 #import "IssueHistoryViewController.h"
+#import "ADIntroduceViewController.h"
+#import <AVFoundation/AVFoundation.h>
 @class RuYiCaiAppDelegate;
 @interface DiceViewController : UIViewController<UIScrollViewDelegate,UITextFieldDelegate>
 {
@@ -49,6 +51,8 @@
 @property (nonatomic,retain)UIImageView * choumaImageV2;
 @property (nonatomic,retain)UILabel * choumaL1;
 @property (nonatomic,retain)UILabel * choumaL2;
+@property (nonatomic,retain)UILabel * allchoumaL1;
+@property (nonatomic,retain)UILabel * allchoumaL2;
 
 @property (nonatomic,retain)UIView * xiuxiView;
 

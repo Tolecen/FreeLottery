@@ -21,6 +21,8 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+    [_allchoumaL2 release];
+    [_allchoumaL1 release];
     [_choumaImageV1 release];
     [_choumaImageV2 release];
     [_m_scrollView release];
@@ -237,25 +239,46 @@
     [self.m_scrollView addSubview:caidou];
     [caidou release];
     
-    self.leftrenshuL = [[UILabel alloc] initWithFrame:CGRectMake(49, 310, 135.3, 20)];
+    self.leftrenshuL = [[UILabel alloc] initWithFrame:CGRectMake(59, 310, 115.3, 20)];
     [_leftrenshuL setBackgroundColor:[UIColor clearColor]];
     [_leftrenshuL setText:@"345622"];
     [_leftrenshuL setTextColor:[UIColor whiteColor]];
     [_leftrenshuL setFont:[UIFont systemFontOfSize:15]];
-    [_leftrenshuL setTextAlignment:NSTextAlignmentCenter];
+    [_leftrenshuL setTextAlignment:NSTextAlignmentLeft];
     [self.m_scrollView addSubview:_leftrenshuL];
     [_leftrenshuL release];
     
-    self.leftcaidouL = [[UILabel alloc] initWithFrame:CGRectMake(49, 335, 135.3, 20)];
+    self.leftcaidouL = [[UILabel alloc] initWithFrame:CGRectMake(59, 335, 115.3, 20)];
     [_leftcaidouL setBackgroundColor:[UIColor clearColor]];
     [_leftcaidouL setText:@"3322345622"];
     [_leftcaidouL setTextColor:[UIColor whiteColor]];
     [_leftcaidouL setFont:[UIFont systemFontOfSize:15]];
-    [_leftcaidouL setTextAlignment:NSTextAlignmentCenter];
+    [_leftcaidouL setTextAlignment:NSTextAlignmentLeft];
     [self.m_scrollView addSubview:_leftcaidouL];
     [_leftcaidouL release];
     
-    self.choumaImageV1 = [[UIImageView alloc] initWithFrame:CGRectMake(130, 310, 45.5, 44.5)];
+
+    
+    
+    UIImageView * yazhuBG = [[UIImageView alloc] initWithFrame:CGRectMake(49+135.5-84, 363-29, 84, 29)];
+    [yazhuBG setImage:[UIImage imageNamed:@"yazhubg"]];
+    [self.m_scrollView addSubview:yazhuBG];
+    [yazhuBG release];
+    
+    UIImageView * yazhuicon = [[UIImageView alloc] initWithFrame:CGRectMake(23, 5, 22.5, 16.5)];
+    [yazhuicon setImage:[UIImage imageNamed:@"yazhuICO"]];
+    [yazhuBG addSubview:yazhuicon];
+    [yazhuicon release];
+    
+    self.allchoumaL1 = [[UILabel alloc] initWithFrame:CGRectMake(45, 0, 39, 29)];
+    self.allchoumaL1.backgroundColor = [UIColor clearColor];
+    self.allchoumaL1.textAlignment = NSTextAlignmentCenter;
+    [self.allchoumaL1 setText:@"0"];
+    [self.allchoumaL1 setFont:[UIFont systemFontOfSize:12]];
+    [yazhuBG addSubview:self.allchoumaL1];
+    [self.allchoumaL1 release];
+    
+    self.choumaImageV1 = [[UIImageView alloc] initWithFrame:CGRectMake(95, 290, 45.5, 44.5)];
     [_choumaImageV1 setImage:[UIImage imageNamed:@"chouma_1"]];
     [self.m_scrollView addSubview:_choumaImageV1];
     [_choumaImageV1 release];
@@ -265,28 +288,48 @@
     self.choumaL1.textAlignment = NSTextAlignmentCenter;
     self.choumaL1.adjustsFontSizeToFitWidth = YES;
     [self.choumaImageV1 addSubview:self.choumaL1];
-//    [self.choumaL1 setTextColor:[UIColor whiteColor]];
+    //    [self.choumaL1 setTextColor:[UIColor whiteColor]];
     [self.choumaL1 release];
     
-    self.rightrenshuL = [[UILabel alloc] initWithFrame:CGRectMake(49+135.5, 310, 135.3, 20)];
+    self.rightrenshuL = [[UILabel alloc] initWithFrame:CGRectMake(59+135.5, 310, 115.3, 20)];
     [_rightrenshuL setBackgroundColor:[UIColor clearColor]];
     [_rightrenshuL setText:@"23622"];
     [_rightrenshuL setTextColor:[UIColor whiteColor]];
     [_rightrenshuL setFont:[UIFont systemFontOfSize:15]];
-    [_rightrenshuL setTextAlignment:NSTextAlignmentCenter];
+    [_rightrenshuL setTextAlignment:NSTextAlignmentLeft];
     [self.m_scrollView addSubview:_rightrenshuL];
     [_rightrenshuL release];
     
-    self.rightcaidouL = [[UILabel alloc] initWithFrame:CGRectMake(49+135.5, 335, 135.3, 20)];
+    self.rightcaidouL = [[UILabel alloc] initWithFrame:CGRectMake(59+135.5, 335, 115.3, 20)];
     [_rightcaidouL setBackgroundColor:[UIColor clearColor]];
     [_rightcaidouL setText:@"7655622"];
     [_rightcaidouL setTextColor:[UIColor whiteColor]];
     [_rightcaidouL setFont:[UIFont systemFontOfSize:15]];
-    [_rightcaidouL setTextAlignment:NSTextAlignmentCenter];
+    [_rightcaidouL setTextAlignment:NSTextAlignmentLeft];
     [self.m_scrollView addSubview:_rightcaidouL];
     [_rightcaidouL release];
     
-    self.choumaImageV2 = [[UIImageView alloc] initWithFrame:CGRectMake(49+135.5+81, 310, 45.5, 44.5)];
+
+    
+    UIImageView * yazhuBG2 = [[UIImageView alloc] initWithFrame:CGRectMake(49+135.5-84+135.5, 363-29, 84, 29)];
+    [yazhuBG2 setImage:[UIImage imageNamed:@"yazhubg"]];
+    [self.m_scrollView addSubview:yazhuBG2];
+    [yazhuBG2 release];
+    
+    UIImageView * yazhuicon2 = [[UIImageView alloc] initWithFrame:CGRectMake(23, 5, 22.5, 16.5)];
+    [yazhuicon2 setImage:[UIImage imageNamed:@"yazhuICO"]];
+    [yazhuBG2 addSubview:yazhuicon2];
+    [yazhuicon2 release];
+    
+    self.allchoumaL2 = [[UILabel alloc] initWithFrame:CGRectMake(45, 0, 39, 29)];
+    self.allchoumaL2.backgroundColor = [UIColor clearColor];
+    self.allchoumaL2.textAlignment = NSTextAlignmentCenter;
+    [self.allchoumaL2 setText:@"0"];
+    [self.allchoumaL2 setFont:[UIFont systemFontOfSize:12]];
+    [yazhuBG2 addSubview:self.allchoumaL2];
+    [self.allchoumaL2 release];
+    
+    self.choumaImageV2 = [[UIImageView alloc] initWithFrame:CGRectMake(44+135.5+51, 290, 45.5, 44.5)];
     [_choumaImageV2 setImage:[UIImage imageNamed:@"chouma_2"]];
     [self.m_scrollView addSubview:_choumaImageV2];
     [_choumaImageV2 release];
@@ -296,7 +339,7 @@
     self.choumaL2.textAlignment = NSTextAlignmentCenter;
     self.choumaL2.adjustsFontSizeToFitWidth = YES;
     [self.choumaImageV2 addSubview:self.choumaL2];
-//    [self.choumaL2 setTextColor:[UIColor whiteColor]];
+    //    [self.choumaL2 setTextColor:[UIColor whiteColor]];
     [self.choumaL2 release];
     
     UILabel * tL = [[UILabel alloc] initWithFrame:CGRectMake(0, 390, 80, 20)];
@@ -399,8 +442,11 @@
 }
 -(void)betPeaOK:(NSNotification *)noti
 {
-    xiaoZhu = [self.choumaL1.text intValue];
-    daZhu = [self.choumaL2.text intValue];
+    xiaoZhu = [self.choumaL1.text intValue]+xiaoZhu;
+    daZhu = [self.choumaL2.text intValue]+daZhu;
+    
+    [self.rightSelectBtn setBackgroundImage:[UIImage imageNamed:@"right"] forState:UIControlStateNormal];
+    [self.leftSelectBtn setBackgroundImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",xiaoZhu] forKey:@"shaizicurrentxiao"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -410,11 +456,29 @@
     
     bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
     [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
-    [bdkHUD presentWithDuration:1.5f speed:0.5f inView:nil completion:^{
+    [bdkHUD presentWithDuration:0.8f speed:0.3f inView:nil completion:^{
         [bdkHUD removeFromSuperview];
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.choumaImageV1 setFrame:CGRectMake(95+30, 290+30, 0, 0)];
+            [self.choumaImageV2 setFrame:CGRectMake(44+135.5+51+30, 290+30, 0, 0)];
+//            [self.choumaL1 setFrame:CGRectMake(95+30, 290+30, 0, 0)];
+//            [self.choumaL2 setFrame:CGRectMake(44+135.5+51+30, 290+30, 0, 0)];
+        } completion:^(BOOL finished) {
+            [self.choumaImageV1 setFrame:CGRectMake(95, 290, 45.5, 44.5)];
+            [self.choumaImageV2 setFrame:CGRectMake(44+135.5+51, 290, 45.5, 44.5)];
+            [self.choumaL2 setFrame:CGRectMake(0, 0, 45.5, 44.5)];
+            [self.choumaL1 setFrame:CGRectMake(0, 0, 45.5, 44.5)];
+            self.choumaImageV1.hidden = YES;
+            self.choumaImageV2.hidden = YES;
+            self.allchoumaL1.text = [NSString stringWithFormat:@"%d",xiaoZhu];
+            self.allchoumaL2.text = [NSString stringWithFormat:@"%d",daZhu];
+            [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+        }];
+        
     }];
-    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+    
 }
+
 -(void)getcurlotDetailOK:(NSNotification *)noti
 {
     NSDictionary * sd = (NSDictionary *)noti.object;
@@ -475,8 +539,14 @@
     if (![tempCurrent isEqualToString:[[sd objectForKey:@"currIssue"] objectForKey:@"issueNo"]]) {
         xiaoZhu = 0;
         daZhu = 0;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",xiaoZhu] forKey:@"shaizicurrentxiao"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",daZhu] forKey:@"shaizicurrentda"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 
+    self.allchoumaL1.text = [NSString stringWithFormat:@"%d",xiaoZhu];
+    self.allchoumaL2.text = [NSString stringWithFormat:@"%d",daZhu];
+    
     currentLotNum = [[[sd objectForKey:@"currIssue"] objectForKey:@"issueNo"] retain];
     [[NSUserDefaults standardUserDefaults] setObject:currentLotNum forKey:@"shaizicurrentlotnum"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -553,14 +623,33 @@
         [alert release];
         return;
     }
+    [self.inputTF resignFirstResponder];
+    [UIView animateWithDuration:0.3 animations:^{
+        if ([UIScreen mainScreen].bounds.size.height<500) {
+            [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+        }
+        else
+        {
+            [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+        }
+    } completion:^(BOOL finished) {
+        
+    }];
     NSLog(@"sure clicked");
     if (selectedResult==2) {
         [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:self.inputTF.text beanNoWithSmall:@"0"];
+//        self.choumaImageV1.center = sender.center;
+//        [UIView animateWithDuration:0.3 animations:^{
+//            [self.choumaImageV1 setFrame:CGRectMake(95, 290, 45.5, 44.5)];
+//        } completion:^(BOOL finished) {
+//            
+//        }];
     }
     else
     {
         [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:@"0" beanNoWithSmall:self.inputTF.text];
     }
+    
     [m_delegate.activityView activityViewShow];
     [m_delegate.activityView.titleLabel setText:@"投注中..."];
     
@@ -637,10 +726,15 @@
 //    }
 //    return YES;
 //}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    selectedResult == 1?(self.choumaL1.text = self.inputTF.text):(self.choumaL2.text = self.inputTF.text);
+}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.inputTF resignFirstResponder];
+    selectedResult == 1?(self.choumaL1.text = self.inputTF.text):(self.choumaL2.text = self.inputTF.text);
     [UIView animateWithDuration:0.3 animations:^{
         if ([UIScreen mainScreen].bounds.size.height<500) {
             [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
@@ -658,6 +752,7 @@
 {
     if ([self.inputTF.text intValue]>=50) {
         self.inputTF.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]-50];
+        selectedResult == 1?(self.choumaL1.text = self.inputTF.text):(self.choumaL2.text = self.inputTF.text);
     }
 
     
@@ -666,6 +761,8 @@
 {
     if ([self.inputTF.text intValue]<1000) {
         self.inputTF.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+50];
+        selectedResult == 1?(self.choumaL1.text = self.inputTF.text):(self.choumaL2.text = self.inputTF.text);
+
     }
     else
     {
@@ -686,7 +783,13 @@
     selectedResult = 1;
     self.choumaImageV1.hidden = NO;
     self.choumaImageV2.hidden = YES;
-    self.choumaL1.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+xiaoZhu];
+    self.choumaL1.text = self.inputTF.text;
+    self.choumaL2.text = @"0";
+    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"chouma" ofType:@"wav"];
+    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
+    AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
+    [getcoinAudio prepareToPlay];
+    [getcoinAudio play];
 //    }
 //    else
 //    {
@@ -706,7 +809,13 @@
     selectedResult = 2;
     self.choumaImageV1.hidden = YES;
     self.choumaImageV2.hidden = NO;
-    self.choumaL2.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+daZhu];
+    self.choumaL2.text = self.inputTF.text;
+    self.choumaL1.text = @"0";
+    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"chouma" ofType:@"wav"];
+    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
+    AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
+    [getcoinAudio prepareToPlay];
+    [getcoinAudio play];
 //    }
 //    else
 //    {
@@ -731,7 +840,11 @@
 }
 -(void)ruleBtnClicked:(UIButton *)sender
 {
-    
+    ADIntroduceViewController * inv = [[ADIntroduceViewController alloc] init];
+    inv.theTextType = TextTypeShaiZiRule;
+    [self.navigationController pushViewController:inv animated:YES];
+    [inv release];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
 }
 - (void)diceStarAnimation
 {
@@ -880,7 +993,8 @@
         selectedResult = 1;
         self.choumaImageV1.hidden = NO;
         self.choumaImageV2.hidden = YES;
-        self.choumaL1.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+xiaoZhu];
+        self.choumaL1.text = self.inputTF.text;
+        self.choumaL2.text = @"0";
     }
     else
     {
@@ -891,8 +1005,14 @@
         selectedResult = 2;
         self.choumaImageV1.hidden = YES;
         self.choumaImageV2.hidden = NO;
-        self.choumaL2.text = [NSString stringWithFormat:@"%d",[self.inputTF.text intValue]+daZhu];
+        self.choumaL2.text = self.inputTF.text;
+        self.choumaL1.text = @"0";
     }
+    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"chouma" ofType:@"wav"];
+    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
+    AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
+    [getcoinAudio prepareToPlay];
+    [getcoinAudio play];
 
     
 

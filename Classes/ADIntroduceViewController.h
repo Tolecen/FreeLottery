@@ -13,7 +13,8 @@
 typedef enum _TextType {
 	TextTypeAdIntro = 0,
     TextTypeCommonQuestion = 1,
-    TextTypeAdwallImportantInfo
+    TextTypeAdwallImportantInfo = 2,
+    TextTypeShaiZiRule
 } TextType;
 @interface ADIntroduceViewController : UIViewController
 @property (assign) TextType theTextType;

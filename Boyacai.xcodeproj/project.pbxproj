@@ -1315,6 +1315,10 @@
 		973A8C3818CD9EBB00E8D36F /* ASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 973A8C3718CD9EBB00E8D36F /* ASettingViewController.m */; };
 		973A8C3C18CDC27F00E8D36F /* commonQuestion.txt in Resources */ = {isa = PBXBuildFile; fileRef = 973A8C3B18CDC27F00E8D36F /* commonQuestion.txt */; };
 		973E5EA618D7E2BE00935BFE /* MiidiAdLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 973E5E9B18D7E2BE00935BFE /* MiidiAdLib.a */; };
+		9742D4B61946B18400C7D970 /* yazhuICO.png in Resources */ = {isa = PBXBuildFile; fileRef = 9742D4B51946B18400C7D970 /* yazhuICO.png */; };
+		9742D4B81946B18A00C7D970 /* yazhubg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9742D4B71946B18A00C7D970 /* yazhubg.png */; };
+		9742D4BC1946D98800C7D970 /* shaizirule.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9742D4BB1946D98800C7D970 /* shaizirule.txt */; };
+		9742D4BE1946E03300C7D970 /* chouma.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9742D4BD1946E03300C7D970 /* chouma.wav */; };
 		9745AF8818CEAEC200510E8F /* newdisk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9745AF8718CEAEC200510E8F /* newdisk.png */; };
 		9745AF8A18CEAED500510E8F /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 9745AF8918CEAED500510E8F /* start.png */; };
 		9745AF8D18CEAEF700510E8F /* DiskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9745AF8C18CEAEF700510E8F /* DiskViewController.m */; };
@@ -3271,6 +3275,10 @@
 		973E5EA318D7E2BE00935BFE /* MiidiAdWallShowAppOffersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdWallShowAppOffersDelegate.h; sourceTree = "<group>"; };
 		973E5EA418D7E2BE00935BFE /* MiidiAdWallSpendPointsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdWallSpendPointsDelegate.h; sourceTree = "<group>"; };
 		973E5EA518D7E2BE00935BFE /* MiidiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiManager.h; sourceTree = "<group>"; };
+		9742D4B51946B18400C7D970 /* yazhuICO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yazhuICO.png; sourceTree = "<group>"; };
+		9742D4B71946B18A00C7D970 /* yazhubg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yazhubg.png; sourceTree = "<group>"; };
+		9742D4BB1946D98800C7D970 /* shaizirule.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shaizirule.txt; sourceTree = "<group>"; };
+		9742D4BD1946E03300C7D970 /* chouma.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chouma.wav; sourceTree = "<group>"; };
 		9745AF8718CEAEC200510E8F /* newdisk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newdisk.png; sourceTree = "<group>"; };
 		9745AF8918CEAED500510E8F /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
 		9745AF8B18CEAEF700510E8F /* DiskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskViewController.h; sourceTree = "<group>"; };
@@ -5586,6 +5594,7 @@
 				973A8C3218CD92A800E8D36F /* OtherActivityViewController.h */,
 				973A8C3318CD92A800E8D36F /* OtherActivityViewController.m */,
 				97775E3218C9C5EE00F0BEBD /* detailIntroduce.txt */,
+				9742D4BB1946D98800C7D970 /* shaizirule.txt */,
 				977A71F518C0326C007DE71B /* ExchangeLotteryViewController.h */,
 				977A71F618C0326C007DE71B /* ExchangeLotteryViewController.m */,
 				977A71F818C03D95007DE71B /* ADWallViewController.h */,
@@ -6049,6 +6058,9 @@
 		7273566E192D94A60083F80A /* shaizi */ = {
 			isa = PBXGroup;
 			children = (
+				9742D4BD1946E03300C7D970 /* chouma.wav */,
+				9742D4B51946B18400C7D970 /* yazhuICO.png */,
+				9742D4B71946B18A00C7D970 /* yazhubg.png */,
 				973832DC19459DCC006718C1 /* chouma_1.png */,
 				973832DD19459DCC006718C1 /* chouma_2.png */,
 				973832DE19459DCC006718C1 /* chouma_3.png */,
@@ -8312,6 +8324,7 @@
 				5224985A18320393005F7577 /* input_bg.png in Resources */,
 				5224973718320393005F7577 /* danbtn_c_click.png in Resources */,
 				5224986A18320393005F7577 /* sxa9.png in Resources */,
+				9742D4BE1946E03300C7D970 /* chouma.wav in Resources */,
 				7243F98D190600A50072AF6B /* dlt_c_main.png in Resources */,
 				5224989D18320393005F7577 /* xza_c_5.png in Resources */,
 				522496DF18320393005F7577 /* jczq_jsbf_wks_normal.png in Resources */,
@@ -8442,6 +8455,7 @@
 				973832E219459DCC006718C1 /* chouma_3.png in Resources */,
 				72CF01A718F7992D00310F49 /* user_yphone.png in Resources */,
 				5224986418320393005F7577 /* sxa3.png in Resources */,
+				9742D4B61946B18400C7D970 /* yazhuICO.png in Resources */,
 				5224986018320393005F7577 /* sxa10.png in Resources */,
 				522496CD18320393005F7577 /* zcbg_c_sf.png in Resources */,
 				5224967918320393005F7577 /* buy_now_btn.png in Resources */,
@@ -8562,6 +8576,7 @@
 				5224994918320393005F7577 /* red_btn1.png in Resources */,
 				5224982E18320393005F7577 /* jc_sectionlisthide.png in Resources */,
 				6554916116B95F2A00CFDDA6 /* bankPayment.txt in Resources */,
+				9742D4BC1946D98800C7D970 /* shaizirule.txt in Resources */,
 				7243F990190600A50072AF6B /* ssc_c_main.png in Resources */,
 				28F0C7DD181EA51900F74A20 /* JZ_MainGameViewController.xib in Resources */,
 				5224994718320393005F7577 /* radio_click.png in Resources */,
@@ -8706,6 +8721,7 @@
 				977A72A218C06AF6007DE71B /* dianru_red_dianru_titlebg.jpg in Resources */,
 				522498AE18320393005F7577 /* xzb_c_9.png in Resources */,
 				522497E718320393005F7577 /* instantscore_jclq_topview.png in Resources */,
+				9742D4B81946B18A00C7D970 /* yazhubg.png in Resources */,
 				5224987918320393005F7577 /* sxb_c_10.png in Resources */,
 				5224989818320393005F7577 /* xza_c_11.png in Resources */,
 				973832BF1945637D006718C1 /* rightbtn_normal.png in Resources */,
