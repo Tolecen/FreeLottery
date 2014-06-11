@@ -32,14 +32,24 @@
     [super viewDidLoad];
     [self.navigationController.navigationBar setBackground];
     [AdaptationUtils adaptation:self];
-    self.navigationItem.title = @"邀请好友";
+//    self.navigationItem.title = @"邀请好友";
+    self.navigationItem.titleView = ({
+        UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont boldSystemFontOfSize:18];
+        label.text = @"邀请好友";
+        label;
+    });
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:({UIButton * nextB = [UIButton buttonWithType:UIButtonTypeCustom];
-        nextB.frame = CGRectMake(0, 0, 80, 44);
+        nextB.frame = CGRectMake(0, 0, 52, 30);
 //        [nextB setBackgroundImage:[UIImage imageNamed:@"nextBtn"] forState:UIControlStateNormal];
         [nextB.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [nextB setTitle:@"分享" forState:UIControlStateNormal];
+        [nextB setBackgroundImage:[UIImage imageNamed:@"item_bar_right_button_normal.png"] forState:UIControlStateNormal];
+        [nextB setBackgroundImage:[UIImage imageNamed:@"item_bar_right_button_click.png"] forState:UIControlStateHighlighted];
         [nextB addTarget:self action:@selector(shareContent) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:nextB];
         nextB;

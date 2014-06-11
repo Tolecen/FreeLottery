@@ -59,7 +59,15 @@
     [self.navigationController.navigationBar setBackground];
     self.view.backgroundColor = [ColorUtils parseColorFromRGB:@"#efede9"];
     [AdaptationUtils adaptation:self];
-    self.navigationItem.title = @"摇一摇,签到有惊喜";
+//    self.navigationItem.title = @"摇一摇,签到有惊喜";
+    self.navigationItem.titleView = ({
+        UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont boldSystemFontOfSize:18];
+        label.text = @"摇一摇,签到有惊喜";
+        label;
+    });
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:({
         UIButton * backB = [UIButton buttonWithType:UIButtonTypeCustom];
         backB.frame = CGRectMake(0, 0, 25, 25);
