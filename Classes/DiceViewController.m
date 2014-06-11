@@ -636,22 +636,36 @@
         
     }];
     NSLog(@"sure clicked");
+    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"chouma" ofType:@"wav"];
+    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
+    AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
+    [getcoinAudio prepareToPlay];
+    [getcoinAudio play];
     if (selectedResult==2) {
-        [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:self.inputTF.text beanNoWithSmall:@"0"];
-//        self.choumaImageV1.center = sender.center;
-//        [UIView animateWithDuration:0.3 animations:^{
-//            [self.choumaImageV1 setFrame:CGRectMake(95, 290, 45.5, 44.5)];
-//        } completion:^(BOOL finished) {
-//            
-//        }];
+        self.choumaImageV2.center = sender.center;
+        self.choumaImageV2.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.choumaImageV2 setFrame:CGRectMake(44+135.5+51, 290, 45.5, 44.5)];
+        } completion:^(BOOL finished) {
+            [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:self.inputTF.text beanNoWithSmall:@"0"];
+            [m_delegate.activityView activityViewShow];
+            [m_delegate.activityView.titleLabel setText:@"投注中..."];
+        }];
     }
     else
     {
-        [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:@"0" beanNoWithSmall:self.inputTF.text];
+        self.choumaImageV1.center = sender.center;
+        self.choumaImageV1.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.choumaImageV1 setFrame:CGRectMake(95, 290, 45.5, 44.5)];
+        } completion:^(BOOL finished) {
+            [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:@"0" beanNoWithSmall:self.inputTF.text];
+            [m_delegate.activityView activityViewShow];
+            [m_delegate.activityView.titleLabel setText:@"投注中..."];
+        }];
     }
     
-    [m_delegate.activityView activityViewShow];
-    [m_delegate.activityView.titleLabel setText:@"投注中..."];
+
     
 }
 
@@ -781,15 +795,15 @@
     sender.tag=2;
     NSLog(@"left selected");
     selectedResult = 1;
-    self.choumaImageV1.hidden = NO;
-    self.choumaImageV2.hidden = YES;
+//    self.choumaImageV1.hidden = NO;
+//    self.choumaImageV2.hidden = YES;
     self.choumaL1.text = self.inputTF.text;
     self.choumaL2.text = @"0";
-    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"chouma" ofType:@"wav"];
-    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
-    AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
-    [getcoinAudio prepareToPlay];
-    [getcoinAudio play];
+//    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"chouma" ofType:@"wav"];
+//    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
+//    AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
+//    [getcoinAudio prepareToPlay];
+//    [getcoinAudio play];
 //    }
 //    else
 //    {
@@ -807,15 +821,11 @@
     sender.tag=2;
     NSLog(@"right selected");
     selectedResult = 2;
-    self.choumaImageV1.hidden = YES;
-    self.choumaImageV2.hidden = NO;
+//    self.choumaImageV1.hidden = YES;
+//    self.choumaImageV2.hidden = NO;
     self.choumaL2.text = self.inputTF.text;
     self.choumaL1.text = @"0";
-    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"chouma" ofType:@"wav"];
-    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
-    AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
-    [getcoinAudio prepareToPlay];
-    [getcoinAudio play];
+
 //    }
 //    else
 //    {
@@ -991,8 +1001,8 @@
         self.leftSelectBtn.tag=2;
         NSLog(@"left selected");
         selectedResult = 1;
-        self.choumaImageV1.hidden = NO;
-        self.choumaImageV2.hidden = YES;
+//        self.choumaImageV1.hidden = NO;
+//        self.choumaImageV2.hidden = YES;
         self.choumaL1.text = self.inputTF.text;
         self.choumaL2.text = @"0";
     }
@@ -1003,16 +1013,16 @@
         self.rightSelectBtn.tag=2;
         NSLog(@"right selected");
         selectedResult = 2;
-        self.choumaImageV1.hidden = YES;
-        self.choumaImageV2.hidden = NO;
+//        self.choumaImageV1.hidden = YES;
+//        self.choumaImageV2.hidden = NO;
         self.choumaL2.text = self.inputTF.text;
         self.choumaL1.text = @"0";
     }
-    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"chouma" ofType:@"wav"];
-    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
-    AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
-    [getcoinAudio prepareToPlay];
-    [getcoinAudio play];
+//    NSString * stringUrl3 = [[NSBundle mainBundle] pathForResource:@"chouma" ofType:@"wav"];
+//    NSURL * url3 = [NSURL fileURLWithPath:stringUrl3];
+//    AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
+//    [getcoinAudio prepareToPlay];
+//    [getcoinAudio play];
 
     
 
