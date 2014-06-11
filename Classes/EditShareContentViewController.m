@@ -38,6 +38,7 @@
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor whiteColor];
         label.font = [UIFont boldSystemFontOfSize:18];
+        label.backgroundColor = [UIColor clearColor];
         label.text = @"邀请好友";
         label;
     });

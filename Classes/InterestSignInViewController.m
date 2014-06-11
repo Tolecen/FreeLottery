@@ -64,6 +64,7 @@
         UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor whiteColor];
+        label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont boldSystemFontOfSize:18];
         label.text = @"摇一摇,签到有惊喜";
         label;
