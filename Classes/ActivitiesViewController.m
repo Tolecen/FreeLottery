@@ -56,20 +56,20 @@
     [AdaptationUtils adaptation:self];
     //    [AdaptationUtils adaptation:self];
     [self.navigationController.navigationBar setBackground];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithCustomView:({
-        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0, 0, 40, 30);
-        [button addTarget:self action:@selector(shaizi) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:@"骰子" forState:UIControlStateNormal];
-        button;
-    }) ];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithCustomView:({
-        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0, 0, 40, 30);
-        [button addTarget:self action:@selector(yaoqing) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:@"邀请" forState:UIControlStateNormal];
-        button;
-    }) ];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithCustomView:({
+//        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        button.frame = CGRectMake(0, 0, 40, 30);
+//        [button addTarget:self action:@selector(shaizi) forControlEvents:UIControlEventTouchUpInside];
+//        [button setTitle:@"骰子" forState:UIControlStateNormal];
+//        button;
+//    }) ];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithCustomView:({
+//        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        button.frame = CGRectMake(0, 0, 40, 30);
+//        [button addTarget:self action:@selector(yaoqing) forControlEvents:UIControlEventTouchUpInside];
+//        [button setTitle:@"邀请" forState:UIControlStateNormal];
+//        button;
+//    }) ];
 //    if (self.isShowBackButton) {
 //        [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(backAction:) andAutoPopView:NO];
 //        
