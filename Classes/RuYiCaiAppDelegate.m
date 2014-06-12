@@ -438,7 +438,7 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     //新浪微博回调
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SinaBecomeActive" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"SinaBecomeActive" object:nil];
     [DianRuAdWall dianruOnResume];
 }
 
