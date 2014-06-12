@@ -134,10 +134,17 @@
     [formatter release];
     awV.timeStr = [dateS stringByAppendingString:@" 获得"];
     if (![cardDict objectForKey:@"award"]||[[cardDict objectForKey:@"award"] isKindOfClass:[NSNull class]]) {
-        awV.awardStr = @"暂无详情";
+        awV.awardStr = @"";
     }
     else
         awV.awardStr = [cardDict objectForKey:@"award"];
+    
+    if (![cardDict objectForKey:@"progress"]||[[cardDict objectForKey:@"progress"] isKindOfClass:[NSNull class]]) {
+        awV.awardStr = [awV.awardStr stringByAppendingString:@""];
+    }
+    else
+        awV.awardStr = [awV.awardStr stringByAppendingString:[cardDict objectForKey:@"progress"]];
+    
     awV.desStr = [cardDict objectForKey:@"description"];
     
     [self.navigationController pushViewController:awV animated:YES];

@@ -167,13 +167,13 @@
             });
         }
     });
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
 //    NSTimeInterval hhh = [[NSDate date] timeIntervalSince1970];
 //    NSLog(@"nowTime:%f",hhh);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOK:) name:@"loginOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryActListOK:) name:@"queryActListOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(todayQianDaoOK:) name:@"TodayQianDaoOK" object:nil];
