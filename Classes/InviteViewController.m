@@ -246,7 +246,7 @@
     for (int i = 0; i<array.count; i++) {
         UILabel * label = (UILabel *)[self.view viewWithTag:i+10];
         label.text = [array[i] objectForKey:@"min"];
-        if ([noti.object[@"inviteeCnt"] intValue]>[[array[i] objectForKey:@"min"] intValue]&&[noti.object[@"inviteeCnt"] intValue]<=[[array[i] objectForKey:@"max"] intValue]) {
+        if ([noti.object[@"inviteeCnt"] intValue]>=[[array[i] objectForKey:@"min"] intValue]&&[noti.object[@"inviteeCnt"] intValue]<=[[array[i] objectForKey:@"max"] intValue]&&[noti.object[@"inviteeCnt"] intValue]!=0) {
             _progressImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"jindu%d",i+1]];
             if ([[array[i] objectForKey:@"percent"] intValue]>0) {
                 _percentL.text = [NSString stringWithFormat:@"%@%%",[array[i] objectForKey:@"percent"]];
