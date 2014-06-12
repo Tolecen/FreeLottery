@@ -25,24 +25,24 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.issueNoL = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 200, 30)];
-        _issueNoL.font = [UIFont systemFontOfSize:18];
+        self.issueNoL = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 200, 20)];
+        _issueNoL.font = [UIFont systemFontOfSize:16];
         [self.contentView addSubview:_issueNoL];
-        self.winCodeIV = [[UIImageView alloc]initWithFrame:CGRectMake(180, 10, 30, 30)];
+        self.winCodeIV = [[UIImageView alloc]initWithFrame:CGRectMake(180, 10, 20, 20)];
         [self.contentView addSubview:_winCodeIV];
-        self.awardL = [[UILabel alloc]initWithFrame:CGRectMake(250, 10, 60, 30)];
-        _awardL.font = [UIFont systemFontOfSize:18];
-        _awardL.textAlignment = NSTextAlignmentCenter;
+        self.awardL = [[UILabel alloc]initWithFrame:CGRectMake(200, 10, 110, 20)];
+        _awardL.font = [UIFont systemFontOfSize:16];
+        _awardL.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_awardL];
-        self.betDetailL = [[UILabel alloc]initWithFrame:CGRectMake(10, 50, 200, 30)];
-        _betDetailL.font = [UIFont systemFontOfSize:16];
+        self.betDetailL = [[UILabel alloc]initWithFrame:CGRectMake(10, 35, 200, 20)];
+        _betDetailL.font = [UIFont systemFontOfSize:14];
         _betDetailL.textColor = [UIColor lightGrayColor];
         _betDetailL.textAlignment = NSTextAlignmentLeft;
         [self.contentView addSubview:_betDetailL];
         
-        self.issueL = [[UILabel alloc]initWithFrame:CGRectMake(250, 50, 60, 30)];
-        _issueL.font = [UIFont systemFontOfSize:16];
-        _issueL.textAlignment = NSTextAlignmentCenter;
+        self.issueL = [[UILabel alloc]initWithFrame:CGRectMake(200, 35, 110, 20)];
+        _issueL.font = [UIFont systemFontOfSize:14];
+        _issueL.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_issueL];
     }
     return self;
@@ -81,7 +81,7 @@
                 _issueL.text = @"未中奖";
                 if (![_dataDic[@"winCode"] isKindOfClass:[NSNull class]]&&[arr[2] intValue] == [_dataDic[@"winCode"] intValue]) {
                     _issueL.textColor = [UIColor redColor];
-                    _issueL.text = @"中奖";
+                    _issueL.text = [NSString stringWithFormat:@"中奖:%d",[arr[3] intValue]*2];
                 }
                 
             }
@@ -118,13 +118,13 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.issueNoL = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 200, 30)];
-        _issueNoL.font = [UIFont systemFontOfSize:18];
+        self.issueNoL = [[UILabel alloc]initWithFrame:CGRectMake(10, 15, 200, 20)];
+        _issueNoL.font = [UIFont systemFontOfSize:16];
         [self.contentView addSubview:_issueNoL];
-        self.winCodeIV = [[UIImageView alloc]initWithFrame:CGRectMake(180, 10, 30, 30)];
+        self.winCodeIV = [[UIImageView alloc]initWithFrame:CGRectMake(180, 15, 20, 20)];
         [self.contentView addSubview:_winCodeIV];
-        self.awardL = [[UILabel alloc]initWithFrame:CGRectMake(210, 10, 90, 30)];
-        _awardL.font = [UIFont systemFontOfSize:18];
+        self.awardL = [[UILabel alloc]initWithFrame:CGRectMake(210, 15, 90, 20)];
+        _awardL.font = [UIFont systemFontOfSize:16];
         _awardL.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_awardL];
     }
@@ -236,7 +236,7 @@
     }else
     {
         self.navigationItem.title = @"投注记录";
-        _tableView.rowHeight = 80;
+        _tableView.rowHeight = 60;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryIssueHistoryOK:) name:@"WXRqueryGameOrdersOK" object:nil];
     }
     [self queryData];
