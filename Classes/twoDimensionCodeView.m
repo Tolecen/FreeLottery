@@ -7,7 +7,8 @@
 //
 
 #import "TwoDimensionCodeView.h"
-@interface TwoDimensionCodeView ()
+#import "BDKNotifyHUD.h"
+@interface TwoDimensionCodeView ()<UIActionSheetDelegate>
 @property (nonatomic,assign) UIViewController * viewC;
 @end
 @implementation TwoDimensionCodeView
@@ -27,7 +28,10 @@
         [whiteView release];
         UIImageView * image = [[UIImageView alloc]initWithFrame:CGRectMake(60, 40, 200, 200)];
         image.image = [UIImage imageNamed:@"TwoDimensionCode"];
+        image.userInteractionEnabled = YES;
         [whiteView addSubview:image];
+        UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPress:)];
+        [image addGestureRecognizer:longPress];
         UIView * lineV = [[UIView alloc]initWithFrame:CGRectMake(0, whiteView.frame.size.height - 50, 320, 1)];
         lineV.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
         [whiteView addSubview:lineV];
@@ -69,7 +73,40 @@
                      }
      ];
 }
-
+-(void)longPress:(UILongPressGestureRecognizer*)longPress
+{
+    if (longPress.state == UIGestureRecognizerStateBegan) {
+        UIActionSheet* act = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles: @"保存",nil];
+        [act showInView:_viewC.view];
+    }
+}
+#pragma mark - actionsheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0) {
+        UIImageWriteToSavedPhotosAlbum([UIImage imageNamed:@"TwoDimensionCode"], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+}
+- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    if(error != NULL){
+        BDKNotifyHUD* bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"保存图片失败,请允许本应用访问您的相册"];
+        
+        bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
+        [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
+        [bdkHUD presentWithDuration:1.5f speed:0.5f inView:nil completion:^{
+            [bdkHUD removeFromSuperview];
+        }];
+    }else{
+        BDKNotifyHUD* bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"保存图片成功"];
+        
+        bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
+        [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
+        [bdkHUD presentWithDuration:1.5f speed:0.5f inView:nil completion:^{
+            [bdkHUD removeFromSuperview];
+        }];
+    }
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

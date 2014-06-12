@@ -276,7 +276,7 @@
     {
         if (0 == m_registerRecNameTextField.text.length || [m_registerRecNameTextField.text isEqualToString:@" "])
         {
-            [[RuYiCaiNetworkManager sharedManager] showMessage:@"请输入推荐人的用户名！" withTitle:@"提示" buttonTitle:@"确定"];
+            [[RuYiCaiNetworkManager sharedManager] showMessage:@"请输入邀请码！" withTitle:@"提示" buttonTitle:@"确定"];
             return;
         }
     }
@@ -358,17 +358,17 @@
                 self.myScrollView.contentSize = CGSizeMake(320, 500);
         
            }
-        self.certIdView.frame = CGRectMake(0, 160, 320,140);
+        self.certIdView.frame = CGRectMake(0, 250, 320,140);
         
-        self.recNameView.frame = CGRectMake(0, 310, 320,80);
+        self.recNameView.frame = CGRectMake(0, 160, 320,80);
         
         _commitProtcolView.frame = CGRectMake(0,400, 320, 100);
     }else if(recNameSwitch.on==NO && bCertid.on== NO)
     {
         self.myScrollView.contentSize = CGSizeMake(320, 450);
-        self.certIdView.frame = CGRectMake(0, 160, 320,40);
+        self.certIdView.frame = CGRectMake(0, 210, 320,40);
         
-        self.recNameView.frame = CGRectMake(0, 210, 320,40);
+        self.recNameView.frame = CGRectMake(0, 160, 320,40);
         
         _commitProtcolView.frame = CGRectMake(0, 260, 320, 100);
     }
@@ -381,9 +381,9 @@
                 self.myScrollView.contentSize = CGSizeMake(320, 450);
                 
             }
-        self.certIdView.frame = CGRectMake(0, 160, 320,40);
+        self.certIdView.frame = CGRectMake(0, 250, 320,40);
         
-        self.recNameView.frame = CGRectMake(0, 210, 320,80);
+        self.recNameView.frame = CGRectMake(0, 160, 320,80);
         
         _commitProtcolView.frame = CGRectMake(0, 290, 320, 100);
     }
@@ -396,9 +396,9 @@
             self.myScrollView.contentSize = CGSizeMake(320, 500);
             
         }
-        self.certIdView.frame = CGRectMake(0, 160, 320,140);
+        self.certIdView.frame = CGRectMake(0, 210, 320,140);
         
-        self.recNameView.frame = CGRectMake(0, 310, 320,40);
+        self.recNameView.frame = CGRectMake(0, 160, 320,40);
         
         _commitProtcolView.frame = CGRectMake(0, 350, 320, 100);
         
