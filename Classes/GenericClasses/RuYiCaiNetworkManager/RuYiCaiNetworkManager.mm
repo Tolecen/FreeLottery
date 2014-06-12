@@ -307,6 +307,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0){
         NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
         [mDict setObject:idfa forKey:@"mac"];
+        NSLog(@"IDFAAA:%@",idfa);
         
     }
     else
@@ -4899,6 +4900,11 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         self.responseText = resText;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRBetPeaOK" object:parserDict userInfo:nil];
+    }
+    else
+    {
+        NSString* message = [parserDict objectForKey:@"message"];
+        [self showMessage:message withTitle:nil buttonTitle:@"确定"];
     }
 }
 - (void)queryGameOrdersSucceed:(NSString*)resText

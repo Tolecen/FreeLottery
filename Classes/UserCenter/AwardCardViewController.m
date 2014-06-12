@@ -133,7 +133,11 @@
     NSString* dateS = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]/1000]];
     [formatter release];
     awV.timeStr = [dateS stringByAppendingString:@" 获得"];
-    awV.awardStr = [cardDict objectForKey:@"award"];
+    if (![cardDict objectForKey:@"award"]||[[cardDict objectForKey:@"award"] isKindOfClass:[NSNull class]]) {
+        awV.awardStr = @"暂无详情";
+    }
+    else
+        awV.awardStr = [cardDict objectForKey:@"award"];
     awV.desStr = [cardDict objectForKey:@"description"];
     
     [self.navigationController pushViewController:awV animated:YES];

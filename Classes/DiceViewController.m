@@ -447,6 +447,7 @@
     
     [self.rightSelectBtn setBackgroundImage:[UIImage imageNamed:@"right"] forState:UIControlStateNormal];
     [self.leftSelectBtn setBackgroundImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
+    selectedResult = 0;
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",xiaoZhu] forKey:@"shaizicurrentxiao"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -619,6 +620,12 @@
     }
     if ([self.inputTF.text intValue]>1000) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"亲，理性投注，最大只能押1000彩豆哦" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    if ([self.inputTF.text intValue]<50) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"亲，别太吝啬呀，最少要投50个彩豆呢" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
         [alert show];
         [alert release];
         return;
