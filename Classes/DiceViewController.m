@@ -223,7 +223,7 @@
     
     UILabel * renshu = [[UILabel alloc] initWithFrame:CGRectMake(0, 310, 49, 20)];
     [renshu setBackgroundColor:[UIColor clearColor]];
-    [renshu setText:@"人数"];
+    [renshu setText:@"人次"];
     [renshu setTextColor:[UIColor grayColor]];
     [renshu setFont:[UIFont systemFontOfSize:15]];
     [renshu setTextAlignment:NSTextAlignmentCenter];
