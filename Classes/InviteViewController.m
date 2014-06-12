@@ -251,6 +251,7 @@
             if ([[array[i] objectForKey:@"percent"] intValue]>0) {
                 _percentL.text = [NSString stringWithFormat:@"%@%%",[array[i] objectForKey:@"percent"]];
             }
+            _percentL.center = CGPointMake(_percentL.center.x+i*100, _percentL.center.y);
         }
     }
 }
