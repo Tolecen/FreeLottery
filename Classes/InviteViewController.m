@@ -275,13 +275,6 @@
 {
     NSString* editString = [NSString stringWithFormat:@"每天都有5次免费中千万大奖的机会,真的不花一分钱哦！赶紧加入，土豪请绕行~~~"];
     NSString* urlString = [NSString stringWithFormat:@"http://220.231.48.232:4231/freelot/invite.jsp?ic=%@",_inviteCodeL.text];
-    id<ISSContent> content = [ShareSDK content:editString
-                                defaultContent:nil
-                                         image:[ShareSDK jpegImageWithImage:[UIImage imageNamed:@"icon-144"] quality:1]
-                                         title:@"向你推荐全民免费彩票"
-                                           url:urlString
-                                   description:nil
-                                     mediaType:SSPublishContentMediaTypeNews];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
@@ -314,6 +307,13 @@
         }break;
         case 3:{
             NSLog(@"微信");
+            id<ISSContent> content = [ShareSDK content:@"每天都有5次免费中大奖的机会，真的不花一分钱哦！赶紧加入，土豪请绕行~~~"
+                                        defaultContent:nil
+                                                 image:[ShareSDK jpegImageWithImage:[UIImage imageNamed:@"icon-144"] quality:1]
+                                                 title:@"免费玩彩票，不花钱博大奖"
+                                                   url:urlString
+                                           description:nil
+                                             mediaType:SSPublishContentMediaTypeNews];
             [ShareSDK shareContent:content
                               type:ShareTypeWeixiSession
                        authOptions:authOptions
@@ -338,6 +338,12 @@
         }break;
         case 4:{
             NSLog(@"朋友圈");
+            id<ISSContent> content = [ShareSDK content:@"每天都有5次免费中大奖的机会，真的不花钱哦，也许下一个中大奖的就是你"                                        defaultContent:nil
+                                                 image:[ShareSDK jpegImageWithImage:[UIImage imageNamed:@"icon-144"] quality:1]
+                                                 title:@"免费玩彩票，不花钱博千万大奖。赶紧加入，土豪请绕行~~~~"
+                                                   url:urlString
+                                           description:nil
+                                             mediaType:SSPublishContentMediaTypeNews];
             [ShareSDK shareContent:content
                               type:ShareTypeWeixiTimeline
                        authOptions:authOptions
@@ -362,6 +368,13 @@
         }break;
         case 5:{
             NSLog(@"qq空间");
+            id<ISSContent> content = [ShareSDK content:@"每天5次免费中大奖的机会，赶紧加入，土豪请绕行~~~"
+                                        defaultContent:nil
+                                                 image:[ShareSDK jpegImageWithImage:[UIImage imageNamed:@"icon-144"] quality:1]
+                                                 title:@"免费玩彩票，不花钱博大奖"
+                                                   url:urlString
+                                           description:nil
+                                             mediaType:SSPublishContentMediaTypeNews];
             [ShareSDK shareContent:content
                               type:ShareTypeQQ
                        authOptions:authOptions
