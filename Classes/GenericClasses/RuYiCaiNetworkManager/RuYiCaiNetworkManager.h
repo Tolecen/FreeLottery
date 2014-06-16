@@ -265,6 +265,7 @@ typedef enum
 @property (nonatomic, retain) NSString* realServerURL;
 @property (nonatomic, assign) BOOL shouldCheat;
 @property (nonatomic, assign) BOOL shouldTurnToAdWall;
+@property (nonatomic, assign) BOOL shouldRefreshShaiZiTimer;
 @property (nonatomic, assign) int choumaXiao;
 @property (nonatomic, assign) int choumaDa;
 
@@ -327,7 +328,7 @@ typedef enum
 -(void)queryRecommandedAppList:(NSString *)theType;
 -(void)doShakeCheckInWithActID:(NSString *)actID AndCheckID:(NSString *)checkID;
 -(void)queryShakeActList;
--(void)queryshakeSigninDescription;
+-(void)queryshakeSigninDescription:(NSString *)keyStr;
 -(void)queryMyAwardCardListWithPage:(NSString *)thePage;
 - (void)softwareUpdate;
 - (void)updateUserInformation;

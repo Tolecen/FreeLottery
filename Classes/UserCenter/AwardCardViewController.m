@@ -133,17 +133,26 @@
     NSString* dateS = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]/1000]];
     [formatter release];
     awV.timeStr = [dateS stringByAppendingString:@" 获得"];
-    if (![cardDict objectForKey:@"award"]||[[cardDict objectForKey:@"award"] isKindOfClass:[NSNull class]]) {
-        awV.awardStr = @"";
-    }
-    else
-        awV.awardStr = [cardDict objectForKey:@"award"];
     
-    if (![cardDict objectForKey:@"progress"]||[[cardDict objectForKey:@"progress"] isKindOfClass:[NSNull class]]) {
-        awV.awardStr = [awV.awardStr stringByAppendingString:@""];
+    if (![[cardDict objectForKey:@"type"] isEqualToString:@"5"]) {
+        if (![cardDict objectForKey:@"award"]||[[cardDict objectForKey:@"award"] isKindOfClass:[NSNull class]]) {
+            awV.awardStr = @"";
+        }
+        else
+            awV.awardStr = [cardDict objectForKey:@"award"];
     }
     else
-        awV.awardStr = [awV.awardStr stringByAppendingString:[cardDict objectForKey:@"progress"]];
+    {
+        if (![cardDict objectForKey:@"progress"]||[[cardDict objectForKey:@"progress"] isKindOfClass:[NSNull class]]) {
+            awV.awardStr = @"";
+        }
+        else
+            awV.awardStr = [cardDict objectForKey:@"progress"];
+    }
+
+    
+    awV.actType = [cardDict objectForKey:@"type"];
+    awV.status = [cardDict objectForKey:@"state"];
     
     awV.desStr = [cardDict objectForKey:@"description"];
     

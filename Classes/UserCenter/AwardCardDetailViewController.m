@@ -13,7 +13,7 @@
 @end
 
 @implementation AwardCardDetailViewController
-@synthesize nameStr,timeStr,awardStr,desStr;
+@synthesize nameStr,timeStr,awardStr,desStr,actType,status;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -62,6 +62,23 @@
     [awardL setTextColor:[UIColor redColor]];
     [self.view addSubview:awardL];
     [awardL setText:self.awardStr];
+    
+    NSString * myStatus;
+    if ([self.actType isEqualToString:@"5"]) {
+        if ([self.status isEqualToString:@"1"]) {
+            myStatus = [NSString stringWithFormat:@"正在进行，已完成%@",self.awardStr];
+        }
+        else if ([self.status isEqualToString:@"2"]){
+            myStatus = @"已完成";
+        }
+        else if ([self.status isEqualToString:@"4"]){
+            myStatus = @"已过期";
+        }
+        else {
+            myStatus = @"正在处理";
+        }
+        [awardL setText:myStatus];
+    }
     
     float h = 44;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {

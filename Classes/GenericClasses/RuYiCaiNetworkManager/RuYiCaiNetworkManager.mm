@@ -88,6 +88,7 @@
 @synthesize choumaDa;
 @synthesize choumaXiao;
 @synthesize shouldTurnToAdWall;
+@synthesize shouldRefreshShaiZiTimer;
 static RuYiCaiNetworkManager *s_networkManager = NULL;
 
 - (void)dealloc 
@@ -175,6 +176,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
         haveAlert = NO;
         
         self.shouldCheat = NO;
+        self.shouldRefreshShaiZiTimer = NO;
         self.requestedAdwallSuccess = NO;
         
         self.shouldTurnToAdWall = NO;
@@ -2391,7 +2393,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
 
 
 
--(void)queryshakeSigninDescription
+-(void)queryshakeSigninDescription:(NSString *)keyStr
 {
     NSTrace();
     NSString *updateUrl =[NSString stringWithFormat:@"%@", [RuYiCaiNetworkManager sharedManager].realServerURL];
@@ -2402,7 +2404,7 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     [mDict setObject:@"info" forKey:@"command"];
     [mDict setObject:@"valueById" forKey:@"requestType"];
     [mDict setObject:[RuYiCaiNetworkManager sharedManager].userno forKey:@"userno"];
-    [mDict setObject:@"shakeSigninDesc" forKey:@"keyStr"];
+    [mDict setObject:keyStr forKey:@"keyStr"];
 //    [mDict setObject:@"20" forKey:@"maxresult"];
 //    [mDict setObject:@"0" forKey:@"type"];
     
@@ -4905,6 +4907,8 @@ static RuYiCaiNetworkManager *s_networkManager = NULL;
     {
         NSString* message = [parserDict objectForKey:@"message"];
         [self showMessage:message withTitle:nil buttonTitle:@"确定"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXRBetPeaFailed" object:parserDict userInfo:nil];
+        
     }
 }
 - (void)queryGameOrdersSucceed:(NSString*)resText
