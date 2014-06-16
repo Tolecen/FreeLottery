@@ -572,7 +572,7 @@
 }
 - (void)dismissModalView:(UIView *)subView
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SinaBecomeActive" object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SinaBecomeActive" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SinaHandleOpenURL" object:nil];
     
 	[UIView beginAnimations:@"movement" context:nil];

@@ -351,10 +351,12 @@
 -(void)viewDidAppear:(BOOL)animated
 {
 //    [self performSelector:@selector(showMentionView) withObject:nil afterDelay:2];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     if ([RuYiCaiNetworkManager sharedManager].shouldTurnToAdWall) {
         [RuYiCaiNetworkManager sharedManager].shouldTurnToAdWall = NO;
         [self.customTabbar customTabSelected:1];
     }
+
 }
 - (void)viewDidLoad 
 {
@@ -691,7 +693,7 @@
     }
     
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
+
     
  
 }
