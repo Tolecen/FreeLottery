@@ -35,6 +35,7 @@
             self.checkLastResultTimer = nil;
         }
     }
+    [_uu release];
     [_allchoumaL2 release];
     [_allchoumaL1 release];
     [_choumaImageV1 release];
@@ -429,15 +430,15 @@
     [_xiuxiView release];
     self.xiuxiView.hidden = YES;
     
-    UILabel * uu = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 300, 60)];
-    [uu setBackgroundColor:[UIColor clearColor]];
-    [uu setTextColor:[UIColor orangeColor]];
-    [uu setTextAlignment:NSTextAlignmentCenter];
-    [uu setNumberOfLines:0];
-    [uu setLineBreakMode:NSLineBreakByCharWrapping];
-    [_xiuxiView addSubview:uu];
-    [uu setText:@"客官，现在是休息时间，请您过段时间再来吧"];
-    [uu release];
+    self.uu = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 300, 60)];
+    [_uu setBackgroundColor:[UIColor clearColor]];
+    [_uu setTextColor:[UIColor orangeColor]];
+    [_uu setTextAlignment:NSTextAlignmentCenter];
+    [_uu setNumberOfLines:0];
+    [_uu setLineBreakMode:NSLineBreakByCharWrapping];
+    [_xiuxiView addSubview:_uu];
+    [_uu setText:@"客官，现在是休息时间，请您过段时间再来吧"];
+    [_uu release];
     
     
     
@@ -570,6 +571,18 @@
             self.lastStatusLabel.text = @"休息中";
             self.lastResultImageV.hidden = YES;
             self.xiuxiView.hidden = NO;
+            
+            NSString * bTime = [[sd objectForKey:@"game"] objectForKey:@"beginTime"];
+            NSDate * bD = [NSDate dateWithTimeIntervalSinceNow:[bTime doubleValue]/1000];
+            NSString * eTime = [[sd objectForKey:@"game"] objectForKey:@"endTime"];
+            NSDate * eD = [NSDate dateWithTimeIntervalSinceNow:[eTime doubleValue]/1000];
+            NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+            [formatter setDateFormat:@"HH:mm"];
+            NSString* dateS1 = [formatter stringFromDate:bD];
+            NSString* dateS2 = [formatter stringFromDate:eD];
+            [formatter release];
+            
+            [self.uu setText:[NSString stringWithFormat:@"客官，现在是休息时间，今天的投注时间是%@到%@",dateS1,dateS2]];
             return;
         }
 
@@ -624,31 +637,48 @@
         NSLog(@"left :%@",timeStr);
         self.currentRemainingTLabel.text = timeStr;
     }
-    double kj = [[[sd objectForKey:@"prevIssue"] objectForKey:@"endAwardTime"] doubleValue]/1000-nowT;
-    if (kj>0) {
-        lastResultGeted = NO;
-    }
-    if ([[[sd objectForKey:@"prevIssue"] objectForKey:@"awardState"] intValue] == 3&&kj<=0&&!lastResultGeted) {
-        
-        self.lastStatusLabel.hidden = YES;
-        NSString * sdf = [NSString stringWithFormat:@"%@",[[sd objectForKey:@"prevIssue"] objectForKey:@"winCodeDetail"]];
-//        [self.lastResultImageV setImage:[UIImage imageNamed:[NSString stringWithFormat:@"little%@",sdf]]];
-        [self littleShaiziArray:[sdf intValue]];
-        self.lastResultImageV.hidden = NO;
-        lastResultGeted = YES;
-        
-    }
-    else if(!lastResultGeted){
-        self.lastStatusLabel.hidden = NO;
-        self.lastStatusLabel.text = @"等待开奖";
-        self.lastResultImageV.hidden = YES;
-    }
-
-    if ([self.checkLastResultTimer isValid]) {
-        [self.checkLastResultTimer invalidate];
-        if (self.checkLastResultTimer!=nil) {
-            self.checkLastResultTimer = nil;
+    
+    id preDs = [sd objectForKey:@"prevIssue"];
+    if ([preDs isKindOfClass:[NSDictionary class]]) {
+        double kj = [[[sd objectForKey:@"prevIssue"] objectForKey:@"endAwardTime"] doubleValue]/1000-nowT;
+        if (kj>0) {
+            lastResultGeted = NO;
         }
+        if ([[[sd objectForKey:@"prevIssue"] objectForKey:@"awardState"] intValue] == 3&&kj<=0&&!lastResultGeted) {
+            
+            self.lastStatusLabel.hidden = YES;
+            NSString * sdf = [NSString stringWithFormat:@"%@",[[sd objectForKey:@"prevIssue"] objectForKey:@"winCodeDetail"]];
+            //        [self.lastResultImageV setImage:[UIImage imageNamed:[NSString stringWithFormat:@"little%@",sdf]]];
+            [self littleShaiziArray:[sdf intValue]];
+            self.lastResultImageV.hidden = NO;
+            lastResultGeted = YES;
+            
+        }
+        else if(!lastResultGeted){
+            self.lastStatusLabel.hidden = NO;
+            self.lastStatusLabel.text = @"等待开奖";
+            self.lastResultImageV.hidden = YES;
+        }
+        
+        if ([self.checkLastResultTimer isValid]) {
+            [self.checkLastResultTimer invalidate];
+            if (self.checkLastResultTimer!=nil) {
+                self.checkLastResultTimer = nil;
+            }
+        }
+
+        if (kj>0) {
+            NSLog(@"time remianing to kaijiang:%f",kj);
+            
+            self.checkLastResultTimer = [NSTimer scheduledTimerWithTimeInterval:kj target:self selector:@selector(checkLastResult) userInfo:nil repeats:NO];
+        }
+
+    }
+    else
+    {
+        self.lastStatusLabel.hidden = NO;
+        self.lastStatusLabel.text = @"暂无上期";
+        self.lastResultImageV.hidden = YES;
     }
     if ([self.remainingTimer isValid]) {
         [self.remainingTimer invalidate];
@@ -657,12 +687,7 @@
         }
     }
     self.remainingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime) userInfo:nil repeats:YES];
-    if (kj>0) {
-        NSLog(@"time remianing to kaijiang:%f",kj);
-
-        self.checkLastResultTimer = [NSTimer scheduledTimerWithTimeInterval:kj target:self selector:@selector(checkLastResult) userInfo:nil repeats:NO];
-    }
-
+    
     
     NSLog(@"current No:%@",currentLotNum);
     
