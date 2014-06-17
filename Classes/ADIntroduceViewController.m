@@ -23,7 +23,12 @@
     }
     return self;
 }
-
+-(void)dealloc
+{
+    [self.a release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,7 +37,7 @@
     //    [AdaptationUtils adaptation:self];
     [self.navigationController.navigationBar setBackground];
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
-    UITextView*a = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-44)];
+    self.a = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-44)];
     NSString *path = nil;
     if (theTextType==TextTypeAdIntro) {
         self.navigationItem.title = @"换豆说明";
@@ -46,28 +51,36 @@
         self.navigationItem.title = @"积分墙重要通知";
         
     }
-    else if (theTextType==TextTypeShaiZiRule){
-        self.navigationItem.title = @"规则说明";
-        path=[[NSString alloc]initWithString:[[NSBundle mainBundle]pathForResource:@"shaizirule"ofType:@"txt"]];
-    }
-    
 
     
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShakeSigninDescriptionOK:) name:@"WXRQueryShakeSigninDescriptionOK" object:nil];
     NSData* data = [[NSData alloc]initWithContentsOfFile:path];
-    a.editable = NO;
-    a.font = [UIFont systemFontOfSize:16];
-    a.backgroundColor = [UIColor clearColor];
+    _a.editable = NO;
+    _a.font = [UIFont systemFontOfSize:16];
+    _a.backgroundColor = [UIColor clearColor];
     if (theTextType==TextTypeAdwallImportantInfo) {
-        a.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"adwallimportantinfo"];
+        _a.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"adwallimportantinfo"];
+    }
+    else if (theTextType==TextTypeShaiZiRule){
+        self.navigationItem.title = @"规则说明";
+        _a.text = @" ";
+        [[RuYiCaiNetworkManager sharedManager] queryshakeSigninDescription:@"gameRule_S0001"];
     }
     else{
-        a.text = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+        _a.text = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     }
-    [self.view addSubview:a];
+    [self.view addSubview:_a];
     [data release];
     [path release];
-    [a release];
+    [_a release];
 	// Do any additional setup after loading the view.
+}
+-(void)queryShakeSigninDescriptionOK:(NSNotification *)noti
+{
+    NSString* str = noti.object[@"value"];
+    NSLog(@"ssss%@",str);
+    self.a.text = str;
 }
 -(void)back:(UIButton *)sender
 {

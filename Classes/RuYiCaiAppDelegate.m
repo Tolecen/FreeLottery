@@ -439,6 +439,9 @@
     
     //新浪微博回调
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"SinaBecomeActive" object:nil];
+    if ([RuYiCaiNetworkManager sharedManager].shouldRefreshShaiZiTimer) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"freshShaiZiTimer" object:nil];
+    }
     [DianRuAdWall dianruOnResume];
 }
 

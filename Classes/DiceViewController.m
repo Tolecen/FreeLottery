@@ -19,8 +19,22 @@
 @implementation DiceViewController
 - (void)dealloc
 {
+    [RuYiCaiNetworkManager sharedManager].shouldRefreshShaiZiTimer = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+    if ([self.remainingTimer isValid]) {
+        [self.remainingTimer invalidate];
+        if (self.remainingTimer!=nil) {
+            self.remainingTimer = nil;
+        }
+        
+    }
+    if ([self.checkLastResultTimer isValid]) {
+        [self.checkLastResultTimer invalidate];
+        if (self.checkLastResultTimer!=nil) {
+            self.checkLastResultTimer = nil;
+        }
+    }
     [_allchoumaL2 release];
     [_allchoumaL1 release];
     [_choumaImageV1 release];
@@ -430,10 +444,21 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCurrentOK:) name:@"WXRGetIssueCurrOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getcurlotDetailOK:) name:@"WXRGetcurlotDetailOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(betPeaOK:) name:@"WXRBetPeaOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(betFailed:) name:@"WXRBetPeaFailed" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(freshTimer:) name:@"freshShaiZiTimer" object:nil];
+
     self.remainingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime) userInfo:nil repeats:YES];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     
     
+    [RuYiCaiNetworkManager sharedManager].shouldRefreshShaiZiTimer = YES;
+    
+    
+}
+
+-(void)freshTimer:(NSNotification *)noti
+{
+    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
 }
 -(void)choumaDonghua
 {
@@ -480,6 +505,16 @@
     
 }
 
+-(void)betFailed:(NSNotification *)noti
+{
+    [self.rightSelectBtn setBackgroundImage:[UIImage imageNamed:@"right"] forState:UIControlStateNormal];
+    [self.leftSelectBtn setBackgroundImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
+    selectedResult = 0;
+    self.choumaImageV1.hidden = YES;
+    self.choumaImageV2.hidden = YES;
+    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+}
+
 -(void)getcurlotDetailOK:(NSNotification *)noti
 {
     NSDictionary * sd = (NSDictionary *)noti.object;
@@ -514,13 +549,32 @@
 -(void)getCurrentOK:(NSNotification *)noti
 {
     NSDictionary * sd = (NSDictionary *)noti.object;
-    NSDictionary * currD = [sd objectForKey:@"currIssue"];
+    id currD = [sd objectForKey:@"currIssue"];
     NSDictionary * preD = [sd objectForKey:@"prevIssue"];
-    if (!currD||!preD) {
-        self.xiuxiView.hidden = NO;
-        return;
-    }
+    if (![currD isKindOfClass:[NSDictionary class]]) {
+        if (!currD||!preD||[[sd objectForKey:@"currIssue"] isEqualToString:@""]) {
+            if ([self.checkLastResultTimer isValid]) {
+                [self.checkLastResultTimer invalidate];
+                if (self.checkLastResultTimer!=nil) {
+                    self.checkLastResultTimer = nil;
+                }
+            }
+            if ([self.remainingTimer isValid]) {
+                [self.remainingTimer invalidate];
+                if (self.remainingTimer!=nil) {
+                    self.remainingTimer = nil;
+                }
+            }
+            self.currentRoundNameLabel.text = @"没有当前期";
+            self.currentRemainingTLabel.text = @"休息中";
+            self.lastStatusLabel.text = @"休息中";
+            self.lastResultImageV.hidden = YES;
+            self.xiuxiView.hidden = NO;
+            return;
+        }
 
+    }
+    
     self.xiuxiView.hidden = YES;
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"shaizicurrentda"]) {
         daZhu = 0;
@@ -596,6 +650,13 @@
             self.checkLastResultTimer = nil;
         }
     }
+    if ([self.remainingTimer isValid]) {
+        [self.remainingTimer invalidate];
+        if (self.remainingTimer!=nil) {
+            self.remainingTimer = nil;
+        }
+    }
+    self.remainingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime) userInfo:nil repeats:YES];
     if (kj>0) {
         NSLog(@"time remianing to kaijiang:%f",kj);
 
@@ -983,6 +1044,12 @@
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     if ([_diceImgV isAnimating]) {
+        return;
+    }
+    if (self.xiuxiView.hidden == NO) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"现在还是休息时间哦，稍后再来吧" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
         return;
     }
      [self diceStarAnimation];

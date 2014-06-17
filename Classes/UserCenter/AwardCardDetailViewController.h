@@ -19,4 +19,6 @@
 @property (retain,nonatomic) NSString * timeStr;
 @property (retain,nonatomic) NSString * awardStr;
 @property (retain,nonatomic) NSString * desStr;
+@property (retain,nonatomic) NSString * actType;
+@property (retain,nonatomic) NSString * status;
 @end

@@ -365,6 +365,7 @@
             cell.doitBtn.tag=101;
             cell.doitBtn.userInteractionEnabled = NO;
             [cell.doitBtn addTarget:self action:@selector(doQianDao:) forControlEvents:UIControlEventTouchUpInside];
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
         else if([[actV objectForKey:@"type"] isEqualToString:@"10"])
         {
@@ -399,6 +400,7 @@
             cell.doitBtn.tag = 102;
             cell.doitBtn.userInteractionEnabled = YES;
             [cell.doitBtn addTarget:self action:@selector(toCommentInAppStore:) forControlEvents:UIControlEventTouchUpInside];
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
         if ([[actV objectForKey:@"state"] isEqualToString:@"2"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
             cell.nameLabel.textColor = [UIColor grayColor];

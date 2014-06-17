@@ -121,7 +121,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryRecommandedAppTopOneOK:) name:@"queryRecommandedAppListOK" object:nil];
     if (_ActID) {
         [[RuYiCaiNetworkManager sharedManager] queryShakeActList];
-        [[RuYiCaiNetworkManager sharedManager] queryshakeSigninDescription];
+        [[RuYiCaiNetworkManager sharedManager] queryshakeSigninDescription:@"shakeSigninDesc"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShakeActListOK:) name:@"WXRQueryShakeActListOK" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryShakeSigninDescriptionOK:) name:@"WXRQueryShakeSigninDescriptionOK" object:nil];
         _promptL.text = @"您就可劲的摇吧，摇到啥就送啥\n摇的频率很重要啊";

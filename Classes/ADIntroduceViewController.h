@@ -10,6 +10,7 @@
 #import "AdaptationUtils.h"
 #import "UINavigationBarCustomBg.h"
 #import "BackBarButtonItemUtils.h"
+#import "RuYiCaiNetworkManager.h"
 typedef enum _TextType {
 	TextTypeAdIntro = 0,
     TextTypeCommonQuestion = 1,
@@ -19,4 +20,5 @@ typedef enum _TextType {
 @interface ADIntroduceViewController : UIViewController
 @property (assign) TextType theTextType;
 @property (assign,nonatomic) BOOL shouldShowTabbar;
+@property (nonatomic,retain) UITextView * a;
 @end
