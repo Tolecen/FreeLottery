@@ -22,19 +22,21 @@
     [RuYiCaiNetworkManager sharedManager].shouldRefreshShaiZiTimer = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    if ([self.remainingTimer isValid]) {
-        [self.remainingTimer invalidate];
-        if (self.remainingTimer!=nil) {
-            self.remainingTimer = nil;
+    if (self.remainingTimer != nil) {
+        if( [self.remainingTimer isValid])
+        {
+            [self.remainingTimer invalidate];
         }
-        
+        self.remainingTimer = nil;
     }
-    if ([self.checkLastResultTimer isValid]) {
-        [self.checkLastResultTimer invalidate];
-        if (self.checkLastResultTimer!=nil) {
-            self.checkLastResultTimer = nil;
-        }
-    }
+//    if (checkLastResultTimer != nil) {
+//        if( [checkLastResultTimer isValid])
+//        {
+//            [checkLastResultTimer invalidate];
+//        }
+//        checkLastResultTimer = nil;
+//    }
+    [_remainingTimer release];
     [_uu release];
     [_allchoumaL2 release];
     [_allchoumaL1 release];
@@ -448,7 +450,20 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(betFailed:) name:@"WXRBetPeaFailed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(freshTimer:) name:@"freshShaiZiTimer" object:nil];
 
-    self.remainingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime) userInfo:nil repeats:YES];
+    
+//        if( [checkLastResultTimer isValid])
+//        {
+//            [checkLastResultTimer invalidate];
+//        }
+ 
+
+//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime) userInfo:nil repeats:YES];
+//        if( [self.remainingTimer isValid])
+//        {
+//            [self.remainingTimer invalidate];
+//        }
+
+//    self.remainingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime) userInfo:nil repeats:YES];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     
     
@@ -479,34 +494,38 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",daZhu] forKey:@"shaizicurrentda"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"投注成功!"];
-    
-    bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
-    [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
+//    bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"投注成功!"];
+//    
+//    bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
+//    [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
     self.view.userInteractionEnabled = NO;
-    [bdkHUD presentWithDuration:0.8f speed:0.3f inView:nil completion:^{
-        [bdkHUD removeFromSuperview];
-        [UIView animateWithDuration:0.5 animations:^{
-            [self.choumaImageV1 setFrame:CGRectMake(95+30, 290+30, 0, 0)];
-            [self.choumaImageV2 setFrame:CGRectMake(44+135.5+51+30, 290+30, 0, 0)];
-//            [self.choumaL1 setFrame:CGRectMake(95+30, 290+30, 0, 0)];
-//            [self.choumaL2 setFrame:CGRectMake(44+135.5+51+30, 290+30, 0, 0)];
-        } completion:^(BOOL finished) {
-            [self.choumaImageV1 setFrame:CGRectMake(95, 290, 45.5, 44.5)];
-            [self.choumaImageV2 setFrame:CGRectMake(44+135.5+51, 290, 45.5, 44.5)];
-            [self.choumaL2 setFrame:CGRectMake(0, 0, 45.5, 44.5)];
-            [self.choumaL1 setFrame:CGRectMake(0, 0, 45.5, 44.5)];
-            self.choumaImageV1.hidden = YES;
-            self.choumaImageV2.hidden = YES;
-            self.allchoumaL1.text = [NSString stringWithFormat:@"%d",xiaoZhu];
-            self.allchoumaL2.text = [NSString stringWithFormat:@"%d",daZhu];
-            [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
-            self.view.userInteractionEnabled = YES;
-            self.sureBtn.enabled = YES;
-        }];
-        
+    __block UIViewController * sV = self;
+//    [bdkHUD presentWithDuration:0.8f speed:0.3f inView:nil completion:^{
+//        [bdkHUD removeFromSuperview];
+////        [bdkHUD release];
+//        
+//    }];
+    [self.view.window showHUDWithText:@"投注成功" Type:ShowPhotoYes Enabled:YES];
+    [UIView animateWithDuration:0.5 animations:^{
+        [_choumaImageV1 setFrame:CGRectMake(95+30, 290+30, 0, 0)];
+        [_choumaImageV2 setFrame:CGRectMake(44+135.5+51+30, 290+30, 0, 0)];
+        //            [self.choumaL1 setFrame:CGRectMake(95+30, 290+30, 0, 0)];
+        //            [self.choumaL2 setFrame:CGRectMake(44+135.5+51+30, 290+30, 0, 0)];
+    } completion:^(BOOL finished) {
+        [_choumaImageV1 setFrame:CGRectMake(95, 290, 45.5, 44.5)];
+        [_choumaImageV2 setFrame:CGRectMake(44+135.5+51, 290, 45.5, 44.5)];
+        [_choumaL2 setFrame:CGRectMake(0, 0, 45.5, 44.5)];
+        [_choumaL1 setFrame:CGRectMake(0, 0, 45.5, 44.5)];
+        _choumaImageV1.hidden = YES;
+        _choumaImageV2.hidden = YES;
+        _allchoumaL1.text = [NSString stringWithFormat:@"%d",xiaoZhu];
+        _allchoumaL2.text = [NSString stringWithFormat:@"%d",daZhu];
+        [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+        sV.view.userInteractionEnabled = YES;
+        _sureBtn.enabled = YES;
     }];
-    
+
+
 }
 
 -(void)betFailed:(NSNotification *)noti
@@ -516,6 +535,7 @@
     selectedResult = 0;
     self.choumaImageV1.hidden = YES;
     self.choumaImageV2.hidden = YES;
+    [self.view.window showHUDWithText:@"投注失败" Type:ShowPhotoNo Enabled:YES];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     self.sureBtn.enabled = YES;
 }
@@ -528,8 +548,13 @@
     self.rightrenshuL.text = [[[sd objectForKey:@"result"] objectAtIndex:1] objectForKey:@"cnt"];
     self.rightcaidouL.text = [[[sd objectForKey:@"result"] objectAtIndex:1] objectForKey:@"amt"];
 }
--(void)showRemainTime
+-(void)showRemainTime:(NSTimer *)theTimer
 {
+    if (![theTimer isEqual:self.remainingTimer]) {
+        [theTimer invalidate];
+        theTimer = nil;
+        return;
+    }
     int leftTime = [self.currentRemainingTime intValue]-1;
     self.currentRemainingTime = [NSString stringWithFormat:@"%d",leftTime];
 	if (leftTime > 0)
@@ -558,18 +583,20 @@
     NSDictionary * preD = [sd objectForKey:@"prevIssue"];
     if (![currD isKindOfClass:[NSDictionary class]]) {
         if (!currD||!preD||[[sd objectForKey:@"currIssue"] isEqualToString:@""]) {
-            if ([self.checkLastResultTimer isValid]) {
-                [self.checkLastResultTimer invalidate];
-                if (self.checkLastResultTimer!=nil) {
-                    self.checkLastResultTimer = nil;
-                }
-            }
-            if ([self.remainingTimer isValid]) {
-                [self.remainingTimer invalidate];
-                if (self.remainingTimer!=nil) {
-                    self.remainingTimer = nil;
-                }
-            }
+//            if (checkLastResultTimer != nil) {
+//                if( [checkLastResultTimer isValid])
+//                {
+//                    [checkLastResultTimer invalidate];
+//                }
+//                checkLastResultTimer = nil;
+//            }
+//            if (self.remainingTimer != nil) {
+//                if( [self.remainingTimer isValid])
+//                {
+//                    [self.remainingTimer invalidate];
+//                }
+//                self.remainingTimer = nil;
+//            }
             self.currentRoundNameLabel.text = @"没有当前期";
             self.currentRemainingTLabel.text = @"休息中";
             self.lastStatusLabel.text = @"休息中";
@@ -664,12 +691,6 @@
             self.lastResultImageV.hidden = YES;
         }
         
-        if ([self.checkLastResultTimer isValid]) {
-            [self.checkLastResultTimer invalidate];
-            if (self.checkLastResultTimer!=nil) {
-                self.checkLastResultTimer = nil;
-            }
-        }
 
         if (kj>0) {
             NSLog(@"time remianing to kaijiang:%f",kj);
@@ -684,13 +705,15 @@
         self.lastStatusLabel.text = @"暂无上期";
         self.lastResultImageV.hidden = YES;
     }
-    if ([self.remainingTimer isValid]) {
-        [self.remainingTimer invalidate];
-        if (self.remainingTimer!=nil) {
-            self.remainingTimer = nil;
+    if (self.remainingTimer != nil) {
+        if( [self.remainingTimer isValid])
+        {
+            [self.remainingTimer invalidate];
         }
+        self.remainingTimer = nil;
     }
-    self.remainingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime) userInfo:nil repeats:YES];
+        self.remainingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showRemainTime:) userInfo:nil repeats:YES];
+    [self showRemainTime:self.remainingTimer];
     
     
     NSLog(@"current No:%@",currentLotNum);
@@ -698,6 +721,7 @@
 }
 -(void)checkLastResult
 {
+//    [checkLastResultTimer invalidate];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
 }
 -(void)sureBtnBtnClicked:(UIButton *)sender
@@ -722,13 +746,14 @@
     }
     [self.inputTF resignFirstResponder];
     self.sureBtn.enabled = NO;
+    __block UIViewController * sv = self;
     [UIView animateWithDuration:0.3 animations:^{
         if ([UIScreen mainScreen].bounds.size.height<500) {
-            [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+            [_m_scrollView setFrame:CGRectMake(0, 0, 320, sv.view.frame.size.height)];
         }
         else
         {
-            [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+            [_m_scrollView setFrame:CGRectMake(0, 0, 320, sv.view.frame.size.height)];
         }
     } completion:^(BOOL finished) {
         
@@ -739,13 +764,15 @@
     AVAudioPlayer* getcoinAudio = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:nil];
     [getcoinAudio prepareToPlay];
     [getcoinAudio play];
+    
+    
     if (selectedResult==2) {
         self.choumaImageV2.center = sender.center;
         self.choumaImageV2.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            [self.choumaImageV2 setFrame:CGRectMake(44+135.5+51, 290, 45.5, 44.5)];
+            [_choumaImageV2 setFrame:CGRectMake(44+135.5+51, 290, 45.5, 44.5)];
         } completion:^(BOOL finished) {
-            [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:self.inputTF.text beanNoWithSmall:@"0"];
+            [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:_inputTF.text beanNoWithSmall:@"0"];
             [m_delegate.activityView activityViewShow];
             [m_delegate.activityView.titleLabel setText:@"投注中..."];
         }];
@@ -755,9 +782,9 @@
         self.choumaImageV1.center = sender.center;
         self.choumaImageV1.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            [self.choumaImageV1 setFrame:CGRectMake(95, 290, 45.5, 44.5)];
+            [_choumaImageV1 setFrame:CGRectMake(95, 290, 45.5, 44.5)];
         } completion:^(BOOL finished) {
-            [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:@"0" beanNoWithSmall:self.inputTF.text];
+            [[RuYiCaiNetworkManager sharedManager] betWithIssueNo:currentLotNum beanNoWithBig:@"0" beanNoWithSmall:_inputTF.text];
             [m_delegate.activityView activityViewShow];
             [m_delegate.activityView.titleLabel setText:@"投注中..."];
         }];
@@ -776,14 +803,15 @@
 }
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    __block UIViewController * sv = self;
     if ([self.inputTF isFirstResponder]) {
         [UIView animateWithDuration:0.3 animations:^{
             if ([UIScreen mainScreen].bounds.size.height<500) {
-                [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+                [_m_scrollView setFrame:CGRectMake(0, 0, 320, sv.view.frame.size.height)];
             }
             else
             {
-                [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+                [_m_scrollView setFrame:CGRectMake(0, 0, 320, sv.view.frame.size.height)];
             }
         } completion:^(BOOL finished) {
             
@@ -801,13 +829,14 @@
 {
 //    [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     [self.inputTF resignFirstResponder];
+    __block UIViewController * sv = self;
     [UIView animateWithDuration:0.3 animations:^{
         if ([UIScreen mainScreen].bounds.size.height<500) {
-            [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+            [_m_scrollView setFrame:CGRectMake(0, 0, 320, sv.view.frame.size.height)];
         }
         else
         {
-            [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+            [_m_scrollView setFrame:CGRectMake(0, 0, 320, sv.view.frame.size.height)];
         }
     } completion:^(BOOL finished) {
 //        self.m_scrollView.delegate = self;
@@ -815,13 +844,14 @@
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    __block UIViewController * sv = self;
     [UIView animateWithDuration:0.3 animations:^{
         if ([UIScreen mainScreen].bounds.size.height<500) {
-            [self.m_scrollView setFrame:CGRectMake(0, -235, 320, self.view.frame.size.height)];
+            [_m_scrollView setFrame:CGRectMake(0, -235, 320, sv.view.frame.size.height)];
         }
         else
         {
-            [self.m_scrollView setFrame:CGRectMake(0, -150, 320, self.view.frame.size.height)];
+            [_m_scrollView setFrame:CGRectMake(0, -150, 320, sv.view.frame.size.height)];
         }
     } completion:^(BOOL finished) {
 //        self.m_scrollView.delegate = self;
@@ -847,13 +877,14 @@
 {
     [self.inputTF resignFirstResponder];
     selectedResult == 1?(self.choumaL1.text = self.inputTF.text):(self.choumaL2.text = self.inputTF.text);
+    __block UIViewController * sv = self;
     [UIView animateWithDuration:0.3 animations:^{
         if ([UIScreen mainScreen].bounds.size.height<500) {
-            [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+            [_m_scrollView setFrame:CGRectMake(0, 0, 320, sv.view.frame.size.height)];
         }
         else
         {
-            [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+            [_m_scrollView setFrame:CGRectMake(0, 0, 320, sv.view.frame.size.height)];
         }
     } completion:^(BOOL finished) {
 //        self.m_scrollView.delegate = self;
@@ -1128,7 +1159,7 @@
 //    [getcoinAudio prepareToPlay];
 //    [getcoinAudio play];
 
-    
+    __block UIViewController *sv = self;
 
     [UIView animateWithDuration:0.4 animations:^{
         switch (s) {
@@ -1174,7 +1205,7 @@
     } completion:^(BOOL finished) {
 //        [self choumaDonghua];
         _diceImgV.hidden = YES;
-        [self performSelector:@selector(resetShaiZi) withObject:nil afterDelay:1];
+        [sv performSelector:@selector(resetShaiZi) withObject:nil afterDelay:1];
     }];
 }
 -(void)resetShaiZi
@@ -1185,19 +1216,20 @@
 }
 - (void)back:(id)sender
 {
-    if ([self.remainingTimer isValid]) {
-        [self.remainingTimer invalidate];
-        if (self.remainingTimer!=nil) {
-            self.remainingTimer = nil;
+    if (self.remainingTimer != nil) {
+        if( [self.remainingTimer isValid])
+        {
+            [self.remainingTimer invalidate];
         }
-        
+        self.remainingTimer = nil;
     }
-    if ([self.checkLastResultTimer isValid]) {
-        [self.checkLastResultTimer invalidate];
-        if (self.checkLastResultTimer!=nil) {
-            self.checkLastResultTimer = nil;
-        }
-    }
+//    if (checkLastResultTimer != nil) {
+//        if( [checkLastResultTimer isValid])
+//        {
+//            [checkLastResultTimer invalidate];
+//        }
+//        checkLastResultTimer = nil;
+//    }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"shownTabView" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }

@@ -15,7 +15,7 @@
 #import "InviteRecordViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import "TwoDimensionCodeView.h"
-#import "BDKNotifyHUD.h"
+#import "UIWindow+YzdHUD.h"
 #import "RuYiCaiNetworkManager.h"
 #import "JSON.h"
 #import "MetionView.h"
@@ -416,13 +416,14 @@
 - (void)copyDownLoadAddress
 {
     [UIPasteboard generalPasteboard].string = @"https://itunes.apple.com/cn/app/quan-min-mian-fei-cai-piao/id830055983?mt=8";
-    bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"已复制到剪切板"];
-    
-    bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
-    [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
-    [bdkHUD presentWithDuration:0.8f speed:0.3f inView:nil completion:^{
-        [bdkHUD removeFromSuperview];
-    }];
+//    bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"已复制到剪切板"];
+//    
+//    bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
+//    [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
+//    [bdkHUD presentWithDuration:0.8f speed:0.3f inView:nil completion:^{
+//        [bdkHUD removeFromSuperview];
+//    }];
+    [self.view.window showHUDWithText:@"已复制到剪切板" Type:ShowPhotoYes Enabled:YES];
 }
 - (void)twoDimensionCode
 {
@@ -434,13 +435,14 @@
 {
     if (_inviteCodeL.text.length>0) {
         [UIPasteboard generalPasteboard].string = _inviteCodeL.text;
-        bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"已复制到剪切板"];
-        
-        bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
-        [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
-        [bdkHUD presentWithDuration:0.8f speed:0.3f inView:nil completion:^{
-            [bdkHUD removeFromSuperview];
-        }];
+//        bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"已复制到剪切板"];
+//        
+//        bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
+//        [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
+//        [bdkHUD presentWithDuration:0.8f speed:0.3f inView:nil completion:^{
+//            [bdkHUD removeFromSuperview];
+//        }];
+        [self.view.window showHUDWithText:@"已复制到剪切板" Type:ShowPhotoYes Enabled:YES];
     }
 }
 - (void)back:(id)sender

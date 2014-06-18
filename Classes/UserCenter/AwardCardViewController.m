@@ -26,6 +26,7 @@
 }
 -(void)dealloc
 {
+    [_jiluL release];
     [self.dataArray release];
     [_tableV release];
     [super dealloc];
@@ -76,6 +77,11 @@
     [rightButton setBackgroundImage:[UIImage imageNamed:@"whiteButton_normal.png"] forState:UIControlStateNormal];
     [rightButton addTarget:self action: @selector(pageDownClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rightButton];
+    
+    self.jiluL = [[UILabel alloc]initWithFrame:CGRectMake(80, [UIScreen mainScreen].bounds.size.height - 103, 160, 30)];
+    _jiluL.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:_jiluL];
+    [_jiluL release];
 
 
     [[RuYiCaiNetworkManager sharedManager] queryMyAwardCardListWithPage:@"0"];
@@ -85,6 +91,7 @@
 {
     _dataArray = [(NSArray *)[(NSDictionary *)noti.object objectForKey:@"result"] retain];
     totalPageCount = [[(NSDictionary *)noti.object objectForKey:@"totalPage"] intValue];
+    _jiluL.text = [NSString stringWithFormat:@"第%d页 共%d页",curPageIndex+1,totalPageCount];
     [_tableV reloadData];
 }
 -(void)queryActListFail

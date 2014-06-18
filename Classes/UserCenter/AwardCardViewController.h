@@ -19,4 +19,5 @@
 }
 @property (nonatomic,retain)UITableView * tableV;
 @property (nonatomic,retain)NSArray * dataArray;
+@property (nonatomic,retain)UILabel * jiluL;
 @end

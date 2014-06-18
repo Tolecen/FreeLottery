@@ -35,6 +35,7 @@
         self.imageV.layer.masksToBounds = YES;
 //        [self.imageV setBackgroundColor:[UIColor redColor]];
         [self.contentView addSubview:self.imageV];
+        [self.imageV release];
         
         self.qianDaoTimeLabel = [[UILabel alloc] initWithFrame:self.imageV.frame];
         [self.qianDaoTimeLabel setTextColor:[UIColor whiteColor]];
@@ -42,12 +43,14 @@
         [self.qianDaoTimeLabel setFont:[UIFont systemFontOfSize:18]];
         [self.contentView addSubview:self.qianDaoTimeLabel];
         [self.qianDaoTimeLabel setBackgroundColor:[UIColor clearColor]];
+        [self.qianDaoTimeLabel release];
         
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 150, 20)];
         [self.nameLabel setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:self.nameLabel];
         [self.nameLabel setFont:[UIFont systemFontOfSize:16]];
 //        [self.nameLabel setTextColor:[UIColor grayColor]];
+        [self.nameLabel release];
         
         self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 25, 150, 55)];
         [self.descriptionLabel setBackgroundColor:[UIColor clearColor]];
@@ -56,6 +59,7 @@
         [self.descriptionLabel setTextColor:[UIColor grayColor]];
         [self.descriptionLabel setNumberOfLines:0];
         [self.descriptionLabel setLineBreakMode:NSLineBreakByCharWrapping];
+        [self.descriptionLabel release];
         
         self.doitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.doitBtn setFrame:CGRectMake(230, 25, 80, 30)];
@@ -66,6 +70,7 @@
         
         self.statusImgV = [[UIImageView alloc] initWithFrame:CGRectMake(245, 14, 62.5, 51)];
         [self.contentView addSubview:self.statusImgV];
+        [self.statusImgV release];
     }
     return self;
 }

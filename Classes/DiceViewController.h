@@ -12,6 +12,7 @@
 #import "IssueHistoryViewController.h"
 #import "ADIntroduceViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "UIWindow+YzdHUD.h"
 @class RuYiCaiAppDelegate;
 @interface DiceViewController : UIViewController<UIScrollViewDelegate,UITextFieldDelegate>
 {
@@ -29,6 +30,9 @@
     
     int xiaoZhu;
     int daZhu;
+    
+//    NSTimer * remainingTimer;
+//    NSTimer * checkLastResultTimer;
     
 }
 @property (nonatomic,retain)UILabel * currentRoundNameLabel;
@@ -62,5 +66,5 @@
 @property (nonatomic,retain)UIScrollView * m_scrollView;
 @property (nonatomic,retain)NSString * currentRemainingTime;
 @property (nonatomic,retain)NSTimer * remainingTimer;
-@property (nonatomic,retain)NSTimer * checkLastResultTimer;
+@property (nonatomic,assign)NSTimer * checkLastResultTimer;
 @end

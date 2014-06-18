@@ -17,7 +17,7 @@
 
 + (id)notifyHUDWithImage:(UIImage *)image text:(NSString *)text;
 - (id)initWithImage:(UIImage *)image text:(NSString *)text;
-
+- (void)setCurrentOpacity:(CGFloat)currentOpacity;
 - (void)presentWithDuration:(CGFloat)duration speed:(CGFloat)speed inView:(UIView *)view completion:(void (^)(void))completion;
 
 @end

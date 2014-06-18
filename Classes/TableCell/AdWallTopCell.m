@@ -37,18 +37,23 @@
         self.titleLabel.text = @"您的彩豆:";
         [self.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [self addSubview:self.titleLabel];
+        [self.titleLabel release];
+        
         self.remainMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(72, 35, 128, 30)];
         [self.remainMoneyLabel setBackgroundColor:[UIColor clearColor]];
         [self.remainMoneyLabel setFont:[UIFont boldSystemFontOfSize:19]];
         [self.remainMoneyLabel setTextColor:[UIColor redColor]];
         [self.remainMoneyLabel setAdjustsFontSizeToFitWidth:YES];
         [self addSubview:self.remainMoneyLabel];
+        [self.remainMoneyLabel release];
+        
         self.disLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 40, 150, 20)];
         [self.disLabel setBackgroundColor:[UIColor clearColor]];
         self.disLabel.textColor = [UIColor grayColor];
         [self.disLabel setFont:[UIFont systemFontOfSize:15]];
         self.disLabel.text = @"";
         [self addSubview:self.disLabel];
+        [self.disLabel release];
 //        self.detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //        [self.detailBtn setFrame:CGRectMake(260, 5, 40, 40)];
 //        [self.detailBtn setImage:[UIImage imageNamed:@"whatthat2"] forState:UIControlStateNormal];

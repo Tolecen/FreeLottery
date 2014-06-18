@@ -1471,6 +1471,15 @@
 		977A72C618C06D35007DE71B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 977A72BD18C06D35007DE71B /* README.md */; };
 		977A72CB18C06F18007DE71B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A72CA18C06F18007DE71B /* ImageIO.framework */; };
 		977A72D918C0760C007DE71B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A72D818C0760C007DE71B /* CoreMedia.framework */; };
+		97A2662B19517BCF004B7090 /* UIWindow+YzdHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A2662219517BCF004B7090 /* UIWindow+YzdHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		97A2662C19517BCF004B7090 /* YzdHUDBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A2662419517BCF004B7090 /* YzdHUDBackgroundView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		97A2662D19517BCF004B7090 /* YzdHUDImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A2662619517BCF004B7090 /* YzdHUDImageView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		97A2662E19517BCF004B7090 /* YzdHUDIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A2662819517BCF004B7090 /* YzdHUDIndicator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		97A2662F19517BCF004B7090 /* YzdHUDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A2662A19517BCF004B7090 /* YzdHUDLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		97A2663219517BE7004B7090 /* HUD_YES.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A2663019517BE7004B7090 /* HUD_YES.png */; };
+		97A2663319517BE7004B7090 /* HUD_YES@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A2663119517BE7004B7090 /* HUD_YES@2x.png */; };
+		97A2663619517BF9004B7090 /* HUD_NO.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A2663419517BF9004B7090 /* HUD_NO.png */; };
+		97A2663719517BF9004B7090 /* HUD_NO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A2663519517BF9004B7090 /* HUD_NO@2x.png */; };
 		97CA532E18D18A72006B3460 /* FirstPageTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA532D18D18A72006B3460 /* FirstPageTopCell.m */; };
 		97E2BA24190FC480008D2200 /* rukou1.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E2BA22190FC480008D2200 /* rukou1.png */; };
 		97E2BA25190FC480008D2200 /* rukou2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E2BA23190FC480008D2200 /* rukou2.png */; };
@@ -3479,6 +3488,20 @@
 		977A72BD18C06D35007DE71B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		977A72CA18C06F18007DE71B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		977A72D818C0760C007DE71B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		97A2662119517BCF004B7090 /* UIWindow+YzdHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+YzdHUD.h"; sourceTree = "<group>"; };
+		97A2662219517BCF004B7090 /* UIWindow+YzdHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+YzdHUD.m"; sourceTree = "<group>"; };
+		97A2662319517BCF004B7090 /* YzdHUDBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzdHUDBackgroundView.h; sourceTree = "<group>"; };
+		97A2662419517BCF004B7090 /* YzdHUDBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzdHUDBackgroundView.m; sourceTree = "<group>"; };
+		97A2662519517BCF004B7090 /* YzdHUDImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzdHUDImageView.h; sourceTree = "<group>"; };
+		97A2662619517BCF004B7090 /* YzdHUDImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzdHUDImageView.m; sourceTree = "<group>"; };
+		97A2662719517BCF004B7090 /* YzdHUDIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzdHUDIndicator.h; sourceTree = "<group>"; };
+		97A2662819517BCF004B7090 /* YzdHUDIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzdHUDIndicator.m; sourceTree = "<group>"; };
+		97A2662919517BCF004B7090 /* YzdHUDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzdHUDLabel.h; sourceTree = "<group>"; };
+		97A2662A19517BCF004B7090 /* YzdHUDLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzdHUDLabel.m; sourceTree = "<group>"; };
+		97A2663019517BE7004B7090 /* HUD_YES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HUD_YES.png; sourceTree = "<group>"; };
+		97A2663119517BE7004B7090 /* HUD_YES@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HUD_YES@2x.png"; sourceTree = "<group>"; };
+		97A2663419517BF9004B7090 /* HUD_NO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HUD_NO.png; sourceTree = "<group>"; };
+		97A2663519517BF9004B7090 /* HUD_NO@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HUD_NO@2x.png"; sourceTree = "<group>"; };
 		97CA532C18D18A72006B3460 /* FirstPageTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageTopCell.h; sourceTree = "<group>"; };
 		97CA532D18D18A72006B3460 /* FirstPageTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageTopCell.m; sourceTree = "<group>"; };
 		97E2BA22190FC480008D2200 /* rukou1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rukou1.png; sourceTree = "<group>"; };
@@ -6401,6 +6424,20 @@
 		9700CB801938743200D9B707 /* BKHUD */ = {
 			isa = PBXGroup;
 			children = (
+				97A2663419517BF9004B7090 /* HUD_NO.png */,
+				97A2663519517BF9004B7090 /* HUD_NO@2x.png */,
+				97A2663019517BE7004B7090 /* HUD_YES.png */,
+				97A2663119517BE7004B7090 /* HUD_YES@2x.png */,
+				97A2662119517BCF004B7090 /* UIWindow+YzdHUD.h */,
+				97A2662219517BCF004B7090 /* UIWindow+YzdHUD.m */,
+				97A2662319517BCF004B7090 /* YzdHUDBackgroundView.h */,
+				97A2662419517BCF004B7090 /* YzdHUDBackgroundView.m */,
+				97A2662519517BCF004B7090 /* YzdHUDImageView.h */,
+				97A2662619517BCF004B7090 /* YzdHUDImageView.m */,
+				97A2662719517BCF004B7090 /* YzdHUDIndicator.h */,
+				97A2662819517BCF004B7090 /* YzdHUDIndicator.m */,
+				97A2662919517BCF004B7090 /* YzdHUDLabel.h */,
+				97A2662A19517BCF004B7090 /* YzdHUDLabel.m */,
 				9700CB881938808300D9B707 /* Checkmark.png */,
 				9700CB8519387FFB00D9B707 /* BDKNotifyHUD.h */,
 				9700CB8619387FFB00D9B707 /* BDKNotifyHUD.m */,
@@ -8251,6 +8288,7 @@
 				5224966718320393005F7577 /* more_share.png in Resources */,
 				9745AF8818CEAEC200510E8F /* newdisk.png in Resources */,
 				522499A118320393005F7577 /* topall_c_bg.png in Resources */,
+				97A2663219517BE7004B7090 /* HUD_YES.png in Resources */,
 				522498F818320393005F7577 /* txLogBtn_normal.png in Resources */,
 				522497CC18320393005F7577 /* dhb1.png in Resources */,
 				72DC4182194197390055616B /* RTBWall_right.png in Resources */,
@@ -8449,6 +8487,7 @@
 				72DC415E194197390055616B /* RTBWall_boll.png in Resources */,
 				522496F018320393005F7577 /* HXBX_right_flag.png in Resources */,
 				72BF4A7219470E5100D2999C /* PunchBoxAdRes.bundle in Resources */,
+				97A2663719517BF9004B7090 /* HUD_NO@2x.png in Resources */,
 				522496B418320393005F7577 /* pds_c_main.png in Resources */,
 				522497D918320393005F7577 /* back_button_normal.png in Resources */,
 				72DC415F194197390055616B /* RTBWall_buy_notice.png in Resources */,
@@ -8709,6 +8748,7 @@
 				977A728518C06AF6007DE71B /* dianru_green_right_view.png in Resources */,
 				522497E818320393005F7577 /* instantscore_shoucangnormal.png in Resources */,
 				977A725D18C06AF6007DE71B /* dianru_blue_dianru_bottom.png in Resources */,
+				97A2663319517BE7004B7090 /* HUD_YES@2x.png in Resources */,
 				5224995F18320393005F7577 /* select3_click.png in Resources */,
 				7243F98E190600A50072AF6B /* fc3d_c_main.png in Resources */,
 				522496D618320393005F7577 /* jc_section_expand.png in Resources */,
@@ -8942,6 +8982,7 @@
 				5224995D18320393005F7577 /* select2_noselect.png in Resources */,
 				977A727018C06AF6007DE71B /* dianru_DRDefaultIcon.png in Resources */,
 				658424FF17730CDC00166732 /* BJDC_LaunchHMViewController.xib in Resources */,
+				97A2663619517BF9004B7090 /* HUD_NO.png in Resources */,
 				7206DC4A192451E700C97C8A /* background.png in Resources */,
 				9742D51019470A1800C7D970 /* ting3.png in Resources */,
 				5224991D18320393005F7577 /* zhmx_zf_click.png in Resources */,
@@ -8969,6 +9010,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97A2662F19517BCF004B7090 /* YzdHUDLabel.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				C53BFC2913E3B91F00A0C7DC /* Makefile in Sources */,
 				C53BFCEC13E3C5F500A0C7DC /* RuYiCaiAppDelegate.m in Sources */,
@@ -8984,6 +9026,7 @@
 				C5F3822213E5A85C00F2971A /* NSObject+SBJSON.m in Sources */,
 				C5F3822313E5A85C00F2971A /* NSString+SBJSON.m in Sources */,
 				C5F3822413E5A85C00F2971A /* SBJsonBase.m in Sources */,
+				97A2662C19517BCF004B7090 /* YzdHUDBackgroundView.m in Sources */,
 				C5F3822513E5A85C00F2971A /* SBJsonParser.m in Sources */,
 				72DC4150194197390055616B /* CFilteringJSONSerializer.m in Sources */,
 				C5F3822613E5A85C00F2971A /* SBJsonWriter.m in Sources */,
@@ -9070,6 +9113,7 @@
 				28F2EB0017F8E632003BE414 /* My_WeiBoCell.m in Sources */,
 				D5CCC5CF15859262008F7B55 /* RuYiCaiNetworkManager+RuYiCaiLotNet_ReqComplete.m in Sources */,
 				28A1D172182263C7006BBF11 /* JC_MyButton.m in Sources */,
+				97A2662D19517BCF004B7090 /* YzdHUDImageView.m in Sources */,
 				D51E3DAF15871AC500BF8369 /* RuYiCaiNetworkManager+RuYiCaiNetCharge_ReqComplete.m in Sources */,
 				7250EC61193DC3BB005D3D07 /* InviteViewController.m in Sources */,
 				28A1D173182263C7006BBF11 /* JZHeighTableViewCell.m in Sources */,
@@ -9147,6 +9191,7 @@
 				D5E54E2115AE5BCD003B2924 /* RYCHighBetView.m in Sources */,
 				D5E54E2215AE5BCD003B2924 /* RYCNormalBetView.m in Sources */,
 				D5E54E2315AE5BCD003B2924 /* RYCZCBetView.m in Sources */,
+				97A2662E19517BCF004B7090 /* YzdHUDIndicator.m in Sources */,
 				D5E54E2D15AE9492003B2924 /* ComputeShouYiLvListViewConreoller.m in Sources */,
 				72DC4151194197390055616B /* CJSONDeserializer_BlocksExtensions.m in Sources */,
 				D5E54E3015AE9A01003B2924 /* ShouYiLvTableViewCell.m in Sources */,
@@ -9274,6 +9319,7 @@
 				65A2897E1724D91E00D2EBCE /* TitleViewButtonItemUtils.m in Sources */,
 				65A289851725080E00D2EBCE /* CollectionMenuViewUtil.m in Sources */,
 				28A9A308181685BB00CA9C9F /* BaseModel.m in Sources */,
+				97A2662B19517BCF004B7090 /* UIWindow+YzdHUD.m in Sources */,
 				720EAC59194451630019197B /* EditShareContentViewController.m in Sources */,
 				28A6AF5E17F4AD2E00E338F5 /* SettingNicknameVC.m in Sources */,
 				289406CF183E467B0061ED4A /* ZCOpenLotteryViewController.m in Sources */,

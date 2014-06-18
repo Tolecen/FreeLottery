@@ -36,6 +36,7 @@
         [self.contentView addSubview:self.nameLabel];
         [self.nameLabel setFont:[UIFont systemFontOfSize:14]];
         [self.nameLabel setTextColor:[UIColor grayColor]];
+        [self.nameLabel release];
         
         self.tLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, 80, 30)];
         [self.tLabel setBackgroundColor:[UIColor clearColor]];
@@ -43,6 +44,7 @@
         [self.tLabel setTextColor:[UIColor redColor]];
         [self.tLabel setFont:[UIFont systemFontOfSize:17]];
         [self.contentView addSubview:self.tLabel];
+        [self.tLabel release];
         
         self.progressLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 40, 150, 30)];
         [self.progressLabel setBackgroundColor:[UIColor clearColor]];
@@ -50,6 +52,7 @@
         [self.progressLabel setTextColor:[UIColor redColor]];
         [self.progressLabel setFont:[UIFont systemFontOfSize:17]];
         [self.contentView addSubview:self.progressLabel];
+        [self.progressLabel release];
         
         self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 40, 80, 30)];
         [self.timeLabel setBackgroundColor:[UIColor clearColor]];
@@ -59,9 +62,11 @@
         [self.timeLabel setFont:[UIFont systemFontOfSize:14]];
         [self.timeLabel setAdjustsFontSizeToFitWidth:YES];
         [self.contentView addSubview:self.timeLabel];
+        [self.timeLabel release];
         
         self.statusImgV = [[UIImageView alloc] initWithFrame:CGRectMake(245, 14, 62.5, 51)];
         [self.contentView addSubview:self.statusImgV];
+        [self.statusImgV release];
         
 
 

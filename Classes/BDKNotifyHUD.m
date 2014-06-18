@@ -34,7 +34,13 @@
 @implementation BDKNotifyHUD
 
 #pragma mark - Lifecycle
-
+-(void)dealloc
+{
+    [self.imageView release];
+    [self.backgroundView release];
+    [self.textLabel release];
+    [super dealloc];
+}
 + (id)notifyHUDWithImage:(UIImage *)image text:(NSString *)text {
     return [[self alloc] initWithImage:image text:text];
 }
@@ -54,6 +60,9 @@
         [self addSubview:self.backgroundView];
         [self addSubview:self.imageView];
         [self addSubview:self.textLabel];
+        [self.imageView release];
+        [self.backgroundView release];
+        [self.textLabel release];
         [self recalculateHeight];
     }
     return self;
@@ -61,20 +70,22 @@
 
 - (void)presentWithDuration:(CGFloat)duration speed:(CGFloat)speed inView:(UIView *)view completion:(void (^)(void))completion {
     self.isAnimating = YES;
+    __block BDKNotifyHUD * cv = self;
     [UIView animateWithDuration:speed animations:^{
-        [self setCurrentOpacity:self.destinationOpacity];
+        [cv setCurrentOpacity:cv.destinationOpacity];
     } completion:^(BOOL finished) {
-        if (finished) [self fadeAfter:duration speed:speed completion:completion];
+        if (finished) [cv fadeAfter:duration speed:speed completion:completion];
     }];
 }
 
 - (void)fadeAfter:(CGFloat)duration speed:(CGFloat)speed completion:(void (^)(void))completion {
+    __block BDKNotifyHUD * cv = self;
     [self performBlock:^{
         [UIView animateWithDuration:speed animations:^{
-            [self setCurrentOpacity:0.0];
+            [cv setCurrentOpacity:0.0];
         } completion:^(BOOL finished) {
             if (finished) {
-                self.isAnimating = NO;
+                cv.isAnimating = NO;
                 if (completion != nil) completion();
             }
         }];
