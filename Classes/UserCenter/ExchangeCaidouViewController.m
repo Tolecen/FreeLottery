@@ -154,6 +154,11 @@
 }
 - (void)exchangeLotPeaOK:(NSNotification*)info
 {
+    int a  = [[[NSUserDefaults standardUserDefaults] objectForKey:@"ADWallExchangeScale"] intValue];
+    self.caidouStr = [NSString stringWithFormat:@"%.0f",([_caidouStr floatValue]+a*[_textF.text floatValue])];
+    self.jiangjinStr = [NSString stringWithFormat:@"%.2f元",([_jiangjinStr floatValue]-[_textF.text floatValue])];
+    _caidouNoL.text = _caidouStr;
+    _jiangjinNoL.text = _jiangjinStr;
     UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"兑换彩豆成功" message:@"您已成功兑换彩豆,可在彩豆明细中查询" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"继续兑换", nil];
     [alert show];
 }
