@@ -5631,6 +5631,8 @@
 				720EAC58194451630019197B /* EditShareContentViewController.m */,
 				7255E0B619454F19003900B3 /* InviteRecordViewController.h */,
 				7255E0B719454F19003900B3 /* InviteRecordViewController.m */,
+				723405D6195189D00096201B /* TwoDimensionCodeView.h */,
+				723405D7195189D00096201B /* TwoDimensionCodeView.m */,
 				724FDBE319382CE600679587 /* IssueHistoryViewController.h */,
 				724FDBE419382CE600679587 /* IssueHistoryViewController.m */,
 				7269C5691920C2EA0018F80B /* InterestSignInViewController.h */,
