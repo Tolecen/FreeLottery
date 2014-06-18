@@ -53,6 +53,8 @@
     _issueNoL.text = [NSString stringWithFormat:@"第 %@ 期",_dataDic[@"issueNo"]];
     if (![_dataDic[@"winCodeDetail"] isKindOfClass:[NSNull class]]) {
         _winCodeIV.image = [UIImage imageNamed:[NSString stringWithFormat:@"little%d",[_dataDic[@"winCodeDetail"] intValue]]];
+    }else{
+        _winCodeIV.image = nil;
     }
     if (![_dataDic[@"winCode"] isKindOfClass:[NSNull class]]) {
         if ([_dataDic[@"winCode"] intValue]) {
