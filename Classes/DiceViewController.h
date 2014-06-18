@@ -56,6 +56,7 @@
 
 @property (nonatomic,retain)UIView * xiuxiView;
 @property (nonatomic,retain)UILabel * uu;
+@property (nonatomic,retain)UIButton * sureBtn;
 
 @property (nonatomic,retain)UITextField * inputTF;
 @property (nonatomic,retain)UIScrollView * m_scrollView;

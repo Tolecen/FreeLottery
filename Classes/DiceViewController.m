@@ -393,13 +393,13 @@
     [self.m_scrollView addSubview:addCaidouBtn];
     [addCaidouBtn addTarget:self action:@selector(addCaidouBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton * sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sureBtn setFrame:CGRectMake(10, 440, 300, 34)];
-    [sureBtn setBackgroundImage:[UIImage imageNamed:@"tanchuangbtn_normal"] forState:UIControlStateNormal];
-    [sureBtn setTitle:@"押注" forState:UIControlStateNormal];
-    [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.m_scrollView addSubview:sureBtn];
-    [sureBtn addTarget:self action:@selector(sureBtnBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    self.sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_sureBtn setFrame:CGRectMake(10, 440, 300, 34)];
+    [_sureBtn setBackgroundImage:[UIImage imageNamed:@"tanchuangbtn_normal"] forState:UIControlStateNormal];
+    [_sureBtn setTitle:@"押注" forState:UIControlStateNormal];
+    [_sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.m_scrollView addSubview:_sureBtn];
+    [_sureBtn addTarget:self action:@selector(sureBtnBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView * shakeIV = [[UIImageView alloc] initWithFrame:CGRectMake(220, 60, 18, 18)];
     [shakeIV setImage:[UIImage imageNamed:@"shakeshake"]];
@@ -483,6 +483,7 @@
     
     bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
     [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
+    self.view.userInteractionEnabled = NO;
     [bdkHUD presentWithDuration:0.8f speed:0.3f inView:nil completion:^{
         [bdkHUD removeFromSuperview];
         [UIView animateWithDuration:0.5 animations:^{
@@ -500,6 +501,8 @@
             self.allchoumaL1.text = [NSString stringWithFormat:@"%d",xiaoZhu];
             self.allchoumaL2.text = [NSString stringWithFormat:@"%d",daZhu];
             [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+            self.view.userInteractionEnabled = YES;
+            self.sureBtn.enabled = YES;
         }];
         
     }];
@@ -514,6 +517,7 @@
     self.choumaImageV1.hidden = YES;
     self.choumaImageV2.hidden = YES;
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
+    self.sureBtn.enabled = YES;
 }
 
 -(void)getcurlotDetailOK:(NSNotification *)noti
@@ -573,16 +577,16 @@
             self.xiuxiView.hidden = NO;
             
             NSString * bTime = [[sd objectForKey:@"game"] objectForKey:@"beginTime"];
-            NSDate * bD = [NSDate dateWithTimeIntervalSinceNow:[bTime doubleValue]/1000];
+//            NSDate * bD = [NSDate dateWithTimeIntervalSinceNow:[bTime doubleValue]/1000];
             NSString * eTime = [[sd objectForKey:@"game"] objectForKey:@"endTime"];
-            NSDate * eD = [NSDate dateWithTimeIntervalSinceNow:[eTime doubleValue]/1000];
-            NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
-            [formatter setDateFormat:@"HH:mm"];
-            NSString* dateS1 = [formatter stringFromDate:bD];
-            NSString* dateS2 = [formatter stringFromDate:eD];
-            [formatter release];
+//            NSDate * eD = [NSDate dateWithTimeIntervalSinceNow:[eTime doubleValue]/1000];
+//            NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+//            [formatter setDateFormat:@"HH:mm"];
+//            NSString* dateS1 = [formatter stringFromDate:bD];
+//            NSString* dateS2 = [formatter stringFromDate:eD];
+//            [formatter release];
             
-            [self.uu setText:[NSString stringWithFormat:@"客官，现在是休息时间，今天的投注时间是%@到%@",dateS1,dateS2]];
+            [self.uu setText:[NSString stringWithFormat:@"客官，现在是休息时间，今天的投注时间是%@到%@",bTime,eTime]];
             return;
         }
 
@@ -717,6 +721,7 @@
         return;
     }
     [self.inputTF resignFirstResponder];
+    self.sureBtn.enabled = NO;
     [UIView animateWithDuration:0.3 animations:^{
         if ([UIScreen mainScreen].bounds.size.height<500) {
             [self.m_scrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
