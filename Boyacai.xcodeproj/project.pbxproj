@@ -1116,6 +1116,7 @@
 		720EAC59194451630019197B /* EditShareContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 720EAC58194451630019197B /* EditShareContentViewController.m */; };
 		7210205319459F3800FC04FA /* TwoDimensionCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 7210205219459F3800FC04FA /* TwoDimensionCode.png */; };
 		7228AED2190F5B2600BB912E /* MessageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7228AED1190F5B2600BB912E /* MessageContentViewController.m */; };
+		723405CC1951817E0096201B /* TwoDimensionCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 723405CB1951817E0096201B /* TwoDimensionCodeView.m */; };
 		723C5D96194058BF00669509 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723C5D95194058BF00669509 /* immobSDK.framework */; };
 		723C5E8F19405AFF00669509 /* libAdwoOfferWallLib2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 723C5E3A19405AFF00669509 /* libAdwoOfferWallLib2.1.a */; };
 		723C5E9019405AFF00669509 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 723C5E4119405AFF00669509 /* DomobOfferWallBundle.bundle */; };
@@ -1136,7 +1137,6 @@
 		724FDBE519382CE600679587 /* IssueHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724FDBE419382CE600679587 /* IssueHistoryViewController.m */; };
 		7250EC61193DC3BB005D3D07 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7250EC60193DC3BB005D3D07 /* InviteViewController.m */; };
 		7255E0B819454F19003900B3 /* InviteRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7255E0B719454F19003900B3 /* InviteRecordViewController.m */; };
-		7255E0C1194552DB003900B3 /* TwoDimensionCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7255E0C0194552DB003900B3 /* TwoDimensionCodeView.m */; };
 		725AF442190B670F003C17ED /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 725AF441190B670F003C17ED /* KGStatusBar.m */; };
 		7269C5651920AEBE0018F80B /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 7269C5641920AEBE0018F80B /* recommend.png */; };
 		7269C5681920B24F0018F80B /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7269C5671920B24F0018F80B /* RecommendViewController.m */; };
@@ -3026,6 +3026,8 @@
 		7210205219459F3800FC04FA /* TwoDimensionCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwoDimensionCode.png; sourceTree = "<group>"; };
 		7228AED0190F5B2600BB912E /* MessageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageContentViewController.h; sourceTree = "<group>"; };
 		7228AED1190F5B2600BB912E /* MessageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageContentViewController.m; sourceTree = "<group>"; };
+		723405CA1951817E0096201B /* TwoDimensionCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoDimensionCodeView.h; sourceTree = "<group>"; };
+		723405CB1951817E0096201B /* TwoDimensionCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoDimensionCodeView.m; sourceTree = "<group>"; };
 		723C5D95194058BF00669509 /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
 		723C5E3619405AFF00669509 /* AdwoOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdwoOfferWall.h; sourceTree = "<group>"; };
 		723C5E3A19405AFF00669509 /* libAdwoOfferWallLib2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdwoOfferWallLib2.1.a; sourceTree = "<group>"; };
@@ -3056,8 +3058,6 @@
 		7250EC60193DC3BB005D3D07 /* InviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteViewController.m; sourceTree = "<group>"; };
 		7255E0B619454F19003900B3 /* InviteRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteRecordViewController.h; sourceTree = "<group>"; };
 		7255E0B719454F19003900B3 /* InviteRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteRecordViewController.m; sourceTree = "<group>"; };
-		7255E0BF194552DB003900B3 /* TwoDimensionCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoDimensionCodeView.h; sourceTree = "<group>"; };
-		7255E0C0194552DB003900B3 /* TwoDimensionCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoDimensionCodeView.m; sourceTree = "<group>"; };
 		725AF440190B670F003C17ED /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
 		725AF441190B670F003C17ED /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
 		7269C5641920AEBE0018F80B /* recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommend.png; sourceTree = "<group>"; };
@@ -5598,8 +5598,8 @@
 				72735688192DA0F20083F80A /* DiceViewController.m */,
 				7250EC5F193DC3BB005D3D07 /* InviteViewController.h */,
 				7250EC60193DC3BB005D3D07 /* InviteViewController.m */,
-				7255E0BF194552DB003900B3 /* TwoDimensionCodeView.h */,
-				7255E0C0194552DB003900B3 /* TwoDimensionCodeView.m */,
+				723405CA1951817E0096201B /* TwoDimensionCodeView.h */,
+				723405CB1951817E0096201B /* TwoDimensionCodeView.m */,
 				729734831946ADA500C1D4B9 /* MetionView.h */,
 				729734841946ADA500C1D4B9 /* MetionView.m */,
 				72DC40BB19417E7C0055616B /* sharePlatformView.h */,
@@ -9254,7 +9254,6 @@
 				28A7E7ED18153A9B00DF8A13 /* KS_HistoryViewController.m in Sources */,
 				6596AAF3171D218400A37548 /* AOImageView.m in Sources */,
 				97775E3018C9C47E00F0BEBD /* ADIntroduceViewController.m in Sources */,
-				7255E0C1194552DB003900B3 /* TwoDimensionCodeView.m in Sources */,
 				6596AAF4171D218400A37548 /* AOScrollerView.m in Sources */,
 				28A9A30C181685BB00CA9C9F /* KSLotterysModel.m in Sources */,
 				6596AAF5171D218400A37548 /* NSURLAdditions.m in Sources */,
@@ -9268,6 +9267,7 @@
 				65CEF8E0171FB965005BF7AB /* NewMoreCell.m in Sources */,
 				65CEF8E1171FB965005BF7AB /* SharePublicCell.m in Sources */,
 				65CEF8E5171FC24F005BF7AB /* LotterPeopleZoneViewController.m in Sources */,
+				723405CC1951817E0096201B /* TwoDimensionCodeView.m in Sources */,
 				65CEF8E8171FD560005BF7AB /* LotterPeopleZoneCell.m in Sources */,
 				657A4A1517212A36004B2256 /* LotterInformationViewController.m in Sources */,
 				657A4A1B172153D6004B2256 /* TopUserCell.m in Sources */,
