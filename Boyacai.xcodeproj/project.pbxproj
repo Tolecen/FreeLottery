@@ -1286,6 +1286,7 @@
 		9704B23F18DACC4E00588D91 /* deletenewop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704B23E18DACC4E00588D91 /* deletenewop.png */; };
 		9704B24118DAD4CA00588D91 /* adbanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704B24018DAD4CA00588D91 /* adbanner.png */; };
 		970DA6A51910897700D817AE /* importantinfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 970DA6A41910897700D817AE /* importantinfo.png */; };
+		970DFC6A1951830A001FA2B6 /* TwoDimensionCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 970DFC681951830A001FA2B6 /* TwoDimensionCodeView.m */; };
 		9715362819416459009FCCA8 /* UIViewController+UIViewControllerSwap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715362719416459009FCCA8 /* UIViewController+UIViewControllerSwap.m */; };
 		9715362B19416CD6009FCCA8 /* Exchange2LotteryWithIntegrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715362A19416CD6009FCCA8 /* Exchange2LotteryWithIntegrationViewController.m */; };
 		9716547D18FCDBB900AA40C3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716547C18FCDBB900AA40C3 /* CoreText.framework */; };
@@ -3252,6 +3253,8 @@
 		9704B23E18DACC4E00588D91 /* deletenewop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletenewop.png; sourceTree = "<group>"; };
 		9704B24018DAD4CA00588D91 /* adbanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adbanner.png; sourceTree = "<group>"; };
 		970DA6A41910897700D817AE /* importantinfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = importantinfo.png; sourceTree = "<group>"; };
+		970DFC681951830A001FA2B6 /* TwoDimensionCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoDimensionCodeView.m; sourceTree = "<group>"; };
+		970DFC691951830A001FA2B6 /* TwoDimensionCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoDimensionCodeView.h; sourceTree = "<group>"; };
 		9715362619416459009FCCA8 /* UIViewController+UIViewControllerSwap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIViewControllerSwap.h"; sourceTree = "<group>"; };
 		9715362719416459009FCCA8 /* UIViewController+UIViewControllerSwap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UIViewControllerSwap.m"; sourceTree = "<group>"; };
 		9715362919416CD6009FCCA8 /* Exchange2LotteryWithIntegrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Exchange2LotteryWithIntegrationViewController.h; path = Classes/Exchange2LotteryWithIntegrationViewController.h; sourceTree = SOURCE_ROOT; };
@@ -5618,6 +5621,8 @@
 				72735688192DA0F20083F80A /* DiceViewController.m */,
 				7250EC5F193DC3BB005D3D07 /* InviteViewController.h */,
 				7250EC60193DC3BB005D3D07 /* InviteViewController.m */,
+				970DFC681951830A001FA2B6 /* TwoDimensionCodeView.m */,
+				970DFC691951830A001FA2B6 /* TwoDimensionCodeView.h */,
 				729734831946ADA500C1D4B9 /* MetionView.h */,
 				729734841946ADA500C1D4B9 /* MetionView.m */,
 				72DC40BB19417E7C0055616B /* sharePlatformView.h */,
@@ -9268,6 +9273,7 @@
 				28A7E7EE18153A9B00DF8A13 /* KS_PickNumberMainViewController.m in Sources */,
 				68A2BD9D16816AD60040C6F0 /* FeedBackViewController.m in Sources */,
 				689E34991681982200C8E33D /* InLetterContentViewController.m in Sources */,
+				970DFC6A1951830A001FA2B6 /* TwoDimensionCodeView.m in Sources */,
 				689CF9DB1682AC2900D1C7A6 /* JC_SeeDetailTableViewCell.m in Sources */,
 				68A1621F1683F7C200792A7E /* HMDTBetCaseLotViewController.m in Sources */,
 				729734851946ADA500C1D4B9 /* MetionView.m in Sources */,
