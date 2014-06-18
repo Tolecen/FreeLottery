@@ -10,6 +10,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import "ActivitiesViewController.h"
 #import "ColorUtils.h"
+#import "RuYiCaiAppDelegate.h"
 @interface EditShareContentViewController ()
 @property (nonatomic,retain) UITextView * textV;
 @end
@@ -17,6 +18,13 @@
 @implementation EditShareContentViewController
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
+}
+- (void)dealloc
+{
+    [_url release];
+    [_contentString release];
+    [_textV release];
+    [super dealloc];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -78,6 +86,8 @@
 }
 -(void)shareContent
 {
+    RuYiCaiAppDelegate*delegate = (RuYiCaiAppDelegate*)[UIApplication sharedApplication].delegate;
+    delegate.activityView.titleLabel.text = @"正在分享";
     switch (self.shareStyle) {
         case shareStyleSineWeiBo:{
             id<ISSContent> publishContent = [ShareSDK content:_textV.text
@@ -97,13 +107,18 @@
                        authOptions:authOptions
                      statusBarTips:NO
                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSResponseStateBegan) {
+                                    [delegate.activityView activityViewShow];
+                                }
                                 if (state == SSResponseStateSuccess) {
                                     if (self.delegate) {
                                         [_delegate shareContentSuccess];
                                     }
                                     [self dismissViewControllerAnimated:YES completion:nil];
+                                    [delegate.activityView disActivityView];
                                 }
                                 if (state == SSResponseStateFail) {
+                                    [delegate.activityView disActivityView];
                                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                                         message:[NSString stringWithFormat:@"发送失败!%@", [error errorDescription]]
                                                                                        delegate:nil
@@ -131,13 +146,18 @@
                        authOptions:authOptions
                      statusBarTips:NO
                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSResponseStateBegan) {
+                                    [delegate.activityView activityViewShow];
+                                }
                                 if (state == SSResponseStateSuccess) {
                                     if (self.delegate) {
                                         [_delegate shareContentSuccess];
                                     }
                                     [self dismissViewControllerAnimated:YES completion:nil];
+                                    [delegate.activityView disActivityView];
                                 }
                                 if (state == SSResponseStateFail) {
+                                    [delegate.activityView disActivityView];
                                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                                         message:[NSString stringWithFormat:@"发送失败!%@", [error errorDescription]]
                                                                                        delegate:nil
@@ -165,13 +185,18 @@
                        authOptions:authOptions
                      statusBarTips:NO
                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSResponseStateBegan) {
+                                    [delegate.activityView activityViewShow];
+                                }
                                 if (state == SSResponseStateSuccess) {
                                     if (self.delegate) {
                                         [_delegate shareContentSuccess];
                                     }
                                     [self dismissViewControllerAnimated:YES completion:nil];
+                                    [delegate.activityView disActivityView];
                                 }
                                 if (state == SSResponseStateFail) {
+                                    [delegate.activityView disActivityView];
                                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                                                         message:[NSString stringWithFormat:@"发送失败!%@", [error errorDescription]]
                                                                                        delegate:nil
