@@ -9,6 +9,9 @@
 #import "TwoDimensionCodeView.h"
 #import "BDKNotifyHUD.h"
 @interface TwoDimensionCodeView ()<UIActionSheetDelegate>
+{
+//    BDKNotifyHUD* bdkHUD;
+}
 @property (nonatomic,assign) UIViewController * viewC;
 @end
 @implementation TwoDimensionCodeView
@@ -90,22 +93,26 @@
 - (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
 {
     if(error != NULL){
-        BDKNotifyHUD* bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"保存图片失败,请允许本应用访问您的相册"];
-        
-        bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
-        [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
-        [bdkHUD presentWithDuration:1.5f speed:0.5f inView:nil completion:^{
-            [bdkHUD removeFromSuperview];
-        }];
+        [self performSelector:@selector(showAud:) withObject:@"0" afterDelay:0.5];
     }else{
-        BDKNotifyHUD* bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:@"保存图片成功"];
-        
-        bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
-        [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
-        [bdkHUD presentWithDuration:1.5f speed:0.5f inView:nil completion:^{
-            [bdkHUD removeFromSuperview];
-        }];
+        [self performSelector:@selector(showAud:) withObject:@"1" afterDelay:0.5];
     }
+}
+-(void)showAud:(NSString *)uu
+{
+    NSString * ui = @"";
+    if ([uu isEqualToString:@"0"]) {
+        ui = @"保存失败，请允许访问您的相册";
+    }
+    else
+        ui = @"保存图片成功";
+    BDKNotifyHUD * bdkHUD = [BDKNotifyHUD notifyHUDWithImage:[UIImage imageNamed:@"Checkmark.png"] text:ui];
+    
+    bdkHUD.center = CGPointMake([UIApplication sharedApplication].keyWindow.center.x, [UIApplication sharedApplication].keyWindow.center.y - 20);
+    [[UIApplication sharedApplication].keyWindow addSubview:bdkHUD];
+    [bdkHUD presentWithDuration:0.8f speed:0.3f inView:nil completion:^{
+        [bdkHUD removeFromSuperview];
+    }];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

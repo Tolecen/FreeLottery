@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BDKNotifyHUD.h"
 @interface InviteViewController : UIViewController
-
+{
+    BDKNotifyHUD* bdkHUD;
+}
 @end

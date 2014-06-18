@@ -118,7 +118,7 @@
     [self.view addSubview:exchangeB];
     [exchangeB addTarget:self action:@selector(exchange:) forControlEvents:UIControlEventTouchUpInside];
     
-    if ([_jiangjinStr intValue]==0) {
+    if ([_jiangjinStr floatValue]<0.1) {
         _textF.enabled = NO;
         _textF.placeholder = @"暂无可提现金额";
         exchangeB.enabled = NO;
