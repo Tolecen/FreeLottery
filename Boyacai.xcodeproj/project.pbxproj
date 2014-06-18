@@ -1116,7 +1116,6 @@
 		720EAC59194451630019197B /* EditShareContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 720EAC58194451630019197B /* EditShareContentViewController.m */; };
 		7210205319459F3800FC04FA /* TwoDimensionCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 7210205219459F3800FC04FA /* TwoDimensionCode.png */; };
 		7228AED2190F5B2600BB912E /* MessageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7228AED1190F5B2600BB912E /* MessageContentViewController.m */; };
-		723405CC1951817E0096201B /* TwoDimensionCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 723405CB1951817E0096201B /* TwoDimensionCodeView.m */; };
 		723C5D96194058BF00669509 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723C5D95194058BF00669509 /* immobSDK.framework */; };
 		723C5E8F19405AFF00669509 /* libAdwoOfferWallLib2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 723C5E3A19405AFF00669509 /* libAdwoOfferWallLib2.1.a */; };
 		723C5E9019405AFF00669509 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 723C5E4119405AFF00669509 /* DomobOfferWallBundle.bundle */; };
@@ -1287,7 +1286,7 @@
 		9704B23F18DACC4E00588D91 /* deletenewop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704B23E18DACC4E00588D91 /* deletenewop.png */; };
 		9704B24118DAD4CA00588D91 /* adbanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704B24018DAD4CA00588D91 /* adbanner.png */; };
 		970DA6A51910897700D817AE /* importantinfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 970DA6A41910897700D817AE /* importantinfo.png */; };
-		970DFC6A1951830A001FA2B6 /* TwoDimensionCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 970DFC681951830A001FA2B6 /* TwoDimensionCodeView.m */; };
+		970DFC6D1951850C001FA2B6 /* TwoDimensionCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 970DFC6C1951850C001FA2B6 /* TwoDimensionCodeView.m */; };
 		9715362819416459009FCCA8 /* UIViewController+UIViewControllerSwap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715362719416459009FCCA8 /* UIViewController+UIViewControllerSwap.m */; };
 		9715362B19416CD6009FCCA8 /* Exchange2LotteryWithIntegrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9715362A19416CD6009FCCA8 /* Exchange2LotteryWithIntegrationViewController.m */; };
 		9716547D18FCDBB900AA40C3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716547C18FCDBB900AA40C3 /* CoreText.framework */; };
@@ -3036,8 +3035,6 @@
 		7210205219459F3800FC04FA /* TwoDimensionCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwoDimensionCode.png; sourceTree = "<group>"; };
 		7228AED0190F5B2600BB912E /* MessageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageContentViewController.h; sourceTree = "<group>"; };
 		7228AED1190F5B2600BB912E /* MessageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageContentViewController.m; sourceTree = "<group>"; };
-		723405CA1951817E0096201B /* TwoDimensionCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoDimensionCodeView.h; sourceTree = "<group>"; };
-		723405CB1951817E0096201B /* TwoDimensionCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoDimensionCodeView.m; sourceTree = "<group>"; };
 		723C5D95194058BF00669509 /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
 		723C5E3619405AFF00669509 /* AdwoOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdwoOfferWall.h; sourceTree = "<group>"; };
 		723C5E3A19405AFF00669509 /* libAdwoOfferWallLib2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdwoOfferWallLib2.1.a; sourceTree = "<group>"; };
@@ -3256,8 +3253,8 @@
 		9704B23E18DACC4E00588D91 /* deletenewop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletenewop.png; sourceTree = "<group>"; };
 		9704B24018DAD4CA00588D91 /* adbanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adbanner.png; sourceTree = "<group>"; };
 		970DA6A41910897700D817AE /* importantinfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = importantinfo.png; sourceTree = "<group>"; };
-		970DFC681951830A001FA2B6 /* TwoDimensionCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoDimensionCodeView.m; sourceTree = "<group>"; };
-		970DFC691951830A001FA2B6 /* TwoDimensionCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoDimensionCodeView.h; sourceTree = "<group>"; };
+		970DFC6B1951850C001FA2B6 /* TwoDimensionCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoDimensionCodeView.h; sourceTree = "<group>"; };
+		970DFC6C1951850C001FA2B6 /* TwoDimensionCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoDimensionCodeView.m; sourceTree = "<group>"; };
 		9715362619416459009FCCA8 /* UIViewController+UIViewControllerSwap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIViewControllerSwap.h"; sourceTree = "<group>"; };
 		9715362719416459009FCCA8 /* UIViewController+UIViewControllerSwap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UIViewControllerSwap.m"; sourceTree = "<group>"; };
 		9715362919416CD6009FCCA8 /* Exchange2LotteryWithIntegrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Exchange2LotteryWithIntegrationViewController.h; path = Classes/Exchange2LotteryWithIntegrationViewController.h; sourceTree = SOURCE_ROOT; };
@@ -5624,8 +5621,8 @@
 				72735688192DA0F20083F80A /* DiceViewController.m */,
 				7250EC5F193DC3BB005D3D07 /* InviteViewController.h */,
 				7250EC60193DC3BB005D3D07 /* InviteViewController.m */,
-				970DFC681951830A001FA2B6 /* TwoDimensionCodeView.m */,
-				970DFC691951830A001FA2B6 /* TwoDimensionCodeView.h */,
+				970DFC6B1951850C001FA2B6 /* TwoDimensionCodeView.h */,
+				970DFC6C1951850C001FA2B6 /* TwoDimensionCodeView.m */,
 				729734831946ADA500C1D4B9 /* MetionView.h */,
 				729734841946ADA500C1D4B9 /* MetionView.m */,
 				72DC40BB19417E7C0055616B /* sharePlatformView.h */,
@@ -9276,7 +9273,7 @@
 				28A7E7EE18153A9B00DF8A13 /* KS_PickNumberMainViewController.m in Sources */,
 				68A2BD9D16816AD60040C6F0 /* FeedBackViewController.m in Sources */,
 				689E34991681982200C8E33D /* InLetterContentViewController.m in Sources */,
-				970DFC6A1951830A001FA2B6 /* TwoDimensionCodeView.m in Sources */,
+				970DFC6D1951850C001FA2B6 /* TwoDimensionCodeView.m in Sources */,
 				689CF9DB1682AC2900D1C7A6 /* JC_SeeDetailTableViewCell.m in Sources */,
 				68A1621F1683F7C200792A7E /* HMDTBetCaseLotViewController.m in Sources */,
 				729734851946ADA500C1D4B9 /* MetionView.m in Sources */,
@@ -9316,7 +9313,6 @@
 				65CEF8E0171FB965005BF7AB /* NewMoreCell.m in Sources */,
 				65CEF8E1171FB965005BF7AB /* SharePublicCell.m in Sources */,
 				65CEF8E5171FC24F005BF7AB /* LotterPeopleZoneViewController.m in Sources */,
-				723405CC1951817E0096201B /* TwoDimensionCodeView.m in Sources */,
 				65CEF8E8171FD560005BF7AB /* LotterPeopleZoneCell.m in Sources */,
 				657A4A1517212A36004B2256 /* LotterInformationViewController.m in Sources */,
 				657A4A1B172153D6004B2256 /* TopUserCell.m in Sources */,

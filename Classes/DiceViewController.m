@@ -535,7 +535,7 @@
     selectedResult = 0;
     self.choumaImageV1.hidden = YES;
     self.choumaImageV2.hidden = YES;
-    [self.view.window showHUDWithText:@"投注失败" Type:ShowPhotoNo Enabled:YES];
+//    [self.view.window showHUDWithText:@"投注失败" Type:ShowPhotoNo Enabled:YES];
     [[RuYiCaiNetworkManager sharedManager] queryCurrIssueMessage];
     self.sureBtn.enabled = YES;
 }
