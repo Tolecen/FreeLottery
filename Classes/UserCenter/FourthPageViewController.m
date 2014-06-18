@@ -525,7 +525,6 @@
     m_bPhone.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [m_bPhone setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     m_bPhone.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-    m_bPhone.enabled = NO;
     [self.loginTopView addSubview:m_bPhone];
     
     UILabel *blance = [[UILabel alloc] initWithFrame:CGRectMake(95,50, 45, 20)];
@@ -652,6 +651,7 @@
             nickStr = [[nickStr substringWithRange:NSMakeRange(0, 6)] stringByAppendingString:@"***"];
         }
         NSLog(@"nickStr %@", nickStr);
+        m_nickName.enabled = YES;
         [m_nickName setTitle:nickStr forState:UIControlStateNormal];
         [m_nickName setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         m_nickName.enabled = NO;
