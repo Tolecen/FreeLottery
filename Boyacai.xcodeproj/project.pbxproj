@@ -1116,6 +1116,7 @@
 		720EAC59194451630019197B /* EditShareContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 720EAC58194451630019197B /* EditShareContentViewController.m */; };
 		7210205319459F3800FC04FA /* TwoDimensionCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 7210205219459F3800FC04FA /* TwoDimensionCode.png */; };
 		7228AED2190F5B2600BB912E /* MessageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7228AED1190F5B2600BB912E /* MessageContentViewController.m */; };
+		723405CC1951817E0096201B /* TwoDimensionCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 723405CB1951817E0096201B /* TwoDimensionCodeView.m */; };
 		723C5D96194058BF00669509 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723C5D95194058BF00669509 /* immobSDK.framework */; };
 		723C5E8F19405AFF00669509 /* libAdwoOfferWallLib2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 723C5E3A19405AFF00669509 /* libAdwoOfferWallLib2.1.a */; };
 		723C5E9019405AFF00669509 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 723C5E4119405AFF00669509 /* DomobOfferWallBundle.bundle */; };
@@ -3035,6 +3036,8 @@
 		7210205219459F3800FC04FA /* TwoDimensionCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwoDimensionCode.png; sourceTree = "<group>"; };
 		7228AED0190F5B2600BB912E /* MessageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageContentViewController.h; sourceTree = "<group>"; };
 		7228AED1190F5B2600BB912E /* MessageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageContentViewController.m; sourceTree = "<group>"; };
+		723405CA1951817E0096201B /* TwoDimensionCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoDimensionCodeView.h; sourceTree = "<group>"; };
+		723405CB1951817E0096201B /* TwoDimensionCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoDimensionCodeView.m; sourceTree = "<group>"; };
 		723C5D95194058BF00669509 /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
 		723C5E3619405AFF00669509 /* AdwoOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdwoOfferWall.h; sourceTree = "<group>"; };
 		723C5E3A19405AFF00669509 /* libAdwoOfferWallLib2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdwoOfferWallLib2.1.a; sourceTree = "<group>"; };
@@ -9313,6 +9316,7 @@
 				65CEF8E0171FB965005BF7AB /* NewMoreCell.m in Sources */,
 				65CEF8E1171FB965005BF7AB /* SharePublicCell.m in Sources */,
 				65CEF8E5171FC24F005BF7AB /* LotterPeopleZoneViewController.m in Sources */,
+				723405CC1951817E0096201B /* TwoDimensionCodeView.m in Sources */,
 				65CEF8E8171FD560005BF7AB /* LotterPeopleZoneCell.m in Sources */,
 				657A4A1517212A36004B2256 /* LotterInformationViewController.m in Sources */,
 				657A4A1B172153D6004B2256 /* TopUserCell.m in Sources */,
