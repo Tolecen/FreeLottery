@@ -274,7 +274,7 @@
 -(void)sharePlatformView:(sharePlatformView*)shareView PressButtonWithIntage:(NSInteger)integer
 {
     NSString* editString = [NSString stringWithFormat:@"每天都有5次免费中千万大奖的机会,真的不花一分钱哦！赶紧加入，土豪请绕行~~~"];
-    NSString* urlString = [NSString stringWithFormat:@"http://220.231.48.232:4231/freelot/invite.jsp?ic=%@",_inviteCodeL.text];
+    NSString* urlString = [NSString stringWithFormat:@"http://www.caifree.com/freelot/invite.jsp?ic=%@",_inviteCodeL.text];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES

@@ -402,6 +402,14 @@
             [cell.doitBtn addTarget:self action:@selector(toCommentInAppStore:) forControlEvents:UIControlEventTouchUpInside];
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        else
+        {
+            cell.imageV.image = [UIImage imageNamed:@"act-caidou"];
+//            cell.imageV.backgroundColor = [UIColor orangeColor];
+            cell.doitBtn.hidden = YES;
+            cell.qianDaoTimeLabel.text = @"";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
         if ([[actV objectForKey:@"state"] isEqualToString:@"2"]&&[RuYiCaiNetworkManager sharedManager].hasLogin) {
             cell.nameLabel.textColor = [UIColor grayColor];
             cell.doitBtn.hidden = YES;
@@ -506,6 +514,21 @@
     }else
     {
        NSDictionary * actV = actsArray[indexPath.row];
+        NSArray * ca = [actV allKeys];
+        NSString * theUrl = @"";
+        if ([ca containsObject:@"config"]) {
+            id dg = [actV objectForKey:@"config"];
+            if ([dg isKindOfClass:[NSDictionary class]]) {
+                NSArray * jh = [dg allKeys];
+                if ([jh containsObject:@"url"]) {
+                    NSString * sd = [dg objectForKey:@"url"];
+                    if (sd.length>1) {
+                        theUrl = sd;
+                    }
+                    
+                }
+            }
+        }
         if ([[actV objectForKey:@"type"] isEqualToString:@"2"]){
             InterestSignInViewController * intVC = [[InterestSignInViewController alloc]init];
             if ([[actV objectForKey:@"state"] isEqualToString:@"1"]) {
@@ -521,6 +544,19 @@
         else if ([[actV objectForKey:@"type"] isEqualToString:@"10"])
         {
             [self yaoqing];
+        }
+        else if (theUrl.length>1){
+            WebContentViewController * agV = [[WebContentViewController alloc] init];
+            agV.webType = 2;
+            agV.titleName = [actV objectForKey:@"name"];
+            if ([theUrl rangeOfString:@"?"].location != NSNotFound) {
+                agV.urlStr = [theUrl stringByAppendingFormat:@"&userno=%@",[RuYiCaiNetworkManager sharedManager].userno];
+            }
+            else
+                agV.urlStr = [theUrl stringByAppendingFormat:@"?userno=%@",[RuYiCaiNetworkManager sharedManager].userno];
+            [self.navigationController pushViewController:agV animated:YES];
+            [agV release];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenTabView" object:nil];
         }
     }
 }

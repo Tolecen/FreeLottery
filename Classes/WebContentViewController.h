@@ -16,4 +16,6 @@
     UIWebView * agreeWebView;
 }
 @property (assign,nonatomic)int webType;
+@property (retain,nonatomic)NSString * urlStr;
+@property (retain,nonatomic)NSString * titleName;
 @end

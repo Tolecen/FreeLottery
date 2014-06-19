@@ -14,6 +14,7 @@
 #import "ActivityTypeTwoCell.h"
 #import "RuYiCaiCommon.h"
 #import "ActivityView.h"
+#import "WebContentViewController.h"
 @class RuYiCaiAppDelegate;
 @interface ActivitiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 {

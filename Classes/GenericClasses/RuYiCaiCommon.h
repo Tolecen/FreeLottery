@@ -96,8 +96,8 @@
 //#define kRuYiCaiCoopid   @"111"  //91市场
 //#define kRuYiCaiCoopid   @"112"  //同步推
 
-//#define appStoreORnormal    @"appStore"
-#define appStoreORnormal    @"normal"
+#define appStoreORnormal    @"appStore"
+//#define appStoreORnormal    @"normal"
 #define appTestPhone    @"13522407813"
 
 
@@ -106,7 +106,7 @@
 
 //用户服务协议
 #define kRuYiCaiUserProtocol  @"http://3g.boyacai.com/w3g/html/protocol.html"
-#define GetBeanURL  @"http://220.231.48.232:4231/freelot/userGuide.jsp"
+#define GetBeanURL  @"http://www.caifree.com/freelot/userGuide.jsp"
 
 //appStore上ruyicai的评分地址
 #define kAppStorPingFen @"itms-apps://itunes.apple.com/app/id830055983"
@@ -432,4 +432,4 @@ typedef enum
  
 #define kwinMonneyArray_JXdantuo [NSArray arrayWithObjects:@"奖金：6元",@"奖金：19元",@"奖金：78元",@"奖金：540元",@"奖金：90元",@"奖金：26元",@"奖金：9元",@"奖金：65元",@"奖金：195元",nil]
 
-#define checkoutCaptcha  1
+#define checkoutCaptcha  0

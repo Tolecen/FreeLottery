@@ -14,6 +14,8 @@
 
 @implementation WebContentViewController
 @synthesize webType;
+@synthesize urlStr;
+@synthesize titleName;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,6 +37,10 @@
     [BackBarButtonItemUtils addBackButtonForController:self addTarget:self action:@selector(back:) andAutoPopView:NO];
     if (webType==1) {
         self.navigationItem.title = @"赚豆秘籍";
+        self.urlStr = GetBeanURL;
+    }
+    else if(webType==2){
+        self.navigationItem.title = self.titleName;
     }
     else
         self.navigationItem.title = @"网页内容";
@@ -48,7 +54,7 @@
     agreeWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, [UIScreen mainScreen].bounds.size.height - h)];
     agreeWebView.delegate = self;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:GetBeanURL]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlStr]];
     [agreeWebView loadRequest:request];
     
     [self.view addSubview:agreeWebView];

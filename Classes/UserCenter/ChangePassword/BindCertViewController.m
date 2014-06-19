@@ -161,7 +161,7 @@
         [[RuYiCaiNetworkManager sharedManager] showMessage:@"绑定身份证必须填写真实姓名！" withTitle:@"提示" buttonTitle:@"确定"];
         return;
     }
-    else if(m_bindTrueNameField.text.length<2|| m_bindTrueNameField.text.length>16 ||[NSString containOtherString:m_bindTrueNameField.text])
+    else if(m_bindTrueNameField.text.length<2|| m_bindTrueNameField.text.length>16)
     {
         [[RuYiCaiNetworkManager sharedManager] showMessage:@"姓名必须是2-16个汉字" withTitle:@"提示" buttonTitle:@"确定"];
         return;
