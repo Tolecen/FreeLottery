@@ -1136,7 +1136,7 @@
 		724FDBE519382CE600679587 /* IssueHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724FDBE419382CE600679587 /* IssueHistoryViewController.m */; };
 		7250EC61193DC3BB005D3D07 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7250EC60193DC3BB005D3D07 /* InviteViewController.m */; };
 		7255E0B819454F19003900B3 /* InviteRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7255E0B719454F19003900B3 /* InviteRecordViewController.m */; };
-		725AF442190B670F003C17ED /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 725AF441190B670F003C17ED /* KGStatusBar.m */; };
+		725AF442190B670F003C17ED /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 725AF441190B670F003C17ED /* KGStatusBar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7269C5651920AEBE0018F80B /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 7269C5641920AEBE0018F80B /* recommend.png */; };
 		7269C5681920B24F0018F80B /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7269C5671920B24F0018F80B /* RecommendViewController.m */; };
 		7269C56B1920C2EA0018F80B /* InterestSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7269C56A1920C2EA0018F80B /* InterestSignInViewController.m */; };
