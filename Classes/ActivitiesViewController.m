@@ -98,6 +98,7 @@
 //    actsArray = [(NSMutableArray *)hh retain];
     NSString * sss = @"1398152650";
     int mm= -1;
+    int nn = -1;
     for (int i = 0;i<hh.count;i++) {
         NSDictionary * dict = hh[i];
         if ([[dict objectForKey:@"type"] isEqualToString:@"1"]) {
@@ -110,12 +111,19 @@
             pinglunID = [dict objectForKey:@"id"];
             mm = i;
         }
+        if ([[dict objectForKey:@"type"] isEqualToString:@"10"]) {
+//            pinglunID = [dict objectForKey:@"id"];
+            nn = i;
+        }
     }
     NSMutableArray * tP = [NSMutableArray arrayWithArray:hh];
     if (([appStoreORnormal isEqualToString:@"appStore"] &&
          [TestUNum isEqualToString:[RuYiCaiNetworkManager sharedManager].userno])||([appStoreORnormal isEqualToString:@"appStore"]&&[RuYiCaiNetworkManager sharedManager].shouldCheat)) {
         if (mm!=-1) {
             [tP removeObjectAtIndex:mm];
+        }
+        if (nn!=-1) {
+            [tP removeObjectAtIndex:nn];
         }
     }
     actsArray = [tP retain];
